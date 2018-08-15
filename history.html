@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>STAC History</title>
+</head>
+<body>
+The Genesis of Static Catalogs
+The roots of static catalogs reach back to an ad hoc meeting about OpenAerialMap at the 2015 FOSS4G-NA conference of 2015, where a small group of people came up with what became the Open Imagery Network (OIN). The idea was to standardize a layer below an active browse-able map, focusing solely on creating a commons of open imagery, with the simplest possible implementation and guaranteeing an open license that any organization could use.
+
+At the core was imagery on the web, with simple JSON sidecar files detailing the basic metadata for all imagery, just like SpatioTemporal Asset Catalogs. The central data storage of OpenAerialMap is based on the Open Imagery Network metadata. Static STAC’s are an attempt to generalize that core from just open imagery to any imagery, and the static catalog workstream in Boulder was meant to align those original OIN ideas with making imagery in general more accessible.
+
+But the power of static catalogs became even more clear at the sprint as people shared their experiences. Several of the participants at the sprint had firsthand experiences with massive catalogs, with holdings of tens of millions and hundreds of millions of records. Indeed I doubt there have been any gatherings with more people experienced in running such large imagery catalogs, especially ones aiming for sub-second responses. As I would have guessed, most used ElasticSearch, which seemed to provide a large improvement over other options. But what surprised me was how unhappy most of the participants were with it. They loved it when they were working with smaller clusters, but it becomes a large pain to maintain the cluster once the index size starts to require many nodes. Many hours of operational work become required just to keep everything working well.
+
+Unfortunately there is not an amazing next solution that everyone is jumping to next, no silver bullet that can handle all geospatial data at scale. Instead those who had to maintain these large clusters were the ones most excited about the Static SpatioTemporal Asset Catalogs. Relying on a database or an ElasticSearch cluster has a major risk of potentially losing data. They can get corrupted, you have to load from backups, etc. If the core of one’s system is simply JSON on S3 or Google Cloud Storage then you have a really reliable canonical storage.
+
+So those tasked with maintaining reliable indexes of large amounts of imagery data see a lot of potential in static catalogs. They don’t want some new solution that promises massive scale but just breaks when even more is thrown at it — they want something super simple and reliable that they can count on, even if it gives up more advanced features.
+
+Indexes on Demand
+The main problem with maintaining a super large index of imagery as an active API is that its users expect it to perform equally well for all their queries. They want every single field indexed, returning the latest data along with big historical aggregation queries, in near real-time responses. Unfortunately things don’t work that way at scale, both scaling to large numbers of users and scaling to huge amounts of data. In the ‘Big Data’ world no one expects all their queries to perform equally well — systems will usually be optimized to do sub-second real-time reporting on some subset of the data and fields, while larger historical queries and aggregations are expected to take awhile.
+
+The key with a static catalog is that the creation of indexes becomes orthogonal to the storing of the data. Multiple systems can use the same point of truth, maintaining their own indices that are constrained and optimized for their purposes. Instead of trying to be everything to everyone, the static catalogs enable everyone to get exactly what they want. Indeed a colleague at work would import Landsat metadata in to a local PostGIS database because he could do all kinds of interesting ad hoc queries with full indexing. But he would pull in just the fields he needed, for just the area needed.
+
+ So I believe with static STAC’s we will see a variety of different tools arise to index and query. Global search engines will crawl it and enable basic search, specialized geospatial search like Voyager Search or ESRI GeoPortal Server (I love that I’m linking to an open source ESRI project) may attempt global geospatial search indexing. But organizations or communities of interest would also be able to make their own specialized indexes. One could also see tools that do global statistics, optimized for aggregation and queries of global catalog holdings, without trying to index every single field. But to enable advanced querying innovation we need to start with the data being accessible in a common way.
+
+Exposing the long tail of imagery
+My last STAC post closed with the idea that most all geospatial search is trying to solve two problems at once — the availability of imagery and the actual search of it. STAC aims to focus on availability — making sure that all data can be indexed. To that end Static STAC is designed to be super easy to implement, so that everyone, not just big data providers, can easily expose their data so others can access it. Larger data providers most all have already built some sort of online portal, and API to power it. But small aerial imagery and drone providers often are too small to afford to build out a full search API and GUI. With Static STAC they can simply upload their data online and then run one of the emerging tool sets that can generate the necessary JSON files. Indeed the hope is that even more user friendly tools will come online soon, enabling anyone to easily store their data online with the right metadata files.
+
+Though most of the use of Static Catalogs revolves around object stores like S3 or Google Cloud Storage, the specification can also be implemented by other services. For example a tool like the New York Public Library Map Warper, with all its historical imagery, could implement STAC by simply adding an extra JSON view for each of their images, instead of having to implement a whole new standards API.
+
+</body>
+</html>

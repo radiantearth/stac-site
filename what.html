@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>What is STAC?</title>
+</head>
+<body>
+Philosophy
+ The driving philosophies behind STAC:
+
+Small, flexible core — STAC aims to be easy to implement, and adaptable to existing implementations. STAC validation enables maximum flexibility by simply checking for the presence of key fields, allowing other implementation specific fields to be consumed by STAC clients as required.
+Evolve best practices and extensions through real world use — While the core of STAC focuses on minimal specification, optional extensions will be introduced to increase interoperability and usability of data exposed via STAC. These will arise from concrete STAC implementations [FIND EXAMPLES]
+Heavy use of Links — Links between various items enable modeling of complex relationships. Links allow a client to traverse relationships across different STAC implementations. For example, a derived NDVI product produced by Company A should link to the corresponding surface reflectance data provided by Company B.
+HTML representations —  JSON allows human readable representations of STAC Items, in both Static STAC and STAC API implementations. JSON allows STAC to be easily transformed into HTML.
+
+
+Features
+Metadata for Imagery on the Cloud:
+ The Cloud Optimized GeoTIFF (COG) is the most fundamental building block of the Cloud Native Geospatial world, enabling platforms to stream information between one another. But COG’s by themselves don’t have enough information to be crawled and indexed in any meaningful way without some other structure providing links and additional information.
+
+Pairing a COG with a STAC Item provides all the additional metadata to make it useful, and the link structure of the Catalog ensures that search engines will be able to crawl it. By using HTML to render STAC Items, every COG can have an online location that users can interact with and can discover via search engines.
+
+Though COG is the ideal pair for a STAC Item, STAC can be used with any format - the only requirement is that it is an asset that can be downloaded.
+ Simply putting data on the cloud is not sufficient — it must be discoverable and useable. STAC offers a simple and reliable way to make data more accessible.
+
+Tracking Provenance Across Catalogs
+ Creating a true Cloud Native Geospatial ecosystem requires not just provenance tracking within one cloud platform, but across all platforms. An algorithm might access Orthorectified Satellite imagery from a data provider via STAC, then apply surface reflectance, run an NDVI to assess plant health, or create a land cover classification. If the resulting outputs are also distributed with own STAC then the data can refer to the parent STAC Items to allow provenance tracking across platforms.
+
+Flipping the Geospatial Search Paradigm
+While everyone is used to going to Google and being able to search across every web page in the world, that is still not possible for geospatial data. The vision for STAC is for global search is not to send out search requests to every STAC server, but instead to just make every item ‘crawlable’ by an indexer that can aggregate all the data.
+ STACs create a foundation for geospatial search innovation by standardizing metadata for imagery, prioritizing Cloud Optimized GeoTIFF’s, and encouraging HTML pages with lots of links for every single geospatial image.
+ Provenance links between catalogs contribute to discoverability by boosting a page’s ranking within Search Engine Algorithms. Stable HTML means more links to those pages, which will push them higher in overall search results. Using link text and labels help,  for example:  images that contain fires will often be linked to with the word ‘fire’.
+
+</body>
+</html>
