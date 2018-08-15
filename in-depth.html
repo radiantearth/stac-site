@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>STAC in depth</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>SpatioTemporal Asset Catalog in depth</h1>
+						<p>Technical overview of how STAC works</p>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+                        <section id="content" class="main">
+                            <h2>Philosophy of STAC</h2>
+                            <p>The driving philosophies behind STAC:
+                            <ul><li><b>Small, flexible core</b>  -  STAC aims to be easy to implement, and adaptable to existing implementations. STAC validation enables maximum flexibility by simply checking for the presence of key fields, allowing other implementation specific fields to be consumed by STAC clients as required.</li>
+                                    <li><b>Evolve best practices and extensions through real world use</b> - While the STAC Core focuses on minimal specification, optional extensions will be introduced to increase interoperability and usability of data exposed via STAC. These will arise from concrete STAC implementations.</li>
+                                    <li><b>Heavy use of Links</b> - Links between various items enable modeling of complex relationships. Links allow a client to traverse relationships across different STAC implementations. For example, a derived NDVI product produced by Company A should link to the corresponding surface reflectance data provided by Company B.</li>
+                                    <li><b>HTML representations</b> - JSON allows human readable representations of STAC Items, in both Static STAC and STAC API implementations. JSON allows STAC to be easily transformed into HTML.</li></ul></p>
+
+                            <h2>Features of STAC</h2>
+                            <h3>Metadata for Imagery on the Cloud:</h3>
+                            <p>The Cloud Optimized GeoTIFF (COG) is the most fundamental building block of the Cloud Native Geospatial world, enabling platforms to stream information between one another. But COG’s by themselves don’t have enough information to be crawled and indexed in any meaningful way without some other structure providing links and additional information.</p>
+                            <p>Pairing a COG with a STAC Item provides all the additional metadata to make it useful, and the link structure of the Catalog ensures that search engines will be able to crawl it. By using HTML to render STAC Items, every COG can have an online location that users can interact with and can discover via search engines.</p>
+                            <p>Though COG is the ideal pair for a STAC Item, STAC can be used with any format - the only requirement is that it is an asset that can be downloaded.</p>
+                            <p>Simply putting data on the cloud is not sufficient — it must be discoverable and useable. STAC offers a simple and reliable way to make data more accessible.</p>
+
+                            <h3>Tracking Provenance Across Catalogs</h3>
+                            <p>Creating a true Cloud Native Geospatial ecosystem requires not just provenance tracking within one cloud platform, but across all platforms. An algorithm might access Orthorectified Satellite imagery from a data provider via STAC, then apply surface reflectance, run an NDVI to assess plant health, or create a land cover classification. If the resulting outputs are also distributed with own STAC then the data can refer to the parent STAC Items to allow provenance tracking across platforms.</p>
+
+                            <h3>Flipping the Geospatial Search Paradigm</h3>
+                            <p>While everyone is used to going to Google and being able to search across every web page in the world, that is still not possible for geospatial data. The vision for STAC is for global search is not to send out search requests to every STAC server, but instead to just make every item ‘crawlable’ by an indexer that can aggregate all the data.</p>
+                            <p>STACs create a foundation for geospatial search innovation by standardizing metadata for imagery, prioritizing Cloud Optimized GeoTIFF’s, and encouraging HTML pages with lots of links for every single geospatial image.</p>
+                            <p>Provenance links between catalogs contribute to discoverability by boosting a page’s ranking within Search Engine Algorithms. Stable HTML means more links to those pages, which will push them higher in overall search results. Using link text and labels help,  for example:  images that contain fires will often be linked to with the word ‘fire’.</p>
+
+                        </section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>Pull Requests Accepted</h2>
+							<p>The SpatioTemporal Asset Catalog project and website is fully community driven. If something is not right on the website, or if you want to contribute a tutorial, add your software to the implementation list or tell the world about the awesome data you are making available as COG's then please contribute on GitHub.</p>
+							<ul class="actions">
+								<li><a href="https://github.com/radiantearth/stac-site" class="button">Contribute</a></li>
+							</ul>
+						</section>
+						<p class="copyright"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
