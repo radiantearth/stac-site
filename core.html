@@ -27,25 +27,9 @@
     <p><b>Static STAC</b> is intended to be as simple as possible to implement to enable anyone expose their data online as quickly and reliably as possible.</p>
 
     <h3>STAC API</h3>
-    <p>
- The dynamic Catalog API can return the exact same cataloging and link structure as the Static Catalog, but with the ability for a client to query a large catalog to quickly retrieve Items relevant to them.
-
-The main entity of both the STAC API and static STAC is the Item, each can validate against the same JSON Schema. Having the STAC API mirror the structure of the static STAC means that a naive client can easily crawl and index both of them.
-
-Dynamic API
-Queryable
-Generates STAC in response
-
-The STAC API Bridge
-Looking at the world through the lens of static catalogs makes for an interesting view of the STAC API specification — the more dynamic API version of SpatioTemporal Asset Catalogs that responds to queries. In the static catalog view the most important thing is to make the data accessible. But convincing large data providers like Planet and DigitalGlobe to just drop their dynamic API’s in favor of just exposing the data as JSON is a big ask, especially since their customers expect to be able to query their imagery holdings. Fortunately it is much easier to convince them to implement the STAC API, since it can just be a thin interface on top of the same core query capabilities they’ve already created.
-
-Since the STAC API and Static STAC’s share the same core STAC Items and linking structure, the STAC API actually serves as a bridge. Naive clients can treat a STAC API just like a static catalog — crawling it and making their own index for the data. It doesn’t matter to the client if the catalog is static or dynamically served; it is just a set of links to be crawled. So the STAC API actually enables those who have already implemented some sort of catalog more easily expose their data to wider usages, without having to change their way of running their infrastructure.
-
-The even cooler thing is that going down this route can make it even easier for organizations to change their ways. A STAC crawler could easily traverse a STAC API and then write out a static catalog version of that same data, to a reliable online location. Then that Static STAC would easily serve as a back-up to the dynamic API — if the core database got corrupted then there would be a full copy of the data to import and create the dynamic API from.
-
-STAC API’s could in turn serve as a dynamic bridge to static catalogs with one key extension — the ability to know when something in the static catalog changed. This could be a standardized update field or just requiring the proper use of HTTP ETag and cache control headers. Or it could be a more active pub/sub notification mechanism. But if there is a way for a STAC API to know when a static catalog has changed, then it could easily cache a copy of the data in its more optimized and indexed internal datastore, updating it whenever the core data has changed. So figuring out exactly how to communicate updates, in both active (pub/sub) and passive (reporting last update) is a key thing to get right in future STAC iterations.
-</p>
-
+    <p>A <b>STAC API</b> dynamically generates a STAC in response to a user query. With Static STAC, the most important thing is to make the data accessible. However large data providers like Planet and DigitalGlobe have already invested significant effort and resources in generating dynamic API’s and indexes for their customers to query their imagery holdings. For them, a better value proposition to implement the <b>STAC API</b>, since it can just be a thin interface on top of their existing capabilities.</p>
+    <p>Since the <b>STAC API</b> and Static STAC’s share the same core STAC Items and linking structure, the <b>STAC API</b> serves as a bridge. Naive clients can treat a <b>STAC API</b> just like a Static STAC  - crawling it and making their own index for the data.</p>
+    <p><b>STAC API</b> enables those who have already implemented some sort of catalog to expose their data to wider usages, without having to change their way of running their infrastructure.</p>
     <h3><a href="index.html">Home</a></h3>
 </body>
 </html>
