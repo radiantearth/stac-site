@@ -1,35 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>STAC Core</title>
-</head>
-<body>
-    <h3>JSON Extensibility</h3>
-    <p>JSON validation won’t complain if you have extra fields, adding more fields allows you to support a variety of data types and implementations. Flexibility and extensibility is a core tenant of STAC.</p>
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>SpatioTemporal Asset Catalog Core Specification</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
 
-    <h3>STAC Item</h3>
-    <p>Fundamental to any STAC, a STAC Item represents an atomic collection of inseparable data and metadata  A <b>STAC Item</b> is a <b>GeoJSON feature</b> and can be easily read by any modern GIS. The <b>STAC Item</b> JSON specification includes additional fields for:<ul>
-        <li>the time the asset represents;</li>
-        <li>a thumbnail for quick browsing;</li>
-        <li>asset links, links to the described data;</li>
-        <li>relationship links, allowing users to traverse other related <b>STAC Item</b>s.</li>
-    </ul>A <b>STAC Item</b> can contain additional fields and JSON structures to enable data providers to expose rich metadata and software developers to create intuitive tools.</p>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-    <h3>STAC Catalog</h3>
-    <p>A <b>STAC Catalog</b> is a JSON structure that:<ul>
-        <li>contains a list of STAC Items;</li>
-        <li>contains a list of child STAC Catalogs - allowing a hierarchical grouping of STAC Items.</li>
-    </ul>Additionally, a <b>STAC Catalog</b> defines any common metadata that will be inherited by it’s children, for example: license, homepage, keywords etc.</p>
+				<!-- Header -->
+					<header id="header">
+						<h1>SpatioTemporal Asset Catalog Core Specification</h1>
+						<p>The core components of STAC</p>
+					</header>
 
-    <h3>Static STAC</h3>
-    <p><b>Static STAC</b> is defined as the simplest possible STAC Catalog of STAC Items. It is designed to work as a set of flat files on a web server or an object store like S3 or Google Cloud Storage. A <b>Static STAC</b> cannot be queried  - it is simply a set of interconnected links that can be crawled and traversed.</p>
-    <p><b>Static STAC</b> is intended to be as simple as possible to implement to enable anyone expose their data online as quickly and reliably as possible.</p>
+				<!-- Main -->
+					<div id="main">
 
-    <h3>STAC API</h3>
-    <p>A <b>STAC API</b> dynamically generates a STAC in response to a user query. With Static STAC, the most important thing is to make the data accessible. However large data providers like Planet and DigitalGlobe have already invested significant effort and resources in generating dynamic API’s and indexes for their customers to query their imagery holdings. For them, a better value proposition to implement the <b>STAC API</b>, since it can just be a thin interface on top of their existing capabilities.</p>
-    <p>Since the <b>STAC API</b> and Static STAC’s share the same core STAC Items and linking structure, the <b>STAC API</b> serves as a bridge. Naive clients can treat a <b>STAC API</b> just like a Static STAC  - crawling it and making their own index for the data.</p>
-    <p><b>STAC API</b> enables those who have already implemented some sort of catalog to expose their data to wider usages, without having to change their way of running their infrastructure.</p>
-    <h3><a href="index.html">Home</a></h3>
-</body>
+						<!-- Content -->
+							<section id="content" class="main">
+                                <h2>JSON Extensibility</h2>
+                                <p>JSON validation won’t complain if you have extra fields, adding more fields allows you to support a variety of data types and implementations. Flexibility and extensibility is a core tenant of STAC.</p>
+
+                                <h2>STAC Item</h2>
+                                <p>Fundamental to any STAC, a STAC Item represents an atomic collection of inseparable data and metadata  A <b>STAC Item</b> is a <b>GeoJSON feature</b> and can be easily read by any modern GIS. The <b>STAC Item</b> JSON specification includes additional fields for:<ul>
+                                    <li>the time the asset represents;</li>
+                                    <li>a thumbnail for quick browsing;</li>
+                                    <li>asset links, links to the described data;</li>
+                                    <li>relationship links, allowing users to traverse other related <b>STAC Item</b>s.</li>
+                                </ul>A <b>STAC Item</b> can contain additional fields and JSON structures to enable data providers to expose rich metadata and software developers to create intuitive tools.</p>
+
+                                <h2>STAC Catalog</h2>
+                                <p>A <b>STAC Catalog</b> is a JSON structure that:<ul>
+                                    <li>contains a list of STAC Items;</li>
+                                    <li>contains a list of child STAC Catalogs - allowing a hierarchical grouping of STAC Items.</li>
+                                </ul>Additionally, a <b>STAC Catalog</b> defines any common metadata that will be inherited by it’s children, for example: license, homepage, keywords etc.</p>
+
+                                <h2>Static STAC</h2>
+                                <p><b>Static STAC</b> is defined as the simplest possible STAC Catalog of STAC Items. It is designed to work as a set of flat files on a web server or an object store like S3 or Google Cloud Storage. A <b>Static STAC</b> cannot be queried  - it is simply a set of interconnected links that can be crawled and traversed.</p>
+                                <p><b>Static STAC</b> is intended to be as simple as possible to implement to enable anyone expose their data online as quickly and reliably as possible.</p>
+
+                                <h2>STAC API</h2>
+                                <p>A <b>STAC API</b> dynamically generates a STAC in response to a user query. With Static STAC, the most important thing is to make the data accessible. However large data providers like Planet and DigitalGlobe have already invested significant effort and resources in generating dynamic API’s and indexes for their customers to query their imagery holdings. For them, a better value proposition to implement the <b>STAC API</b>, since it can just be a thin interface on top of their existing capabilities.</p>
+                                <p>Since the <b>STAC API</b> and Static STAC’s share the same core STAC Items and linking structure, the <b>STAC API</b> serves as a bridge. Naive clients can treat a <b>STAC API</b> just like a Static STAC  - crawling it and making their own index for the data.</p>
+                                <p><b>STAC API</b> enables those who have already implemented some sort of catalog to expose their data to wider usages, without having to change their way of running their infrastructure.</p>
+                        </section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>Pull Requests Accepted</h2>
+							<p>The SpatioTemporal Asset Catalog project and website is fully community driven. If something is not right on the website, or if you want to contribute a tutorial, add your software to the implementation list or tell the world about the awesome data you are making available as COG's then please contribute on GitHub.</p>
+							<ul class="actions">
+								<li><a href="https://github.com/radiantearth/stac-site" class="button">Contribute</a></li>
+							</ul>
+						</section>
+						<p class="copyright"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>

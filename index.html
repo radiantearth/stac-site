@@ -1,21 +1,195 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>SpatioTemporal Asset Catalog</title>
-  </head>
-  <body>
-    <h1>SpatioTemporal Asset Catalog</h1>
-    <h2>A catalog standard for cloud-native geospatial raster data</h2>
-    <h3>Introduction</h3>
-    <p>The SpatioTemporal Asset Catalog (STAC) specification aims to standardize the way geospatial assets are exposed online and queried. A 'spatiotemporal asset' is any file that represents information about the earth captured in a certain space and time. </p>
-    <p>The goal is for all major providers of imagery and other earth observation data to expose their data as spatio temporal asset catalogs, so that new code doesn't need to be written whenever a new JSON-based REST API comes out that makes its data available in a slightly different way. This will enable standard library components in many languages.</p>
-    <p>STAC itself is a simple specification. It enables a client to search for imagery and other assets across multiple providers.STAC aims to be a core building block of Cloud Native Geospatial architectures to enable a coherent global ecosystem, instead of a number of similar but non-compatible systems.</p>
-    <h3><a href="why.html">Why STAC?</a></h3>
-    <h3><a href="what.html">What is STAC?</a></h3>
-    <h3><a href="core.html">STAC Core</a></h3>
-    <h3><a href="who.html">Who is using STAC?</a></h3>
-    <h3><a href="faq.html">Frequently Asked Questions</a></h3>
-    <h3><a href="history.html">The Past and Future of STAC</a></h3>
-  </body>
+<!DOCTYPE HTML>
+<!--
+	Modified from Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        <title>SpatioTemporal Asset Catalog</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><img src="images/logo/STAC-04.png" alt="" width="400"/></span>
+						<h1>SpatioTemporal Asset Catalog</h1>
+						<p>A catalog standard for cloud-native geospatial raster data</p>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro" class="active">Introduction</a></li>
+							<li><a href="#why">Why STAC?</a></li>
+                            <li><a href="#core">STAC Specification</a></li>
+                            <li><a href="#who">Who is using STAC?</a></li>
+                            <li><a href="#examples">STAC in action</a></li>
+                            <li><a href="#community">Get Involved</a></li>
+                            <li><a href="#faq">STAC FAQ</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>About</h2>
+										</header>
+										<p>The SpatioTemporal Asset Catalog (STAC) specification aims to standardize the way geospatial assets are exposed online and queried. A 'spatiotemporal asset' is any file that represents information about the earth captured in a certain space and time. </p>
+                                        <p>The goal is for all major providers of imagery and other earth observation data to expose their data as spatio temporal asset catalogs, so that new code doesn't need to be written whenever a new JSON-based REST API comes out that makes its data available in a slightly different way. This will enable standard library components in many languages.</p>
+                                        <p>STAC itself is a simple specification. It enables a client to search for imagery and other assets across multiple providers.STAC aims to be a core building block of Cloud Native Geospatial architectures to enable a coherent global ecosystem, instead of a number of similar but non-compatible systems.</p>
+										<ul class="actions">
+											<li><a href="in-depth.html" class="button">Learn More</a></li>
+										</ul>
+									</div>
+									<span class="image"><img src="images/logo/STAC-03.png" alt="" /></span>
+								</div>
+							</section>
+
+	                    <!-- Why? -->
+							<section id="why" class="main special">
+								<header class="major">
+									<h2>Why does STAC Matter?</h2>
+								</header>
+								<ul class="features">
+									<li>
+										<span class="icon major style1 fa-cubes"></span>
+										<h3>Data Providers</h3>
+										<p>STAC is a standardized way to expose collections of spatial temporal data. If you are a provider of imagery and are in need data catalogs, STAC is driving a uniform means for indexing assets.</p>
+									</li>
+									<li>
+										<span class="icon major style3 fa-wrench"></span>
+										<h3>Developers</h3>
+										<p>If you are building infrastructure to host, ingest, or manage collections of spatial data or image products, STAC’s core JSON is the bare minimum needed to interact with any raster geospatial data collection.</p>
+									</li>
+									<li>
+										<span class="icon major style5 fas fa-users"></span>
+										<h3>Data Users</h3>
+										<p>Consumers of spatial temporal datasets are often burdened with building unique pipelines for ingesting collections into their system. In an effort to reduce the number this burden, a community of geospatial developers have constructed the STAC spec to remove the need for tailor-made workflows.</p>
+									</li>
+								</ul>
+								<footer class="major">
+									<ul class="actions">
+										<li><a href="why-stac.html" class="button">Learn More</a></li>
+                                        <li><a href="history.html" class="button">Background</a></li>
+									</ul>
+								</footer>
+							</section>
+
+                        <!-- STAC Core -->
+							<section id="core" class="main special">
+								<header class="major">
+									<h2>STAC Specification</h2>
+									<p>STAC Specification has two fundamental items: the STAC Item and the STAC Catalog</p>
+                                    <p>STAC can work in one of two modes: Static and API</p>
+								</header>
+								<footer class="major">
+									<ul class="actions">
+                                        <li><a href="core.html" class="button">Learn More</a></li>
+										<li><a href="https://github.com/radiantearth/stac-spec" class="button special">Read the Spec</a></li>
+									</ul>
+								</footer>
+							</section>
+
+						<!-- implementation Section -->
+							<section id="who" class="main">
+								<header class="major">
+									<h2>Who is using STAC?</h2>
+									<ul>
+                                        <li><a href="https://www.digitalglobe.com/">Digital Globe</a></li>
+                                        <li><a href="https://www.azavea.com/">Azavea</a></li>
+                                        <li><a href="https://earthengine.google.com/">Google Earth Engine</a></li>
+                                        <li><a href="https://www.harris.com/">Harris</a></li>
+                                        <li><a href="https://earth.esa.int/web/guest/missions/3rd-party-missions/potential-missions/cbers">CBERS</a></li>
+                                        <li><a href="https://developmentseed.org/">Development Seed</a></li>
+                                        <li><a href="http://www.ga.gov.au/">GeoSciences Australia</li>
+                                        <li><a href="https://www.planet.com/">Planet</a></li>
+                                        <li><a href="https://www.astraea.earth/">Astraea</a></li>
+                                        <li><a href="https://www.element84.com/">Element-84</a></li>
+                                    </ul>
+								</header>
+                            </section>
+
+                        <!-- examples -->
+                            <section id="examples" class="main">
+								<header class="major">
+									<h2>STAC in action</h2>
+									<ul>
+                                        <li><a href="https://github.com/radiantearth/stac-browser">STAC browser</a></li>
+                                        <li><a href="http://cbers-stac.netlify.com/">CBERS</a></li>
+                                        <li><a href="http://iserv-stac.netlify.com/">ISERV</a></li>
+                                        <li><a href="https://github.com/sat-utils/sat-api">sat-api</a></li>
+                                        <li>Add yours here</li>
+                                    </ul>
+								</header>
+                            </section>
+
+                        <!-- community -->
+                            <section id="community" class="main">
+								<header class="major">
+									<h2>Get Involved!</h2>
+									<ul>
+                                        <li><a href="https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby">Gitter</a></li>
+                                        <li><a href="https://github.com/radiantearth/stac-spec">GitHUB</a></li>
+                                        <li><a href="https://groups.google.com/forum/#!forum/stac-spec">Google Groups</a></li>
+                                    </ul>
+								</header>
+                            </section>
+                        <!-- FAQ -->
+							<section id="faq" class="main special">
+								<header class="major">
+									<h2>Frequently Asked Questions</h2>
+                                    <p><b>Q. What is the relationship to OGC’s WFS 3 specification?</b></p>
+                                    <p>A. STAC intends to be fully compliant with the upcoming WFS 3 specification including implementing WFS 3’s query methods</p>
+                                    <br />
+                                    <p><b>I have geospatial raster data, should I use STAC?</b></p>
+                                    <p>A. Yes! So long as you can address your data in space and time and link directly to your data.</p>
+                                    <br />
+                                    <p><b>Q. I have vector data, should I use STAC?</b></p>
+                                    <p>A. No. Vector data should be handled directly with WFS 3.</p>
+                                    <br />
+                                    <p><b>Q. I have non-geospatial data, should I use STAC?</b></p>
+                                    <p>A. No. Data that has no context in space and time is not suited to STAC.</p>
+								</header>
+							</section>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>Pull Requests Accepted</h2>
+							<p>The SpatioTemporal Asset Catalog project and website is fully community driven. If something is not right on the website, or if you want to contribute a tutorial, add your software to the implementation list or tell the world about the awesome data you are making available as COG's then please contribute on GitHub.</p>
+							<ul class="actions">
+								<li><a href="https://github.com/radiantearth/stac-site" class="button">Contribute</a></li>
+							</ul>
+						</section>
+						<p class="copyright"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
