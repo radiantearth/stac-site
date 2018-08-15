@@ -5,39 +5,32 @@
     <title>STAC Core</title>
 </head>
 <body>
+    <h3>JSON Extensibility</h3>
+    <p>JSON validation won’t complain if you have extra fields, adding more fields allows you to support a variety of data types and implementations. Flexibility and extensibility is a core tenant of STAC.</p>
 
-STAC Item
- A STAC Item is a GeoJSON feature and can be easily read by any modern GIS. The STAC Item JSON specification includes additional fields for:
- the time the asset represents;
- a thumbnail for quick browsing;
- links, allowing users to traverse relationships between assets.
- A STAC Item can contain additional fields and JSON structures to enable data providers to expose rich metadata and software developers to create intuitive tools.
+    <h3>STAC Item</h3>
+    <p>Fundamental to any STAC, a STAC Item represents an atomic collection of inseparable data and metadata  A <b>STAC Item</b> is a <b>GeoJSON feature</b> and can be easily read by any modern GIS. The <b>STAC Item</b> JSON specification includes additional fields for:<ul>
+        <li>the time the asset represents;</li>
+        <li>a thumbnail for quick browsing;</li>
+        <li>asset links, links to the described data;</li>
+        <li>relationship links, allowing users to traverse other related <b>STAC Item</b>s.</li>
+    </ul>A <b>STAC Item</b> can contain additional fields and JSON structures to enable data providers to expose rich metadata and software developers to create intuitive tools.</p>
 
-STAC Catalog
- A STAC Catalog is a JSON structure that:
-contains a list of STAC Items;
-contains a list of child STAC Catalogs - allowing a hierarchical grouping of STAC Items;
- Additionally, a STAC Catalog defines any common metadata that will be inherited by it’s children, for example: license, homepage, keywords etc.
+    <h3>STAC Catalog</h3>
+    <p>A <b>STAC Catalog</b> is a JSON structure that:<ul>
+        <li>contains a list of STAC Items;</li>
+        <li>contains a list of child STAC Catalogs - allowing a hierarchical grouping of STAC Items.</li>
+    </ul>Additionally, a <b>STAC Catalog</b> defines any common metadata that will be inherited by it’s children, for example: license, homepage, keywords etc.</p>
 
-Static STAC
- A Static STAC
-Catalog without query
-Files sitting online
-Lowest common denominator
+    <h3>Static STAC</h3>
+    <p><b>Static STAC</b> is defined as the simplest possible STAC Catalog of STAC Items. It is designed to work as a set of flat files on a web server or an object store like S3 or Google Cloud Storage. A <b>Static STAC</b> cannot be queried  - it is simply a set of interconnected links that can be crawled and traversed.</p>
+    <p><b>Static STAC</b> is intended to be as simple as possible to implement to enable anyone expose their data online as quickly and reliably as possible.</p>
 
-Static Catalogs & Catalog API
- Amazon’s S3 offers 99.999999999% durability and 99.99% reliability, so a catalog that is just S3 with no more moving parts will be able to offer the same guarantees.
- A Static Catalog can be direct subset of a Catalog API. Files on a web server are still an API, albeit a very simple one, files linked on the web are a catalog, just not one that responds to queries.
-
+    <h3>STAC API</h3>
+    <p>
  The dynamic Catalog API can return the exact same cataloging and link structure as the Static Catalog, but with the ability for a client to query a large catalog to quickly retrieve Items relevant to them.
 
 The main entity of both the STAC API and static STAC is the Item, each can validate against the same JSON Schema. Having the STAC API mirror the structure of the static STAC means that a naive client can easily crawl and index both of them.
-
-
-
-What is a Static STAC?
-A Static STAC is defined as the simplest possible catalog of STAC Items. It is designed to work as a set of flat files on a web server or an object store like S3 or Google Cloud Storage. A Static STAC cannot be queried — it is simply a set of interconnected links that can be crawled and traversed. A static catalog is designed to be as reliable as possible, and can serve as the canonical source for STAC API’s.
- A Static STAC is intended to be as simple as possible to implement letting anyone expose their data online as simply and reliably as possible.
 
 Dynamic API
 Queryable
@@ -51,9 +44,7 @@ Since the STAC API and Static STAC’s share the same core STAC Items and linkin
 The even cooler thing is that going down this route can make it even easier for organizations to change their ways. A STAC crawler could easily traverse a STAC API and then write out a static catalog version of that same data, to a reliable online location. Then that Static STAC would easily serve as a back-up to the dynamic API — if the core database got corrupted then there would be a full copy of the data to import and create the dynamic API from.
 
 STAC API’s could in turn serve as a dynamic bridge to static catalogs with one key extension — the ability to know when something in the static catalog changed. This could be a standardized update field or just requiring the proper use of HTTP ETag and cache control headers. Or it could be a more active pub/sub notification mechanism. But if there is a way for a STAC API to know when a static catalog has changed, then it could easily cache a copy of the data in its more optimized and indexed internal datastore, updating it whenever the core data has changed. So figuring out exactly how to communicate updates, in both active (pub/sub) and passive (reporting last update) is a key thing to get right in future STAC iterations.
-
-Extensibility
-JSON validation won’t cry if you have extra fields, adding more fields allows you to support a  variety of data types and implementations
+</p>
 
 
 </body>
