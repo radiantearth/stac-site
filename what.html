@@ -7,13 +7,11 @@
 <body>
     <h3>Philosophy of STAC</h3>
     <p>The driving philosophies behind STAC:
-        <ul>
-            <li><b>Small, flexible core</b>  -  STAC aims to be easy to implement, and adaptable to existing implementations. STAC validation enables maximum flexibility by simply checking for the presence of key fields, allowing other implementation specific fields to be consumed by STAC clients as required.</li>
+    <ul><li><b>Small, flexible core</b>  -  STAC aims to be easy to implement, and adaptable to existing implementations. STAC validation enables maximum flexibility by simply checking for the presence of key fields, allowing other implementation specific fields to be consumed by STAC clients as required.</li>
             <li><b>Evolve best practices and extensions through real world use</b> - While the STAC Core focuses on minimal specification, optional extensions will be introduced to increase interoperability and usability of data exposed via STAC. These will arise from concrete STAC implementations.</li>
             <li><b>Heavy use of Links</b> - Links between various items enable modeling of complex relationships. Links allow a client to traverse relationships across different STAC implementations. For example, a derived NDVI product produced by Company A should link to the corresponding surface reflectance data provided by Company B.</li>
-            <li><b>HTML representations</b> - JSON allows human readable representations of STAC Items, in both Static STAC and STAC API implementations. JSON allows STAC to be easily transformed into HTML.</li>
-        </ul>
-       </p>
+            <li><b>HTML representations</b> - JSON allows human readable representations of STAC Items, in both Static STAC and STAC API implementations. JSON allows STAC to be easily transformed into HTML.</li></ul></p>
+
     <h3>Features of STAC</h3>
     <h4>Metadata for Imagery on the Cloud:</h4>
     <p>The Cloud Optimized GeoTIFF (COG) is the most fundamental building block of the Cloud Native Geospatial world, enabling platforms to stream information between one another. But COG’s by themselves don’t have enough information to be crawled and indexed in any meaningful way without some other structure providing links and additional information.</p>
