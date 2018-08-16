@@ -21,7 +21,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<span class="logo"><img src="images/logo/STAC-04.png" alt="" width="400"/></span>
+						<span class="logo"><img src="images/logo/STAC-04.png" alt="" width="200"/></span>
 						<h1>SpatioTemporal Asset Catalog</h1>
 						<p>A catalog standard for cloud-native geospatial raster data</p>
 					</header>
@@ -35,7 +35,6 @@
                             <li><a href="#who">Who is using STAC?</a></li>
                             <li><a href="#examples">STAC in action</a></li>
                             <li><a href="#community">Get Involved</a></li>
-                            <li><a href="#faq">STAC FAQ</a></li>
 						</ul>
 					</nav>
 
@@ -50,8 +49,7 @@
 											<h2>About</h2>
 										</header>
 										<p>The SpatioTemporal Asset Catalog (STAC) specification aims to standardize the way geospatial assets are exposed online and queried. A 'spatiotemporal asset' is any file that represents information about the earth captured in a certain space and time. </p>
-                                        <p>The goal is for all major providers of imagery and other earth observation data to expose their data as spatio temporal asset catalogs, so that new code doesn't need to be written whenever a new JSON-based REST API comes out that makes its data available in a slightly different way. This will enable standard library components in many languages.</p>
-                                        <p>STAC itself is a simple specification. It enables a client to search for imagery and other assets across multiple providers.STAC aims to be a core building block of Cloud Native Geospatial architectures to enable a coherent global ecosystem, instead of a number of similar but non-compatible systems.</p>
+										<p>The goal is for all major providers of imagery and other earth observation data to expose their data as SpatioTemporal Asset Catalogs (<b>STAC</b>), so that new code doesn't need to be written whenever a new API is released.</p>
 										<ul class="actions">
 											<li><a href="in-depth.html" class="button">Learn More</a></li>
 										</ul>
@@ -69,23 +67,24 @@
 									<li>
 										<span class="icon major style1 fa-cubes"></span>
 										<h3>Data Providers</h3>
-										<p>STAC is a standardized way to expose collections of spatial temporal data. If you are a provider of imagery and are in need data catalogs, STAC is driving a uniform means for indexing assets.</p>
+										<p>STAC is a standardized way to expose collections of spatial temporal data. If you are a provider of imagery  in need of a catalog for your data, STAC is driving a uniform means for indexing assets.</p>
 									</li>
 									<li>
 										<span class="icon major style3 fa-wrench"></span>
 										<h3>Developers</h3>
-										<p>If you are building infrastructure to host, ingest, or manage collections of spatial data or image products, STAC’s core JSON is the bare minimum needed to interact with any raster geospatial data collection.</p>
+										<p>If you are building infrastructure to host, ingest, or manage collections of spatial data, STAC’s core JSON is the bare minimum needed to interact with any raster geospatial data collection.</p>
 									</li>
 									<li>
 										<span class="icon major style5 fas fa-users"></span>
 										<h3>Data Users</h3>
-										<p>Consumers of spatial temporal datasets are often burdened with building unique pipelines for ingesting collections into their system. In an effort to reduce the number this burden, a community of geospatial developers have constructed the STAC spec to remove the need for tailor-made workflows.</p>
+										<p>Users of spatial temporal data are often burdened with building unique pipelines for each different collection of data they consume. The STAC community has defined this specification to remove this complexity.</p>
 									</li>
 								</ul>
 								<footer class="major">
 									<ul class="actions">
 										<li><a href="why-stac.html" class="button">Learn More</a></li>
-                                        <li><a href="history.html" class="button">Background</a></li>
+                                        <li><a href="history.html" class="button">The Vision</a></li>
+                                        <li><a href="faq.html" class="button">FAQ</a></li>
 									</ul>
 								</footer>
 							</section>
@@ -94,8 +93,8 @@
 							<section id="core" class="main special">
 								<header class="major">
 									<h2>STAC Specification</h2>
-									<p>STAC Specification has two fundamental items: the STAC Item and the STAC Catalog</p>
-                                    <p>STAC can work in one of two modes: Static and API</p>
+									<p>STAC Specification has two fundamental items: the <b>STAC Item</b> and the <b>STAC Catalog</b></p>
+                                    <p>STAC can be a <b>Static</b> hosted catalog or be dynamically generated from an <b>API</b></p>
 								</header>
 								<footer class="major">
 									<ul class="actions">
@@ -149,23 +148,6 @@
                                     </ul>
 								</header>
                             </section>
-                        <!-- FAQ -->
-							<section id="faq" class="main special">
-								<header class="major">
-									<h2>Frequently Asked Questions</h2>
-                                    <p><b>Q. What is the relationship to OGC’s WFS 3 specification?</b></p>
-                                    <p>A. STAC intends to be fully compliant with the upcoming WFS 3 specification including implementing WFS 3’s query methods</p>
-                                    <br />
-                                    <p><b>I have geospatial raster data, should I use STAC?</b></p>
-                                    <p>A. Yes! So long as you can address your data in space and time and link directly to your data.</p>
-                                    <br />
-                                    <p><b>Q. I have vector data, should I use STAC?</b></p>
-                                    <p>A. No. Vector data should be handled directly with WFS 3.</p>
-                                    <br />
-                                    <p><b>Q. I have non-geospatial data, should I use STAC?</b></p>
-                                    <p>A. No. Data that has no context in space and time is not suited to STAC.</p>
-								</header>
-							</section>
 					</div>
 
 				<!-- Footer -->
