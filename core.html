@@ -30,11 +30,13 @@
 
 						<!-- Content -->
 							<section id="content" class="main">
-                                <h2>JSON Extensibility</h2>
-                                <p>JSON validation won’t complain if you have extra fields, adding more fields allows you to support a variety of data types and implementations. Flexibility and extensibility is a core tenant of STAC.</p>
+                                <h2>Overview</h2>
+                                <p>The <a href="https://github.com/radiantearth/stac-spec">STAC Specification</a> lives as
+                                easily readable markdown pages on github, as the community aspires to keep STAC very approachable. So while this page gives a slightly deeper overview, don't hesitate to dive directly into the spec.</p>
+                                <p>One thing to emphasize is that the specification is designed to be flexible and extensible. So if it seems a bit 'light' that is by design, so that different domains and tools can easily make it their own. The <b>extensions</b> section of the spec, detailed below, is where the community collaborates on more detail about specific data types and new functionality. Key to the STAC approach is JSON's extensibility. While the spec does provide JSON Schemas for validation (easily usable with online tools like <a href="https://staclint.com/">STACLint.com</a>), JSON validation won’t complain if you have extra fields, adding more fields allows you to support a variety of data types and implementations. Flexibility and extensibility is a core tenant of STAC.</p>
 
                                 <h2>STAC Item</h2>
-                                <p>Fundamental to any STAC, a STAC Item represents an atomic collection of inseparable data and metadata  A <b>STAC Item</b> is a <b>GeoJSON feature</b> and can be easily read by any modern GIS. The <b>STAC Item</b> JSON specification includes additional fields for:<ul>
+                                <p>Fundamental to any STAC, a STAC Item represents an atomic collection of inseparable data and metadata. A <b><a href="https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md">STAC Item</a></b> is a <b><a href="http://geojson.org">GeoJSON</a> feature</b> and can be easily read by any modern GIS or geospatial library. The <b>STAC Item</b> JSON specification includes additional fields for:<ul>
                                     <li>the time the asset represents;</li>
                                     <li>a thumbnail for quick browsing;</li>
                                     <li>asset links, links to the described data;</li>
@@ -42,19 +44,57 @@
                                 </ul>A <b>STAC Item</b> can contain additional fields and JSON structures to enable data providers to expose rich metadata and software developers to create intuitive tools.</p>
 
                                 <h2>STAC Catalog</h2>
-                                <p>A <b>STAC Catalog</b> is a JSON structure that:<ul>
+                                <p>The <b><a href="https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md">STAC Catalog</a></b> provides a flexible structure to link various STAC Items together to be crawled or browsed. The spec is quite simple, just a JSON that:<ul>
                                     <li>contains a list of STAC Items;</li>
                                     <li>contains a list of child STAC Catalogs - allowing a hierarchical grouping of STAC Items.</li>
-                                </ul>Additionally, a <b>STAC Catalog</b> defines any common metadata that will be inherited by its children, for example: license, homepage, keywords etc.</p>
-
-                                <h2>Static STAC</h2>
-                                <p><b>Static STAC</b> is defined as the simplest possible STAC Catalog of STAC Items. It is designed to work as a set of flat files on a web server or an object store like S3 or Google Cloud Storage. A <b>Static STAC</b> cannot be queried  - it is simply a set of interconnected links that can be crawled and traversed.</p>
-                                <p><b>Static STAC</b> is intended to be as simple as possible to implement to enable anyone expose their data online as quickly and reliably as possible.</p>
+                                </ul></p>
+                                <p>There are no restrictions on the way catalogs are organized. Most implementations use
+                                a set of 'sub-catalogs' (a catalog that is linked to from another catalog) to group the items in some sensible way. It can be easily extended, for example to include additional metadata to further describe its holdings, as the STAC Collection does.</p>
+                               
+                                <h2>STAC Collection</h2>
+                                <p>A <b><a href="https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md">STAC Collection</a></b> provides additional information about a spatio-temporal collection of data. It extends Catalog directly, layering on additional fields to enable description of things like the spatial and temporal extent of the data, the license, keywords, providers, etc. It in turn can easily be extended for additional
+                                collection level metadata. It is used standalone by parts of the STAC community, as a lightweight way to describe data holdings.
 
                                 <h2>STAC API</h2>
-                                <p>A <b>STAC API</b> dynamically generates a STAC in response to a user query. With Static STAC, the most important thing is to make the data accessible. However large data providers like Planet and DigitalGlobe have already invested significant effort and resources in generating dynamic API’s and indexes for their customers to query their imagery holdings. For them, a better value proposition to implement the <b>STAC API</b>, since it can just be a thin interface on top of their existing capabilities.</p>
-                                <p>Since the <b>STAC API</b> and Static STAC’s share the same core STAC Items and linking structure, the <b>STAC API</b> serves as a bridge. Naive clients can treat a <b>STAC API</b> just like a Static STAC  - crawling it and making their own index for the data.</p>
-                                <p><b>STAC API</b> enables those who have already implemented some sort of catalog to expose their data to wider usages, without having to change their way of running their infrastructure.</p>
+                                <p>The <b><a href="https://github.com/radiantearth/stac-spec/tree/master/api-spec">STAC API</a></b> specification is a bit different from the others. Instead of just specifying JSON and links that could be implemented with no moving parts, it defines a RESTful service interface for search. It dynamically generates a GeoJSON FeatureCollection of STAC Items in response to a user query.</p>
+                                <p>The core of the spec is a single endpoint:</p>
+								<pre><code>/stac/search
+								</code></pre>
+								<p>It takes a JSON object that can filter on date and time:</p>
+<pre><code>{
+  <span class="pl-s"><span class="pl-pds">"</span>bbox<span class="pl-pds">"</span></span>: [<span class="pl-c1">5.5</span>, <span class="pl-c1">46</span>, <span class="pl-c1">8</span>, <span class="pl-c1">47.4</span>], 
+  <span class="pl-s"><span class="pl-pds">"</span>time<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2018-02-12T00:00:00Z/2018-03-18T12:31:12Z<span class="pl-pds">"</span></span>
+}</code></pre>
+								<p>This tells the server to return all the catalog items it has that are from the second half of March, 2018 and
+								that intersect with this area:</p>
+								<p><img src="https://user-images.githubusercontent.com/407017/38382405-b5e69344-38be-11e8-90dc-35738678356d.png" alt="swiss_bbox" style="max-width:100%;"><em>  (Map © OpenStreetMap contributors)</em></p>
+								<p>The return format is a <a href="http://geojson.org/" rel="nofollow">GeoJSON</a> FeatureCollection with features compliant with the
+								<a href="/radiantearth/stac-spec/blob/master/item-spec/item-spec.md">Item spec</a> for STAC. It returns to a limit optionally requested by the client, and includes
+								pageable links to iterate through any results past that limit.</p>
+								<p>STAC API has worked to align with the <a href="http://opengeospatialorg">OGC</a>'s <a href="https://github.com/opengeospatial/WFS_FES">WFS 3.0</a> specification, and ideally it evolves so as much of the STAC API functionality as possible is in WFS. For more about this see the <a href="faq.html">FAQ</a>.
+
+
+                                <h2>Extensions</h2>
+
+                                <p name="extensions" id="extensions">While the core specification says nothing about particular types of data, the <a href="https://github.com/radiantearth/stac-spec/tree/master/extensions">extensions folder</a> is where one can find domain-specific fields that can be easily added to any STAC Item.
+
+                                	It is a place where any implementor can propose fields that are potentially more widely applicable than just their data. Each extension is labeled with a ‘maturity classification’ that lets others know how likely the extension is to change in the future.</p>
+                                	<p><a href="http://ithub.com/radiantearth/stac-spec/tree/master/extensions"><img src="https://raw.githubusercontent.com/radiantearth/stac-site/master/images/stac-extensions.png" style='height: 100%; width: 75%; object-fit: contain'></a></p>
+                                	The goal is to enable specific communities to work together to find a ‘good enough’ set of common metadata. </p>
+
+                                <h2>Dynamic and Static Catalogs</h2>
+                                <p>The final bit to draw attention to is the two different types of catalogs - static and dynamic.</p>
+                                <ul>
+                                    <li>A <i>static catalog</i> is one that is implemented as a set of flat files on a web server or an object store like S3 or Google Cloud Storage.</li> 
+                                    <li>A <i>dynamic catalog</i> is one that generates its responses dynamically, generally backed by some sort of server. </li>
+                                </ul>
+
+                                <p>The core Item, Catalog and Collection specs can be fully implemented by either, and the spec is designed to be agnostic to how it is implemented. This decision was made to make the lowest possible barrier to exposing data as STAC. For
+                      			many the simplest thing to do is to simply create files and put them online. But large data
+                      			providers like Planet and DigitalGlobe have already invested significant effort and resources in generating dynamic API’s and indexes for their customers to query their imagery holdings. For them it is actually easier to implement a dynamic STAC instead of
+                      			trying to replicate all their data as static files.</p>
+                      		    <p> Client libraries like <a href="https://github.com/radiantearth/stac-browser">STAC Browser</a> are able to treat dynamic and static catalogs the same, as they both expose the exact same information. The one thing dynamic catalogs can do that static ones can't is offer the <code>/search/</code> endpoint. Though as the ecosystem of dynamic STAC servers improves it will be quite easy to use an off the shelf server to ingest the static catalog and provide a dynamic version of it to enable search.
+
                         </section>
 
 					</div>
