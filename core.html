@@ -71,18 +71,18 @@
 								<p>The return format is a <a href="http://geojson.org/" rel="nofollow">GeoJSON</a> FeatureCollection with features compliant with the
 								<a href="/radiantearth/stac-spec/blob/master/item-spec/item-spec.md">Item spec</a> for STAC. It returns to a limit optionally requested by the client, and includes
 								pageable links to iterate through any results past that limit.</p>
-								<p>STAC API has worked to align with the <a href="https://opengeospatial.org">OGC</a>'s <a href="https://github.com/opengeospatial/WFS_FES">WFS 3</a> specification, and ideally it evolves so as much of the STAC API functionality as possible is in WFS. For more about this see the <a href="faq.html">FAQ</a>.
+								<p>STAC API has worked to align with the <a href="https://opengeospatial.org">OGC</a>'s <a href="https://github.com/opengeospatial/WFS_FES">WFS 3</a> specification, and ideally it evolves so as much of the STAC API functionality as possible is in WFS. For more about this see the <a href="faq.html">FAQ</a>.</p>
 
 
-                                <h2>Extensions</h2>
+                                <h2 id="extensions">Extensions</h2>
 
                                 <p name="extensions" id="extensions">While the core specification says nothing about particular types of data, the <a href="https://github.com/radiantearth/stac-spec/tree/master/extensions">extensions folder</a> is where one can find domain-specific fields that can be easily added to any STAC Item.
 
                                 	It is a place where any implementor can propose fields that are potentially more widely applicable than just their data. Each extension is labeled with a ‘maturity classification’ that lets others know how likely the extension is to change in the future.</p>
                                 	<p><a href="http://ithub.com/radiantearth/stac-spec/tree/master/extensions"><img src="https://raw.githubusercontent.com/radiantearth/stac-site/master/images/stac-extensions.png" style='height: 100%; width: 75%; object-fit: contain'></a></p>
                                 	The goal is to enable specific communities to work together to find a ‘good enough’ set of common metadata. </p>
-
-                                <h2>Dynamic and Static Catalogs</h2>
+ 
+                                <h2 id="static">Dynamic and Static Catalogs</h2>
                                 <p>The final bit to draw attention to is the two different types of catalogs - static and dynamic.</p>
                                 <ul>
                                     <li>A <i>static catalog</i> is one that is implemented as a set of flat files on a web server or an object store like S3 or Google Cloud Storage.</li> 
@@ -92,8 +92,8 @@
                                 <p>The core Item, Catalog and Collection specs can be fully implemented by either, and the spec is designed to be agnostic to how it is implemented. This decision was made to make the lowest possible barrier to exposing data as STAC. For
                       			many the simplest thing to do is to simply create files and put them online. But large data
                       			providers like Planet and DigitalGlobe have already invested significant effort and resources in generating dynamic API’s and indexes for their customers to query their imagery holdings. For them it is actually easier to implement a dynamic STAC instead of
-                      			trying to replicate all their data as static files.</p>
-                      		    <p> Client libraries like <a href="https://github.com/radiantearth/stac-browser">STAC Browser</a> are able to treat dynamic and static catalogs the same, as they both expose the exact same information. The one thing dynamic catalogs can do that static ones can't is offer the <code>/search/</code> endpoint. Though as the ecosystem of dynamic STAC servers improves it will be quite easy to use an off the shelf server to ingest the static catalog and provide a dynamic version of it to enable search.
+                      			trying to re-architect their core platforms. But static catalogs have an additional use cases for large providers, enabling a fail safe point of truth. A static catalog can be generated from the dynamic index and stored on the cloud, and then can easily be used for disaster recovery, due to their incredibly high reliability of AWS S3 and Google Cloud Storage.</p>
+                      		    <p> Client libraries like <a href="https://github.com/radiantearth/stac-browser">STAC Browser</a> are able to treat dynamic and static catalogs the same, as they both expose the exact same information. The one thing dynamic catalogs can do that static ones can't is offer the <code>/search/</code> endpoint. Though as the ecosystem of dynamic STAC servers improves it will be quite easy to use an off the shelf server to ingest the static catalog and provide a dynamic version of it to enable search.</p>
 
                         </section>
 
