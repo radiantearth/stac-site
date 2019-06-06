@@ -46,8 +46,9 @@
 							<li><a href="#intro" class="active">Introduction</a></li>
 							<li><a href="#why">Why STAC?</a></li>
                             <li><a href="#core">STAC Specification</a></li>
-                            <li><a href="#who">Who is using STAC?</a></li>
-                            <li><a href="#examples">STAC in action</a></li>
+                            <li><a href="#examples">STAC in Action</a></li>
+                            <li><a href="#tools">STAC Tools</a></li>
+                            <!-- <li><a href="#api">STAC API</a></li> -->
                             <li><a href="#community">Get Involved</a></li>
 						</ul>
 					</nav>
@@ -110,52 +111,76 @@
 									<p>The STAC Specification consists of 4 semi-independent specifications. Each can be used alone, but they work best in concert with one another.</p>
 
 									<p><ul style="display: inline-block; text-align: left;"><li><b><a href="https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md">STAC Item</a></b> is the core atomic unit, representing a single spatiotemporal asset as a <a href="http://geojson.org">GeoJSON</a> feature plus datetime and links.</li>
-									<li><b><a href="https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md">STAC Catalog</a></b> is a simple, flexible JSON file of links that provides a structure for STAC Items together to be crawled or browsed.</li>
-									<li><b><a href="https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md">STAC Collection</a></b> provides additional information about a collection of data, such as the extents, license, keywords, providers, etc.</li>
+									<li><b><a href="https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md">STAC Catalog</a></b> is a simple, flexible JSON file of links that provides a structure for to organize and browse STAC Items.  A series of <a href="https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-best-practices.md">best practices</a> helps make recommendations for creating real world STAC Catalogs.</li>
+									<li><b><a href="https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md">STAC Collection</a></b> is an extension of the STAC Catalog with additional information such as the extents, license, keywords, providers, etc that describe STAC Items that fall within the Collection.</li>
 									<li><b><a href="https://github.com/radiantearth/stac-spec/tree/master/api-spec">STAC API</a></b> provides a RESTful endpoint that enables search of STAC Items, specified in  <a href="https://www.openapis.org/">OpenAPI</a>, following <a href="https://opengeospatial.org">OGC</a>'s <a href="https://github.com/opengeospatial/WFS_FES">WFS 3</a>.</li>
 
 								</header>
-								<footer class="major">
+								<footer class="major" align="center">
 									<ul class="actions">
                                         <li><a href="core.html" class="button">Learn More</a></li>
 										<li><a href="https://github.com/radiantearth/stac-spec" class="button special">Read the Spec</a></li>
+										<li><a href="https://stacspec.org/STAC-api.html" class="button">STAC OpenAPI</a></li>
 									</ul>
 								</footer>
 							</section>
-
-						<!-- implementation Section -->
-							<section id="who" class="main">
-								<header class="major">
-									<h2>Who is using STAC?</h2>
-									<ul>
-                                        <li><a href="https://www.digitalglobe.com/">Digital Globe</a></li>
-                                        <li><a href="https://www.azavea.com/">Azavea</a></li>
-                                        <li><a href="https://earthengine.google.com/">Google Earth Engine</a></li>
-                                        <li><a href="https://www.harris.com/">Harris</a></li>
-                                        <li><a href="https://earth.esa.int/web/guest/missions/3rd-party-missions/potential-missions/cbers">CBERS</a></li>
-                                        <li><a href="https://developmentseed.org/">Development Seed</a></li>
-                                        <li><a href="http://www.ga.gov.au/">Geoscience Australia</li>
-                                        <li><a href="https://www.planet.com/">Planet</a></li>
-                                        <li><a href="https://www.astraea.earth/">Astraea</a></li>
-                                        <li><a href="https://www.element84.com/">Element-84</a></li>
-                                    </ul>
-								</header>
-                            </section>
 
                         <!-- examples -->
                             <section id="examples" class="main">
 								<header class="major">
 									<h2>STAC in action</h2>
+                                        <p>Several STAC Catalogs are live, including:</p>
 									<ul>
+                                        <li><a href="https://landsat.stac.cloud/">Landsat</a></li>
                                         <li><a href="https://cbers.stac.cloud/">CBERS</a></li>
-					<li><a href="https://sentinel.stac.cloud/">Sentinel</a></li>
-					<li><a href="https://gee.stac.cloud/">Google Earth Engine (Collections Only)</a></li>
-					<li><a href="https://spacenet.stac.cloud/">Spacenet</a></li>
-                                        <li><a href="http://iserv-stac.netlify.com/">ISERV</a></li>
-                                        <li><a href="https://github.com/sat-utils/sat-api">sat-api</a></li>
-					<li><a href="https://github.com/radiantearth/stac-browser">STAC browser</a></li>
-                                        <li>Add yours here</li>
+					                    <li><a href="https://sentinel.stac.cloud/">Sentinel</a></li>
+					                    <li><a href="https://gee.stac.cloud/">Google Earth Engine (Collections Only)</a></li>
+					                    <li><a href="https://spacenet.stac.cloud/">Spacenet</a></li>
+                                        <li><a href="https://iserv.stac.cloud/">ISERV</a></li>
                                     </ul>
+
+                                    <p> STAC is supported by an active community of developers, with involvement from a large range of organizations.
+                                    <img src="images/STAC_companies.png" width=90% />
+                                    </p>
+                                    <!--
+                                        <a href="https://www.digitalglobe.com/">Digital Globe</a>, 
+                                        <a href="https://www.azavea.com/">Azavea</a>, 
+                                        <a href="https://earthengine.google.com/">Google Earth Engine</a>,
+                                        <a href="https://www.harris.com/">Harris</a>,
+                                        <a href="https://earth.esa.int/web/guest/missions/3rd-party-missions/potential-missions/cbers">CBERS</a>,
+                                        <a href="https://developmentseed.org/">Development Seed</a>,
+                                        <a href="http://www.ga.gov.au/">Geoscience Australia</a>,
+                                        <a href="https://www.planet.com/">Planet</a>,
+                                        <a href="https://www.astraea.earth/">Astraea</a>, and
+                                        <a href="https://www.element84.com/">Element-84</a>.
+                                     -->
+
+								</header>
+                            </section>
+
+                            <!-- implementation Section -->
+							<section id="tools" class="main">
+								<header class="major">
+									<h2>STAC Tools</h2>
+                                    <p> A range of open-source tools help facilitate the use of the STAC spec, including: </p>
+									<ul>
+					                    <li><a href="https://github.com/radiantearth/stac-browser">STAC Browser</a> is a Vue-based browser for STAC catalogs.</li>
+                                        <li><a href="https://github.com/geospatial-jeff/cognition-datasources">Cognition</a> is a pluggable, STAC-compliant, proxy for searching geospatial assets.
+                                        <li><a href="https://github.com/sparkgeo/stac-validator">STAC Validator</a> is a python utility to validate STAC json files against the STAC spec or against local STAC extensions.
+                                        <li><a href="https://github.com/fredliporace/stac-crawler">Serverless STAC Crawler</a> is a static STAC crawler that runs on Lambda and SQS integration.
+                                        <li><a href="https://github.com/sat-utils">Sat-utils</a> is a set of utilities for searching/processing satellite data, including:
+                                        <ul>
+                                        <li><a href="https://github.com/sat-utils/sat-api">Sat-api</a> is a STAC compliant web API for searching and serving metadata for geospatial data.</li>
+                                        <li><a href="https://github.com/sat-utils/sat-search">Sat-search</a> is a Python 3 library and a command line tool for discovering and downloading publicly available satellite imagery.</li>
+                                        <li><a href="https://github.com/sat-utils/sat-stac">Sat-stac</a> is a Python 3 library for creating and working with STAC catalogs.</li>
+                                        <li><a href="https://github.com/sat-utils/sat-stats">Sat-stats</a> is a Python 3 library for calculating zonal statistics on images being stored remotely on S3.
+                                        <li><a href="https://github.com/sat-utils/sat-fetch">Sat-fetch</a> is a Python 2/3 library and command line tool for fetching, warping, and clipping remote imagery datasets.
+                                        </ul>
+                                    </ul>
+
+                                   <ul class="actions" align="center">
+								   	<li><a href="https://github.com/radiantearth/stac-spec/blob/master/implementations.md" class="button">Learn More</a></li>
+								   </ul>
 								</header>
                             </section>
 
@@ -169,7 +194,7 @@
                                         <li><a href="https://github.com/radiantearth/stac-spec">GitHub</a></li>
                                         <li><a href="https://groups.google.com/forum/#!forum/stac-spec">Google Groups</a></li>
                                     </ul>
-                                    	<ul class="actions">
+                                    	<ul class="actions" align="center">
 											<li><a href="how-to-help.html" class="button">Learn More</a></li>
 										</ul>
 								</header>
