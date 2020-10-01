@@ -1,4 +1,4 @@
-# stac-site
+# Spatio Temporal Asset Catalog spec (stac-spec)
 
 This is the repository that controls website for the [SpatioTemporal Asset Catalog spec](http://github.com/radiantearth/stac-spec) website, found at [stacspec.org](http://stacspec.org). 
 
