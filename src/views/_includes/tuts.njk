@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+    <link href="/public/css/style.css" rel="stylesheet">
+    <title>Sup</title>
+  </head>
+  <body>
+      {%- include "nav.njk" -%}
+      <div class="container">
+        <div class="pt-6"><a href="/tutorials">Back to tutorials</a></div>
+        {{ content | safe }}
+
+          {%- for cell in cells -%}
+              {%- if cell.cell_type === 'markdown' -%}
+                  {%- for line in cell.source -%}{{ line | markdown | safe }}{%- endfor -%}
+              {%- elif cell.cell_type === 'code' -%}
+                  {% highlight "py" %}
+                    {%- for line in cell.source -%}{{ line | safe }}{%- endfor -%}
+                  {% endhighlight %}
+              {%- endif -%}
+
+              {# Outputs #}
+              {%- if cell.outputs -%}
+                {%- for output in cell.outputs -%}
+                  {%- if output.text -%}
+                    <pre class="card-light"><code>
+                      {%- for text in output.text -%}
+                        > {{ text }}
+                      {%- endfor -%}
+                    </pre></code>
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endif -%}
+              {# End Outputs #}
+          
+          {%- endfor -%}
+      </div>
+  </body>
+</html>

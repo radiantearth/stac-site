@@ -1,0 +1,95 @@
+---
+title: "SpatioTemporal Asset Catalogs"
+layout: app
+---
+
+<section class="py-5">
+    <div class="container">
+        <div class="py-6">
+            <h1>STAC: {{ title }}</h1>
+            <p class="text-xl mt-6 mb-8">You should care about STAC because Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, quo. Eos necessitatibus adipisci ad, doloremque.</p>
+            <a href="/tutorials" class="cta-primary">Start Learning</a>
+        </div>
+
+        <h2 class="mt-10">Stac was created for</h2>
+        
+        <div class="grid gap-5">
+                <div class="card callout-blue-light">
+                    <h3>Data Providers</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
+                    <a href="/get-involved/data-providers" class="cta-understated mb-3">Learn More</a>
+                </div>
+                <div class="card callout-blue-light">
+                    <h3>Data Users</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
+                    <a href="/get-involved/data-users" class="cta-understated mb-3">Learn More</a>
+                </div>
+                <div class="card callout-blue-light">
+                    <h3>Developers</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
+                    <a href="/get-involved/developers" class="cta-understated mb-3">Learn More</a>
+                </div>
+        </div>
+    </div>
+</section>
+
+<section class="pt-14 pb-5">
+    <div class="container">
+        <h2>STAC in depth</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, <a href="/about">adipisicing elit</a>. Libero enim architecto suscipit illum repellat tempora ducimus, vero cum pariatur fuga minima animi deserunt quibusdam excepturi blanditiis delectus exercitationem. Id, illum!</p>
+        <p>Pellentesque in ipsum id orci porta dapibus. Donec rutrum congue leo eget malesuada. Donec sollicitudin molestie malesuada. Nulla porttitor accumsan tincidunt. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
+        <p>Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus <a href="/">convallis quis ac lectus</a>. Cras ultricies ligula sed magna dictum porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque velit nisi, pretium ut lacinia in, elementum id enim.</p>
+        <a href="/about" class="cta-secondary my-3">Learn More</a>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2>Browse STAC Tutorials</h2>
+        <p class="mb-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus nihil odit nemo reprehenderit? Esse cupiditate, neque sapiente dolores suscipit quam beatae et.</p>
+        {%- for tutorial in collections.tutorial -%}
+            <div class="card callout-blue-light my-3">
+                <h2>{{ tutorial.data.title }}</h2>
+                <p>{{ tutorial.data.description }}</p>
+                <a href="{{ tutorial.data.page.url }}" class="cta-understated mb-4">
+                    Read tutorial
+                </a>
+            </div>
+        {%- endfor -%}
+        <a href="/tutorials" class="cta-secondary mt-5">Browse All</a>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2>STAC is used in these datasets</h2>
+    </div>
+    <div class="container-wide">
+        <div class="grid md:grid-cols-8 sm:grid-cols-4 grid-cols-3 gap-5 pt-4">
+            {%- for i in range(0, 8) -%}
+                <div class="card-light h-16"></div>
+            {%- endfor -%}
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2>These organizations are betting on STAC</h2>
+    </div>
+    <div class="container-wide">
+        <div class="grid md:grid-cols-6 grid-cols-3 gap-5 pt-4">
+            {%- for i in range(0, 6) -%}
+                <div class="card-light h-16"></div>
+            {%- endfor -%}
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2>Get Involved</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At in cum, repellat ut, adipisci deleniti ipsam distinctio eius sed doloremque facere minus! Voluptatem consequuntur tenetur, obcaecati autem incidunt voluptatibus hic!</p>
+        <a href="/get-involved" class="cta-primary">Get Involved</a>
+    </div>
+</section>

@@ -1,0 +1,19 @@
+---
+title: "Tutorials"
+layout: app
+---
+
+<section class="py-5">
+    <div class="container">
+    <h2>Browse STAC Tutorials</h2>
+        {%- for tutorial in collections.tutorial -%}
+            <div class="card callout-blue-light my-3">
+                <h2>{{ tutorial.data.title }}</h2>
+                <p>{{ tutorial.data.description }}</p>
+                <a href="{{ tutorial.data.page.url }}" class="cta-understated mb-4">
+                    Read tutorial
+                </a>
+            </div>
+        {%- endfor -%}
+    </div>
+</section>
