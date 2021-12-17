@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+
+# build files
+_site/
+public/css/
+public/js/
