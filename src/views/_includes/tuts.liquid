@@ -8,21 +8,20 @@
     <title>Sup</title>
   </head>
   <body>
-      {%- include "nav.njk" -%}
+      {%- include nav -%}
       <div class="container">
         <div class="pt-6"><a href="/tutorials">Back to tutorials</a></div>
         {{ content | safe }}
 
           {%- for cell in cells -%}
-              {%- if cell.cell_type === 'markdown' -%}
+              {%- if cell.cell_type == 'markdown' -%}
                   {%- for line in cell.source -%}{{ line | markdown | safe }}{%- endfor -%}
-              {%- elif cell.cell_type === 'code' -%}
+              {%- elsif cell.cell_type == 'code' -%}
                   {% highlight "py" %}
                     {%- for line in cell.source -%}{{ line | safe }}{%- endfor -%}
                   {% endhighlight %}
               {%- endif -%}
 
-              {# Outputs #}
               {%- if cell.outputs -%}
                 {%- for output in cell.outputs -%}
                   {%- if output.text -%}
@@ -34,7 +33,6 @@
                   {%- endif -%}
                 {%- endfor -%}
               {%- endif -%}
-              {# End Outputs #}
           
           {%- endfor -%}
       </div>
