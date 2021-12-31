@@ -66,7 +66,7 @@ layout: app
     </div>
     <div class="container-wide">
         <div class="grid md:grid-cols-8 sm:grid-cols-4 grid-cols-3 gap-5 pt-4">
-            {%- for i in range(0, 8) -%}
+            {%- for i in (0...8) -%}
                 <div class="card-light h-16"></div>
             {%- endfor -%}
         </div>
@@ -79,7 +79,7 @@ layout: app
     </div>
     <div class="container-wide">
         <div class="grid md:grid-cols-6 grid-cols-3 gap-5 pt-4">
-            {%- for i in range(0, 6) -%}
+            {%- for i in (0...6) -%}
                 <div class="card-light h-16"></div>
             {%- endfor -%}
         </div>

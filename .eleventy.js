@@ -1,4 +1,8 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const Prism = require('prismjs');
+const loadLanguages = require('prismjs/components/');
+
+loadLanguages(['py', 'json']);
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("public");
@@ -13,6 +17,12 @@ module.exports = function(eleventyConfig) {
     })
 
     eleventyConfig.addPlugin(syntaxHighlight);
+
+    eleventyConfig.addPairedShortcode('highlight', function (code, language) {
+        const html = Prism.highlight(code, Prism.languages[language], language);
+        
+        return html;
+    })
 
     return {
         dir: {
