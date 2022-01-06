@@ -1,0 +1,59 @@
+---
+title: "Styleguide"
+layout: styleguide
+---
+
+<section class="py-5">
+    <div class="container">
+        <h2>CTAs</h2>
+        <button class="cta-primary mr-3">Primary CTA</button>
+        <button class="cta-secondary mr-3">Primary CTA</button>
+        <a class="cta-understated mr-3">CTA Understated</a>
+    </div>
+</section>
+<section class="py-5">
+    <div class="container">
+        <h2>Links</h2>
+        <a href="">This is a link</a>
+    </div>
+</section>
+<section class="py-5">
+    <div class="container">
+        <h2>Code</h2>
+        <p>This is an example of inline code: {%- include code, lang: 'js', code: 'npm install && npm run serve' %}</p>
+        <p>This is an example of a code block</p>
+        {%- include code-block, lang: 'js', code: 'npm install && npm run serve' %}
+    </div>
+</section>
+<section class="py-5">
+    <div class="container">
+    <h2>Fields</h2>
+        <div class="md:w-1/2">
+            <input type="text" class="field mb-3" placeholder="This is an input" />
+            <textarea type="text" 
+                class="field mb-3" 
+                placeholder="This is a textarea"
+                rows=3
+            ></textarea>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <h2>Images</h2>
+        <p>Images are processed using the <a href="https://www.npmjs.com/package/jimp" class="">jimp</a> library.</p>
+        <p>Available sizes are xxl: 1920, xl: 1440, lg: 1120, md: 800, sm: 480, xs: 240</p>
+    </div>
+    <div class="text-center">
+        <img class="w-full" src="/public/images/satmap-xl.jpg" alt="">
+        <div class="caption">Really really big image</div>
+    </div>
+    <div class="container-wide my-6 text-center">
+        <img class="w-full" src="/public/images/satmap-lg.jpg" alt="">
+        <div class="caption">Really big image</div>
+    </div>
+    <div class="container my-6 text-center">
+        <img class="w-full" src="/public/images/satmap-md.jpg" alt="">
+        <div class="caption">Pretty big image</div>
+    </div>
+</section>
