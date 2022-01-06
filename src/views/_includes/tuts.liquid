@@ -17,9 +17,8 @@
               {%- if cell.cell_type == 'markdown' -%}
                   {%- for line in cell.source -%}{{ line | markdown | safe }}{%- endfor -%}
               {%- elsif cell.cell_type == 'code' -%}
-                  {% highlight "py" %}
-                    {%- for line in cell.source -%}{{ line | safe }}{%- endfor -%}
-                  {% endhighlight %}
+                {%- capture code -%}{%- for line in cell.source -%}{{ line | safe }}{%- endfor -%}{%- endcapture -%}
+                {%- include code-block, code: code, lang: "py" -%}
               {%- endif -%}
 
               {%- if cell.outputs -%}

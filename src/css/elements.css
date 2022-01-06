@@ -1,0 +1,54 @@
+@layer components {
+    .cta {
+        @apply inline-block py-2 font-display font-medium;
+    }
+
+    .button {
+        @apply px-4 shadow-button rounded-sm border-2 font-medium;
+    }
+    	
+	.field {
+		@apply bg-white w-full py-2 px-4 font-medium rounded-sm border border-2 border-gray 
+			focus:outline-none focus:border-black;
+	}
+
+	.field::placeholder {
+		@apply text-gray;
+	}
+
+    .caption {
+        @apply font-display my-3;
+    }
+}
+
+a {
+    @apply text-green font-bold;
+}
+
+label {
+    @apply font-display;
+}
+
+.caption-xl {
+    @apply caption text-xl;
+}
+
+.caption-lg {
+    @apply caption text-lg;
+}
+
+.cta-primary {
+    @apply cta button bg-green text-white border-green;
+}
+
+.cta-secondary {
+    @apply cta button text-green border-green;
+}
+
+.cta-understated {
+    @apply cta text-green border-b-2  border-green;
+}
+
+code {
+    @apply mx-2;
+}

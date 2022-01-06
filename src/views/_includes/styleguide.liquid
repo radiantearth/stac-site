@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;500;600&family=Sarabun:ital,wght@0,400;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="/public/css/style.css" rel="stylesheet">
+    <title>STAC | {{ title }}</title>
+  </head>
+  <body class="bg-white">
+      {%- include nav -%}
+      <section class="bg-blue-200 flex">
+        <div class="container">
+          <a href="/styleguide" class="text-xl text-blue inline-block py-4 pr-5">Styleguide</a>
+          <a href="/styleguide/colors" class="text-blue inline-block py-4 pr-4">Colors</a>
+          <a href="/styleguide/type" class="text-blue inline-block py-4 pr-4">Type</a>
+          <a href="/styleguide/elements" class="text-blue inline-block py-4 pr-4">Elements</a>
+          <a href="/styleguide/components" class="text-blue inline-block py-4 pr-4">Components</a>
+          <a href="/styleguide/sections" class="text-blue inline-block py-4 pr-4">Sections</a>
+        </div>
+      </section>
+      <main style="min-height: calc(100vh - 175px);">
+        {{ content | safe }}
+      </main>
+      <footer class="py-5 mt-8 text-blue-500 bg-blue-100">
+        <div class="container">This work is licensed under a Creative Commons Attribution 4.0 International License.</div>
+      </footer>
+  </body>
+</html>

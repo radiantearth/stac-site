@@ -1,0 +1,67 @@
+@layer components {
+    .card {
+        @apply py-3 px-6 shadow-card rounded-lg;
+    }
+
+    .callout {
+        @apply pl-6;
+        border-left-width: 1rem;
+    }
+    
+    .alert {
+        @apply pl-6 pr-4 py-3;
+        border-left-width: 1rem;
+    }
+}
+
+.alert-info {
+    @apply alert border-info bg-info-light;
+}
+
+.alert-success {
+    @apply alert border-success bg-success-light;
+}
+
+.alert-warning {
+    @apply alert border-warning bg-warning-light;
+}
+
+.alert-danger {
+    @apply alert border-danger bg-danger-light;
+}
+
+.card-light {
+    @apply card bg-blue-100;
+}
+
+.card-dark {
+    @apply card bg-blue-dark text-white;
+}
+
+.card-black {
+    @apply card bg-black text-white;
+}
+
+.card-blue {
+    @apply card bg-blue text-white;
+}
+
+.card-image {
+    @apply -mx-6 -mt-3 mb-3 w-full;
+}
+
+.card-image-left {
+    @apply -ml-6 -my-3 mr-3 w-full;
+}
+
+.callout-light, .callout-blue-light {
+    @apply callout border-blue-light;
+}
+
+.callout-black {
+    @apply callout border-black;
+}
+
+.callout-dark, .callout-blue-dark {
+    @apply callout border-blue-dark;
+}
