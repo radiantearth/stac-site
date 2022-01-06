@@ -17,7 +17,7 @@ layout: app
     <div class="container">
         <h2>The STAC Spec</h2>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione repellat, recusandae delectus</p>
-        {% highlight json %}
+        {%- capture code -%}
 {
     "stac_version": "1.0.0",
     "type": "Feature",
@@ -29,7 +29,8 @@ layout: app
     "links": [...],
     "assets": {...}
 }
-        {% endhighlight %}
+        {%- endcapture -%}
+        {%- include code-block, lang: 'json', code: code -%}
         <a href="/about/stac-spec" class="cta-secondary mt-4">Explore STAC Spec</a>
     </div>
 </section>
