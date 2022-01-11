@@ -1,0 +1,8 @@
+.hero-style-1 {
+    @apply pt-12 pb-5 relative;
+}
+
+.hero-style-1__backdrop {
+    @apply absolute w-full left-0 top-0 right-0 bg-center bg-cover;
+    bottom: 100px;
+}

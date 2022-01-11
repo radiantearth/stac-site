@@ -11,12 +11,14 @@ layout: styleguide
         <a class="cta-understated mr-3">CTA Understated</a>
     </div>
 </section>
+
 <section class="py-5">
     <div class="container">
         <h2>Links</h2>
         <a href="">This is a link</a>
     </div>
 </section>
+
 <section class="py-5">
     <div class="container">
         <h2>Code</h2>
@@ -25,6 +27,7 @@ layout: styleguide
         {%- include code-block, lang: 'js', code: 'npm install && npm run serve' %}
     </div>
 </section>
+
 <section class="py-5">
     <div class="container">
     <h2>Fields</h2>
@@ -38,6 +41,20 @@ layout: styleguide
         </div>
     </div>
 </section>
+
+<section class="py-5">
+    <div class="container">
+        <h2>Icons</h2>
+        <p>Icons & SVGs are included inline and can therfore be affected/animated with CSS or Javascript. Their "fill" property will inherit the parent text color by default.</p>
+
+        <div class="flex items-center justify-start">
+            <div class="text-blue-800 hover:text-blue-500 w-32 h-32 transition-all duration-300 inline-block mr-7">{% svg 'earth-oceania-solid' %}</div>
+            <div class="text-blue-800 hover:text-blue-500 transform rotate-12 hover:-rotate-90 w-6 h-6 transition-all duration-300 inline-block mr-7">{% svg 'satellite-solid' %}</div>
+            <div class="text-blue-800 hover:text-blue-500 w-12 h-12 transition-all duration-300 inline-block">{% svg 'moon-solid' %}</div>
+        </div>
+    </div>
+</section>
+
 <section>
     <div class="container">
         <h2>Images</h2>

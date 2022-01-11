@@ -5,6 +5,7 @@
 @import 'type';
 @import 'elements';
 @import 'components';
+@import 'sections';
 
 @import 'tailwindcss/utilities';
 
