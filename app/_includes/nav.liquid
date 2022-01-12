@@ -2,9 +2,9 @@
     <div class="container">
         <div class="items-center justify-items-start flex py-4 font-display w-full">
             <a class="font-normal justify-self-start text-3xl text-white mr-3" href="/">STAC</a>
-            <a class="font-normal pl-5 text-white" href="/tutorials">Tutorials</a>
-            <a class="font-normal pl-5 text-white" href="/about">About</a>
-            <a class="font-normal pl-5 text-white" href="/get-involved">Get Involved</a>
+            {% for navLink in navigation.links %}
+                <a class="font-normal pl-5 text-white" href="{{ navLink.href }}">{{ navLink.name }}</a>
+            {% endfor %}
         </div>
     </div>
 </nav>

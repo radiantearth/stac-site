@@ -22,9 +22,9 @@ layout: styleguide
 <section class="py-5">
     <div class="container">
         <h2>Code</h2>
-        <p>This is an example of inline code: {%- include code, lang: 'js', code: 'npm install && npm run serve' %}</p>
+        <p>This is an example of inline code: {% include 'code', lang: 'js', code: 'npm install && npm run serve' %}</p>
         <p>This is an example of a code block</p>
-        {%- include code-block, lang: 'js', code: 'npm install && npm run serve' %}
+        {% include 'codeblock', lang: 'js', code: 'npm install && npm run serve' %}
     </div>
 </section>
 
