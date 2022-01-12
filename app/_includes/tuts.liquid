@@ -8,17 +8,18 @@
     <title>Sup</title>
   </head>
   <body>
-      {%- include nav -%}
+      {%- include 'nav' -%}
       <div class="container">
         <div class="pt-6"><a href="/tutorials">Back to tutorials</a></div>
         {{ content | safe }}
 
-          {%- for cell in cells -%}
+        {% if notebook %}
+          {%- for cell in notebook.cells -%}
               {%- if cell.cell_type == 'markdown' -%}
                   {%- for line in cell.source -%}{{ line | markdown | safe }}{%- endfor -%}
               {%- elsif cell.cell_type == 'code' -%}
                 {%- capture code -%}{%- for line in cell.source -%}{{ line | safe }}{%- endfor -%}{%- endcapture -%}
-                {%- include code-block, code: code, lang: "py" -%}
+                {%- include 'codeblock', code: code, lang: "py" -%}
               {%- endif -%}
 
               {%- if cell.outputs -%}
@@ -26,7 +27,7 @@
                   {%- if output.text -%}
                     <pre class="card-light"><code>
                       {%- for text in output.text -%}
-                        > {{ text }}
+                        > {{ text | log }}
                       {%- endfor -%}
                     </pre></code>
                   {%- endif -%}
@@ -34,6 +35,7 @@
               {%- endif -%}
           
           {%- endfor -%}
+        {% endif %}
       </div>
   </body>
 </html>

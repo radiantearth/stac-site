@@ -3,6 +3,7 @@ title: Simple Example
 description: A simple example that uses markdown
 author: Stuart Pearman
 tags: ["test"]
+courses: ["visualizing-stac-data"]
 ---
 
 ## This is a regular markdown tutorial

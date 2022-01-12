@@ -1,6 +1,6 @@
 ---
 title: "More About STAC"
-layout: app
+layout: default
 ---
 
 <section class="py-5">
@@ -30,7 +30,8 @@ layout: app
     "assets": {...}
 }
         {%- endcapture -%}
-        {%- include code-block, lang: 'json', code: code -%}
+        {% include 'codeblock', lang: 'json', code: code %}
+
         <a href="/about/stac-spec" class="cta-secondary mt-4">Explore STAC Spec</a>
     </div>
 </section>

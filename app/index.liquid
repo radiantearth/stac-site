@@ -1,12 +1,12 @@
 ---
 title: "SpatioTemporal Asset Catalogs"
-layout: app
+layout: default
 ---
 
 <section class="py-5">
     <div class="container">
         <div class="py-6">
-            <h1>STAC: {{ title }}</h1>
+            <h1>STAC: {{ title }}</h1> 
             <p class="text-xl mt-6 mb-8">You should care about STAC because Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, quo. Eos necessitatibus adipisci ad, doloremque.</p>
             <a href="/tutorials" class="cta-primary">Start Learning</a>
         </div>
@@ -47,6 +47,7 @@ layout: app
     <div class="container">
         <h2>Browse STAC Tutorials</h2>
         <p class="mb-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus nihil odit nemo reprehenderit? Esse cupiditate, neque sapiente dolores suscipit quam beatae et.</p>
+
         {%- for tutorial in collections.tutorial -%}
             <div class="card callout-blue-light my-3">
                 <h2>{{ tutorial.data.title }}</h2>
@@ -66,7 +67,7 @@ layout: app
     </div>
     <div class="container-wide">
         <div class="grid md:grid-cols-8 sm:grid-cols-4 grid-cols-3 gap-5 pt-4">
-            {%- for i in (0...8) -%}
+            {%- for i in (0..8) -%}
                 <div class="card-light h-16"></div>
             {%- endfor -%}
         </div>
@@ -79,7 +80,7 @@ layout: app
     </div>
     <div class="container-wide">
         <div class="grid md:grid-cols-6 grid-cols-3 gap-5 pt-4">
-            {%- for i in (0...6) -%}
+            {%- for i in (0..6) -%}
                 <div class="card-light h-16"></div>
             {%- endfor -%}
         </div>
