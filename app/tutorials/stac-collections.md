@@ -2,7 +2,7 @@
 title: STAC Collections
 description: A second example in a module
 author: Stuart Pearman
-tags: ["test"]
+tags: ["STAC Spec"]
 courses: ["the-stac-spec"]
 ---
 

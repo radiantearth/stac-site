@@ -27,7 +27,7 @@
                   {%- if output.text -%}
                     <pre class="card-light"><code>
                       {%- for text in output.text -%}
-                        > {{ text | log }}
+                        > {{ text }}
                       {%- endfor -%}
                     </pre></code>
                   {%- endif -%}
