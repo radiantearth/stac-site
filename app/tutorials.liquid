@@ -5,13 +5,13 @@ layout: default
 
 <section class="py-5">
     <div class="container">
-        <h2>Browse STAC Tutorials</h2>
+        <h1>Browse STAC Tutorials</h1>
         
         <h2>Course: The STAC Spec</h2>
 
         {% assign tutorialCourse = collections.tutorial | fromCourse: "the-stac-spec" %}
         {%- for tutorial in tutorialCourse -%}
-            <div class="card callout-blue-light my-3">
+            <div class="callout-blue-light my-3">
                 <h2>{{ tutorial.data.title }}</h2>
                 <p>{{ tutorial.data.description }}</p>
                 <a href="{{ tutorial.data.page.url }}" class="cta-understated mb-4">
@@ -24,7 +24,7 @@ layout: default
 
         {% assign tagCourse = collections.tutorial | fromTag: "test" %}
         {%- for tutorial in tagCourse -%}
-            <div class="card callout-blue-light my-3">
+            <div class="callout-blue-light my-3">
                 <h2>{{ tutorial.data.title }}</h2>
                 <p>{{ tutorial.data.description }}</p>
                 <a href="{{ tutorial.data.page.url }}" class="cta-understated mb-4">

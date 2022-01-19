@@ -1,11 +1,9 @@
-const path = require('path');
-const fs = require('fs');
+const shortcodes = require('./config/shortcodes.js');
+const filters = require('./config/filters.js');
+
+const markdownIt = require("markdown-it");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-
-const Prism = require('prismjs');
-const loadLanguages = require('prismjs/components/');
-
-loadLanguages(['py', 'json']);
+const i18n = require('eleventy-plugin-i18n');
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("public");
@@ -18,51 +16,27 @@ module.exports = function(eleventyConfig) {
         };
     });
 
-    eleventyConfig.addFilter('markdown', function (value) {
-        let markdown = require('markdown-it')({
-            html: true
-        });
-        return markdown.render(value);
-    });
-
-    eleventyConfig.addFilter('fromCourse', function(collection, course) {
-        if (!course) return collection;
-        
-        let filtered = collection.filter(item => {
-            return item.data.courses && item.data.courses.indexOf(course) !== -1;
-        });
-
-        return filtered;
-    });
-
-    eleventyConfig.addFilter('fromTag', function(collection, tag) {
-        if (!tag) return collection;
-        
-        let filtered = collection.filter(item => {
-            return item.data.tags && item.data.tags.indexOf(tag) !== -1;
-        });
-
-        return filtered;
-    });
-
     eleventyConfig.setUseGitIgnore(false);
     eleventyConfig.addPlugin(syntaxHighlight);
+
+    eleventyConfig.addPlugin(i18n, {
+        translations: {},
+        fallbackLocales: {
+            '*': 'en'
+        }
+    });
+
     eleventyConfig.setLiquidOptions({
         strictFilters: false
     });
 
-    eleventyConfig.addPairedShortcode('highlight', function (code, language) {
-        const html = Prism.highlight(code, Prism.languages[language], language);
         
-        return html;
-    });
+    eleventyConfig.setLibrary("md", 
+        markdownIt({ html: true }).use(require('markdown-it-div'))
+    );
 
-    eleventyConfig.addShortcode('svg', function (filename) {
-        const svgPath = path.join(__dirname, `assets/svg/${filename}.svg`);
-        const fileContents = fs.readFileSync(svgPath);
-
-        return fileContents;
-    });
+    filters(eleventyConfig);
+    shortcodes(eleventyConfig);
 
     return {
         dir: {
@@ -70,6 +44,7 @@ module.exports = function(eleventyConfig) {
             output: '_site',
             includes: '_includes',
             layouts: '_layouts',
+            markdownTemplateEngine: 'liquid',
         }
     }
 }
