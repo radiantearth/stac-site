@@ -1,8 +1,8 @@
 module.exports = {
     links: [
         {
-            href: '/',
-            name: 'Home'
+            href: '/tutorials',
+            name: 'Tutorials'
         },
         {
             href: '/about',

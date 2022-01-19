@@ -11,24 +11,24 @@ layout: default
             <a href="/tutorials" class="cta-primary">Start Learning</a>
         </div>
 
-        <h2 class="mt-10">Stac was created for</h2>
+        <h2 class="mt-10">STAC was created for</h2>
         
         <div class="grid gap-5">
-                <div class="card callout-blue-light">
-                    <h3>Data Providers</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
-                    <a href="/get-involved/data-providers" class="cta-understated mb-3">Learn More</a>
-                </div>
-                <div class="card callout-blue-light">
-                    <h3>Data Users</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
-                    <a href="/get-involved/data-users" class="cta-understated mb-3">Learn More</a>
-                </div>
-                <div class="card callout-blue-light">
-                    <h3>Developers</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
-                    <a href="/get-involved/developers" class="cta-understated mb-3">Learn More</a>
-                </div>
+            <div class="callout-blue-light">
+                <h3>Data Providers</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
+                <a href="/get-involved/data-providers" class="cta-understated mb-3">Learn More</a>
+            </div>
+            <div class="callout-blue-light">
+                <h3>Data Users</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
+                <a href="/get-involved/data-users" class="cta-understated mb-3">Learn More</a>
+            </div>
+            <div class="callout-blue-light">
+                <h3>Developers</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
+                <a href="/get-involved/developers" class="cta-understated mb-3">Learn More</a>
+            </div>
         </div>
     </div>
 </section>
@@ -49,7 +49,7 @@ layout: default
         <p class="mb-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus nihil odit nemo reprehenderit? Esse cupiditate, neque sapiente dolores suscipit quam beatae et.</p>
 
         {%- for tutorial in collections.tutorial -%}
-            <div class="card callout-blue-light my-3">
+            <div class="callout-blue-light my-3">
                 <h2>{{ tutorial.data.title }}</h2>
                 <p>{{ tutorial.data.description }}</p>
                 <a href="{{ tutorial.data.page.url }}" class="cta-understated mb-4">
@@ -67,7 +67,7 @@ layout: default
     </div>
     <div class="container-wide">
         <div class="grid md:grid-cols-8 sm:grid-cols-4 grid-cols-3 gap-5 pt-4">
-            {%- for i in (0..8) -%}
+            {%- for i in (1..8) -%}
                 <div class="card-light h-16"></div>
             {%- endfor -%}
         </div>
@@ -80,7 +80,7 @@ layout: default
     </div>
     <div class="container-wide">
         <div class="grid md:grid-cols-6 grid-cols-3 gap-5 pt-4">
-            {%- for i in (0..6) -%}
+            {%- for i in (1..6) -%}
                 <div class="card-light h-16"></div>
             {%- endfor -%}
         </div>
