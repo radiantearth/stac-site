@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+    <link href="/public/css/style.css" rel="stylesheet">
+    <title>Sup</title>
+  </head>
+  <body>
+      {%- include 'nav.html' -%}
+      <div class="container">
+        <div class="pt-6"><a href="/tutorials">Back to tutorials</a></div>
+        {{ content | safe }}
+      </div>
+  </body>
+</html>

@@ -2,6 +2,8 @@
 title: "Styleguide"
 layout: styleguide
 ---
+{% from 'svg.html' import svg %}
+{% from 'section.html' import section %}
 
 <section class="py-5">
     <div class="container">
@@ -54,41 +56,40 @@ layout: styleguide
         </div>
     </div>
 </section>
-<section class="py-5">
-    <div class="container">
-        <h2>Callouts</h2>
-        <div class="grid gap-4 py-3">
-            <div class="callout-light">
-                <h3>Lorem Ipsum</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
-            </div>
-            <div class="callout-dark">
-                <h3>Lorem Ipsum</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
-            </div>
-            <div class="callout-black">
-                <h3>Lorem Ipsum</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
-            </div>
-        </div>
-        <h3>Icon Callout</h3>
-        <div class="flex items-center py-4">
-            <div class="w-20 mr-4 text-blue">{% svg 'earth-oceania-solid' %}</div>
-            <div class="w-full px-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae cumque ullam ipsum reiciendis, dolorum blanditiis, animi illo exercitationem fuga? Repudiandae, alias voluptatem?</div>
-        </div>
-        <div class="flex items-center py-4">
-            <div class="w-20 mr-4">{% svg 'satellite-solid' %}</div>
-            <div class="w-full px-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae cumque ullam ipsum reiciendis, dolorum blanditiis, animi illo exercitationem fuga? Repudiandae, alias voluptatem?</div>
-        </div>
-    </div>
-</section>
 
-<section class="py-5">
-    <div class="container">
-        <h2>Alerts</h2>
-        <div class="alert-info">This is some information</div>
-        <div class="alert-success">Good job!</div>
-        <div class="alert-warning">There's something slightly wrong</div>
-        <div class="alert-danger">There's something very wrong</div>
+{% call section() %}
+<h2>Callouts</h2>
+<div class="grid gap-4 py-3">
+    <div class="callout-light">
+        <h3>Lorem Ipsum</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
     </div>
-</section>
+    <div class="callout-dark">
+        <h3>Lorem Ipsum</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+    </div>
+    <div class="callout-black">
+        <h3>Lorem Ipsum</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+    </div>
+</div>
+<h3>Icon Callout</h3>
+<div class="flex items-center py-4">
+    <div class="w-20 mr-4 text-blue">{{ 'earth-oceania-solid' | svg }}</div>
+    <div class="w-full px-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae cumque ullam ipsum reiciendis, dolorum blanditiis, animi illo exercitationem fuga? Repudiandae, alias voluptatem?</div>
+</div>
+<div class="flex items-center py-4">
+    <div class="w-20 mr-4">{{ 'satellite-solid' | svg }}</div>
+    <div class="w-full px-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae cumque ullam ipsum reiciendis, dolorum blanditiis, animi illo exercitationem fuga? Repudiandae, alias voluptatem?</div>
+</div>
+{% endcall %}
+
+{% call section() %}
+
+<h2>Alerts</h2>
+<div class="alert-info">This is some information</div>
+<div class="alert-success">Good job!</div>
+<div class="alert-warning">There's something slightly wrong</div>
+<div class="alert-danger">There's something very wrong</div>
+
+{% endcall %}

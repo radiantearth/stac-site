@@ -1,7 +1,6 @@
 const path = require('path');
 const fs = require('fs');
 
-const markdownIt = require("markdown-it");
 const Prism = require('prismjs');
 const loadLanguages = require('prismjs/components/');
 
@@ -15,8 +14,7 @@ module.exports = function (eleventyConfig) {
     });
 
     eleventyConfig.addPairedShortcode('markdown', function (value) {
-        markdownIt({ html: true }).use(require('markdown-it-div'));
-        return markdown.render(value.replace());
+        return markdown.render(value);
     });
 
     eleventyConfig.addPairedShortcode('section', function (value, opts = {}) {
@@ -24,12 +22,5 @@ module.exports = function (eleventyConfig) {
             .map(mod => ' section--' + mod )
             .split(' ') : ''
         }">` + value + `</section>`;
-    });
-
-    eleventyConfig.addShortcode('svg', function (filename) {
-        const svgPath = path.join(__dirname, `../assets/svg/${filename}.svg`);
-        const fileContents = fs.readFileSync(svgPath);
-
-        return fileContents;
     });
 }

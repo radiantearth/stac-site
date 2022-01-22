@@ -2,6 +2,7 @@
 title: "Styleguide"
 layout: styleguide
 ---
+{% from 'code.html' import CodeBlock, Code %}
 
 <section class="py-5">
     <div class="container">
@@ -22,9 +23,10 @@ layout: styleguide
 <section class="py-5">
     <div class="container">
         <h2>Code</h2>
-        <p>This is an example of inline code: {% include 'code', lang: 'js', code: 'npm install && npm run serve' %}</p>
+        <p>This is an example of inline code: {{ Code(lang='js', code='npm install && npm run serve') }}
+        </p>
         <p>This is an example of a code block</p>
-        {% include 'codeblock', lang: 'js', code: 'npm install && npm run serve' %}
+        {{ CodeBlock(lang='js', code='npm install && npm run serve') }}
     </div>
 </section>
 
@@ -48,9 +50,9 @@ layout: styleguide
         <p>Icons & SVGs are included inline and can therfore be affected/animated with CSS or Javascript. Their "fill" property will inherit the parent text color by default.</p>
 
         <div class="flex items-center justify-start">
-            <div class="text-blue-800 hover:text-blue-500 w-32 h-32 transition-all duration-300 inline-block mr-7">{% svg 'earth-oceania-solid' %}</div>
-            <div class="text-blue-800 hover:text-blue-500 transform rotate-12 hover:-rotate-90 w-6 h-6 transition-all duration-300 inline-block mr-7">{% svg 'satellite-solid' %}</div>
-            <div class="text-blue-800 hover:text-blue-500 w-12 h-12 transition-all duration-300 inline-block">{% svg 'moon-solid' %}</div>
+            <div class="text-blue-800 hover:text-blue-500 w-32 h-32 transition-all duration-300 inline-block mr-7">{{ 'earth-oceania-solid' | svg }}</div>
+            <div class="text-blue-800 hover:text-blue-500 transform rotate-12 hover:-rotate-90 w-6 h-6 transition-all duration-300 inline-block mr-7">{{ 'satellite-solid' | svg  }}</div>
+            <div class="text-blue-800 hover:text-blue-500 w-12 h-12 transition-all duration-300 inline-block">{{ 'moon-solid' | svg }}</div>
         </div>
     </div>
 </section>

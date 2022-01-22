@@ -1,0 +1,24 @@
+{% from 'code.html' import CodeBlock %}
+
+{% macro Notebook(notebook) %}
+    {%- for cell in notebook.cells -%}
+        {%- if cell.cell_type == 'markdown' -%}
+            {%- for line in cell.source -%}{{ line | markdown | safe }}{%- endfor -%}
+        {%- elif cell.cell_type == 'code' -%}
+        {%- for line in cell.source -%}{{ line | safe }}{% endfor %}
+        {{ CodeBlock(code=code, lang="py") }}
+        {%- endif -%}
+
+        {%- if cell.outputs -%}
+            {%- for output in cell.outputs -%}
+                {%- if output.text -%}
+                <pre class="card-light"><code>
+                    {%- for text in output.text -%}
+                    > {{ text }}
+                    {%- endfor -%}
+                </pre></code>
+                {%- endif -%}
+            {%- endfor -%}
+        {%- endif -%}
+    {%- endfor -%}
+{% endmacro %}

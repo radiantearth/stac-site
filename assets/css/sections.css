@@ -1,4 +1,8 @@
-/* Style 1 */
+.section {
+    @apply py-5;
+}
+
+/* Hero Style 1 */
 
 .hero-style-1 {
     @apply pt-12 pb-5 relative;
@@ -12,7 +16,7 @@
 /* Style 3 */
 
 .hero-style-3 {
-    @apply pt-5 pb-8 bg-blue-dark text-white mt-5;
+    @apply pt-5 pb-8 bg-blue-dark text-white mt-5 text-center;
 }
 
 .hero-style-3__content {
@@ -27,22 +31,35 @@
     @apply my-6 text-lg;
 }
 
-/* Style 4 */
+.hero-style-3--left {
+    @apply text-left;
+}
 
-.hero-style-4 {
+.hero-style-3--overlap {
     padding-bottom: 115px;
     margin-bottom: -115px;
 }
 
-.hero-style-4--light {
+.hero-style-3--overlap-more,
+.hero-style-3--overlap-lg {
+    padding-bottom: 150px;
+    margin-bottom: -150px;
+}
+
+.hero-style-3--overlap-xl {
+    padding-bottom: 190px;
+    margin-bottom: -190px;
+}
+
+.hero-style-3--light {
     @apply bg-blue-100;
 }
 
-.hero-style-4--dark {
+.hero-style-3--dark {
     @apply bg-blue-dark text-white;
 }
 
-.hero-style-4--gradient {
+.hero-style-3--gradient {
     background: linear-gradient(
         180deg,
         theme('colors.blue.800') 0%,
