@@ -1,12 +1,17 @@
 ---
 title: "Tutorials"
 layout: default
+body: |-
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum rerum nobis voluptates, est distinctio placeat, quisquam quas libero assumenda veniam dignissimos eligendi mollitia repudiandae a consectetur quam repellat incidunt odio!
 ---
+{% from 'hero.html' import hero %}
+
+<section>
+    {{ hero(heading="Browse STAC Tutorials", body=body) }}
+</section>
 
 <section class="py-5">
     <div class="container">
-        <h1>Browse STAC Tutorials</h1>
-
         <h2 class="mt-7">Courses</h2>
         <div class="card">
             <h3>The STAC Spec</h3>

@@ -5,7 +5,17 @@
 /* Hero Style 1 */
 
 .hero-style-1 {
-    @apply pt-12 pb-5 relative;
+    @apply pb-5 relative;
+    padding-top: 200px;
+}
+
+.hero-style-1__card {
+    @apply card bg-white relative px-10 py-6;
+    z-index: 2;
+}
+
+.hero-style-1--dark .hero-style-1__card {
+    @apply bg-blue-dark text-white;
 }
 
 .hero-style-1__backdrop {
@@ -13,10 +23,31 @@
     bottom: 100px;
 }
 
-/* Style 3 */
+/* Herp Style 2 */
+
+.hero-style-2 {
+    @apply md:flex;
+}
+
+.hero-style-2__image {
+    background-position: center;
+    background-size: cover;
+    min-height: 200px;
+
+}
+
+.hero-style-2--dark {
+    @apply bg-blue-dark text-white;
+}
+
+.hero-style-2--reverse {
+    @apply flex-row-reverse;
+}
+
+/* Hero Style 3 */
 
 .hero-style-3 {
-    @apply pt-5 pb-8 bg-blue-dark text-white mt-5 text-center;
+    @apply pt-5 pb-8 bg-blue-dark text-white;
 }
 
 .hero-style-3__content {
@@ -31,8 +62,8 @@
     @apply my-6 text-lg;
 }
 
-.hero-style-3--left {
-    @apply text-left;
+.hero-style-3--center {
+    @apply text-center;
 }
 
 .hero-style-3--overlap {
@@ -40,7 +71,6 @@
     margin-bottom: -115px;
 }
 
-.hero-style-3--overlap-more,
 .hero-style-3--overlap-lg {
     padding-bottom: 150px;
     margin-bottom: -150px;

@@ -2,25 +2,23 @@
 title: "More About STAC"
 layout: default
 body: |-
-    More detailed description of STAC Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, quo. Eos necessitatibus adipisci ad, doloremque.
+    More detailed description of STAC Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.
     
-    STAC Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, quo. Eos necessitatibus adipisci ad, doloremque.
+    Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget tortor risus. Nulla quis lorem ut libero malesuada feugiat.
+    
+    Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus suscipit tortor eget felis porttitor volutpat.
 ---
-{% from 'hero.html' import HeroStyle3 %}
+{% from 'hero.html' import hero %}
+{% from 'cta.html' import cta %}
 
-::: .-mt-10
-
-{{ HeroStyle3(
+{{ hero(
     preheading="STAC",
     heading=title,
     body=body,
     mods=['dark', 'overlap-xl', 'left']
 ) }}
 
-:::
-
 ::: .container .text-white
-
 ## The STAC Spec
 
 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione repellat, recusandae delectus
@@ -39,12 +37,10 @@ Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione repellat, recu
 }
 ``` 
 
-[Explore STAC Spec](/about/stac-spec)
-
+{{ cta(text="Explore STAC Spec", url="/about/stac-spec") }}
 :::
 
 ::: .container .mt-10
-
 ## The Problem and STAC as a Solution
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quas velit exercitationem vitae ab maiores voluptatibus itaque, incidunt excepturi dignissimos dolores, reprehenderit porro. Numquam, repellat exercitationem. Autem saepe et error.
@@ -53,6 +49,5 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quas velit exerci
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quas velit exercitationem vitae ab maiores voluptatibus itaque, incidunt excepturi dignissimos dolores, reprehenderit porro. Numquam, repellat exercitationem. Autem saepe et error.
 
-[Explore Tools & Resources](/about/tools-resources)
-
+{{ cta(text="Explore Tools & Resources", url="/about/tools-resources") }}
 :::

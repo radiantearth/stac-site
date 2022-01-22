@@ -1,29 +1,41 @@
 ---
 title: "Styleguide"
 layout: styleguide
-
-hero_4:
+hero_content:
     preheading: Example
     heading: This is a heading
-    mods: [ 'dark', 'overlap' ] 
     body: |-
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos tenetur quae, quas praesentium, minus recusandae ex commodi aliquam nisi maxime tempora.
 
         Quis aliquid sed. Consequatur fugit debitis earum aperiam adipisci.
 ---
 
-{% from 'hero.html' import HeroStyle1, HeroStyle2, HeroStyle3 %}
+{% from 'hero.html' import hero %}
 
-<section
-    class=""
-    id="">
+<section>
 
 ::: container
 ## Hero Style #1
 :::
 
-{{ HeroStyle1() }}
-{{ HeroStyle1(theme='dark') }}
+{{ hero(
+    style=1,
+    heading=hero_content.heading, 
+    preheading=hero_content.preheading,
+    body=hero_content.body,
+    cta_url='/',
+    image="/public/images/satmap-xl.jpg"
+) }}
+{{ hero(
+    style=1,
+    heading=hero_content.heading, 
+    preheading=hero_content.preheading,
+    body=hero_content.body,
+    cta_url='/',
+    image="/public/images/satmap-xl.jpg",
+    mods=['dark']
+) }}
+
 </section>
 
 <!-- Section 2 -->
@@ -33,8 +45,24 @@ hero_4:
 ## Hero Style #2
 :::
 
-{{ HeroStyle2(theme='dark', reversed=true) }}
-{{ HeroStyle2() }}
+{{ hero(
+    style=2,
+    heading=hero_content.heading, 
+    preheading=hero_content.preheading,
+    body=hero_content.body,
+    cta_url='/',
+    image="/public/images/satmap-md.jpg"
+) }}
+{{ hero(
+    style=2,
+    heading=hero_content.heading, 
+    preheading=hero_content.preheading,
+    body=hero_content.body,
+    cta_url='/',
+    image="/public/images/satmap-md.jpg",
+    mods=['dark','reverse']
+) }}
+
 </section>
 
 <section class="hero-section-2">
@@ -43,14 +71,13 @@ hero_4:
 ## Hero Style #3
 :::
 
-{{ HeroStyle3(
-    heading=hero_4.heading, 
-    preheading=hero_4.preheading,
-    body=hero_4.body,
-    mods=['dark','overlap']
+{{ hero(
+    heading=hero_content.heading, 
+    preheading=hero_content.preheading,
+    body=hero_content.body,
+    cta_url='/',
+    mods=['dark','overlap', 'center']
 ) }}
-
-{% from 'svg.html' import svg %}
 
 <div class="container">
     <div class="grid md:grid-cols-3 gap-4">
@@ -58,19 +85,19 @@ hero_4:
             <div class="text-blue-400 w-20 my-5 mx-auto">{{ 'satellite-solid' | svg }}</div>
             <h2>Lorem Ipsum</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            <a class="cta-understated inline-block mb-4" href="#">Understated CTA</a>
+            <a class="cta--understated inline-block mb-4" href="#">Understated CTA</a>
         </div>
         <div class="card bg-blue-700 text-white text-center">
             <div class="text-blue-400 w-20 my-5 mx-auto">{{ 'earth-oceania-solid' | svg }}</div>
             <h2>Lorem Ipsum</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            <a class="cta-understated inline-block mb-4" href="#">Understated CTA</a>
+            <a class="cta--understated inline-block mb-4" href="#">Understated CTA</a>
         </div>
         <div class="card bg-blue-700 text-white text-center">
             <div class="text-blue-400 w-20 my-5 mx-auto">{{ 'moon-solid' | svg }}</div>
             <h2>Lorem Ipsum</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            <a class="cta-understated inline-block mb-4" href="#">Understated CTA</a>
+            <a class="cta--understated inline-block mb-4" href="#">Understated CTA</a>
         </div>
     </div>
 </div>

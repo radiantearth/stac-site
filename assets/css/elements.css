@@ -37,15 +37,15 @@ label {
     @apply caption text-lg;
 }
 
-.cta-primary {
+.cta--primary {
     @apply cta button bg-green text-white border-green;
 }
 
-.cta-secondary {
+.cta--secondary {
     @apply cta button text-green border-green;
 }
 
-.cta-understated {
+.cta--understated {
     @apply cta text-green border-b-2  border-green;
 }
 
