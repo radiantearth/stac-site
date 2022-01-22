@@ -2,29 +2,31 @@
 title: "SpatioTemporal Asset Catalogs"
 layout: default
 ---
+{% from 'hero.html' import HeroStyle3 %}
 
-<section class="py-5">
-    <div class="container">
-        <div class="py-6">
-            <h1>STAC: {{ title }}</h1> 
-            <p class="text-xl mt-6 mb-8">You should care about STAC because Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, quo. Eos necessitatibus adipisci ad, doloremque.</p>
-            <a href="/tutorials" class="cta-primary">Start Learning</a>
-        </div>
-
-        <h2 class="mt-10">STAC was created for</h2>
+<section class="-mt-5">
+{{ HeroStyle3(
+    preheading="STAC",
+    heading=title,
+    body="You should care about STAC because Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, quo. Eos necessitatibus adipisci ad, doloremque.",
+    cta_url="/tutorials",
+    mods=['overlap-more']
+) }}
+    <div class="container text-white text-center">
+        <h2 class="mb-5">STAC was created for</h2>
         
-        <div class="grid gap-5">
-            <div class="callout-blue-light">
+        <div class="grid grid-cols-3 gap-5">
+            <div class="card bg-blue-600">
                 <h3>Data Providers</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
                 <a href="/get-involved/data-providers" class="cta-understated mb-3">Learn More</a>
             </div>
-            <div class="callout-blue-light">
+            <div class="card bg-blue-600">
                 <h3>Data Users</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
                 <a href="/get-involved/data-users" class="cta-understated mb-3">Learn More</a>
             </div>
-            <div class="callout-blue-light">
+            <div class="card bg-blue-600">
                 <h3>Developers</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
                 <a href="/get-involved/developers" class="cta-understated mb-3">Learn More</a>
@@ -45,19 +47,19 @@ layout: default
 
 <section class="py-5">
     <div class="container">
-        <h2>Browse STAC Tutorials</h2>
-        <p class="mb-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus nihil odit nemo reprehenderit? Esse cupiditate, neque sapiente dolores suscipit quam beatae et.</p>
-
-        {%- for tutorial in collections.tutorial -%}
-            <div class="callout-blue-light my-3">
-                <h2>{{ tutorial.data.title }}</h2>
-                <p>{{ tutorial.data.description }}</p>
-                <a href="{{ tutorial.data.page.url }}" class="cta-understated mb-4">
-                    Read tutorial
-                </a>
-            </div>
-        {%- endfor -%}
-        <a href="/tutorials" class="cta-secondary mt-5">Browse All</a>
+        <div class="pb-7">
+            <h2>Browse STAC Tutorials</h2>
+            <p class="mb-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus nihil odit nemo reprehenderit? Esse cupiditate, neque sapiente dolores suscipit quam beatae et.</p>
+            {%- for tutorial in collections.tutorial -%}
+                <div class="py-0 mb-2 callout-light">
+                    <h4 class="inline-block my-1">{{ tutorial.data.title }}</h2>
+                    <a href="{{ tutorial.data.page.url }}" class="ml-4">
+                        Read tutorial
+                    </a>
+                </div>
+            {%- endfor -%}
+            <a href="/tutorials" class="cta-secondary mt-5">Browse All</a>
+        </div>
     </div>
 </section>
 
@@ -67,7 +69,7 @@ layout: default
     </div>
     <div class="container-wide">
         <div class="grid md:grid-cols-8 sm:grid-cols-4 grid-cols-3 gap-5 pt-4">
-            {%- for i in (1..8) -%}
+            {%- for i in range(0,8) -%}
                 <div class="card-light h-16"></div>
             {%- endfor -%}
         </div>
@@ -80,7 +82,7 @@ layout: default
     </div>
     <div class="container-wide">
         <div class="grid md:grid-cols-6 grid-cols-3 gap-5 pt-4">
-            {%- for i in (1..6) -%}
+            {%- for i in range(0,6) -%}
                 <div class="card-light h-16"></div>
             {%- endfor -%}
         </div>

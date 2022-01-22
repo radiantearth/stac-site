@@ -1,0 +1,78 @@
+{% macro HeroStyle1(theme='light') %}
+<div class="hero-style-1">
+    <div class="hero-style-1__backdrop" style="background-image: url('/public/images/satmap-xl.jpg');"></div>
+    <div class="container mt-10">
+        <div class="card-{{ theme }} text-center p-8 md:p-12 relative">
+            <h2 class="text-4xl font-bold">
+                <span class="font-light block">
+                    Preheading
+                </span>
+                This is a heading
+            </h2>
+            <div class="my-6">
+                <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem est modi corrupti a! Cum, deleniti? Illo et reprehenderit labore, eos animi explicabo ut nihil, sint ipsam tenetur nobis!</p>
+            </div>
+            <a class="cta-primary" href="#">Lorem Ipsum</a>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro HeroStyle2(
+    theme='light',
+    reversed=false
+) %}
+
+<div class="md:flex {% if theme == 'dark' %} bg-blue-800 text-white {% endif %} {% if reversed == true %} md:flex-row-reverse {% endif %}">
+    <div class="md:w-1/2">
+        <img src="/public/images/satmap-lg.jpg" alt="">
+    </div>
+    <div class="md:w-1/2 text-center p-8 md:p-12 relative">
+        <h2 class="text-4xl font-bold">
+            <span class="font-light block">
+                Preheading
+            </span>
+            This is a heading
+        </h2>
+        <div class="my-6">
+            <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem est modi corrupti a! Cum, deleniti? Illo et reprehenderit labore, eos animi explicabo ut nihil, sint ipsam tenetur nobis!</p>
+        </div>
+        <a class="cta-primary" href="#">Lorem Ipsum</a>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro HeroStyle3(
+    preheading=null,
+    heading=null,
+    body=null,
+    cta_url=null,
+    cta_text='Learn More',
+    mods=[]
+) %}
+
+<div class="hero-style-3 {% for mod in mods %} hero-style-3--{{ mod }} {% endfor %}">
+    <div class="container">
+        <div class="p-8 md:p-12 relative">
+            <h2 class="text-4xl font-bold">
+                {%- if preheading -%}
+                    <span class="font-light block">
+                        {{ preheading }}
+                    </span>
+                {%- endif -%}
+                {%- if heading -%}
+                    {{ heading }}
+                {%- endif -%}
+            </h2>
+            {%- if body -%}
+                <div class="mt-6 text-lg">
+                    {{ body }}
+                </div>
+            {%- endif -%}
+            {%- if cta_url -%}
+                <a class="cta-primary mt-6" href="{{ cta_url }}">{{ cta_text }}</a>
+            {%- endif -%}
+        </div>
+    </div>
+</div>
+{% endmacro %}

@@ -12,6 +12,8 @@ hero_4:
         Quis aliquid sed. Consequatur fugit debitis earum aperiam adipisci.
 ---
 
+{% from 'hero.html' import HeroStyle1, HeroStyle2, HeroStyle3 %}
+
 <section
     class=""
     id="">
@@ -20,8 +22,8 @@ hero_4:
 ## Hero Style #1
 :::
 
-{% include 'hero/hero-style-1', theme: 'light' %}
-{% include 'hero/hero-style-1', theme: 'dark' %}
+{{ HeroStyle1() }}
+{{ HeroStyle1(theme='dark') }}
 </section>
 
 <!-- Section 2 -->
@@ -31,24 +33,46 @@ hero_4:
 ## Hero Style #2
 :::
 
-{% include 'hero/hero-style-2', theme: 'dark', reversed: true %}
-{% include 'hero/hero-style-2' %}
+{{ HeroStyle2(theme='dark', reversed=true) }}
+{{ HeroStyle2() }}
 </section>
 
-{% section %}
+<section class="hero-section-2">
 
 ::: container
 ## Hero Style #3
 :::
 
-{% include 'hero/hero-style-3' %}
-{% endsection %}
+{{ HeroStyle3(
+    heading=hero_4.heading, 
+    preheading=hero_4.preheading,
+    body=hero_4.body,
+    mods=['dark','overlap']
+) }}
 
-{%-
-    include 'hero/hero-style-4', 
-    heading: hero_4.heading,
-    preheading: hero_4.preheading,
-    body: hero_4.body,
-    mods: hero_4.mods
--%}
-{% include './_three-cards' %}
+{% from 'svg.html' import svg %}
+
+<div class="container">
+    <div class="grid md:grid-cols-3 gap-4">
+        <div class="card bg-blue-700 text-white text-center">
+            <div class="text-blue-400 w-20 my-5 mx-auto">{{ 'satellite-solid' | svg }}</div>
+            <h2>Lorem Ipsum</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <a class="cta-understated inline-block mb-4" href="#">Understated CTA</a>
+        </div>
+        <div class="card bg-blue-700 text-white text-center">
+            <div class="text-blue-400 w-20 my-5 mx-auto">{{ 'earth-oceania-solid' | svg }}</div>
+            <h2>Lorem Ipsum</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <a class="cta-understated inline-block mb-4" href="#">Understated CTA</a>
+        </div>
+        <div class="card bg-blue-700 text-white text-center">
+            <div class="text-blue-400 w-20 my-5 mx-auto">{{ 'moon-solid' | svg }}</div>
+            <h2>Lorem Ipsum</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <a class="cta-understated inline-block mb-4" href="#">Understated CTA</a>
+        </div>
+    </div>
+</div>
+
+</section>

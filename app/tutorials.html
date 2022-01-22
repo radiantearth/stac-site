@@ -1,0 +1,51 @@
+---
+title: "Tutorials"
+layout: default
+---
+
+<section class="py-5">
+    <div class="container">
+        <h1>Browse STAC Tutorials</h1>
+
+        <h2 class="mt-7">Courses</h2>
+        <div class="card">
+            <h3>The STAC Spec</h3>
+            {% set tutorialCourse = collections.tutorial | fromCourse("the-stac-spec") %}
+            {%- for tutorial in tutorialCourse -%}
+                <div class="callout-blue-light py-0 mb-2">
+                    <h4 class="inline-block my-1">{{ tutorial.data.title }}</h2>
+                    <a href="{{ tutorial.data.page.url }}" class="ml-4">
+                        Read tutorial
+                    </a>
+                </div>
+            {%- endfor -%}
+        </div>
+
+        <h2 class="mt-10">Tags</h2>
+
+        {% set tagCourse = collections.tutorial | fromTag("test") %}
+        <div class="card">
+        <h3>Test</h3>
+        {%- for tutorial in tagCourse -%}
+            <div class="callout-blue-light py-0 mb-2">
+                <h4 class="inline-block my-1">{{ tutorial.data.title }}</h2>
+                <a href="{{ tutorial.data.page.url }}" class="ml-4">
+                    Read tutorial
+                </a>
+            </div>
+        {%- endfor -%}
+        </div>
+
+        <h2 class="mt-10">All Tutorials</h2>
+        
+        {%- for tutorial in collections.tutorial -%}
+            <div class="card mb-4">
+                <h4 class="block my-1">{{ tutorial.data.title }}</h2>
+                <p class="my-2">{{ tutorial.data.description }}</p>
+                <a href="{{ tutorial.data.page.url }}" class="">
+                    Read tutorial
+                </a>
+            </div>
+        {%- endfor -%}
+        
+</section>

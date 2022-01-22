@@ -11,3 +11,5 @@ Lorem ipsum dolor
 
 1. Eat cereal in the mornings
 1. Pickup bread from the store
+
+{{ 'example-notebook' | notebook | safe }}

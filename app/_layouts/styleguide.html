@@ -10,7 +10,7 @@
     <title>STAC | {{ title }}</title>
   </head>
   <body class="bg-white">
-      {%- include 'nav' -%}
+      {%- include 'nav.html' -%}
       <section class="bg-blue-200 flex">
         <div class="container">
           <a href="/styleguide" class="text-xl text-blue inline-block py-4 pr-5">Styleguide</a>
@@ -22,7 +22,7 @@
         </div>
       </section>
       <main style="min-height: calc(100vh - 175px);">
-        {{ content }}
+        {{ content | safe }}
       </main>
       <footer class="py-5 mt-8 text-blue-500 bg-blue-100">
         <div class="container">This work is licensed under a Creative Commons Attribution 4.0 International License.</div>
