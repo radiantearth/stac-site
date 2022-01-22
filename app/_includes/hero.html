@@ -1,56 +1,80 @@
-{% macro HeroStyle1(theme='light') %}
-<div class="hero-style-1">
-    <div class="hero-style-1__backdrop" style="background-image: url('/public/images/satmap-xl.jpg');"></div>
-    <div class="container mt-10">
-        <div class="card-{{ theme }} text-center p-8 md:p-12 relative">
-            <h2 class="text-4xl font-bold">
-                <span class="font-light block">
-                    Preheading
-                </span>
-                This is a heading
-            </h2>
-            <div class="my-6">
-                <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem est modi corrupti a! Cum, deleniti? Illo et reprehenderit labore, eos animi explicabo ut nihil, sint ipsam tenetur nobis!</p>
-            </div>
-            <a class="cta-primary" href="#">Lorem Ipsum</a>
-        </div>
-    </div>
-</div>
-{% endmacro %}
-
-{% macro HeroStyle2(
-    theme='light',
-    reversed=false
-) %}
-
-<div class="md:flex {% if theme == 'dark' %} bg-blue-800 text-white {% endif %} {% if reversed == true %} md:flex-row-reverse {% endif %}">
-    <div class="md:w-1/2">
-        <img src="/public/images/satmap-lg.jpg" alt="">
-    </div>
-    <div class="md:w-1/2 text-center p-8 md:p-12 relative">
-        <h2 class="text-4xl font-bold">
-            <span class="font-light block">
-                Preheading
-            </span>
-            This is a heading
-        </h2>
-        <div class="my-6">
-            <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem est modi corrupti a! Cum, deleniti? Illo et reprehenderit labore, eos animi explicabo ut nihil, sint ipsam tenetur nobis!</p>
-        </div>
-        <a class="cta-primary" href="#">Lorem Ipsum</a>
-    </div>
-</div>
-{% endmacro %}
-
-{% macro HeroStyle3(
+{% macro hero(
+    style=3,
     preheading=null,
     heading=null,
     body=null,
+    image=null,
     cta_url=null,
+    cta_mods=['primary'],
     cta_text='Learn More',
     mods=[]
 ) %}
 
+{% from 'cta.html' import cta %}
+{%- if style === 1 -%}
+
+<div class="hero-style-1 {% for mod in mods %} hero-style-1--{{ mod }} {% endfor %}">
+    {%- if image -%}
+        <div class="hero-style-1__backdrop" style="background-image: url('{{ image }}');"></div>
+    {%- endif -%}
+    <div class="container mt-10">
+        <div class="hero-style-1__card">
+            <h2 class="text-4xl font-bold">
+                {%- if preheading -%}
+                    <span class="font-light block">
+                        {{ preheading }}
+                    </span>
+                {%- endif -%}
+                {%- if heading -%}
+                    {{ heading }}
+                {%- endif -%}
+            </h2>
+            {%- if body -%}
+                <div class="mt-6 text-lg">
+                    {{ body }}
+                </div>
+            {%- endif -%}
+            {%- if cta_url -%}
+                <div class="mt-6 mb-4">
+                    {{ cta(url=cta_url, text=cta_text, mods=cta_mods) }}
+                </div>
+            {%- endif -%}
+        </div>
+    </div>
+</div>
+
+{%- elif style === 2 -%}
+
+<div class="hero-style-2 {% for mod in mods %} hero-style-2--{{ mod }} {% endfor %}">
+    {%- if image -%}
+        <div class="hero-style-2__image md:w-1/2 align-self-stretch" style="background-image: url('{{ image }}');">    
+        </div>
+    {%- endif -%}
+    <div class="md:w-1/2 p-8 md:p-12 relative">
+        <h2 class="text-4xl font-bold">
+            {%- if preheading -%}
+                <span class="font-light block">
+                    {{ preheading }}
+                </span>
+            {%- endif -%}
+            {%- if heading -%}
+                {{ heading }}
+            {%- endif -%}
+        </h2>
+        {%- if body -%}
+            <div class="mt-6 text-lg">
+                {{ body }}
+            </div>
+        {%- endif -%}
+        {%- if cta_url -%}
+            <div class="mt-6 mb-4">
+                {{ cta(url=cta_url, text=cta_text, mods=cta_mods) }}
+            </div>
+        {%- endif -%}
+    </div>
+</div>
+
+{%- else -%}
 <div class="hero-style-3 {% for mod in mods %} hero-style-3--{{ mod }} {% endfor %}">
     <div class="container">
         <div class="p-8 md:p-12 relative">
@@ -70,9 +94,14 @@
                 </div>
             {%- endif -%}
             {%- if cta_url -%}
-                <a class="cta-primary mt-6" href="{{ cta_url }}">{{ cta_text }}</a>
+                <div class="mt-6 mb-4">
+                    {{ cta(url=cta_url, text=cta_text, mods=cta_mods) }}
+                </div>
             {%- endif -%}
         </div>
     </div>
 </div>
+
+{%- endif -%}
+
 {% endmacro %}

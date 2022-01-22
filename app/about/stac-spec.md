@@ -4,11 +4,11 @@ layout: default
 body: |- 
     More details about STAC spec Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, quo. Eos necessitatibus adipisci ad, doloremque.
 ---
-{% from 'hero.html' import HeroStyle3 %}
+{% from 'hero.html' import hero %}
 
-::: .-mt-10 .text-white
+::: .text-white
 
-{{ HeroStyle3(
+{{ hero(
     heading=title,
     body=body,
     mods=['dark', 'left']
