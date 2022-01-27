@@ -3,92 +3,90 @@ title: "Styleguide"
 layout: styleguide
 ---
 {% from 'section.html' import section %}
+{% from 'grid.html' import grid %}
+{% from 'card.html' import card %}
+{% from 'cta.html' import cta %}
+{% from 'callout.html' import callout %}
 
-<section class="py-5">
-    <div class="container">
-        <h2>Cards</h2>
-        <div class="grid grid-cols-3 gap-4 py-3">
-            <div class="card">
-                <h3>Lorem Ipsum</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
-            </div>
-            <div class="card-light">
-                <h3>Lorem Ipsum</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
-            </div>
-            <div class="card-dark">
-                <h3>Lorem Ipsum</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
-            </div>
-        </div>
+{%- call section(mods=['light', 'text-dark']) -%}
+    <h1>Components</h1>
+{%- endcall -%}
 
-        <h3>Image Cards</h3>
-        <div class="grid grid-cols-3 gap-4 py-3">
-            <div class="card p-0 overflow-hidden">
-                <img class="block w-full" src="/public/images/satmap-sm.jpg" alt="">
-                <div class="px-6 py-3">
-                    <h3>Lorem Ipsum</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
-                </div>
-            </div>
-            <div class="card-light p-0 overflow-hidden">
-                <img class="block w-full" src="/public/images/satmap-sm.jpg" alt="">
-                <div class="px-6 py-3">
-                    <h3>Lorem Ipsum</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
-                </div>
-            </div>
-            <div class="card-dark p-0 overflow-hidden">
-                <img class="block w-full" src="/public/images/satmap-sm.jpg" alt="">
-                <div class="px-6 py-3">
-                    <h3>Lorem Ipsum</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
-                </div>
-            </div>
-        </div>
-        <div class="card card-light col-span-2 p-0 overflow-hidden grid grid-cols-2 my-5">
-            <img class="block w-full" src="/public/images/satmap-sm.jpg" alt="">
-            <div class="px-6 py-3">
-                <h3>Lorem Ipsum</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur veritatis nihil quibusdam quam, vel sint earum temporibus doloremque necessitatibus dolorem repellat unde repellendus aperiam non labore reprehenderit rerum commodi quaerat.</p>
-            </div>
-        </div>
-    </div>
-</section>
+{%- call section() -%}
+    <h2>Cards</h2>
 
-{% call section() %}
-<h2>Callouts</h2>
-<div class="grid gap-4 py-3">
-    <div class="callout-light">
+    {%- call grid() -%}
+        {%- call card() -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+        
+        {%- call card(mods=['light']) -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+
+        {%- call card(mods=['dark']) -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+    
+    {%- endcall -%}
+
+    <h3>Image Cards</h3>
+    
+    {%- call grid() -%}
+        {%- call card(image_url="/public/images/satmap-sm.jpg") -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+        {%- call card(
+            image_url="/public/images/satmap-sm.jpg", 
+            mods=['dark']
+        ) -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+        {%- call card(
+            image_url="/public/images/satmap-sm.jpg", 
+            mods=['light']
+        ) -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+    {%- endcall -%}{# end grid #}
+{%- endcall -%}{# end section #}
+
+{%- call section() -%}
+    <h2>Callouts</h2>
+        {%- call callout() -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+        {%- call callout(mods=['info']) -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+        {%- call callout(mods=['warning']) -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+    <h3>Icon Callout</h3>
+    {%- call callout(icon='earth-oceania-solid') -%}
         <h3>Lorem Ipsum</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
-    </div>
-    <div class="callout-dark">
+    {%- endcall -%}
+    {%- call callout(icon='satellite-solid', icon_color="danger") -%}
         <h3>Lorem Ipsum</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
-    </div>
-    <div class="callout-black">
-        <h3>Lorem Ipsum</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
-    </div>
-</div>
-<h3>Icon Callout</h3>
-<div class="flex items-center py-4">
-    <div class="w-20 mr-4 text-blue">{{ 'earth-oceania-solid' | svg }}</div>
-    <div class="w-full px-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae cumque ullam ipsum reiciendis, dolorum blanditiis, animi illo exercitationem fuga? Repudiandae, alias voluptatem?</div>
-</div>
-<div class="flex items-center py-4">
-    <div class="w-20 mr-4">{{ 'satellite-solid' | svg }}</div>
-    <div class="w-full px-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae cumque ullam ipsum reiciendis, dolorum blanditiis, animi illo exercitationem fuga? Repudiandae, alias voluptatem?</div>
-</div>
-{% endcall %}
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta voluptas dolorem magnam repellat ipsum libero odio, praesentium asperiores in rerum nisi quam ex, tenetur incidunt eveniet similique, iusto alias est!</p>
+        {{ cta() }}
+    {%- endcall -%}
+{%- endcall -%}
 
-{% call section() %}
-
-<h2>Alerts</h2>
-<div class="alert-info">This is some information</div>
-<div class="alert-success">Good job!</div>
-<div class="alert-warning">There's something slightly wrong</div>
-<div class="alert-danger">There's something very wrong</div>
-
-{% endcall %}
+{%- call section() -%}
+    <h2>Alerts</h2>
+    <div class="alert-info">This is some information</div>
+    <div class="alert-success">Good job!</div>
+    <div class="alert-warning">There's something slightly wrong</div>
+    <div class="alert-danger">There's something very wrong</div>
+{%- endcall -%}

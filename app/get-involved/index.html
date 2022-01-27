@@ -5,44 +5,40 @@ body: |-
     STAC is driven by a community of lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, quo. Eos necessitatibus adipisci ad, doloremque.
 ---
 {% from 'hero.html' import hero %}
+{% from 'section.html' import section %}
+{% from 'grid.html' import grid %}
+{% from 'callout.html' import callout %}
+{% from 'cta.html' import cta %}
 
 {{ hero(heading=title, body=body, cta_url="/", cta_text="Join Gitter Community") }}
 
-<section class="py-5">
-    <div class="container">
-        <h2 class="mt-9">STAC needs help with:</h2>
-        
-        <div class="grid gap-5 -mb-12">
-                <div class="callout-blue-light">
-                    <h3>Data Provider Adoption</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
-                    <a href="/get-involved/data-providers" class="cta--understated mb-3">Learn More</a>
-                </div>
-                <div class="callout-blue-light">
-                    <h3>Outreach</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
-                    <a href="/get-involved/data-users" class="cta--understated mb-3">Learn More</a>
-                </div>
-                <div class="callout-blue-light">
-                    <h3>Diverse tooling</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
-                    <a href="/get-involved/developers" class="cta--understated mb-3">Learn More</a>
-                </div>
-        </div>
-    </div>
-</section>
+{%- call section() -%}
+    <h2>STAC needs help with:</h2>
+    
+    {%- call callout() -%}
+        <h3>Data Provider Adoption</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
+        {{ cta(url="/get-involved/data-providers")}}
+    {%- endcall -%}
+    {%- call callout() -%}
+        <h3>Outreach</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
+        {{ cta(url="/get-involved/data-users")}}
+    {%- endcall -%}
+    {%- call callout() -%}
+        <h3>Diverse tooling</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
+        {{ cta(url="/get-involved/developers")}}
+    {%- endcall -%}
+{%- endcall  -%}
 
-<section class="pt-14 pb-5">
-    <div class="container">
-        <h2>The vision</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid illum iure omnis culpa eius, eligendi ullam a tempore non quibusdam voluptatum laboriosam cumque error natus velit similique nihil doloremque quis!</p>
-    </div>
-</section>
+{%- call section() -%}
+    <h2>The vision</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid illum iure omnis culpa eius, eligendi ullam a tempore non quibusdam voluptatum laboriosam cumque error natus velit similique nihil doloremque quis!</p>
+{%- endcall -%}
 
-<section class="py-5">
-    <div class="container">
-        <h2>Get Involved</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid illum iure omnis culpa eius, eligendi ullam a tempore non quibusdam voluptatum laboriosam cumque error natus velit similique nihil doloremque quis!</p>
-        <a href="" class="cta--primary">Join Gitter Community</a>
-    </div>
-</section>
+{%- call section() -%}
+    <h2>Get Involved</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid illum iure omnis culpa eius, eligendi ullam a tempore non quibusdam voluptatum laboriosam cumque error natus velit similique nihil doloremque quis!</p>
+    {{ cta(url="/get-involved/developers", text="Join Gitter Community", mods=['primary'])}}
+{%- endcall -%}

@@ -7,12 +7,13 @@ h1, h2, h3, h4 {
     @apply font-display;
 }
 
-h1 { @apply text-4xl font-semibold; }
-h2 { @apply text-2xl font-medium; }
-h3 { @apply text-xl font-medium; }
+h1 { @apply text-4xl sm:text-5xl font-semibold spacing-loose; }
+h2 { @apply text-3xl font-medium spacing-relaxed; }
+h3 { @apply text-2xl font-medium spacing-normal; }
+h4 { @apply text-xl font-medium spacing-normal; }
 
-h1, h2, h3, h4, p, ul, ol {
-    @apply mt-4 mb-4;
+p, ul, ol {
+    @apply spacing-normal;
 }
 
 ul {

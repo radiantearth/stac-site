@@ -7,9 +7,9 @@
     <div 
         class="{%- if width === 'content' -%}
             container
-        {%- elif width === 'wide' %}
+        {%- elif width === 'wide' -%}
             container-wide
-        {% endif %}"
+        {%- endif -%}"
     >
         {{ caller() }}
     </div>

@@ -15,7 +15,7 @@ body: |-
     preheading="STAC",
     heading=title,
     body=body,
-    mods=['dark', 'overlap-xl', 'left']
+    mods=['dark', 'overlap-xl']
 ) }}
 
 ::: .container .text-white

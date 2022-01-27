@@ -2,26 +2,29 @@
 @import 'tailwindcss/components';
 @import 'vendor/code-highlight-theme.css';
 
+@import 'base';
 @import 'type';
 @import 'elements';
 @import 'components';
 @import 'sections';
 
-@import 'tailwindcss/utilities';
-
 @import 'pages/styleguide.css';
+
+@import 'tailwindcss/utilities';
 
 .container {
     @apply max-w-4xl mx-auto px-4;
 }
 
-.container-wide {
+.container--wide {
     @apply max-w-6xl mx-auto px-4;
 }
 
-.row {
-    @apply -mx-3 flex;
+.container--full {
+    @apply max-w-none mx-auto px-0;
 }
+
+
 
  /* theme overrides */
 
