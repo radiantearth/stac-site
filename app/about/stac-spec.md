@@ -54,6 +54,7 @@ A catalog is Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque nam 
 ## Collection
 
 A collection is Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque nam esse, temporibus, beatae nisi assumenda excepturi cupiditate.
+
 ```json
 {
     "stac_version": "1.0.0",

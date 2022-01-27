@@ -1,6 +1,11 @@
-.section {
-    @apply py-5;
-}
+.section { @apply py-5; }
+
+.section--text-white  { @apply text-white; }
+.section--text-dark  { @apply text-blue-dark; }
+.section--center      { @apply text-center; }
+.section--tall        { @apply py-10; }
+.section--dark        { @apply bg-blue-dark text-white; }
+.section--light       { @apply bg-blue-light; }
 
 /* Hero Style 1 */
 

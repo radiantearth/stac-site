@@ -5,52 +5,47 @@ body: |-
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum rerum nobis voluptates, est distinctio placeat, quisquam quas libero assumenda veniam dignissimos eligendi mollitia repudiandae a consectetur quam repellat incidunt odio!
 ---
 {% from 'hero.html' import hero %}
+{% from 'section.html' import section %}
+{% from 'card.html' import card %}
+{% from 'callout.html' import callout %}
+{% from 'cta.html' import cta %}
 
-<section>
-    {{ hero(heading="Browse STAC Tutorials", body=body) }}
-</section>
+{{ hero(heading="Browse STAC Tutorials", body=body) }}
 
-<section class="py-5">
-    <div class="container">
-        <h2 class="mt-7">Courses</h2>
-        <div class="card">
-            <h3>The STAC Spec</h3>
-            {% set tutorialCourse = collections.tutorial | fromCourse("the-stac-spec") %}
-            {%- for tutorial in tutorialCourse -%}
-                <div class="callout-blue-light py-0 mb-2">
-                    <h4 class="inline-block my-1">{{ tutorial.data.title }}</h2>
-                    <a href="{{ tutorial.data.page.url }}" class="ml-4">
-                        Read tutorial
-                    </a>
-                </div>
-            {%- endfor -%}
-        </div>
+{%- call section() -%}
+    <h2>Filtered by Course</h2>
+    <h3>The STAC Spec</h3>
+    {% set tutorialCourse = collections.tutorial | fromCourse("the-stac-spec") %}
+    {%- for tutorial in tutorialCourse -%}
+        {%- call card() -%}
+            <h4>{{ tutorial.data.title }}</h2>
+            {{ cta(url=tutorial.data.page.url, text="Read tutorial") }}
+        {%- endcall -%}
+    {%- endfor -%}
+{%- endcall -%}
 
-        <h2 class="mt-10">Tags</h2>
 
-        {% set tagCourse = collections.tutorial | fromTag("test") %}
-        <div class="card">
-        <h3>Test</h3>
-        {%- for tutorial in tagCourse -%}
-            <div class="callout-blue-light py-0 mb-2">
-                <h4 class="inline-block my-1">{{ tutorial.data.title }}</h2>
-                <a href="{{ tutorial.data.page.url }}" class="ml-4">
-                    Read tutorial
-                </a>
-            </div>
-        {%- endfor -%}
-        </div>
+{%- call section() -%}
+    <h2>Filtered by Tag</h2>
 
-        <h2 class="mt-10">All Tutorials</h2>
-        
-        {%- for tutorial in collections.tutorial -%}
-            <div class="card mb-4">
-                <h4 class="block my-1">{{ tutorial.data.title }}</h2>
-                <p class="my-2">{{ tutorial.data.description }}</p>
-                <a href="{{ tutorial.data.page.url }}" class="">
-                    Read tutorial
-                </a>
-            </div>
-        {%- endfor -%}
-        
-</section>
+    <h3>Test</h3>
+    {% set tagCourse = collections.tutorial | fromTag("test") %}
+    {%- for tutorial in tagCourse -%}
+        {%- call card() -%}
+            <h4>{{ tutorial.data.title }}</h2>
+            {{ cta(url=tutorial.data.page.url, text="Read tutorial") }}
+        {%- endcall -%}
+    {%- endfor -%}
+{%- endcall -%}
+
+{%- call section() -%}
+    <h2>All Tutorials</h2>
+    
+    {%- for tutorial in collections.tutorial -%}
+        {%- call card() -%}
+            <h4>{{ tutorial.data.title }}</h2>
+            <p>{{ tutorial.data.description }}</p>
+            {{ cta(url=tutorial.data.page.url, text="Read tutorial") }}
+        {%- endcall -%}
+    {%- endfor -%}
+{%- endcall -%}

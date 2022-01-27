@@ -3,97 +3,83 @@ title: "SpatioTemporal Asset Catalogs"
 layout: default
 ---
 {% from 'hero.html' import hero %}
+{% from 'grid.html' import grid %}
+{% from 'card.html' import card %}
+{% from 'section.html' import section %}
+{% from 'cta.html' import cta %}
+{% from 'callout.html' import callout %}
 
 {{ hero(
     preheading="STAC",
     heading=title,
     body="You should care about STAC because Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, quo. Eos necessitatibus adipisci ad, doloremque.",
     cta_url="/tutorials",
-    mods=['overlap-xl', 'gradient', 'center']
+    cta_text="Explore Tutorials",
+    mods=['overlap-xl', 'center']
 ) }}
 
-<section>
-    <div class="container text-white text-center pt-5">
-        <h2 class="mb-5">STAC was created for</h2>
-        
-        <div class="grid grid-cols-3 gap-5">
-            <div class="card-dark">
-                <h3>Data Providers</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
-                <a href="/get-involved/data-providers" class="cta--understated mb-3">Learn More</a>
-            </div>
-            <div class="card-dark">
-                <h3>Data Users</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
-                <a href="/get-involved/data-users" class="cta--understated mb-3">Learn More</a>
-            </div>
-            <div class="card-dark">
-                <h3>Developers</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
-                <a href="/get-involved/developers" class="cta--understated mb-3">Learn More</a>
-            </div>
-        </div>
-    </div>
-</section>
+{%- call section(mods=['text-white', 'center']) -%}
+    <h2>STAC was created for</h2>
 
-<section class="pt-14 pb-5">
-    <div class="container">
+    {%- call grid() -%}
+        {%- call card(mods=['blue-700']) -%}
+            <h3>Data Providers</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
+            {{ cta(url="/get-involved/data-providers") }}
+        {%- endcall -%}
+        {%- call card(mods=['blue-700']) -%}
+            <h3>Data Users</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
+            {{ cta(url="/get-involved/data-users") }}
+        {%- endcall -%}
+        {%- call card(mods=['blue-700']) -%}
+            <h3>Developers</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
+            {{ cta(url="/get-involved/developers") }}
+        {%- endcall -%}
+    {%- endcall -%}
+{%- endcall -%}
+
+{%- call section() -%}
         <h2>STAC in depth</h2>
         <p>Lorem ipsum dolor sit amet consectetur, <a href="/about">adipisicing elit</a>. Libero enim architecto suscipit illum repellat tempora ducimus, vero cum pariatur fuga minima animi deserunt quibusdam excepturi blanditiis delectus exercitationem. Id, illum!</p>
         <p>Pellentesque in ipsum id orci porta dapibus. Donec rutrum congue leo eget malesuada. Donec sollicitudin molestie malesuada. Nulla porttitor accumsan tincidunt. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
         <p>Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus <a href="/">convallis quis ac lectus</a>. Cras ultricies ligula sed magna dictum porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque velit nisi, pretium ut lacinia in, elementum id enim.</p>
-        <a href="/about" class="cta--secondary my-3">Learn More</a>
-    </div>
-</section>
+        {{ cta(mods=['secondary'], url='/about') }}
+{%- endcall -%}
 
-<section class="py-5">
-    <div class="container">
-        <div class="pb-7">
-            <h2>Browse STAC Tutorials</h2>
-            <p class="mb-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus nihil odit nemo reprehenderit? Esse cupiditate, neque sapiente dolores suscipit quam beatae et.</p>
-            {%- for tutorial in collections.tutorial -%}
-                <div class="py-0 mb-2 callout-light">
-                    <h4 class="inline-block my-1">{{ tutorial.data.title }}</h2>
-                    <a href="{{ tutorial.data.page.url }}" class="ml-4">
-                        Read tutorial
-                    </a>
-                </div>
-            {%- endfor -%}
-            <a href="/tutorials" class="cta--secondary mt-5">Browse All</a>
-        </div>
-    </div>
-</section>
+{%- call section() -%}
+        <h2>Browse STAC Tutorials</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus nihil odit nemo reprehenderit? Esse cupiditate, neque sapiente dolores suscipit quam beatae et.</p>
+        {%- for tutorial in collections.tutorial -%}
+            {%- call callout() -%}
+                <h4 class="inline-block mr-5">{{ tutorial.data.title }}</h4>
+                {{ cta(url=tutorial.data.page.url, text="Read Tutorial") }}
+            {%- endcall -%}
+        {%- endfor -%}
+        {{ cta(mods=['secondary'], url='/tutorials', text="Browse All") }}
+{%- endcall -%}
 
-<section class="py-5">
-    <div class="container">
-        <h2>STAC is used in these datasets</h2>
-    </div>
-    <div class="container-wide">
-        <div class="grid md:grid-cols-8 sm:grid-cols-4 grid-cols-3 gap-5 pt-4">
-            {%- for i in range(0,8) -%}
-                <div class="card-light h-16"></div>
-            {%- endfor -%}
-        </div>
-    </div>
-</section>
+{%- call section(mods=['tall']) -%}
+    <h2>STAC is used in these datasets</h2>
+    
+    {%- call grid(8) -%}
+        {%- for i in range(0,8) -%}
+            <div class="card card--light h-16"></div>
+        {%- endfor -%}
+    {%- endcall -%}
 
-<section class="py-5">
-    <div class="container">
-        <h2>These organizations are betting on STAC</h2>
-    </div>
-    <div class="container-wide">
-        <div class="grid md:grid-cols-6 grid-cols-3 gap-5 pt-4">
-            {%- for i in range(0,6) -%}
-                <div class="card-light h-16"></div>
-            {%- endfor -%}
-        </div>
-    </div>
-</section>
+    <h2>These Organizations Are Betting on STAC</h2>
+    
+    {%- call grid(6) -%}
+        {%- for i in range(0,6) -%}
+            <div class="card card--light h-16"></div>
+        {%- endfor -%}
+    {%- endcall -%}
+{%- endcall -%}
 
-<section class="py-5">
-    <div class="container">
-        <h2>Get Involved</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At in cum, repellat ut, adipisci deleniti ipsam distinctio eius sed doloremque facere minus! Voluptatem consequuntur tenetur, obcaecati autem incidunt voluptatibus hic!</p>
-        <a href="/get-involved" class="cta--primary">Get Involved</a>
-    </div>
-</section>
+{%- call section(mods=['tall', 'dark']) -%}
+    <h2>Get Involved</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At in cum, repellat ut, adipisci deleniti ipsam distinctio eius sed doloremque facere minus! Voluptatem consequuntur tenetur, obcaecati autem incidunt voluptatibus hic!</p>
+    {{ cta(mods=['primary'], url='/get-involved', text="Get Involved") }}
+{%- endcall -%}

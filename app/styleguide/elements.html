@@ -2,36 +2,35 @@
 title: "Styleguide"
 layout: styleguide
 ---
-{% from 'code.html' import CodeBlock, Code %}
+{% from 'code.html' import codeblock, code %}
+{% from 'icon.html' import icon %}
+{% from 'section.html' import section %}
 
-<section class="py-5">
-    <div class="container">
+{%- call section(mods=['light', 'text-dark']) -%}
+    <h1>Elements</h1>
+{%- endcall -%}
+
+{%- call section() -%}
         <h2>CTAs</h2>
-        <button class="cta--primary mr-3">Primary CTA</button>
-        <button class="cta--secondary mr-3">Primary CTA</button>
-        <a class="cta--understated mr-3">CTA Understated</a>
-    </div>
-</section>
+        <button class="cta--primary mr-5">Primary CTA</button>
+        <button class="cta--secondary mr-5">Primary CTA</button>
+        <a class="cta--understated mr-5">CTA Understated</a>
+{%- endcall -%}
 
-<section class="py-5">
-    <div class="container">
+{%- call section() -%}
         <h2>Links</h2>
         <a href="">This is a link</a>
-    </div>
-</section>
+{%- endcall -%}
 
-<section class="py-5">
-    <div class="container">
+{%- call section() -%}
         <h2>Code</h2>
-        <p>This is an example of inline code: {{ Code(lang='js', code='npm install && npm run serve') }}
+        <p>This is an example of inline code: {{ code(lang='js', code='npm install && npm run serve') }}
         </p>
         <p>This is an example of a code block</p>
-        {{ CodeBlock(lang='js', code='npm install && npm run serve') }}
-    </div>
-</section>
+        {{ codeblock(lang='js', code='npm install && npm run serve') }}
+{%- endcall -%}
 
-<section class="py-5">
-    <div class="container">
+{%- call section() -%}
     <h2>Fields</h2>
         <div class="md:w-1/2">
             <input type="text" class="field mb-3" placeholder="This is an input" />
@@ -41,23 +40,20 @@ layout: styleguide
                 rows=3
             ></textarea>
         </div>
-    </div>
-</section>
+{%- endcall -%}
 
-<section class="py-5">
-    <div class="container">
+{%- call section() -%}
         <h2>Icons</h2>
         <p>Icons & SVGs are included inline and can therfore be affected/animated with CSS or Javascript. Their "fill" property will inherit the parent text color by default.</p>
 
-        <div class="flex items-center justify-start">
-            <div class="text-blue-800 hover:text-blue-500 w-32 h-32 transition-all duration-300 inline-block mr-7">{{ 'earth-oceania-solid' | svg }}</div>
-            <div class="text-blue-800 hover:text-blue-500 transform rotate-12 hover:-rotate-90 w-6 h-6 transition-all duration-300 inline-block mr-7">{{ 'satellite-solid' | svg  }}</div>
-            <div class="text-blue-800 hover:text-blue-500 w-12 h-12 transition-all duration-300 inline-block">{{ 'moon-solid' | svg }}</div>
+        <div class="flex items-center justify-between sm:w-1/2">
+            {{ icon(icon='earth-oceania-solid', size="32", color="blue") }}
+            {{ icon(icon='satellite-solid', size="5", color="blue") }}
+            {{ icon(icon='moon-solid', size="12", color="blue") }}
         </div>
-    </div>
-</section>
+    {%- endcall -%}
 
-<section>
+{%- call section(width="full") -%}
     <div class="container">
         <h2>Images</h2>
         <p>Images are processed using the <a href="https://www.npmjs.com/package/jimp" class="">jimp</a> library.</p>
@@ -75,4 +71,4 @@ layout: styleguide
         <img class="w-full" src="/public/images/satmap-md.jpg" alt="">
         <div class="caption">Pretty big image</div>
     </div>
-</section>
+{%- endcall -%}

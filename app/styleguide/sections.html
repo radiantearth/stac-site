@@ -11,13 +11,19 @@ hero_content:
 ---
 
 {% from 'hero.html' import hero %}
+{% from 'grid.html' import grid %}
+{% from 'card.html' import card %}
+{% from 'cta.html' import cta %}
+{% from 'icon.html' import icon %}
+{% from 'section.html' import section %}
+{% from 'container.html' import container %}
 
-<section>
-
-::: container
-## Hero Style #1
-:::
-
+{%- call section(mods=['light', 'text-dark']) -%}
+    <h1>Sections</h1>
+{%- endcall -%}
+{%- call section(mods=['text-dark']) -%}
+    <h2>Hero Style #1</h2>
+{%- endcall -%}
 {{ hero(
     style=1,
     heading=hero_content.heading, 
@@ -36,14 +42,10 @@ hero_content:
     mods=['dark']
 ) }}
 
-</section>
 
-<!-- Section 2 -->
-<section class='hero-section-1'>
-
-::: container
-## Hero Style #2
-:::
+{%- call section(mods=['text-dark']) -%}
+    <h2>Hero Style #2</h2>
+{%- endcall -%}
 
 {{ hero(
     style=2,
@@ -63,13 +65,9 @@ hero_content:
     mods=['dark','reverse']
 ) }}
 
-</section>
-
-<section class="hero-section-2">
-
-::: container
-## Hero Style #3
-:::
+{%- call section(mods=['text-dark']) -%}
+    <h2>Hero Style #3</h2>
+{%- endcall -%}
 
 {{ hero(
     heading=hero_content.heading, 
@@ -80,26 +78,26 @@ hero_content:
 ) }}
 
 <div class="container">
-    <div class="grid md:grid-cols-3 gap-4">
-        <div class="card bg-blue-700 text-white text-center">
-            <div class="text-blue-400 w-20 my-5 mx-auto">{{ 'satellite-solid' | svg }}</div>
-            <h2>Lorem Ipsum</h2>
+    {%- call grid(3) -%}
+        {%- call card(mods=['blue-700', 'center']) -%}
+            {{ icon('moon-solid', color="blue-400", classes=['mt-5']) }}
+            <h3>Lorem Ipsum</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            <a class="cta--understated inline-block mb-4" href="#">Understated CTA</a>
-        </div>
-        <div class="card bg-blue-700 text-white text-center">
-            <div class="text-blue-400 w-20 my-5 mx-auto">{{ 'earth-oceania-solid' | svg }}</div>
-            <h2>Lorem Ipsum</h2>
+            {{ cta() }}
+        {%- endcall -%}
+        {%- call card(mods=['blue-700', 'center']) -%}
+            {{ icon('moon-solid', color="blue-400", classes=['mt-5']) }}
+            <h3>Lorem Ipsum</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            <a class="cta--understated inline-block mb-4" href="#">Understated CTA</a>
-        </div>
-        <div class="card bg-blue-700 text-white text-center">
-            <div class="text-blue-400 w-20 my-5 mx-auto">{{ 'moon-solid' | svg }}</div>
-            <h2>Lorem Ipsum</h2>
+            {{ cta() }}
+        {%- endcall -%}
+        {%- call card(mods=['blue-700', 'center']) -%}
+            {{ icon('moon-solid', color="blue-400", classes=['mt-5']) }}
+            <h3>Lorem Ipsum</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            <a class="cta--understated inline-block mb-4" href="#">Understated CTA</a>
-        </div>
-    </div>
+            {{ cta() }}
+        {%- endcall -%}
+    {%- endcall -%}
 </div>
 
 </section>

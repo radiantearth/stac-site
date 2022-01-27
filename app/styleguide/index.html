@@ -2,9 +2,12 @@
 title: "Styleguide"
 layout: styleguide
 ---
+{% from 'section.html' import section %}
 
-<section>
-    <div class="container">
-        
-    </div>
-</section>
+{%- call section(mods=['light', 'text-dark']) -%}
+    <h1>Styleguide</h1>
+{%- endcall -%}
+
+{%- call section(mods=[]) -%}
+    <p>Browse the current style and component libary for STAC's website.</p>
+{%- endcall -%}

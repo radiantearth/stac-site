@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Sarabun', ...defaultTheme.fontFamily.sans],
-        display: ['Readex Pro', ...defaultTheme.fontFamily.sans],
+        display: ['Nunito', ...defaultTheme.fontFamily.sans],
       },
       boxShadow: {
         button: '-1px 1px 2px 0 rgba(16, 47, 59, 0.18)',
@@ -42,6 +42,7 @@ module.exports = {
         light: '#C4E2EF',
         dark: '#1A4E63',
       },
+      transparent: 'transparent',
       green: '#4EB4AE',
       info: {
         light: '#C6E5F1',

@@ -1,0 +1,27 @@
+{% macro card(
+    image_url=null,
+    image_alt=null,
+    mods=[]
+) %}
+<div class="card {% for mod in mods %} card--{{mod}} {% endfor %}">
+    {%- if image_url -%}
+        <img class="card-image" src="/public/images/satmap-sm.jpg" alt="{{ image_alt }}" >
+    {%- endif-%}
+    <div class="card-body">
+        {{ caller() }}
+    </div>
+</div>
+{% endmacro %}
+
+{# 
+
+Stashed: Card with image on left
+
+<div class="card card-light col-span-2 p-0 overflow-hidden grid grid-cols-2 my-5">
+    <img class="block w-full" src="/public/images/satmap-sm.jpg" alt="">
+    <div class="px-6 py-3">
+        <h3>Lorem Ipsum</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur veritatis nihil quibusdam quam, vel sint earum temporibus doloremque necessitatibus dolorem repellat unde repellendus aperiam non labore reprehenderit rerum commodi quaerat.</p>
+    </div>
+</div>
+#}

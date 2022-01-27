@@ -1,15 +1,24 @@
 @layer components {
     .card {
-        @apply py-3 px-6 shadow-card rounded-lg;
+        @apply shadow-card rounded-lg mt-6 mb-5;
+    }
+
+    .card-body {
+        @apply py-3 px-6;
     }
 
     .callout {
-        @apply pl-6 py-2;
+        @apply pl-6 mt-5 mb-4 pt-1 pb-2;
         border-left-width: 1rem;
+    }
+
+    .icon-callout {
+        @apply flex spacing-normal border-none;
+        align-items: top;
     }
     
     .alert {
-        @apply pl-6 pr-4 py-3;
+        @apply pl-6 pr-4 py-3 mt-6 mb-5;
         border-left-width: 1rem;
     }
 }
@@ -30,38 +39,32 @@
     @apply alert border-danger bg-danger-light;
 }
 
-.card-light {
-    @apply card bg-blue-100;
-}
-
-.card-dark {
-    @apply card bg-blue-dark text-white;
-}
-
-.card-black {
-    @apply card bg-black text-white;
-}
-
-.card-blue {
-    @apply card bg-blue text-white;
-}
+.card--light    { @apply bg-blue-100; }
+.card--blue     { @apply bg-blue text-white; }
+.card--blue-700 { @apply bg-blue-700 text-white; }
+.card--dark     { @apply bg-blue-dark text-white; }
+.card--black    { @apply bg-black text-white; }
+.card--center   { @apply text-center; }
+.card--left     { @apply text-left; }
 
 .card-image {
-    @apply -mx-6 -mt-3 mb-3 w-full;
+    @apply w-full;
 }
 
 .card-image-left {
     @apply -ml-6 -my-3 mr-3 w-full;
 }
 
-.callout-light, .callout-blue-light {
-    @apply callout border-blue-light;
-}
+.callout--light { @apply border-blue-light; }
+.callout--blue  { @apply border-blue; }
+.callout--black { @apply border-black; }
+.callout--dark { @apply border-blue-dark; }
 
-.callout-black {
-    @apply callout border-black;
-}
+.callout--info,
+.icon-callout--info { @apply bg-info-light border-info; }
 
-.callout-dark, .callout-blue-dark {
-    @apply callout border-blue-dark;
-}
+.callout--warning,
+.icon-callout--warning { @apply bg-warning-light border-warning; }
+
+.callout--danger,
+.icon-callout--danger { @apply bg-danger-light border-danger; }

@@ -7,13 +7,11 @@
   <body class="bg-white">
       {%- include 'nav.html' -%}
       <section class="bg-blue-200 flex">
-        <div class="container">
-          <a href="/styleguide" class="text-xl text-blue inline-block py-4 pr-5">Styleguide</a>
-          <a href="/styleguide/colors" class="text-blue inline-block py-4 pr-4">Colors</a>
-          <a href="/styleguide/type" class="text-blue inline-block py-4 pr-4">Type</a>
-          <a href="/styleguide/elements" class="text-blue inline-block py-4 pr-4">Elements</a>
-          <a href="/styleguide/components" class="text-blue inline-block py-4 pr-4">Components</a>
-          <a href="/styleguide/sections" class="text-blue inline-block py-4 pr-4">Sections</a>
+        <div class="container font-display">
+          <a href="/styleguide" class="styleguide-nav-link text-2xl font-medium mr-5 -ml-2">Styleguide</a>
+          {%- for link in navigation.styleguide_links -%}
+            <a href="{{ link.href }}" class="styleguide-nav-link {% if link.href === page.url %} styleguide-nav-link--active {% endif %}">{{ link.name }}</a>
+          {%- endfor -%}
         </div>
       </section>
       <main style="min-height: calc(100vh - 175px);">
