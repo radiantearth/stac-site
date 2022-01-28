@@ -19,6 +19,14 @@
     .caption {
         @apply font-display my-3;
     }
+
+    .font2 .cta, .font2 .caption, {
+        @apply font-display2;
+    }
+
+    .font3 .cta, .font3 .caption, {
+        @apply font-display3;
+    }
 }
 
 a {
@@ -29,6 +37,14 @@ label {
     @apply font-display;
 }
 
+.font2 label {
+    @apply font-display2;
+}
+
+.font3 label {
+    @apply font-display3;
+}
+
 .caption-xl {
     @apply caption text-xl;
 }
@@ -37,9 +53,9 @@ label {
     @apply caption text-lg;
 }
 
-.cta--primary { @apply cta button bg-green text-white border-green; }
-.cta--secondary { @apply cta button text-green border-green; }
-.cta--understated { @apply cta text-green border-b-2 border-green mt-0; }
+.cta--primary { @apply button bg-green text-white border-green; }
+.cta--secondary { @apply button text-green border-green; }
+.cta--understated { @apply text-green border-b-2 border-green mt-0; }
 .cta--lg { @apply text-xl py-3 px-6 spacing-relaxed; }
 
 code {
