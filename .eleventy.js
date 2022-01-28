@@ -5,12 +5,14 @@ const { EleventyRenderPlugin } = require("@11ty/eleventy");
 const markdownIt = require("markdown-it");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const i18n = require('eleventy-plugin-i18n');
+const yaml = require("js-yaml");
 
 module.exports = function(eleventyConfig) {
     // File Structure
     eleventyConfig.addPassthroughCopy("public");
     eleventyConfig.addPassthroughCopy("assets/notebooks");
     eleventyConfig.addWatchTarget("../public/**/*");
+    eleventyConfig.addDataExtension("yaml", contents => yaml.load(contents));
     eleventyConfig.addDataExtension("ipynb", contents => {
         return {
             notebook: JSON.parse(contents),

@@ -3,7 +3,7 @@
         <div class="items-center justify-items-start flex py-4 font-display w-full">
             <a class="font-normal justify-self-start text-3xl text-white mr-8" href="/">STAC</a>
             {% for navLink in navigation.links %}
-                <a class="text-xl text-blue-50 inline-block py-4 pr-5 font-medium" href="{{ navLink.href }}">{{ navLink.name }}</a>
+                <a class="text-xl text-blue-50 inline-block py-4 pr-5 font-medium" href="/{{ locale }}{{ navLink.href }}">{{ navLink.name }}</a>
             {% endfor %}
         </div>
     </div>
