@@ -8,6 +8,8 @@ module.exports = {
       fontFamily: {
         sans: ['Sarabun', ...defaultTheme.fontFamily.sans],
         display: ['Nunito', ...defaultTheme.fontFamily.sans],
+        display2: ['Raleway', ...defaultTheme.fontFamily.sans],
+        display3: ['Inter', ...defaultTheme.fontFamily.sans],
       },
       boxShadow: {
         button: '-1px 1px 2px 0 rgba(16, 47, 59, 0.18)',
@@ -18,6 +20,9 @@ module.exports = {
       sm: '0.125rem',
       DEFAULT: '0.25rem',
       lg: '0.375rem',
+      xl: '0.75rem',
+      '2xl': '1.5rem',
+      full: '50%',
     },
     colors: {
       black: '#102F3B',

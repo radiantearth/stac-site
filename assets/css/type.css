@@ -7,6 +7,14 @@ h1, h2, h3, h4 {
     @apply font-display;
 }
 
+.font3 h1, .font3 h2, .font2 h3, .font2 h4 {
+    @apply font-display3;
+}
+
+.font2 h1, .font2 h2, .font2 h3, .font2 h4 {
+    @apply font-display2;
+}
+
 h1 { @apply text-4xl sm:text-5xl font-semibold spacing-loose; }
 h2 { @apply text-3xl font-medium spacing-relaxed; }
 h3 { @apply text-2xl font-medium spacing-normal; }
@@ -22,4 +30,10 @@ ul {
 
 ol {
     @apply pl-5 list-decimal;
+}
+
+
+
+.font-select-button[data-font-active="true"] {
+    @apply bg-blue text-white;
 }

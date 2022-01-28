@@ -7,10 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve:eleventy": "ELEVENTY_ENV=development eleventy --serve --watch",
     "serve:css": "postcss assets/css/app.css -o public/css/style.css --watch",
+    "serve:js": "webpack --watch --mode=development",
     "serve": "run-p serve:*",
     "build:css": "postcss assets/css/app.css -o public/css/style.css",
     "build:eleventy": "ELEVENTY_ENV=production eleventy",
     "build:images": "npm run ./config/images.js",
+    "build:js": "webpack build --mode=production",
     "build": "run-s build:*"
   },
   "keywords": [],
