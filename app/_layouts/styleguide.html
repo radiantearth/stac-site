@@ -17,8 +17,6 @@
       <main style="min-height: calc(100vh - 175px);">
         {{ content | safe }}
       </main>
-      <footer class="py-5 mt-8 text-blue-500 bg-blue-100">
-        <div class="container">This work is licensed under a Creative Commons Attribution 4.0 International License.</div>
-      </footer>
+      {% include 'footer.html' %}
   </body>
 </html>

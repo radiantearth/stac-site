@@ -4,6 +4,8 @@ layout: styleguide
 ---
 {% from 'code.html' import codeblock, code %}
 {% from 'icon.html' import icon %}
+{% from 'grid.html' import grid %}
+{% from 'cta.html' import cta %}
 {% from 'section.html' import section %}
 
 {%- call section(mods=['light', 'text-dark']) -%}
@@ -11,47 +13,47 @@ layout: styleguide
 {%- endcall -%}
 
 {%- call section() -%}
-        <h2>CTAs</h2>
-        <button class="cta--primary mr-5">Primary CTA</button>
-        <button class="cta--secondary mr-5">Primary CTA</button>
-        <a class="cta--understated mr-5">CTA Understated</a>
+    <h2>CTAs</h2>
+    <span class="mr-5">{{ cta(text="Primary CTA", mods=['primary']) }}</span>
+    <span class="mr-5">{{ cta(text="Secondary CTA", mods=['secondary']) }}</span>
+    <span class="mr-5">{{ cta(text="Understated CTA", url="#", mods=['understated']) }}</span>
 {%- endcall -%}
 
 {%- call section() -%}
-        <h2>Links</h2>
-        <a href="">This is a link</a>
+    <h2>Links</h2>
+    <a href="">This is a link</a>
 {%- endcall -%}
 
 {%- call section() -%}
-        <h2>Code</h2>
-        <p>This is an example of inline code: {{ code(lang='js', code='npm install && npm run serve') }}
-        </p>
-        <p>This is an example of a code block</p>
-        {{ codeblock(lang='js', code='npm install && npm run serve') }}
+    <h2>Code</h2>
+    <p>This is an example of inline code: {{ code(lang='js', code='npm install && npm run serve') }}
+    </p>
+    <p>This is an example of a code block</p>
+    {{ codeblock(lang='js', code='npm install && npm run serve') }}
 {%- endcall -%}
 
 {%- call section() -%}
     <h2>Fields</h2>
-        <div class="md:w-1/2">
-            <input type="text" class="field mb-3" placeholder="This is an input" />
-            <textarea type="text" 
-                class="field mb-3" 
-                placeholder="This is a textarea"
-                rows=3
-            ></textarea>
-        </div>
+    <div class="md:w-1/2">
+        <input type="text" class="field mb-3" placeholder="This is an input" />
+        <textarea type="text" 
+            class="field mb-3" 
+            placeholder="This is a textarea"
+            rows=3
+        ></textarea>
+    </div>
 {%- endcall -%}
 
 {%- call section() -%}
-        <h2>Icons</h2>
-        <p>Icons & SVGs are included inline and can therfore be affected/animated with CSS or Javascript. Their "fill" property will inherit the parent text color by default.</p>
+    <h2>Icons</h2>
+    <p>Icons & SVGs are included inline and can therfore be affected/animated with CSS or Javascript. Their "fill" property will inherit the parent text color by default.</p>
 
-        <div class="flex items-center justify-between sm:w-1/2">
-            {{ icon(icon='earth-oceania-solid', size="32", color="blue") }}
-            {{ icon(icon='satellite-solid', size="5", color="blue") }}
-            {{ icon(icon='moon-solid', size="12", color="blue") }}
-        </div>
-    {%- endcall -%}
+    <div class="flex items-center justify-between sm:w-1/2">
+        {{ icon(icon='earth-oceania-solid', size="32", color="blue") }}
+        {{ icon(icon='satellite-solid', size="5", color="blue") }}
+        {{ icon(icon='moon-solid', size="12", color="blue") }}
+    </div>
+{%- endcall -%}
 
 {%- call section(width="full") -%}
     <div class="container">
