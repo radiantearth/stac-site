@@ -1,0 +1,12 @@
+{% from 'sections/hero.html' import hero %}
+{% from 'sections/section.html' import section %}
+
+{{ hero(
+    heading=title,
+    body=body,
+    mods=['dark', 'left']
+) }}
+
+{%- call section() -%}
+    {{ 'about.stacSpec.content' | localize | markdown | safe }}
+{%- endcall -%}

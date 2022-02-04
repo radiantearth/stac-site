@@ -1,24 +1,19 @@
 const path = require('path');
 const fs = require('fs');
 
-const markdownIt = require("markdown-it");
+const markdown = require("./markdown");
 const Prism = require('prismjs');
 const loadLanguages = require('prismjs/components/');
 
 loadLanguages(['py', 'json']);
 
-
 module.exports = function (eleventyConfig) {
-    let markdown = markdownIt({ html: true }).use(require('markdown-it-div'));
-
     eleventyConfig.addFilter('markdown', function (value) {
-        let markdown = require('markdown-it')({
-            html: true
-        });
         return markdown.render(value);
     });
 
     eleventyConfig.addFilter('fromCourse', function(collection, course) {
+        if (!collection) return [];
         if (!course) return collection;
         
         let filtered = collection.filter(item => {
@@ -29,6 +24,7 @@ module.exports = function (eleventyConfig) {
     });
 
     eleventyConfig.addFilter('fromTag', function(collection, tag) {
+        if (!collection) return [];
         if (!tag) return collection;
         
         let filtered = collection.filter(item => {
@@ -38,16 +34,23 @@ module.exports = function (eleventyConfig) {
         return filtered;
     });
 
+    eleventyConfig.addFilter('whereLang', function(collection, locale) {
+        if (!collection) return [];
+        if (!locale) return collection;
+
+        let filtered = collection.filter(item => {
+            return item.data.locale === locale;
+        });
+
+        return filtered;
+    })
+
     eleventyConfig.addFilter('svg', function (filename) {
         const svgPath = path.join(__dirname, `../assets/svg/${filename.replace('.svg', '')}.svg`);    
         const fileContents = fs.readFileSync(svgPath);
 
         return this.env.filters.safe(fileContents.toString('utf8'));
     });
-
-    eleventyConfig.addFilter('safeAtBuild', function (text) {
-        return (text);
-    })
 
     eleventyConfig.addFilter('notebook', function (filename) {
         const sanitizedFilename = filename.replace('.ipynb', '').trim() + '.ipynb';
@@ -88,4 +91,8 @@ module.exports = function (eleventyConfig) {
 
         return this.env.filters.safe(template);
     });
+
+    eleventyConfig.addFilter('langRoute', function (url, lang) {
+        return url.replace(/^\/[a-z\-]*\//, `/${lang}/`);
+    })
 }

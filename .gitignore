@@ -7,3 +7,4 @@ _site/
 public/css/
 public/js/
 public/images/
+.cache/
