@@ -1,0 +1,86 @@
+{% from 'sections/hero.html' import hero %}
+{% from 'grid.html' import grid %}
+{% from 'components/card.html' import card %}
+{% from 'sections/section.html' import section %}
+{% from 'elements/cta.html' import cta %}
+{% from 'components/callout.html' import callout %}
+
+{{ hero(
+    preheading='.hero.preheading' | localize,
+    heading='.hero.heading' | localize,
+    body='.hero.body' | localize | markdown,
+    cta_url='.hero.cta_url' | localize,
+    cta_text='.hero.cta_text' | localize,
+    mods=['dark', 'overlap-xl']
+) }}
+
+{%- call section(mods=['text-white'], width='full') -%}
+    <div class="container">
+        <div class="px-5 md:px-12">
+            <h2>{{ '.stacIsFor.heading' | localize }}</h2>
+        </div>
+    </div>
+    <div class="container--wide text-left">
+        {%- call grid() -%}
+            {%- call card(mods=['blue-700']) -%}
+                <h3>{{ '.stacIsFor.group1.heading' | localize }}</h3>
+                <p>{{ '.stacIsFor.group1.body' | localize }}</p>
+                {{ cta(url='.stacIsFor.group1.cta_url' | localize) }}
+            {%- endcall -%}
+            {%- call card(mods=['blue-700']) -%}
+                <h3>{{ '.stacIsFor.group2.heading' | localize }}</h3>
+                <p>{{ '.stacIsFor.group2.body' | localize }}</p>
+                {{ cta(url='.stacIsFor.group2.cta_url' | localize) }}
+            {%- endcall -%}
+            {%- call card(mods=['blue-700']) -%}
+                <h3>{{ '.stacIsFor.group3.heading' | localize }}</h3>
+                <p>{{ '.stacIsFor.group3.body' | localize }}</p>
+                {{ cta(url='.stacIsFor.group3.cta_url' | localize) }}
+            {%- endcall -%}
+        {%- endcall -%}
+    </div>
+{%- endcall -%}
+
+{%- call section() -%}
+        <h2>{{ '.moreAboutStac.heading' | localize }}</h2>
+        {{ '.moreAboutStac.body' | localize | markdown | safe }}
+        {{ cta(mods=['secondary'], url='.moreAboutStac.cta_url' | localize) }}
+{%- endcall -%}
+
+{%- call section() -%}
+        <h2>{{ '.tutorials.heading' | localize }}</h2>
+        {{ '.tutorials.body' | localize | markdown | safe }}
+        <ul>
+        {%- for tutorial in collections.tutorial | whereLang(locale) -%}
+            <li>
+                <h4 class="inline-block mr-5 mb-0">{{ tutorial.data.title }}</h4>
+                <a href="{{ tutorial.data.page.url }}">Read Tutorial</a>
+            </li>
+        {%- endfor -%}
+        </ul>
+        {{ cta(mods=['secondary'], url='routes.tutorials.href' | localize, text="Browse All") }}
+{%- endcall -%}
+
+{%- call section(mods=['tall']) -%}
+    <h2>{{ '.organizations.heading' | localize }}</h2>
+    
+    {%- call grid(8) -%}
+        {%- for i in range(0,8) -%}
+            <div class="card card--light h-16"></div>
+        {%- endfor -%}
+    {%- endcall -%}
+
+    <h2>{{ '.datasets.heading' | localize }}</h2>
+    
+    {%- call grid(6) -%}
+        {%- for i in range(0,6) -%}
+            <div class="card card--light h-16"></div>
+        {%- endfor -%}
+    {%- endcall -%}
+{%- endcall -%}
+
+{%- call section(mods=['tall', 'dark']) -%}
+    <h2>{{ '.getInvolved.heading' | localize }}</h2>
+    {{ '.getInvolved.body' | localize | markdown | safe }}
+    {{ cta(mods=['primary'], url='.getInvolved.cta_url' | localize, text=".getInvolved.cta_text" | localize) }}
+{%- endcall -%}

@@ -1,0 +1,22 @@
+{% from 'grid.html' import grid %}
+{% from 'sections/section.html' import section %}
+{% from 'sections/hero.html' import hero %}
+{% from 'components/card.html' import card %}
+{% from 'elements/cta.html' import cta %}
+
+{{ hero(
+    preheading='.hero.preheading' | localize,
+    heading='.hero.heading' | localize,
+    body='.hero.body' | localize | markdown | safe,
+    mods=['overlap-lg']
+) }}
+
+<div class="container">
+    {%- for item in ecosystem -%}
+        {%- call card(mods=['light']) -%}
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.summary }}</p>
+            {{ cta(url=item.url, text="Visit link") }}
+        {%- endcall -%}
+    {%- endfor -%}
+</div>

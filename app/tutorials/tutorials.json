@@ -1,0 +1,7 @@
+{
+    "tags": [ "tutorial" ],
+    "layout": "tuts",
+    "eleventyComputed": {
+        "permalink": "{{ locale }}/tutorials/{{ page.fileSlug }}/"
+    }
+}

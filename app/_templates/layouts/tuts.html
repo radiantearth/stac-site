@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="{{ locale }}">
+  <head>
+    {% include 'head.html' %}
+    <title>{{ title }} | STAC</title>
+  </head>
+  <body>
+      {%- include 'nav.html' -%}
+      <div class="container">
+        <div class="pt-6"><a href="{{ 'routes.tutorials.href' | localize }}">Back to tutorials</a></div>
+        {{ content | safe }}
+      </div>
+      {% include 'footer.html' %}
+  </body>
+</html>

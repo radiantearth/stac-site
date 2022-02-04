@@ -82,8 +82,13 @@
 }
 
 .hero-style-3--overlap-xl {
-    padding-bottom: 190px;
-    margin-bottom: -190px;
+    padding-bottom: 200px;
+    margin-bottom: -200px;
+}
+
+.hero-style-3--overlap-2xl {
+    padding-bottom: 260px;
+    margin-bottom: -260px;
 }
 
 .hero-style-3--light {

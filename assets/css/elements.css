@@ -53,10 +53,18 @@ label {
     @apply caption text-lg;
 }
 
-.cta--primary { @apply button bg-green text-white border-green; }
-.cta--secondary { @apply button text-green border-green; }
-.cta--understated { @apply text-green border-b-2 border-green mt-0; }
-.cta--lg { @apply text-xl py-3 px-6 spacing-relaxed; }
+.cta--primary,
+.cta-primary { @apply cta button bg-green text-white border-green; }
+
+.cta--secondary,
+.cta-secondary { @apply cta button text-green border-green; }
+
+.cta--understated,
+.cta-understated { @apply cta text-green border-b-2 border-green mt-0; }
+
+.cta--lg,
+.cta-lg { @apply cta text-xl py-3 px-6 spacing-relaxed; }
+
 
 code {
     @apply mx-2;

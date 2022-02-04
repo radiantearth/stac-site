@@ -1,0 +1,88 @@
+{% from 'sections/section.html' import section %}
+{% from 'grid.html' import grid %}
+{% from 'components/card.html' import card %}
+{% from 'elements/cta.html' import cta %}
+{% from 'components/callout.html' import callout %}
+
+{%- call section(mods=['light', 'text-dark']) -%}
+    <h1>Components</h1>
+{%- endcall -%}
+
+{%- call section() -%}
+    <h2>Cards</h2>
+
+    {%- call grid() -%}
+        {%- call card() -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+        
+        {%- call card(mods=['light']) -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+
+        {%- call card(mods=['dark']) -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+    
+    {%- endcall -%}
+
+    <h3>Image Cards</h3>
+    
+    {%- call grid() -%}
+        {%- call card(image_url="/public/images/satmap-sm.jpg") -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+        {%- call card(
+            image_url="/public/images/satmap-sm.jpg", 
+            mods=['dark']
+        ) -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+        {%- call card(
+            image_url="/public/images/satmap-sm.jpg", 
+            mods=['light']
+        ) -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+    {%- endcall -%}{# end grid #}
+{%- endcall -%}{# end section #}
+
+{%- call section() -%}
+    <h2>Callouts</h2>
+        {%- call callout() -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+        {%- call callout(mods=['info']) -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+        {%- call callout(mods=['warning']) -%}
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+        {%- endcall -%}
+    <h3>Icon Callout</h3>
+    {%- call callout(icon='earth-oceania-solid') -%}
+        <h3>Lorem Ipsum</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat veritatis earum id autem mollitia tempore voluptatum beatae</p>
+    {%- endcall -%}
+    {%- call callout(icon='satellite-solid', icon_color="danger") -%}
+        <h3>Lorem Ipsum</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta voluptas dolorem magnam repellat ipsum libero odio, praesentium asperiores in rerum nisi quam ex, tenetur incidunt eveniet similique, iusto alias est!</p>
+        {{ cta() }}
+    {%- endcall -%}
+{%- endcall -%}
+
+{%- call section() -%}
+    <h2>Alerts</h2>
+    <div class="alert-info">This is some information</div>
+    <div class="alert-success">Good job!</div>
+    <div class="alert-warning">There's something slightly wrong</div>
+    <div class="alert-danger">There's something very wrong</div>
+{%- endcall -%}
