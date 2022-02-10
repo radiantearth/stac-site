@@ -19,14 +19,19 @@
         {{ '.howToHelp.body' | localize | markdown | safe }}
     </div>
     {%- call card(mods=['light']) -%}
-        <h3>Data Provider Adoption</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
-        {{ cta(url="routes.getInvolved.dataProviders.href" | localize )}}
+        {{ '.currentNeeds.1.body' | localize | markdown | safe }}
     {%- endcall -%}
     {%- call card(mods=['light']) -%}
-        <h3>Outreach</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.</p>
-        {{ cta(url="routes.getInvolved.dataUsers.href" | localize )}}
+        {{ '.currentNeeds.2.body' | localize | markdown | safe }}
+    {%- endcall -%}
+    {%- call card(mods=['light']) -%}
+        {{ '.currentNeeds.3.body' | localize | markdown | safe }}
+    {%- endcall -%}
+    {%- call card(mods=['light']) -%}
+        {{ '.currentNeeds.4.body' | localize | markdown | safe }}
+    {%- endcall -%}
+    {%- call card(mods=['light']) -%}
+        {{ '.currentNeeds.5.body' | localize | markdown | safe }}
     {%- endcall -%}
 {%- endcall -%}
 

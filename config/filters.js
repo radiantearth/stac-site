@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const minify = require('html-minifier').minify;
 
 const markdown = require("./markdown");
 const Prism = require('prismjs');
@@ -43,7 +44,7 @@ module.exports = function (eleventyConfig) {
         });
 
         return filtered;
-    })
+    });
 
     eleventyConfig.addFilter('svg', function (filename) {
         const svgPath = path.join(__dirname, `../assets/svg/${filename.replace('.svg', '')}.svg`);    
@@ -53,41 +54,30 @@ module.exports = function (eleventyConfig) {
     });
 
     eleventyConfig.addFilter('notebook', function (filename) {
-        const sanitizedFilename = filename.replace('.ipynb', '').trim() + '.ipynb';
-        const notebookPath = path.join(__dirname, `../assets/notebooks/${sanitizedFilename}`);
-        const publicPath = `/assets/notebooks/${sanitizedFilename}`;
-        
-        const fileContents = fs.readFileSync(notebookPath);
-        const notebook = JSON.parse(fileContents.toString('utf8'));
+        const sanitizedFilename = filename.replace(/(\.ipynb|\.html)/, '').trim();
+        const notebookPath = path.join(__dirname, `../notebooks/build/${sanitizedFilename}.html`);
+        const publicPath = `/notebooks/src/${sanitizedFilename}.ipynb`;
+        const colabUrl = `https://colab.research.google.com/github/radientearth/stac-site/blob/master/notebooks/src/${sanitizedFilename}.ipynb`;
+        const binderUrl = `https://mybinder.org/v2/gh/radiantearth/stac-site/master?filepath=notebooks/src/${sanitizedFilename}.ipynb`;
 
-        let output = notebook.cells.reduce((prevCell, currentCell) => {
-            if (currentCell.cell_type === 'markdown') {
-                let cellMd = currentCell.source.reduce((prev, current) => prev + markdown.render(current), '')
-                return prevCell + cellMd;
-            } else if (currentCell.cell_type === 'code') {
-                let cellCode = currentCell.source.reduce((prev, current) => {
-                    return prev + Prism.highlight(this.env.filters.safe(current), Prism.languages.py, 'py'); 
-                }, '')
-                
-                return `${prevCell}<pre class="card-black">${cellCode}</pre>`
-            }
-        }, '');
+        const notebookHtml = fs.readFileSync(notebookPath, 'utf8');
 
         let downloadLink = (
-            `<a href="${publicPath}" target="download" class="">download</a>`
+            `<a href="${publicPath}" target="download" class="">Download Notebook</a>`
         );
 
-        let template = (
-            `<div class="bg-blue-100">
-                <div class="p-2">
-                    <span class="mb-4 mr-3 font-bold inline-block text-blue-600 py-1 px-2">${sanitizedFilename}</span>
-                    ${downloadLink}
-                </div>
-                <div class="px-5 pb-5">
-                    ${output}
-                </div>
-            </div>`
-        );
+        let colabLink = (`<a href="${colabUrl}">Open in Colab</a>`);
+        let binderLink = (`<a href="${binderUrl}">Launch Binder</a>`);
+
+        let template = `<div class="jupyter-notebook">
+            <div class="bg-blue-100 px-5 rounded mt-5">
+                <span class="my-4 mr-4 font-bold inline-block text-blue-600 py-1">${sanitizedFilename}.ipynb</span>
+                <span class="mx-3 inline-block">${downloadLink}</span> |
+                <span class="mx-3 inline-block">${colabLink}</span> |
+                <span class="mx-3 inline-block">${binderLink}</span>
+            </div>
+            ${notebookHtml}
+        </div>`;
 
         return this.env.filters.safe(template);
     });

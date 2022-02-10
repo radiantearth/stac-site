@@ -1,6 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'vendor/code-highlight-theme.css';
+@import 'vendor/jupyter-theme.css';
 
 @import 'base';
 @import 'type';

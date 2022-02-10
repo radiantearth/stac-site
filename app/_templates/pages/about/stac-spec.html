@@ -2,11 +2,10 @@
 {% from 'sections/section.html' import section %}
 
 {{ hero(
-    heading=title,
-    body=body,
-    mods=['dark', 'left']
+    heading='.hero.heading' | localize,
+    body='.hero.body' | localize | markdown | safe
 ) }}
 
 {%- call section() -%}
-    {{ 'about.stacSpec.content' | localize | markdown | safe }}
+    {{ '.content' | localize | markdown | safe }}
 {%- endcall -%}

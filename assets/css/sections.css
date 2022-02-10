@@ -106,3 +106,18 @@
         theme('colors.green') 300%
     );
 }
+
+/* Gist */
+
+body .gist .gist-meta a {
+    @apply text-blue-dark;
+}
+
+body .gist .gist-meta {
+    background: #fff;
+    @apply text-blue-dark border-0;
+}
+
+.jupyter-notebook .highlight {
+    
+}
