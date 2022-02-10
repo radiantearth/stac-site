@@ -10,7 +10,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 module.exports = function(eleventyConfig) {
     // File Structure
     eleventyConfig.addPassthroughCopy("public");
-    eleventyConfig.addPassthroughCopy("assets/notebooks");
+    eleventyConfig.addPassthroughCopy("notebooks/src");
     eleventyConfig.addWatchTarget("../public/**/*");
     eleventyConfig.addWatchTarget("../config/**/*");
     eleventyConfig.addDataExtension("ipynb", contents => {
@@ -27,7 +27,8 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.setLibrary("md", markdown);
 
     // Plugins
-    eleventyConfig.addPlugin(syntaxHighlight);
+    eleventyConfig.addPlugin(syntaxHighlight, {});
+
     eleventyConfig.addPlugin(EleventyRenderPlugin);
     
 
