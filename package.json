@@ -1,6 +1,6 @@
 {
   "name": "11ty-tutorials-proof-of-concept",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,6 @@
     "serve": "run-p serve:*",
     "build:css": "postcss assets/css/app.css -o public/css/style.css",
     "build:eleventy": "ELEVENTY_ENV=production eleventy",
-    "build:images": "npm run ./config/images.js",
     "build:js": "webpack build --mode=production",
     "build": "run-s build:*"
   },

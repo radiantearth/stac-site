@@ -57,24 +57,26 @@ module.exports = function (eleventyConfig) {
         const sanitizedFilename = filename.replace(/(\.ipynb|\.html)/, '').trim();
         const notebookPath = path.join(__dirname, `../notebooks/build/${sanitizedFilename}.html`);
         const publicPath = `/notebooks/src/${sanitizedFilename}.ipynb`;
-        const colabUrl = `https://colab.research.google.com/github/radientearth/stac-site/blob/master/notebooks/src/${sanitizedFilename}.ipynb`;
+        const colabUrl  = `https://colab.research.google.com/github/radientearth/stac-site/blob/master/notebooks/src/${sanitizedFilename}.ipynb`;
         const binderUrl = `https://mybinder.org/v2/gh/radiantearth/stac-site/master?filepath=notebooks/src/${sanitizedFilename}.ipynb`;
 
         const notebookHtml = fs.readFileSync(notebookPath, 'utf8');
 
         let downloadLink = (
-            `<a href="${publicPath}" target="download" class="">Download Notebook</a>`
+            `<a href="${publicPath}" target="download" class="">Download</a>`
         );
 
         let colabLink = (`<a href="${colabUrl}">Open in Colab</a>`);
         let binderLink = (`<a href="${binderUrl}">Launch Binder</a>`);
 
         let template = `<div class="jupyter-notebook">
-            <div class="bg-blue-100 px-5 rounded mt-5">
-                <span class="my-4 mr-4 font-bold inline-block text-blue-600 py-1">${sanitizedFilename}.ipynb</span>
-                <span class="mx-3 inline-block">${downloadLink}</span> |
-                <span class="mx-3 inline-block">${colabLink}</span> |
-                <span class="mx-3 inline-block">${binderLink}</span>
+            <div class="jupyter-notebook__meta py-4">
+                <span class="my-1 mr-5 font-bold inline-block text-blue-600 py-1">${sanitizedFilename}.ipynb</span>
+                <div class="whitespace-nowrap inline-block">
+                    <span class="mr-3 my-1 inline-block">${downloadLink}</span> |
+                    <span class="mx-3 my-1 inline-block">${colabLink}</span> |
+                    <span class="mx-3 my-1 inline-block">${binderLink}</span>
+                </div>
             </div>
             ${notebookHtml}
         </div>`;
@@ -84,5 +86,5 @@ module.exports = function (eleventyConfig) {
 
     eleventyConfig.addFilter('langRoute', function (url, lang) {
         return url.replace(/^\/[a-z\-]*\//, `/${lang}/`);
-    })
+    });
 }

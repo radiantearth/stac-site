@@ -10,6 +10,7 @@
 @import 'sections';
 
 @import 'pages/styleguide.css';
+@import 'pages/tutorials.css';
 
 @import 'tailwindcss/utilities';
 
@@ -25,9 +26,7 @@
     @apply max-w-none mx-auto px-0;
 }
 
-
-
- /* theme overrides */
+/* theme overrides */
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
     @apply bg-blue-900;

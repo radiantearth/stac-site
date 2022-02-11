@@ -3,6 +3,9 @@
     "layout": "tuts",
     "container": true,
     "eleventyComputed": {
-        "permalink": "{{ locale }}/tutorials/{{ page.fileSlug }}/"
+        "permalink": "{{ locale }}/tutorials/{{ page.fileSlug }}/",
+        "categoryTree": "{{ page.filePathStem | categoryTreeFromPath }}",
+        "categorySlug": "{{ page.filePathStem | categorySlugFromPath }}",
+        "categoryName": "{{ page.filePathStem | categoryNameFromPath }}"
     }
 }

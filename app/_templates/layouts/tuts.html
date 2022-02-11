@@ -5,15 +5,55 @@
     <title>{{ title }} | STAC</title>
   </head>
   <body>
-      {%- include 'nav.html' -%}
-      <div class="container">
-        <div class="pt-6"><a href="{{ 'routes.tutorials.href' | localize }}">Back to tutorials</a></div>
-      </div>
-      <article>
-        <div class="{% if(container) %}container{% endif %}">
+    {%- include 'nav.html' -%}
+    <div class="md:flex">
+      <aside class="tutorials-sidebar">
+        <nav>
+            <h3 class="tutorials-sidebar__category-heading">Getting Started</h3>
+            {% set tagCourse = collections.tutorial | fromCategoryTree("getting-started") %}
+            <ul class="pl-3 border-l-2 border-blue-dark">
+                {%- for tutorial in tagCourse -%}
+                    <li class="tutorials-sidebar__tutorial-item">
+                      <a 
+                        href="{{tutorial.data.page.url}}"
+                        class="tutorials-sidebar__tutorial-link"
+                      >{{ tutorial.data.title }}</a>
+                    </li>
+                {%- endfor -%}
+            </ul>
+
+            <h3 class="tutorials-sidebar__category-heading">Data Providers</h3>
+            
+            <h3 class="tutorials-sidebar__category-heading">Developers</h3>
+            
+            <h3 class="tutorials-sidebar__category-heading">Data Users</h3>
+            
+            <h3 class="tutorials-sidebar__category-heading">Explore Notebooks</h3>
+            {% set tagCourse = collections.tutorial | fromCategoryTree("notebooks") %}
+            <ul class="pl-3 border-l-2 border-blue-dark">
+                {%- for tutorial in tagCourse -%}
+                    <li class="tutorials-sidebar__tutorial-item">
+                      <a 
+                        href="{{tutorial.data.page.url}}"
+                        class="tutorials-sidebar__tutorial-link"
+                      >{{ tutorial.data.title }}</a>
+                    </li>
+                {%- endfor -%}
+            </ul>
+        </nav>
+      </aside>
+      <article class="tutorials-article">
+        <div class="{% if(container != false) %}container{% endif %}">
           {{ content | safe }}
+          {% if (content and notebooks) %}
+            <div class="my-8 border-b-2 border-gray-light"></div>
+          {% endif %}
+          {%- for nb in notebooks -%}
+            {{ nb | notebook }}
+          {%- endfor -%}
         </div>
       </article>
-      {% include 'footer.html' %}
+    </div>
+    {% include 'footer.html' %}
   </body>
 </html>

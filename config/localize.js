@@ -25,7 +25,7 @@ module.exports = function (eleventyConfig) {
     })
 
     eleventyConfig.addFilter('localize', function (key, data, localeOverride) {
-        key = key.indexOf('.') === 0 && this.ctx.content_path ? this.ctx.content_path + key : key;
+        key = key.indexOf('.') === 0 && this.ctx.contentPath ? this.ctx.contentPath + key : key;
         key = key.indexOf('root.') === 0 ? key : `root.${key}`;
         let content = this.env.filters.i18n.bind(this)(key, data, localeOverride);
 
