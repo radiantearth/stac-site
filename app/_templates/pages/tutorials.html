@@ -4,42 +4,4 @@
 {% from 'components/callout.html' import callout %}
 {% from 'elements/cta.html' import cta %}
 
-{{ hero(heading="Browse STAC Tutorials", body=body) }}
-
-{%- call section() -%}
-    <h2>Filtered by Course</h2>
-    <h3>The STAC Spec</h3>
-    {% set tutorialCourse = collections.tutorial | fromCourse("the-stac-spec") %}
-    {%- for tutorial in tutorialCourse -%}
-        {%- call card() -%}
-            <h4>{{ tutorial.data.title }}</h2>
-            {{ cta(url=tutorial.data.page.url, text="Read tutorial") }}
-        {%- endcall -%}
-    {%- endfor -%}
-{%- endcall -%}
-
-
-{%- call section() -%}
-    <h2>Filtered by Tag</h2>
-
-    <h3>Test</h3>
-    {% set tagCourse = collections.tutorial | fromTag("test") %}
-    {%- for tutorial in tagCourse -%}
-        {%- call card() -%}
-            <h4>{{ tutorial.data.title }}</h2>
-            {{ cta(url=tutorial.data.page.url, text="Read tutorial") }}
-        {%- endcall -%}
-    {%- endfor -%}
-{%- endcall -%}
-
-{%- call section() -%}
-    <h2>All Tutorials</h2>
-    
-    {%- for tutorial in collections.tutorial -%}
-        {%- call card() -%}
-            <h4>{{ tutorial.data.title }}</h2>
-            <p>{{ tutorial.data.description }}</p>
-            {{ cta(url=tutorial.data.page.url, text="Read tutorial") }}
-        {%- endcall -%}
-    {%- endfor -%}
-{%- endcall -%}
+{{ body | markdown | safe }}

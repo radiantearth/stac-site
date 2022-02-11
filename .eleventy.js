@@ -1,6 +1,3 @@
-const shortcodes = require('./config/shortcodes');
-const filters = require('./config/filters');
-const localize = require('./config/localize');
 const markdown = require('./config/markdown');
 const { version: buildVersion }  = require('./package.json');
 
@@ -8,6 +5,12 @@ const { EleventyRenderPlugin } = require("@11ty/eleventy");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = function(eleventyConfig) {
+    // Filters & Shortcodes
+    require('./config/filters')(eleventyConfig);
+    require('./config/localize')(eleventyConfig);
+    require('./config/categories')(eleventyConfig);
+    require('./config/shortcodes')(eleventyConfig);
+
     // File Structure
     eleventyConfig.addPassthroughCopy("public");
     eleventyConfig.addPassthroughCopy("notebooks/src");
@@ -30,12 +33,6 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPlugin(syntaxHighlight, {});
 
     eleventyConfig.addPlugin(EleventyRenderPlugin);
-    
-
-    // Filters & Shortcodes
-    localize(eleventyConfig);
-    filters(eleventyConfig);
-    shortcodes(eleventyConfig);
 
     // Options
     return {

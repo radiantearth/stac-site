@@ -80,7 +80,7 @@
 
 .jupyter-notebook .cell {
     @apply block relative py-4;
-    padding-left: 70px; 
+    padding-left: 70px;
     padding-right: 0px;
     overflow: hidden;
 }
@@ -110,4 +110,9 @@
 .jupyter-notebook .xr-var-item label,
 .jupyter-notebook .xr-var-item > .xr-var-name span {
     @apply bg-white;
+}
+
+.jupyter-notebook__meta {
+    @apply bg-blue-100 px-5 rounded mt-5;
+    margin-left: 70px;
 }
