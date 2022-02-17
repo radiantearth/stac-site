@@ -5,7 +5,15 @@ module.exports = {
         routes.tutorials,
         routes.about,
         routes.getInvolved,
-        routes.styleguide
+        {
+            ...routes.styleguide,
+            children: [
+                routes.styleguide.colors,
+                routes.styleguide.type,
+                routes.styleguide.components,
+                routes.styleguide.sections
+            ]
+        }
     ],
     "styleguide_links": [
         routes.styleguide.colors,

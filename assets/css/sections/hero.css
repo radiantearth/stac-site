@@ -1,0 +1,99 @@
+/* Hero Style 1 */
+
+.hero-style-1 {
+    @apply pb-5 relative;
+    padding-top: 200px;
+}
+
+.hero-style-1__card {
+    @apply card bg-white relative px-10 py-6;
+    z-index: 2;
+}
+
+.hero-style-1--dark .hero-style-1__card {
+    @apply bg-blue-dark text-white;
+}
+
+.hero-style-1__backdrop {
+    @apply absolute w-full left-0 top-0 right-0 bg-center bg-cover;
+    bottom: 100px;
+}
+
+/* Hero Style 2 */
+
+.hero-style-2 {
+    @apply md:flex;
+}
+
+.hero-style-2__image {
+    background-position: center;
+    background-size: cover;
+    min-height: 200px;
+
+}
+
+.hero-style-2--dark {
+    @apply bg-blue-dark text-white;
+}
+
+.hero-style-2--reverse {
+    @apply flex-row-reverse;
+}
+
+/* Hero Style 3 */
+
+.hero-style-3 {
+    @apply pt-5 pb-8 bg-blue-dark text-white;
+}
+
+.hero-style-3__content {
+    @apply text-center p-8 md:p-12 relative;
+}
+
+.hero-style-3__heading {
+    @apply text-4xl font-bold;
+}
+
+.hero-style-3__description {
+    @apply my-6 text-lg;
+}
+
+.hero-style-3--center {
+    @apply text-center;
+}
+
+.hero-style-3--overlap {
+    padding-bottom: 115px;
+    margin-bottom: -115px;
+}
+
+.hero-style-3--overlap-lg {
+    padding-bottom: 150px;
+    margin-bottom: -150px;
+}
+
+.hero-style-3--overlap-xl {
+    padding-bottom: 200px;
+    margin-bottom: -200px;
+}
+
+.hero-style-3--overlap-2xl {
+    padding-bottom: 260px;
+    margin-bottom: -260px;
+}
+
+.hero-style-3--light {
+    @apply bg-blue-100;
+}
+
+.hero-style-3--dark {
+    @apply bg-blue-dark text-white;
+}
+
+.hero-style-3--gradient {
+    background: linear-gradient(
+        180deg,
+        theme('colors.blue.800') 0%,
+        theme('colors.green') 300%
+    );
+}
