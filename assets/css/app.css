@@ -8,6 +8,8 @@
 @import 'elements';
 @import 'components';
 @import 'sections';
+@import 'sections/nav.css';
+@import 'sections/hero.css';
 
 @import 'pages/styleguide.css';
 @import 'pages/tutorials.css';
