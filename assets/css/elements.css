@@ -19,14 +19,6 @@
     .caption {
         @apply font-display my-3;
     }
-
-    .font2 .cta, .font2 .caption, {
-        @apply font-display2;
-    }
-
-    .font3 .cta, .font3 .caption, {
-        @apply font-display3;
-    }
 }
 
 a {
@@ -35,14 +27,6 @@ a {
 
 label {
     @apply font-display;
-}
-
-.font2 label {
-    @apply font-display2;
-}
-
-.font3 label {
-    @apply font-display3;
 }
 
 .caption-xl {

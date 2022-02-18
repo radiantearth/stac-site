@@ -46,6 +46,28 @@ module.exports = function (eleventyConfig) {
 
         return filtered;
     });
+
+    eleventyConfig.addFilter('findBySlug', function (collection, slug) {
+        return collection.find(item => item.categorySlug === slug);
+    });
+
+    eleventyConfig.addCollection("category", function(collectionApi) {
+        const tutorials = collectionApi.getFilteredByTag("tutorial");
+        
+        const categories = {};
+
+        tutorials.forEach(tutorial => {
+            if (categories[tutorial.data.categoryTree]) return;
+
+            categories[tutorial.data.categoryTree] = {
+                categorySlug: tutorial.data.categorySlug,
+                categoryTree: tutorial.data.categoryTree,
+                categoryName: tutorial.data.categoryName,
+            };
+        });
+
+        return Object.values(categories);
+    });
 }
 
 function categoryTreeFromPath (filePathStem, ctx) {

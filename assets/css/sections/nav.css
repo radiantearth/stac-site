@@ -1,31 +1,79 @@
+.topbar {
+    @apply bg-blue-100 pt-2 px-3 relative;
+    z-index: 4;
+}
+
+.topbar .container {
+    @apply relative;
+    z-index: 2;
+}
+
 .navbar {
     @apply bg-blue-100 relative;
+    z-index: 3;
+}
+
+.navbar::before,
+.topbar::before {
+    content: '';
+    @apply absolute top-0 bottom-0 right-0 left-0 bg-blue-100;
 }
 
 .navbar__main {
-    @apply items-start justify-start flex font-display w-full
+    @apply items-start justify-start flex font-display w-full;
+    z-index: 1;
 }
 
 .navbar__home {
     @apply font-normal justify-self-start text-3xl text-white mr-5;
+    z-index: 3;
 }
 
 .navbar__drawer {
     @apply bg-blue-100;
 }
 
+.navbar__actions {
+    @apply pt-10 ml-auto;
+    z-index: 3;
+}
+
+.navbar__toggle-button {
+    @apply p-3;
+}
+
+.navbar__submenu {
+    @apply p-0 m-0 md:absolute bg-blue-200 rounded md:shadow-card;
+    z-index: 3;
+    min-width: 220px;
+    border-left: 6px solid theme('colors.blue.600');
+}
+
+.navbar__dropdown-icon {
+    @apply inline-block ml-2 relative;
+    top: -3px;
+}
+
+.navbar__submenu__item {
+    @apply list-none;
+}
+
+.navbar__submenu__link {
+    @apply block w-full text-blue-700 px-3 py-2 inline-block hover:text-blue-50 hover:bg-blue-400;
+}
+
 @media (max-width: theme('screens.md')) {
     .navbar__drawer {
-        @apply absolute pb-7;
-        display: none;
-        top: 100px;
-        z-index: 3;
+        @apply absolute pb-10 shadow-card;
+        top: -100vh;
+        z-index: -1;
         left: 0;
         right: 0;
+        transition: all 0.25s;
     }
     
     .navbar__drawer--active {
-        display: block;
+        top: 100px;
     }
 }
 
@@ -40,5 +88,5 @@
 }
 
 .navbar__link {
-    @apply text-xl text-blue-dark inline-block mt-11 pt-2 pb-2 px-3 font-bold;
+    @apply text-xl text-blue-dark inline-block mt-4 md:mt-11 pt-2 pb-4 px-3 font-bold;
 }

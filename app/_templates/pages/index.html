@@ -11,10 +11,10 @@
     body='.hero.body' | localize | markdown,
     cta_url='.hero.cta_url' | localize,
     cta_text='.hero.cta_text' | localize,
-    mods=['dark', 'overlap-xl']
+    mods=['overlap-xl']
 ) }}
 
-{%- call section(mods=['text-white'], width='full') -%}
+{%- call section(mods=[], width='full') -%}
     <div class="container">
         <div class="px-5 md:px-12">
             <h2>{{ '.stacIsFor.heading' | localize }}</h2>

@@ -34,8 +34,8 @@ module.exports = {
                 "lo-ip": "/lo-ip/about/stac-spec",
             },
             "name": {
-                "en": "STAC Spec",
-                "lo-ip": "STAC Spec",
+                "en": "Tools & Resources",
+                "lo-ip": "Lorem Ipsum",
             }
         }
     },

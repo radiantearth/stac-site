@@ -43,7 +43,8 @@
 /* Hero Style 3 */
 
 .hero-style-3 {
-    @apply pt-5 pb-8 bg-blue-dark text-white;
+    @apply pt-5 pb-8 bg-blue-100;
+    box-shadow: inset 2px -5px 14px -10px rgba(0,0,0,0.25);
 }
 
 .hero-style-3__content {
