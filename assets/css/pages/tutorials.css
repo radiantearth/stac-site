@@ -10,7 +10,7 @@
 }
 
 .tutorials-sidebar__category-heading {
-    @apply text-xl;
+    @apply text-xl text-blue-50;
 }
 
 .tutorials-sidebar__tutorial-item {
@@ -18,5 +18,5 @@
 }
 
 .tutorials-sidebar__tutorial-link {
-    @apply font-sans font-light leading-snug text-blue;
+    @apply font-sans font-light leading-snug text-blue-50;
 }

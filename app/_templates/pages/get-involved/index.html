@@ -14,23 +14,23 @@
 ) }}
 
 {%- call section() -%}
-    <div class="text-white">
+    <div class="">
         <h2>{{ '.howToHelp.heading' | localize }}</h2>
         {{ '.howToHelp.body' | localize | markdown | safe }}
     </div>
-    {%- call card(mods=['light']) -%}
+    {%- call card(mods=['dark']) -%}
         {{ '.currentNeeds.1.body' | localize | markdown | safe }}
     {%- endcall -%}
-    {%- call card(mods=['light']) -%}
+    {%- call card(mods=['dark']) -%}
         {{ '.currentNeeds.2.body' | localize | markdown | safe }}
     {%- endcall -%}
-    {%- call card(mods=['light']) -%}
+    {%- call card(mods=['dark']) -%}
         {{ '.currentNeeds.3.body' | localize | markdown | safe }}
     {%- endcall -%}
-    {%- call card(mods=['light']) -%}
+    {%- call card(mods=['dark']) -%}
         {{ '.currentNeeds.4.body' | localize | markdown | safe }}
     {%- endcall -%}
-    {%- call card(mods=['light']) -%}
+    {%- call card(mods=['dark']) -%}
         {{ '.currentNeeds.5.body' | localize | markdown | safe }}
     {%- endcall -%}
 {%- endcall -%}

@@ -1,6 +1,6 @@
 {% from 'elements/icon.html' import icon %}
 
-<div class="bg-blue-100 p-3">
+<div class="topbar">
     <div class="container flex justify-end">
     <a class="text-blue-dark ml-4 font-bold" href="{{ page.url | langRoute('en') }}">English</a>
     <a class="text-blue-dark ml-4 font-bold" href="{{ page.url | langRoute('lo-ip') }}">Lorem</a>
@@ -8,27 +8,45 @@
 </div>
 <nav
     class="navbar"
-    x-data="{ navIsActive: false }"
+    x-data="navbar"
 >
     <div class="container">
         <div class="navbar__main">
             <a class="navbar__home" style="width: 150px;" href="/{{locale}}/">
                 {% image 'assets/images/STAC-01.png', 'stac logo', '300px' %}
             </a>
-            <div :class="navIsActive ? 'navbar__drawer navbar__drawer--active' : 'navbar__drawer'">
+            <div :class="active ? 'navbar__drawer navbar__drawer--active' : 'navbar__drawer'">
                 <ul class="navbar__items">
                     {% for navLink in tt.navigation.links %}
-                        <li class="navbar__item">
+                        <li class="navbar__item relative">
                             <a 
-                                class="navbar__link" 
+                                class="navbar__link {% if(navLink.children) %}navbar__link--has-children{% endif %}"
                                 href="{{ navLink.href[locale] }}"
-                            >{{ navLink.name[locale] }}</a>
+                                @click="e => toggleSubmenu(e, '{{ navLink.name[locale] }}')"
+                            >
+                                {{ navLink.name[locale] }}
+                                {% if(navLink.children) %}
+                                    <span class="navbar__dropdown-icon">{{ icon('caret-down-solid', size="3", color='blue-dark') }}</span>
+                                {% endif %}
+                            </a>
+                            {% if(navLink.children) %}
+                                <ul class="navbar__submenu" x-show="activeSubmenu === '{{ navLink.name[locale] }}'" x-cloak x-collapse.duration.150ms>
+                                    {% for child in navLink.children %}
+                                        <li class="navbar__submenu__item">
+                                            <a 
+                                                class="navbar__submenu__link"
+                                                href="{{ child.href[locale] }}"
+                                            >{{ child.name[locale] }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                         </li>
                     {% endfor %}
                 </ul>
             </div>
-            <div class="pt-12 ml-auto">
-                <button x-on:click="navIsActive = !navIsActive" class="border-0 py-1 px-3">{{ icon('bars-solid', size="5") }}</button>
+            <div class="navbar__actions">
+                <button class="navbar__toggle-button md:hidden" @click="toggle('oogabooga')" class="border-0 py-1 px-3">{{ icon('bars-solid', size="5") }}</button>
             </div>
         </div>
     </div>

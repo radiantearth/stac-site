@@ -10,3 +10,5 @@
         @apply -mx-3 flex;
     }
 }
+
+[x-cloak] { display: none !important; }

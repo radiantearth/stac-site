@@ -1,3 +1,4 @@
+{% from 'elements/icon.html' import icon %}
 <!doctype html>
 <html lang="{{ locale }}">
   <head>
@@ -7,31 +8,34 @@
   <body>
     {%- include 'nav.html' -%}
     <div class="md:flex">
-      <aside class="tutorials-sidebar">
+      <aside class="tutorials-sidebar bg-blue" x-data="tutorialsSidebar">
         <nav>
-            <h3 class="tutorials-sidebar__category-heading">Getting Started</h3>
-            {% set tagCourse = collections.tutorial | fromCategoryTree("getting-started") %}
-            <ul class="pl-3 border-l-2 border-blue-dark">
-                {%- for tutorial in tagCourse -%}
-                    <li class="tutorials-sidebar__tutorial-item">
-                      <a 
-                        href="{{tutorial.data.page.url}}"
-                        class="tutorials-sidebar__tutorial-link"
-                      >{{ tutorial.data.title }}</a>
-                    </li>
-                {%- endfor -%}
-            </ul>
+          <h2 class="mt-0 text-blue-50 text-2xl">Browse Tutorials</h2>
 
-            <h3 class="tutorials-sidebar__category-heading">Data Providers</h3>
-            
-            <h3 class="tutorials-sidebar__category-heading">Developers</h3>
-            
-            <h3 class="tutorials-sidebar__category-heading">Data Users</h3>
-            
-            <h3 class="tutorials-sidebar__category-heading">Explore Notebooks</h3>
-            {% set tagCourse = collections.tutorial | fromCategoryTree("notebooks") %}
-            <ul class="pl-3 border-l-2 border-blue-dark">
-                {%- for tutorial in tagCourse -%}
+          <a 
+            href="{{ 'routes.tutorials.href' | localize }}"
+            class="tutorials-sidebar__tutorial-link pl-3 border-l-2 border-blue-300"
+          >{{ 'routes.tutorials.name' | localize }}</a>
+          
+          {% set categorySlug = categorySlug if categorySlug else "getting-started" %}
+          {% for slug in tt.navigation.tutorial_categories %}
+            {% set category = collections.category | findBySlug(slug[locale]) %}
+            <h3 
+              class="tutorials-sidebar__category-heading" 
+              @click="toggleCategory('{{ slug[locale] }}')"
+              {% if (slug[locale] === categorySlug) %}x-init="toggleCategory('{{ slug[locale] }}')"{% endif %}
+            >
+              {{ category.categoryName }} <span class="ml-3">{{ icon('caret-down-solid', size="3", color='blue-dark') }}</span>
+            </h3>
+
+            {% set categoryTutorials = collections.tutorial | fromCategoryTree(slug[locale]) %}
+            <ul 
+              class="pl-3 border-l-2 border-blue-300" 
+              x-show="activeCategories.indexOf('{{ slug[locale] }}') !== -1" 
+              x-collapse.duration.200ms
+              {% if (slug[locale] !== categorySlug) %}x-cloak{% endif %}
+            >
+                {%- for tutorial in categoryTutorials -%}
                     <li class="tutorials-sidebar__tutorial-item">
                       <a 
                         href="{{tutorial.data.page.url}}"
@@ -40,6 +44,7 @@
                     </li>
                 {%- endfor -%}
             </ul>
+          {% endfor %}
         </nav>
       </aside>
       <article class="tutorials-article">

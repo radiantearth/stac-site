@@ -13,7 +13,7 @@
 
 <div class="container">
     {%- for item in ecosystem -%}
-        {%- call card(mods=['light']) -%}
+        {%- call card(mods=['dark']) -%}
             <h3>{{ item.title }}</h3>
             <p>{{ item.summary }}</p>
             {{ cta(url=item.url, text="Visit link") }}
