@@ -87,4 +87,8 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addFilter('langRoute', function (url, lang) {
         return url.replace(/^\/[a-z\-]*\//, `/${lang}/`);
     });
+
+    eleventyConfig.addFilter('noExt', function (slug) {
+        return slug.split('.')[0];
+    });
 }

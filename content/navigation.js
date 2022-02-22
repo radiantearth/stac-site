@@ -23,8 +23,7 @@ module.exports = {
                 {
                     href: routes.getInvolved.href,
                     name: {
-                        en: "How to help",
-                        "lo-ip": "Lorem Ipsum",
+                        en: "How to help"
                     }
                 },
                 routes.getInvolved.dataProviders,

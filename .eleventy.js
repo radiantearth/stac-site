@@ -9,6 +9,7 @@ module.exports = function(eleventyConfig) {
     require('./config/filters')(eleventyConfig);
     require('./config/localize')(eleventyConfig);
     require('./config/categories')(eleventyConfig);
+    require('./config/tutorials')(eleventyConfig);
     require('./config/shortcodes')(eleventyConfig);
 
     // File Structure

@@ -71,10 +71,17 @@ module.exports = function (eleventyConfig) {
 }
 
 function categoryTreeFromPath (filePathStem, ctx) {
-    const tree = filePathStem.replace(/\/*tutorials\/(en|lorem)/, '')
+    const treeAndId = filePathStem.replace(/\/*tutorials/, '')
         .replace(ctx.page.fileSlug, '')
         .replace(/\/+$/, '')
-        .replace(/^\/+/, '');
+        .replace(/^\/+/, '')
+        .split('/')
+
+    console.log(treeAndId);
+    
+    const tree = treeAndId
+        .slice(0, treeAndId.length-1)
+        .join('/');
 
     return tree;
 }
