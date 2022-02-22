@@ -18,25 +18,27 @@
             <div :class="active ? 'navbar__drawer navbar__drawer--active' : 'navbar__drawer'">
                 <ul class="navbar__items">
                     {% for navLink in tt.navigation.links %}
+                        {% set navContent = 'navigation.links.' + loop.index0 %}
                         <li class="navbar__item relative">
                             <a 
                                 class="navbar__link {% if(navLink.children) %}navbar__link--has-children{% endif %}"
-                                href="{{ navLink.href[locale] }}"
-                                @click="e => toggleSubmenu(e, '{{ navLink.name[locale] }}')"
+                                href="{{ (navContent + '.href') | localize }}"
+                                @click="e => toggleSubmenu(e, '{{ (navContent + '.name') | localize }}')"
                             >
-                                {{ navLink.name[locale] }}
+                                {{ (navContent + '.name') | localize }}
                                 {% if(navLink.children) %}
                                     <span class="navbar__dropdown-icon">{{ icon('caret-down-solid', size="3", color='blue-dark') }}</span>
                                 {% endif %}
                             </a>
                             {% if(navLink.children) %}
-                                <ul class="navbar__submenu" x-show="activeSubmenu === '{{ navLink.name[locale] }}'" x-cloak x-collapse.duration.150ms>
+                                <ul class="navbar__submenu" x-show="activeSubmenu === '{{ ('navigation.links.' + loop.index0 + '.name') | localize }}'" x-cloak x-collapse.duration.150ms>
                                     {% for child in navLink.children %}
+                                    {% set childContent = navContent + '.children.' + loop.index0 %}
                                         <li class="navbar__submenu__item">
                                             <a 
                                                 class="navbar__submenu__link"
-                                                href="{{ child.href[locale] }}"
-                                            >{{ child.name[locale] }}</a>
+                                                href="{{ (childContent + '.href') | localize }}"
+                                            >{{ (childContent + '.name') | localize }}</a>
                                         </li>
                                     {% endfor %}
                                 </ul>
