@@ -26,8 +26,6 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addFilter('fromCategoryTree', function(collection, category) {
         if (!collection) return [];
 
-        // if (!locale) return collection;
-
         let filtered = collection.filter(item => {
             return item.data.categoryTree && item.data.categoryTree.split('/').indexOf(category) !== -1
         });
@@ -76,8 +74,6 @@ function categoryTreeFromPath (filePathStem, ctx) {
         .replace(/\/+$/, '')
         .replace(/^\/+/, '')
         .split('/')
-
-    console.log(treeAndId);
     
     const tree = treeAndId
         .slice(0, treeAndId.length-1)

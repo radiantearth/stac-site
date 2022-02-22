@@ -1,14 +1,14 @@
 module.exports = {
-    "gettingStarted": {
+    "getting-started": {
         "name": {
-            "en": "Getting Started"
-        },
-        "path": {
-            "en": "/tutorials/categories/getting-started/"
-        },
-        "spec": {
-            "name": {},
-            "path": {},
+            "en": "Getting Started",
+            "lo-ip": "Gorem Stipsum"
+        }
+    },
+    "notebooks": {
+        "name": {
+            "en": "Notebooks",
+            "lo-ip": "Lorpbooks"
         }
     }
 }

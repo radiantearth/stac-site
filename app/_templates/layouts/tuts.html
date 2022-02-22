@@ -6,6 +6,12 @@
     <title>{{ title }} | STAC</title>
   </head>
   <body>
+    <div class="topbar">
+      <div class="container flex justify-end">
+        <a class="text-blue-dark ml-4 font-bold" href="{{ collections.tutorial | getLocalizedTutorial('en') }}">English</a>
+        <a class="text-blue-dark ml-4 font-bold" href="{{ collections.tutorial | getLocalizedTutorial('lo-ip') }}">Lorem</a>
+      </div>
+    </div>
     {%- include 'nav.html' -%}
     <div class="md:flex">
       <aside class="tutorials-sidebar bg-blue" x-data="tutorialsSidebar">

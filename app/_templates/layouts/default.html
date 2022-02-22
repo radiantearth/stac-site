@@ -5,6 +5,12 @@
     <title>STAC | {{ title }}</title>
   </head>
   <body class="bg-white">
+      <div class="topbar">
+          <div class="container flex justify-end">
+            <a class="text-blue-dark ml-4 font-bold" href="{{ page.url | langRoute('en') }}">English</a>
+            <a class="text-blue-dark ml-4 font-bold" href="{{ page.url | langRoute('lo-ip') }}">Lorem</a>
+          </div>
+      </div>  
       {% include 'nav.html' %}
       <main style="min-height: calc(100vh - 175px);">
         {{ content | safe }}
