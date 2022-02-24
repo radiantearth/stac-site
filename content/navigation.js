@@ -1,6 +1,6 @@
 const routes = require('./routes');
 
-module.exports = {
+const headerNav = {
     "links": [ 
         routes.tutorials,
         {
@@ -32,14 +32,20 @@ module.exports = {
             ]
         },
     ],
-    "styleguide_links": [
+}
+
+const styleguideNav = {
+    "links": [
         routes.styleguide.colors,
         routes.styleguide.type,
         routes.styleguide.elements,
         routes.styleguide.components,
         routes.styleguide.sections,
     ],
-    "tutorial_categories": [
+}
+
+const tutorialsNav = {
+    "categories": [
         {
             en: 'getting-started'
         },
@@ -50,4 +56,10 @@ module.exports = {
             en: 'example'
         }
     ]
+}
+
+module.exports = {
+    headerNav,
+    styleguideNav,
+    tutorialsNav
 }

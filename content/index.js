@@ -5,5 +5,6 @@ module.exports = {
         getInvolved: require('./get-involved'),
         routes: require('./routes'),
         navigation: require('./navigation'),
+        categories: require('./categories')
     }
 }

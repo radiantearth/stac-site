@@ -1,7 +1,5 @@
 const i18n = require('eleventy-plugin-i18n');
-const i18njs = require('eleventy-plugin-i18n/i18n.js');
 const translations = require('../content');
-const markdown = require('./markdown');
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addWatchTarget("../content/**/*");
