@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const minify = require('html-minifier').minify;
 
-const markdown = require("./markdown");
+const markdown = require('./markdown.eleventy.js');
 const Prism = require('prismjs');
 const loadLanguages = require('prismjs/components/');
 

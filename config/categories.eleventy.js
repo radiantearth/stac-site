@@ -23,14 +23,18 @@ module.exports = function (eleventyConfig) {
         return filtered;
     });
 
-    eleventyConfig.addFilter('fromCategoryTree', function(collection, category) {
+    eleventyConfig.addFilter('fromCategoryTree', function(collection, category, locale) {
         if (!collection) return [];
 
-        let filtered = collection.filter(item => {
+        let filteredByCategory = collection.filter(item => {
             return item.data.categoryTree && item.data.categoryTree.split('/').indexOf(category) !== -1
         });
 
-        return filtered;
+        if (!locale) return filteredByCategory;
+
+        let filteredByLocale = filteredByCategory.filter(item => item.data.locale === locale)
+
+        return filteredByLocale;
     });
 
     eleventyConfig.addFilter('fromCategoryTreeExact', function(collection, category) {

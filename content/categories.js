@@ -10,7 +10,10 @@ module.exports = {
             "en": "Notebooks",
             "lo-ip": "Lorpbooks"
         }
+    },
+    "example": {
+        "name": {
+            "en": "Example"
+        }
     }
 }
-
-// category: gettingStarted.spec

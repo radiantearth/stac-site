@@ -1,4 +1,6 @@
 {% from 'elements/icon.html' import icon %}
+{% set postCategorySlug = categorySlug if categorySlug else "getting-started" %}
+
 <!doctype html>
 <html lang="{{ locale }}">
   <head>
@@ -23,23 +25,22 @@
             class="tutorials-sidebar__tutorial-link pl-3 border-l-2 border-blue-300"
           >{{ 'routes.tutorials.name' | localize }}</a>
           
-          {% set categorySlug = categorySlug if categorySlug else "getting-started" %}
-          {% for slug in tt.navigation.tutorial_categories %}
-            {% set category = collections.category | findBySlug(slug[locale]) %}
+          {% for slug in tt.navigation.tutorialsNav.categories %}
+            {% set navCategorySlug = ('navigation.tutorialsNav.categories.' + loop.index0) | localize %}
+            {% set categoryTutorials = collections.tutorial | fromCategoryTree(navCategorySlug, locale) %}
             <h3 
               class="tutorials-sidebar__category-heading" 
-              @click="toggleCategory('{{ slug[locale] }}')"
-              {% if (slug[locale] === categorySlug) %}x-init="toggleCategory('{{ slug[locale] }}')"{% endif %}
+              @click="toggleCategory('{{ navCategorySlug }}')"
+              {% if (navCategorySlug === postCategorySlug) %}x-init="toggleCategory('{{ navCategorySlug }}')"{% endif %}
             >
-              {{ category.categoryName }} <span class="ml-3">{{ icon('caret-down-solid', size="3", color='blue-dark') }}</span>
+              {{ ('categories.' + navCategorySlug + '.name') | localize }} <span class="ml-3">{{ icon('caret-down-solid', size="3", color='blue-dark') }}</span>
             </h3>
 
-            {% set categoryTutorials = collections.tutorial | fromCategoryTree(slug[locale]) %}
             <ul 
               class="pl-3 border-l-2 border-blue-300" 
-              x-show="activeCategories.indexOf('{{ slug[locale] }}') !== -1" 
+              x-show="activeCategories.indexOf('{{ navCategorySlug }}') !== -1" 
               x-collapse.duration.200ms
-              {% if (slug[locale] !== categorySlug) %}x-cloak{% endif %}
+              {% if (navCategorySlug !== postCategorySlug) %}x-cloak{% endif %}
             >
                 {%- for tutorial in categoryTutorials -%}
                     <li class="tutorials-sidebar__tutorial-item">

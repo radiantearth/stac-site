@@ -1,4 +1,4 @@
-const markdown = require('./config/markdown');
+const markdown = require('./config/markdown.eleventy.js');
 const { version: buildVersion }  = require('./package.json');
 
 const { EleventyRenderPlugin } = require("@11ty/eleventy");
@@ -6,11 +6,11 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = function(eleventyConfig) {
     // Filters & Shortcodes
-    require('./config/filters')(eleventyConfig);
-    require('./config/localize')(eleventyConfig);
-    require('./config/categories')(eleventyConfig);
-    require('./config/tutorials')(eleventyConfig);
-    require('./config/shortcodes')(eleventyConfig);
+    require('./config/filters.eleventy.js')(eleventyConfig);
+    require('./config/localize.eleventy.js')(eleventyConfig);
+    require('./config/categories.eleventy.js')(eleventyConfig);
+    require('./config/tutorials.eleventy.js')(eleventyConfig);
+    require('./config/shortcodes.eleventy.js')(eleventyConfig);
 
     // File Structure
     eleventyConfig.addPassthroughCopy("public");

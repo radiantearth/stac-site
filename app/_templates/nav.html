@@ -11,8 +11,8 @@
             </a>
             <div :class="active ? 'navbar__drawer navbar__drawer--active' : 'navbar__drawer'">
                 <ul class="navbar__items">
-                    {% for navLink in tt.navigation.links %}
-                        {% set navContent = 'navigation.links.' + loop.index0 %}
+                    {% for navLink in tt.navigation.headerNav.links %}
+                        {% set navContent = 'navigation.headerNav.links.' + loop.index0 %}
                         <li class="navbar__item relative">
                             <a 
                                 class="navbar__link {% if(navLink.children) %}navbar__link--has-children{% endif %}"
@@ -25,7 +25,7 @@
                                 {% endif %}
                             </a>
                             {% if(navLink.children) %}
-                                <ul class="navbar__submenu" x-show="activeSubmenu === '{{ ('navigation.links.' + loop.index0 + '.name') | localize }}'" x-cloak x-collapse.duration.150ms>
+                                <ul class="navbar__submenu" x-show="activeSubmenu === '{{ ('navigation.headerNav.links.' + loop.index0 + '.name') | localize }}'" x-cloak x-collapse.duration.150ms>
                                     {% for child in navLink.children %}
                                     {% set childContent = navContent + '.children.' + loop.index0 %}
                                         <li class="navbar__submenu__item">
