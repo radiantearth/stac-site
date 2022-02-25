@@ -123,9 +123,13 @@ const tutorials = {
 
 const datasets = {
     "heading": {
-        "en": "STAC is used in these datasets",
+        "en": "Explore STAC datasets",
         "lo-ip": "Lorem Ipsum Dolor",
-    }
+    },
+    "content_after": {
+        "en": "See the full list at [stacindex.org](https://stacindex.org/catalogs)",
+        "lo-ip": "Lorem Ipsum Dolor",
+    },
 }
 
 const organizations = {

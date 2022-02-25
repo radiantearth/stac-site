@@ -61,22 +61,55 @@
         {{ cta(mods=['secondary'], url='routes.tutorials.href' | localize, text="Browse All") }}
 {%- endcall -%}
 
-{%- call section(mods=['tall']) -%}
-    <h2>{{ '.organizations.heading' | localize }}</h2>
-    
-    {%- call grid(8) -%}
-        {%- for i in range(0,8) -%}
-            <div class="card card--light h-16"></div>
-        {%- endfor -%}
-    {%- endcall -%}
 
-    <h2>{{ '.datasets.heading' | localize }}</h2>
-    
-    {%- call grid(6) -%}
-        {%- for i in range(0,6) -%}
-            <div class="card card--light h-16"></div>
-        {%- endfor -%}
-    {%- endcall -%}
+
+<section class="section section--tall">
+    <div class="container">
+        <h2>{{ '.organizations.heading' | localize }}</h2>
+    </div>
+    <div class="container--wide">
+        <div class="flex justify-between items-center">
+            <div class="md:w-64 m-3">{% image 'assets/images/company-logos/planet.png', 'element84 logo', '300px' %}</div>
+            <div class="md:w-64 m-3">{% image 'assets/images/company-logos/radiant-earth.png', 'radiant earth logo', '300px' %}</div>
+            <div class="md:w-64 m-3">{% image 'assets/images/company-logos/microsoft.png', 'element84 logo', '300px' %}</div>
+        </div>
+        <div class="flex justify-between items-center md:-mx-3">
+            <div class="md:w-48 m-3">
+                {% image 'assets/images/company-logos/element84.png', 'element84 logo', '300px' %}
+            </div>
+            <div class="md:w-48 m-3">
+                {% image 'assets/images/company-logos/sparkgeo.png', 'sparkgeo logo', '300px' %}
+            </div>
+            <div class="md:w-48 m-3">
+                {% image 'assets/images/company-logos/maxar-technologies.png', 'maxar technologies logo', '300px' %}
+            </div>
+            <div class="md:w-48 m-3">
+                {% image 'assets/images/company-logos/arturo.jpeg', 'element84 logo', '300px' %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{%- call section(mods=['tall'], width="full") -%}
+    <div class="container">
+        <h2>{{ '.datasets.heading' | localize }}</h2>
+    </div>
+    <div class="container--wide py-5">
+        {%- call grid(3) -%}
+            {%- for i in range(0,9) -%}
+                <div class="card card--light my-0 p-5 flex items-center">
+                    <div>
+                        <h3 class="text-base mt-0"><a href="{{ catalogs[i].url }}">{{ catalogs[i].title }}</a></h3>
+                        <span class="px-3 py-1 rounded-lg font-bold {{ 'bg-blue-400 text-white' if catalogs[i].access === 'public' else 'bg-warning-light' }}">{{ 'Public' if catalogs[i].access === 'public' else 'Protected' }}</span>
+                        <span class="px-3 py-1 rounded-lg font-bold bg-blue-200">{{ 'API' if catalogs[i].isApi else 'Catalog' }}</span>
+                    </div>
+                </div>
+            {%- endfor -%}
+        {%- endcall -%}
+    </div>
+    <div class="container">
+        {{ '.datasets.content_after' | localize | markdown | safe }}
+    </div>
 {%- endcall -%}
 
 {%- call section(mods=['tall', 'dark']) -%}
