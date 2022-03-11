@@ -5,6 +5,7 @@
 .section--center      { @apply text-center; }
 .section--tall        { @apply py-10; }
 .section--dark        { @apply bg-blue-dark text-white; }
+.section--blue        { @apply bg-blue text-white; }
 .section--light       { @apply bg-blue-light; }
 
 /* Gist */

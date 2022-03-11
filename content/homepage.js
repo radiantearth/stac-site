@@ -132,6 +132,17 @@ const datasets = {
     },
 }
 
+const tools = {
+    "heading": {
+        "en": "Explore STAC tools & resources",
+        "lo-ip": "Lorem Ipsum Dolor",
+    },
+    "content_after": {
+        "en": "See the full list at [stacindex.org](https://stacindex.org/catalogs)",
+        "lo-ip": "Lorem Ipsum Dolor",
+    },
+}
+
 const organizations = {
     "heading": {
         "en": "These organizations are betting on STAC",
@@ -159,5 +170,6 @@ module.exports = {
     tutorials,
     organizations,
     datasets,
+    tools,
     getInvolved,
 }

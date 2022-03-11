@@ -1,5 +1,5 @@
-module.exports = { 
-    "tutorials": {
+module.exports = (() => {
+    const tutorials = {
         "href": {
             "en": "/en/tutorials/",
             "lo-ip": "/lo-ip/tutorials/",
@@ -8,8 +8,9 @@ module.exports = {
             "en": "Tutorials",
             "lo-ip": "Tutorials",
         },
-    },
-    "about": {    
+    }
+
+    const about = {    
         "href": {
             "en": "/en/about/",
             "lo-ip": "/lo-ip/about/",
@@ -38,8 +39,9 @@ module.exports = {
                 "lo-ip": "Lorem Ipsum",
             }
         }
-    },
-    "getInvolved": {
+    }
+
+    const getInvolved = {
         "href": {
             "en": "/en/get-involved/",
             "lo-ip": "/lo-ip/get-involved/",
@@ -78,8 +80,9 @@ module.exports = {
                 "lo-ip": "Data Users",
             },
         },
-    },
-    "styleguide": {
+    }
+
+    const styleguide = {
         "href": {
             "en": "/en/styleguide/",
             "lo-ip": "/lo-ip/styleguide/",
@@ -139,4 +142,11 @@ module.exports = {
             },
         },
     }
-}
+
+    return { 
+        tutorials,
+        about,
+        getInvolved,
+        styleguide
+    };
+})()

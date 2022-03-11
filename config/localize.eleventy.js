@@ -14,14 +14,6 @@ module.exports = function (eleventyConfig) {
     
     eleventyConfig.addPlugin(i18n, pluginOptions);
 
-    eleventyConfig.addFilter('whereat', function (val) {
-        const page = this.page || this.ctx.page;
-
-        console.log(this);
-
-        return val;
-    })
-
     eleventyConfig.addFilter('localize', function (key, data, localeOverride) {
         key = key.indexOf('.') === 0 && this.ctx.contentPath ? this.ctx.contentPath + key : key;
         key = key.indexOf('root.') === 0 ? key : `root.${key}`;

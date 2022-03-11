@@ -1,0 +1,22 @@
+{
+    "tags": [
+        "translateablePage"
+    ],
+    "pagination": {
+        "data": "locales",
+        "size": 1,
+        "alias": "locale"
+    },
+    "eleventyComputed": {
+        "route": {
+            "en": "{{ page.filePathStem | replace('pages', 'en') }}/",
+            "lo-ip": "{{ page.filePathStem | replace('pages', 'lo-ip') }}/"
+        },
+        "permalink": "{{ route[locale] }}index.html",
+        "debug": [
+            "{{ page.filePathStem | replace('pages', 'en') | log }}/",
+            "{{ page.filePathStem | replace('pages', 'lo-ip') | log }}/",
+            "/{{ route[locale] | log }}"
+        ]
+    }
+}

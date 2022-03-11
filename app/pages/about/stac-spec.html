@@ -1,0 +1,19 @@
+---
+title: The STAC Spec
+route:
+    en: "/en/about/stac-spec/"
+    lo-ip: "/lo-ip/lorbout/stacrem-specsum/"
+contentPath: "about.stacSpec"
+---
+
+{% from 'sections/hero.html' import hero %}
+{% from 'sections/section.html' import section %}
+
+{{ hero(
+    heading='.hero.heading' | localize,
+    body='.hero.body' | localize | markdown | safe
+) }}
+
+{%- call section() -%}
+    {{ '.content' | localize | markdown | safe }}
+{%- endcall -%}
