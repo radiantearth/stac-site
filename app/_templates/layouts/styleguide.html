@@ -8,13 +8,7 @@
       {%- include 'nav.html' -%}
       <section class="bg-blue-200 flex">
         <div class="container font-display">
-          <a href="{{ 'routes.styleguide.href' | localize }}" class="styleguide-nav-link text-2xl font-medium mr-5 -ml-2">Styleguide</a>
-          {%- for link in tt.navigation.styleguideNav.links -%}
-            <a 
-              href="{{ link.href[locale] }}" 
-              class="styleguide-nav-link {% if link.href === page.url %} styleguide-nav-link--active {% endif %}"
-            >{{ link.name[locale] }}</a>
-          {%- endfor -%}
+          
         </div>
       </section>
       <main style="min-height: calc(100vh - 175px);">

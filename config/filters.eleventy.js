@@ -91,4 +91,19 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addFilter('noExt', function (slug) {
         return slug.split('.')[0];
     });
+
+    eleventyConfig.addFilter('stacIndexCategory', function(collection, category) {
+        if (!collection) return [];
+        if (!category) return collection;
+        
+        let filtered = collection.filter(item => {
+            return item.categories && item.categories.indexOf(category) !== -1;
+        });
+
+        return filtered;
+    });
+
+    eleventyConfig.addFilter('replace', function (str, fragment, newFragment) {
+        return str.replace(fragment, newFragment);
+    })
 }

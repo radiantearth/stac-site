@@ -17,22 +17,15 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("notebooks/src");
     eleventyConfig.addWatchTarget("../public/**/*");
     eleventyConfig.addWatchTarget("../config/**/*");
-    eleventyConfig.addDataExtension("ipynb", contents => {
-        return {
-            notebook: JSON.parse(contents),
-        };
-    });
-    
+
     // Settings
     eleventyConfig.addGlobalData('buildversion', buildVersion);
     eleventyConfig.setUseGitIgnore(false);
     eleventyConfig.setDataDeepMerge(true);
-
     eleventyConfig.setLibrary("md", markdown);
 
     // Plugins
     eleventyConfig.addPlugin(syntaxHighlight, {});
-
     eleventyConfig.addPlugin(EleventyRenderPlugin);
 
     // Options
