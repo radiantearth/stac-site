@@ -3,14 +3,19 @@ export const Navbar = () => ({
     activeSubmenu: null,
 
     toggle(logtext) {
-        this.active = !this.active
+        this.active = !this.active;
 
         if (logtext) console.log(logtext);
     },
 
     toggleSubmenu(event, submenu) {
-        if (!event.currentTarget.classList.contains('navbar__link--has-children')) return;
-        
+        if (
+            !event.currentTarget.classList.contains(
+                'navbar__link--has-children'
+            )
+        )
+            return;
+
         event.preventDefault();
 
         if (this.activeSubmenu === submenu) {
@@ -18,19 +23,19 @@ export const Navbar = () => ({
         } else {
             this.activeSubmenu = submenu;
         }
-    }
+    },
 });
 
 export const TutorialsSidebar = () => ({
     activeCategories: [],
 
     toggleCategory(category) {
-        const categoryIndex = this.activeCategories.indexOf(category)
-        
+        const categoryIndex = this.activeCategories.indexOf(category);
+
         if (categoryIndex === -1) {
             this.activeCategories.push(category);
         } else {
             this.activeCategories.splice(categoryIndex, 1);
         }
-    }
-})
+    },
+});

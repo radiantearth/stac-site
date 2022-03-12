@@ -1,19 +1,19 @@
 module.exports = {
-    "getting-started": {
-        "name": {
-            "en": "Getting Started",
-            "lo-ip": "Gorem Stipsum"
-        }
+    'getting-started': {
+        name: {
+            en: 'Getting Started',
+            'lo-ip': 'Gorem Stipsum',
+        },
     },
-    "notebooks": {
-        "name": {
-            "en": "Notebooks",
-            "lo-ip": "Lorpbooks"
-        }
+    notebooks: {
+        name: {
+            en: 'Notebooks',
+            'lo-ip': 'Lorpbooks',
+        },
     },
-    "example": {
-        "name": {
-            "en": "Example"
-        }
-    }
-}
+    example: {
+        name: {
+            en: 'Example',
+        },
+    },
+};

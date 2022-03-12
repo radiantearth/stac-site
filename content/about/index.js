@@ -2,40 +2,40 @@ const { snippet, jsonSnippet } = require('../_util');
 const routes = require('../routes');
 
 const hero = {
-    "preheading": {
-        "en": "STAC",
-        "lo-ip": "Lorem"
+    preheading: {
+        en: 'STAC',
+        'lo-ip': 'Lorem',
     },
-    "heading": {
-        "en": "More about STAC",
-        "lo-ip": "Ipsum Dolor",
+    heading: {
+        en: 'More about STAC',
+        'lo-ip': 'Ipsum Dolor',
     },
-    "body": {
-        "en": `
+    body: {
+        en: `
 STAC is a standard and a community of collaborators working to enable increased access to information about our planet. The focus of STAC is to make it as easy as possible for data providers to expose their data to the world.
 
 There are exabytes of spatial data in existence today, with the potential to greatly increase our understanding of the world and improve decisions. But most of it remains inaccessible, as it is in a myriad of different formats, with no common way to find relevant information about a place over time. As data migrates to the cloud, we have an opportunity to make it more accessible and interoperable.
         `,
-        "lo-ip": "Lorem ipsum dolor"
+        'lo-ip': 'Lorem ipsum dolor',
     },
-    "beforeCode": {
-        "en": `
+    beforeCode: {
+        en: `
 ## A familiar format
 
 The STAC spec itself provides a lowest common denominator JSON format to wrap around any relevant data about the earth. The core GeoJSON object and related structures are designed for extension, so it can adapt to different domains.
         `,
     },
-    "code": {
-        "en": jsonSnippet('spec/item-simple.json'),
+    code: {
+        en: jsonSnippet('spec/item-simple.json'),
     },
-    "afterCode": {
-        "en" : `The core JSON pages can be transformed into browsable, interactive HTML pages with tools like STAC Browser. When STAC is used in concert with emerging formats like Cloud Optimized GeoTIFF or TileDB arrays the result vastly lowers the barriers for anybody to find and use geospatial assets like satellite imagery`
-    }
-}
+    afterCode: {
+        en: `The core JSON pages can be transformed into browsable, interactive HTML pages with tools like STAC Browser. When STAC is used in concert with emerging formats like Cloud Optimized GeoTIFF or TileDB arrays the result vastly lowers the barriers for anybody to find and use geospatial assets like satellite imagery`,
+    },
+};
 
 const whyStac = {
-    "body": {
-        "en": `
+    body: {
+        en: `
 ## The need for STAC
 
 The SpatioTemporal Asset Catalog (STAC) is an open specification that evolved from different organizations coming together to increase the interoperability of searching for satellite imagery. When a user wants to search for all the imagery in their area and time of interest they can’t make just one search — they have to use different tools and connect to API’s that are similar but all slightly different. STAC aims to make that much easier, by providing common metadata to expose geospatial assets.
@@ -61,13 +61,13 @@ A range of tools help facilitate the use of the STAC spec – some of the most w
 - [EODAG](https://github.com/CS-SI/eodag) is a CLI tool and a Python framework for searching, aggregating results and downloading EO data through a unified API regardless of the data provider. It can be run as STAC client or STAC API proxy server for non-STAC providers.
 
 [See the full list](${routes.about.toolsResources.href.en}){.cta .cta--understated}
-`
-    }
-}
+`,
+    },
+};
 
 const whoIsItFor = {
-    "body": {
-        "en":`
+    body: {
+        en: `
 ## Who is STAC for
 
 ### Data Providers
@@ -86,9 +86,9 @@ If you are building infrastructure to host, ingest, or manage collections of spa
 
 Consumers of spatial temporal datasets are often burdened with building unique pipelines for ingesting collections into their system. Collections are delivered with varying levels of detail in their metadata and via distinct delivery mechanisms. In an effort to reduce this burden, a community of geospatial developers have constructed the STAC spec to remove the need for tailor-made workflows.
 
-[Learn More](${routes.getInvolved.dataUsers.href.en}){.cta-understated}`
-    }
-}
+[Learn More](${routes.getInvolved.dataUsers.href.en}){.cta-understated}`,
+    },
+};
 
 module.exports = {
     hero,
@@ -96,4 +96,4 @@ module.exports = {
     whoIsItFor,
     stacSpec: require('./stac-spec'),
     toolsResources: require('./tools-resources'),
-}
+};
