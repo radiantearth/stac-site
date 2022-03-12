@@ -5,15 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve:eleventy": "ELEVENTY_ENV=development eleventy --serve --watch",
-    "serve:css": "postcss assets/css/app.css -o public/css/style.css --watch",
-    "serve:js": "webpack --watch --mode=development",
+    "serve:eleventy": "ELEVENTY_ENV=development eleventy --config=eleventy.js --serve --watch",
+    "serve:css": "postcss --config ./config/postcss.config.js assets/css/app.css -o public/css/style.css --watch",
+    "serve:js": "webpack --config ./config/webpack.config.js --watch --mode=development",
     "serve": "run-p serve:*",
-    "build:css": "postcss assets/css/app.css -o public/css/style.css",
+    "build:css": "postcss --config ./config/postcss.config.js assets/css/app.css -o public/css/style.css",
     "build:eleventy": "ELEVENTY_ENV=production eleventy",
-    "build:js": "webpack build --mode=production",
+    "build:js": "webpack build --config ./config/webpack.config.js --mode=production",
     "build": "run-s build:*",
-    "format": "prettier --config ./config/prettier/.prettierrc --ignore-path ./config/prettier/.prettierignore"
+    "format": "prettier --write --config ./config/.prettierrc --ignore-path ./config/prettier/.prettierignore '**/*.js'"
   },
   "keywords": [],
   "author": "",

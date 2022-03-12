@@ -7,21 +7,21 @@ const loadLanguages = require('prismjs/components/');
 
 loadLanguages(['py', 'json']);
 
-async function generateImage (src, alt, sizes) {
+async function generateImage(src, alt, sizes) {
     let metadata = await Image(src, {
-      widths: [300, 600, 1100, 1600],
-      formats: ['avif', 'jpeg', 'png'],
-      outputDir: './public/images/',
-      urlPath: '/public/images/'
+        widths: [300, 600, 1100, 1600],
+        formats: ['avif', 'jpeg', 'png'],
+        outputDir: './public/images/',
+        urlPath: '/public/images/',
     });
-  
+
     let imageAttributes = {
-      alt,
-      sizes,
-      loading: 'lazy',
-      decoding: 'async',
+        alt,
+        sizes,
+        loading: 'lazy',
+        decoding: 'async',
     };
-  
+
     // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
     return Image.generateHTML(metadata, imageAttributes);
 }
@@ -29,7 +29,7 @@ async function generateImage (src, alt, sizes) {
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPairedShortcode('highlight', function (code, language) {
         const html = Prism.highlight(code, Prism.languages[language], language);
-        
+
         return html;
     });
 
@@ -38,11 +38,16 @@ module.exports = function (eleventyConfig) {
     });
 
     eleventyConfig.addPairedShortcode('section', function (value, opts = {}) {
-        return `<section class="section ${ opts.mods ? opts.mods
-            .map(mod => ' section--' + mod )
-            .split(' ') : ''
-        }">` + value + `</section>`;
+        return (
+            `<section class="section ${
+                opts.mods
+                    ? opts.mods.map((mod) => ' section--' + mod).split(' ')
+                    : ''
+            }">` +
+            value +
+            `</section>`
+        );
     });
 
     eleventyConfig.addNunjucksAsyncShortcode('image', generateImage);
-}
+};

@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const minify = require('html-minifier').minify;
 
-const markdown = require('./markdown.eleventy.js');
+const markdown = require('./markdown.js');
 const Prism = require('prismjs');
 const loadLanguages = require('prismjs/components/');
 
@@ -13,33 +13,35 @@ module.exports = function (eleventyConfig) {
         return markdown.render(value);
     });
 
-    eleventyConfig.addFilter('fromCourse', function(collection, course) {
+    eleventyConfig.addFilter('fromCourse', function (collection, course) {
         if (!collection) return [];
         if (!course) return collection;
-        
-        let filtered = collection.filter(item => {
-            return item.data.courses && item.data.courses.indexOf(course) !== -1;
+
+        let filtered = collection.filter((item) => {
+            return (
+                item.data.courses && item.data.courses.indexOf(course) !== -1
+            );
         });
 
         return filtered;
     });
 
-    eleventyConfig.addFilter('fromTag', function(collection, tag) {
+    eleventyConfig.addFilter('fromTag', function (collection, tag) {
         if (!collection) return [];
         if (!tag) return collection;
-        
-        let filtered = collection.filter(item => {
+
+        let filtered = collection.filter((item) => {
             return item.data.tags && item.data.tags.indexOf(tag) !== -1;
         });
 
         return filtered;
     });
 
-    eleventyConfig.addFilter('whereLang', function(collection, locale) {
+    eleventyConfig.addFilter('whereLang', function (collection, locale) {
         if (!collection) return [];
         if (!locale) return collection;
 
-        let filtered = collection.filter(item => {
+        let filtered = collection.filter((item) => {
             return item.data.locale === locale;
         });
 
@@ -47,27 +49,33 @@ module.exports = function (eleventyConfig) {
     });
 
     eleventyConfig.addFilter('svg', function (filename) {
-        const svgPath = path.join(__dirname, `../assets/svg/${filename.replace('.svg', '')}.svg`);    
+        const svgPath = path.join(
+            __dirname,
+            `../assets/svg/${filename.replace('.svg', '')}.svg`
+        );
         const fileContents = fs.readFileSync(svgPath);
 
         return this.env.filters.safe(fileContents.toString('utf8'));
     });
 
     eleventyConfig.addFilter('notebook', function (filename) {
-        const sanitizedFilename = filename.replace(/(\.ipynb|\.html)/, '').trim();
-        const notebookPath = path.join(__dirname, `../notebooks/build/${sanitizedFilename}.html`);
+        const sanitizedFilename = filename
+            .replace(/(\.ipynb|\.html)/, '')
+            .trim();
+        const notebookPath = path.join(
+            __dirname,
+            `../notebooks/build/${sanitizedFilename}.html`
+        );
         const publicPath = `/notebooks/src/${sanitizedFilename}.ipynb`;
-        const colabUrl  = `https://colab.research.google.com/github/radientearth/stac-site/blob/master/notebooks/src/${sanitizedFilename}.ipynb`;
+        const colabUrl = `https://colab.research.google.com/github/radientearth/stac-site/blob/master/notebooks/src/${sanitizedFilename}.ipynb`;
         const binderUrl = `https://mybinder.org/v2/gh/radiantearth/stac-site/master?filepath=notebooks/src/${sanitizedFilename}.ipynb`;
 
         const notebookHtml = fs.readFileSync(notebookPath, 'utf8');
 
-        let downloadLink = (
-            `<a href="${publicPath}" target="download" class="">Download</a>`
-        );
+        let downloadLink = `<a href="${publicPath}" target="download" class="">Download</a>`;
 
-        let colabLink = (`<a href="${colabUrl}">Open in Colab</a>`);
-        let binderLink = (`<a href="${binderUrl}">Launch Binder</a>`);
+        let colabLink = `<a href="${colabUrl}">Open in Colab</a>`;
+        let binderLink = `<a href="${binderUrl}">Launch Binder</a>`;
 
         let template = `<div class="jupyter-notebook">
             <div class="jupyter-notebook__meta py-4">
@@ -92,18 +100,23 @@ module.exports = function (eleventyConfig) {
         return slug.split('.')[0];
     });
 
-    eleventyConfig.addFilter('stacIndexCategory', function(collection, category) {
-        if (!collection) return [];
-        if (!category) return collection;
-        
-        let filtered = collection.filter(item => {
-            return item.categories && item.categories.indexOf(category) !== -1;
-        });
+    eleventyConfig.addFilter(
+        'stacIndexCategory',
+        function (collection, category) {
+            if (!collection) return [];
+            if (!category) return collection;
 
-        return filtered;
-    });
+            let filtered = collection.filter((item) => {
+                return (
+                    item.categories && item.categories.indexOf(category) !== -1
+                );
+            });
+
+            return filtered;
+        }
+    );
 
     eleventyConfig.addFilter('replace', function (str, fragment, newFragment) {
         return str.replace(fragment, newFragment);
-    })
-}
+    });
+};

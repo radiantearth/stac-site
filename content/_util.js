@@ -16,4 +16,4 @@ function snippet(filename) {
 module.exports = {
     jsonSnippet,
     snippet,
-}
+};

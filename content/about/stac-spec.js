@@ -1,20 +1,20 @@
 const { snippet, jsonSnippet } = require('../_util');
 
 const hero = {
-    "heading": {
-        "en": "The STAC Specification"
+    heading: {
+        en: 'The STAC Specification',
     },
-    "body": {
-        "en": `
+    body: {
+        en: `
 The STAC Specification lives as easily readable markdown pages on github, as the community aspires to keep STAC very approachable. So while this page gives a slightly deeper overview, don't hesitate to dive directly into the spec.
 
 One thing to emphasize is that the specification is designed to be flexible and extensible. So if it seems a bit 'light', that is by design, so that different domains and tools can easily make it their own. The extensions section of the spec, detailed below, is where the community collaborates on more detail about specific data types and new functionality. Key to the STAC approach is JSON's extensibility. While the spec does provide JSON Schemas for validation (easily usable with online tools like STACLint.com), JSON validation won’t complain if you have extra fields, adding more fields allows you to support a variety of data types and implementations. Flexibility and extensibility are core tenets of STAC.
-`
-    }
-}
+`,
+    },
+};
 
 const content = {
-    "en": `
+    en: `
 ## Item
 
 Fundamental to any STAC, a STAC Item represents an atomic collection of inseparable data and metadata. A [STAC Item](/) is a [GeoJSON feature](/) and can be easily read by any modern GIS or geospatial library. The STAC Item JSON specification includes additional fields for:
@@ -98,10 +98,11 @@ The core Item, Catalog and Collection specs can be fully implemented by either, 
 
 Client libraries like STAC Browser are able to treat dynamic and static catalogs the same, as they both expose the exact same information. The one thing dynamic catalogs can do that static ones can't is offer the /search/ endpoint. Though as the ecosystem of dynamic STAC servers improves it will be quite easy to use an off the shelf server to ingest the static catalog and provide a dynamic version of it to enable search.
 `,
-    "lo-ip": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, quia! Vel sit doloribus commodi expedita dolores a reiciendis magni facilis velit! Dolore, eveniet corporis aspernatur architecto odio amet sit fugiat?"
-}
+    'lo-ip':
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, quia! Vel sit doloribus commodi expedita dolores a reiciendis magni facilis velit! Dolore, eveniet corporis aspernatur architecto odio amet sit fugiat?',
+};
 
 module.exports = {
     hero,
     content,
-}
+};
