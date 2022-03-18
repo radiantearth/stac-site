@@ -99,6 +99,12 @@ module.exports = {
     },
 
     tutorialsNav: {
+        heading: {
+            en: 'STAC Tutorials'
+        },
+        homeLabel: {
+            en: 'Introduction'
+        },
         categories: [
             {
                 en: 'getting-started',
