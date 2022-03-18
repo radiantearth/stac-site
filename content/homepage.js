@@ -1,5 +1,16 @@
 const routes = require('./routes');
 
+// schema {
+//     route: {
+//         en: '',
+//         'lo-ip': '',
+//     },
+//     meta: {
+//         en: ''
+//     },
+//     data: {}
+// }
+
 const hero = {
     preheading: {
         en: 'STAC',
@@ -15,8 +26,8 @@ const hero = {
     },
     cta_url: routes.tutorials.href,
     cta_text: {
-        'lo-ip': 'Lorem Ipsum',
         en: 'Explore Tutorials',
+        'lo-ip': 'Lorem Ipsum',
     },
 };
 

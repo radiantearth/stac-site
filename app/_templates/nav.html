@@ -17,22 +17,22 @@
                             <a 
                                 class="navbar__link {% if(navLink.children) %}navbar__link--has-children{% endif %}"
                                 href="{{ (navContent + '.href') | localize }}"
-                                @click="e => toggleSubmenu(e, '{{ (navContent + '.name') | localize }}')"
+                                @click="e => toggleSubmenu(e, '{{ (navContent + '.label') | localize }}')"
                             >
-                                {{ (navContent + '.name') | localize }}
+                                {{ (navContent + '.label') | localize }}
                                 {% if(navLink.children) %}
                                     <span class="navbar__dropdown-icon">{{ icon('caret-down-solid', size="3", color='blue-dark') }}</span>
                                 {% endif %}
                             </a>
                             {% if(navLink.children) %}
-                                <ul class="navbar__submenu" x-show="activeSubmenu === '{{ ('navigation.headerNav.links.' + loop.index0 + '.name') | localize }}'" x-cloak x-collapse.duration.150ms>
+                                <ul class="navbar__submenu" x-show="activeSubmenu === '{{ ('navigation.headerNav.links.' + loop.index0 + '.label') | localize }}'" x-cloak x-collapse.duration.150ms>
                                     {% for child in navLink.children %}
                                     {% set childContent = navContent + '.children.' + loop.index0 %}
                                         <li class="navbar__submenu__item">
                                             <a 
                                                 class="navbar__submenu__link"
                                                 href="{{ (childContent + '.href') | localize }}"
-                                            >{{ (childContent + '.name') | localize }}</a>
+                                            >{{ (childContent + '.label') | localize }}</a>
                                         </li>
                                     {% endfor %}
                                 </ul>
