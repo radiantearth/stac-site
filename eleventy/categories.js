@@ -16,8 +16,6 @@ module.exports = function (eleventyConfig) {
         function (collection, category) {
             if (!collection) return [];
 
-            // if (!locale) return collection;
-
             let filtered = collection.filter((item) => {
                 return item.data.categorySlug === category;
             });

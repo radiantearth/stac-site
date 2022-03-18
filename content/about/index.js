@@ -1,5 +1,4 @@
-const { snippet, jsonSnippet } = require('../_util');
-const routes = require('../routes');
+const { snippet, jsonSnippet, route } = require('../_util');
 
 const hero = {
     preheading: {
@@ -60,7 +59,7 @@ A range of tools help facilitate the use of the STAC spec – some of the most w
 - [PySTAC](https://github.com/stac-utils/pystac) is a library for working with STAC catalogs in Python
 - [EODAG](https://github.com/CS-SI/eodag) is a CLI tool and a Python framework for searching, aggregating results and downloading EO data through a unified API regardless of the data provider. It can be run as STAC client or STAC API proxy server for non-STAC providers.
 
-[See the full list](${routes.about.toolsResources.href.en}){.cta .cta--understated}
+[See the full list](${route('about.toolsResources', 'en')}){.cta .cta--understated}
 `,
     },
 };
@@ -74,19 +73,19 @@ const whoIsItFor = {
 
 STAC is a standardized way to expose collections of spatial temporal data. If you are a provider of imagery or other spatial information and are in need of data catalogs, STAC is driving a uniform means for indexing assets. It can be used for external access to your holdings, exposing your information to search engines and to a growing ecosystem of tools. Large providers can also use a 'static catalog' for reliable backups in case the database or Elasticsearch powering their main index goes down.
 
-[Learn More](${routes.getInvolved.dataProviders.href.en}){.cta-understated}
+[Learn More](${route('getInvolved.dataProviders', 'en')}){.cta-understated}
 
 ### Developers
 
 If you are building infrastructure to host, ingest, or manage collections of spatial data or image products, STAC’s core JSON is the bare minimum needed to interact with any geospatial data collection. Additionally, STAC standardizes metadata fields, naming conventions, query language, and catalog structure. It describes individual instances as items containing a link to the physical dataset. The core JSON is fully extensible, allowing developers to add attributes to better capture their use case or dataset. As a developer, there are two options to implement STAC; as a static STAC or the STAC API. A static STAC is incredibly easy to create, and it can easily be ingested by an ecosystem of tools that can generate the STAC API.
 
-[Learn More](${routes.getInvolved.developers.href.en}){.cta-understated}
+[Learn More](${route('getInvolved.dataProviders', 'en')}){.cta-understated}
 
 ### Data Users
 
 Consumers of spatial temporal datasets are often burdened with building unique pipelines for ingesting collections into their system. Collections are delivered with varying levels of detail in their metadata and via distinct delivery mechanisms. In an effort to reduce this burden, a community of geospatial developers have constructed the STAC spec to remove the need for tailor-made workflows.
 
-[Learn More](${routes.getInvolved.dataUsers.href.en}){.cta-understated}`,
+[Learn More](${route('getInvolved.dataUsers', 'en')}){.cta-understated}`,
     },
 };
 

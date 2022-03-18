@@ -2,8 +2,10 @@
 route: 
     en: '/en/'
     lo-ip: '/lo-ip/'
-contentPath: 'homepage'
+name: 'homepage'
 ---
+
+{{ page.data | log }}
 
 {% from 'sections/hero.html' import hero %}
 {% from 'grid.html' import grid %}

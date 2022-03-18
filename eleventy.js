@@ -3,11 +3,14 @@ const { version: buildVersion } = require('./package.json');
 
 const { EleventyRenderPlugin } = require('@11ty/eleventy');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const eleventyEvents = require('./eleventy/events');
 
 module.exports = function (eleventyConfig) {
+    eleventyEvents.init(eleventyConfig);
+
     // Filters & Shortcodes
     require('./eleventy/filters.js')(eleventyConfig);
-    require('./eleventy/localize.js')(eleventyConfig);
+    require('./eleventy/localize')(eleventyConfig);
     require('./eleventy/categories.js')(eleventyConfig);
     require('./eleventy/tutorials.js')(eleventyConfig);
     require('./eleventy/shortcodes.js')(eleventyConfig);

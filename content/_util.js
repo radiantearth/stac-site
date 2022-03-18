@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const routes = require('../eleventy/routes');
 
 function jsonSnippet(filename) {
     const filePath = path.join(__dirname, `./_snippets/${filename}`);
@@ -13,7 +14,12 @@ function snippet(filename) {
     return fileContents;
 }
 
+function route(name, locale) {
+    return routes.find(name, locale);
+}
+
 module.exports = {
     jsonSnippet,
     snippet,
+    route
 };
