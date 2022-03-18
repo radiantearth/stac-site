@@ -1,4 +1,4 @@
-const routes = require('../eleventy/routes').tree()
+const routes = require('../eleventy/routes').tree();
 
 module.exports = {
     root: {

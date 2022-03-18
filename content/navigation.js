@@ -7,12 +7,12 @@ module.exports = {
                 href: route('tutorials'),
                 label: {
                     en: 'Tutorials',
-                }
+                },
             },
             {
                 href: route('about'),
                 label: {
-                    en: 'About'
+                    en: 'About',
                 },
                 children: [
                     {
@@ -25,15 +25,15 @@ module.exports = {
                     {
                         href: route('about.stacSpec'),
                         label: {
-                            en: 'lorem'
-                        }
+                            en: 'lorem',
+                        },
                     },
                     {
                         href: route('about.toolsResources'),
                         label: {
-                            en: 'lorem'
-                        }
-                    }
+                            en: 'lorem',
+                        },
+                    },
                 ],
             },
             {
@@ -53,21 +53,21 @@ module.exports = {
                     {
                         href: route('getInvolved.dataProviders'),
                         label: {
-                            en: 'Data Providers'
-                        }
+                            en: 'Data Providers',
+                        },
                     },
                     {
                         href: route('getInvolved.developers'),
                         label: {
-                            en: 'Developers'
-                        }
+                            en: 'Developers',
+                        },
                     },
                     {
                         href: route('getInvolved.dataUsers'),
                         label: {
-                            en: 'Data Users'
-                        }
-                    }
+                            en: 'Data Users',
+                        },
+                    },
                 ],
             },
         ],
