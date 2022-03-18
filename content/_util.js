@@ -21,5 +21,5 @@ function route(name, locale) {
 module.exports = {
     jsonSnippet,
     snippet,
-    route
+    route,
 };

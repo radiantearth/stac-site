@@ -59,7 +59,10 @@ A range of tools help facilitate the use of the STAC spec – some of the most w
 - [PySTAC](https://github.com/stac-utils/pystac) is a library for working with STAC catalogs in Python
 - [EODAG](https://github.com/CS-SI/eodag) is a CLI tool and a Python framework for searching, aggregating results and downloading EO data through a unified API regardless of the data provider. It can be run as STAC client or STAC API proxy server for non-STAC providers.
 
-[See the full list](${route('about.toolsResources', 'en')}){.cta .cta--understated}
+[See the full list](${route(
+            'about.toolsResources',
+            'en'
+        )}){.cta .cta--understated}
 `,
     },
 };
