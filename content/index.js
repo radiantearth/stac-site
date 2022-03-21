@@ -8,5 +8,6 @@ module.exports = {
         getInvolved: require('./get-involved'),
         navigation: require('./navigation'),
         categories: require('./categories'),
+        tutorials: require('./tutorials'),
     },
 };

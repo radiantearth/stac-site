@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const routes = require('../eleventy/routes');
+const markdown = require('../eleventy/markdown');
 
 function jsonSnippet(filename) {
     const filePath = path.join(__dirname, `./_snippets/${filename}`);
@@ -19,6 +20,7 @@ function route(name, locale) {
 }
 
 module.exports = {
+    md: markdown.render,
     jsonSnippet,
     snippet,
     route,
