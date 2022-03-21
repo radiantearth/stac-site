@@ -3,8 +3,7 @@ layout: tuts
 route:
     en: "/en/tutorials/"
     "lo-ip": "/lo-ip/tutloriems/"
-body: ''
 name: 'tutorials'
 ---
 
-{{ 'Tutorials' | markdown | safe }}
+{{ '.body' | localize | markdown | safe }}

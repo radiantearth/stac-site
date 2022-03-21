@@ -90,13 +90,11 @@ name: 'homepage'
     </div>
 {%- endcall -%}
 
-
-
 <section class="section section--tall">
-    <div class="container">
+    <div class="container pb-3">
         <h2>{{ '.organizations.heading' | localize }}</h2>
     </div>
-    <div class="container--wide">
+    <div class="container--wide pb-7">
         <div class="flex justify-between items-center">
             <div class="md:w-64 m-3">{% image 'assets/images/company-logos/planet.png', 'element84 logo', '300px' %}</div>
             <div class="md:w-64 m-3">{% image 'assets/images/company-logos/radiant-earth.png', 'radiant earth logo', '300px' %}</div>
@@ -138,7 +136,7 @@ name: 'homepage'
         {%- endcall -%}
     </div>
     <div class="container">
-        {{ cta(url="/", text="See More", mods=['secondary']) }}
+        {{ cta(url='.datasets.cta_url' | localize, text='.datasets.cta_text' | localize, mods=['secondary']) }}
     </div>
 {%- endcall -%}
 
@@ -200,7 +198,7 @@ name: 'homepage'
 
     </div>
     <div class="container">
-        {{ cta(url="/", text="See More", mods=['secondary']) }}
+        {{ cta(url='.tools.cta_url' | localize, text='.tools.cta_text' | localize, mods=['secondary']) }}
     </div>
 {%- endcall -%}
 

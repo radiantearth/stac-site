@@ -1,15 +1,4 @@
-const routes = require('./routes');
-
-// schema {
-//     route: {
-//         en: '',
-//         'lo-ip': '',
-//     },
-//     meta: {
-//         en: ''
-//     },
-//     data: {}
-// }
+const { route, md } = require('./_util');
 
 const hero = {
     preheading: {
@@ -22,9 +11,9 @@ const hero = {
     },
     body: {
         en: `The STAC specification is a common language to describe geospatial information, so it can more easily be worked with, indexed, and discovered.`,
-        'lo-ip': `You should care about STAC because Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, quo. Eos necessitatibus adipisci ad, doloremque.`,
+        'lo-ip': 'You should care about STAC because Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, quo. Eos necessitatibus adipisci ad, doloremque.',
     },
-    cta_url: routes.tutorials.href,
+    cta_url: route('tutorials'),
     cta_text: {
         en: 'Explore Tutorials',
         'lo-ip': 'Lorem Ipsum',
@@ -46,7 +35,7 @@ const stacIsFor = {
             'lo-ip':
                 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.',
         },
-        cta_url: routes.getInvolved.dataProviders.href,
+        cta_url: route('getInvolved.dataProviders'),
         cta_text: {
             en: 'Learn More',
             'lo-ip': 'Learn More',
@@ -59,10 +48,9 @@ const stacIsFor = {
         },
         body: {
             en: 'If you are building infrastructure to host, ingest, or manage collections of spatial data, STAC’s core JSON is the bare minimum needed to describe geospatial assets, and is extensible to customize to your domain.',
-            'lo-ip':
-                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.',
+            'lo-ip': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.',
         },
-        cta_url: routes.getInvolved.developers.href,
+        cta_url: route('getInvolved.developers'),
         cta_text: {
             en: 'Learn More',
             'lo-ip': 'Learn More',
@@ -75,10 +63,9 @@ const stacIsFor = {
         },
         body: {
             en: 'Users of spatial temporal data are often burdened with building unique pipelines for each different collection of data they consume. The STAC community has defined this specification to remove this complexity and spur common tooling.',
-            'lo-ip':
-                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.',
+            'lo-ip': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.',
         },
-        cta_url: routes.getInvolved.dataProviders.href,
+        cta_url: route('getInvolved.dataUsers'),
         cta_text: {
             en: 'Learn More',
             'lo-ip': 'Learn More',
@@ -93,13 +80,14 @@ const moreAboutStac = {
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.',
     },
     body: {
-        en: `At its core, the SpatioTemporal Asset Catalog (STAC) specification provides a common structure for describing and cataloging spatiotemporal assets. 
+        en:
+`At its core, the SpatioTemporal Asset Catalog (STAC) specification provides a common structure for describing and cataloging spatiotemporal assets. 
 
 A *spatiotemporal asset* is any file that represents information about the earth captured in a certain space and time.
 
 ### The STAC Spec
 
-[The STAC Specification](${routes.about.stacSpec.href.en}) consists of 4 semi-independent specifications. Each can be used alone, but they work best in concert with one another.
+[The STAC Specification](${route('about.stacSpec', 'en')}) consists of 4 semi-independent specifications. Each can be used alone, but they work best in concert with one another.
 
 - **STAC Item** is the core atomic unit, representing a single spatiotemporal asset as a GeoJSON feature plus datetime and links.
 - **STAC Catalog** is a simple, flexible JSON file of links that provides a structure to organize and browse STAC Items. A series of best practices helps make recommendations for creating real world STAC Catalogs.
@@ -108,8 +96,8 @@ A *spatiotemporal asset* is any file that represents information about the earth
 
 ### The Vision
 
-The goal is for all providers of spatiotemporal assets (Imagery, SAR, Point Clouds, Data Cubes, Full Motion Video, etc) to expose their data as SpatioTemporal Asset Catalogs (STAC), so that new code doesn"t need to be written whenever a new data set or API is released.
-`,
+The goal is for all providers of spatiotemporal assets (Imagery, SAR, Point Clouds, Data Cubes, Full Motion Video, etc) to expose their data as SpatioTemporal Asset Catalogs (STAC), so that new code doesn"t need to be written whenever a new data set or API is released.`
+        ,
         'lo-ip':
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.',
     },
@@ -117,7 +105,7 @@ The goal is for all providers of spatiotemporal assets (Imagery, SAR, Point Clou
         en: 'Learn More',
         'lo-ip': 'Lorem Ipsum',
     },
-    cta_url: routes.about.href,
+    cta_url: route('about'),
 };
 
 const tutorials = {
@@ -129,7 +117,7 @@ const tutorials = {
         'lo-ip': `Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.`,
         en: `Browse our library of tutorials and workshops about STAC and its ecosystem.`,
     },
-    cta_url: routes.tutorials.href,
+    cta_url: route('tutorials'),
     cta_text: {
         en: 'Browse Tutorials',
         'lo-ip': 'Lorem Ipsum',
@@ -142,9 +130,13 @@ const datasets = {
         'lo-ip': 'Lorem Ipsum Dolor',
     },
     content_after: {
-        en: 'See the full list at [stacindex.org](https://stacindex.org/catalogs)',
+        en: 'The amount of STAC data being collected and hosted in STAC APIs and static catalogs grows everyday as data providers adopt STAC as the defacto specification for spatiotemporal data. As more datasets are created, our community adds them to [stacindex.org](https://stacindex.org/catalogs) to be discovered and explored.',
         'lo-ip': 'Lorem Ipsum Dolor',
     },
+    cta_text: {
+        en: 'Learn More'
+    },
+    cta_url: route('about.toolsResources'),
 };
 
 const tools = {
@@ -153,14 +145,18 @@ const tools = {
         'lo-ip': 'Lorem Ipsum Dolor',
     },
     content_after: {
-        en: 'See the full list at [stacindex.org](https://stacindex.org/catalogs)',
+        en: `The STAC ecosystem continues to evolve with its ever growing library of tools and resources. More are being listed all the time at [stacindex.org](https://stacindex.org/catalogs) to experiment with and use in your next STAC project.`,
         'lo-ip': 'Lorem Ipsum Dolor',
     },
+    cta_text: {
+        en: 'Learn More'
+    },
+    cta_url: route('about.toolsResources'),
 };
 
 const organizations = {
     heading: {
-        en: 'These organizations are betting on STAC',
+        en: 'STAC is supported by these incredible organizations',
         'lo-ip': 'Lorem Ipsum Dolor',
     },
 };
@@ -175,7 +171,7 @@ const getInvolved = {
     cta_text: {
         en: 'Learn More',
     },
-    cta_url: routes.getInvolved.href,
+    cta_url: route('getInvolved'),
 };
 
 module.exports = {

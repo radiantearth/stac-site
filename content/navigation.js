@@ -25,13 +25,13 @@ module.exports = {
                     {
                         href: route('about.stacSpec'),
                         label: {
-                            en: 'lorem',
+                            en: 'STAC Spec',
                         },
                     },
                     {
                         href: route('about.toolsResources'),
                         label: {
-                            en: 'lorem',
+                            en: 'Tools & Resources',
                         },
                     },
                 ],
@@ -76,23 +76,23 @@ module.exports = {
     styleguideNav: {
         links: [
             {
-                name: 'Colors',
+                label: 'Colors',
                 href: '/styleguide/colors',
             },
             {
-                name: 'Type',
+                label: 'Type',
                 href: '/styleguide/type',
             },
             {
-                name: 'Elements',
+                label: 'Elements',
                 href: '/styleguide/elements',
             },
             {
-                name: 'Components',
+                label: 'Components',
                 href: '/styleguide/components',
             },
             {
-                name: 'Sections',
+                label: 'Sections',
                 href: '/styleguide/sections',
             },
         ],

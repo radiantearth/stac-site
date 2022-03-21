@@ -74,7 +74,7 @@ It takes a JSON object that can filter on date and time:
 
 This tells the server to return all the catalog items it has that are from the second half of March, 2018 and that intersect with this area:
 
-![Photo of lat-long bounding box over Switzerland]()
+![TODO: Photo of lat-long bounding box over Switzerland]()
 
 The return format is a GeoJSON FeatureCollection with features compliant with the Item spec for STAC. It returns to a limit optionally requested by the client, and includes pageable links to iterate through any results past that limit.
 
@@ -84,7 +84,7 @@ STAC API has worked to align with the OGC's WFS 3 specification, and ideally it 
 
 While the core specification says nothing about particular types of data, the extensions folder is where one can find domain-specific fields that can be easily added to any STAC Item. It is a place where any implementor can propose fields that are potentially more widely applicable than just their data. Each extension is labeled with a ‘maturity classification’ that lets others know how likely the extension is to change in the future.
 
-![Screenshot photo of STAC extensions folder in Github]()
+![TODO: Screenshot photo of STAC extensions folder in Github]()
 
 The goal is to enable specific communities to work together to find a ‘good enough’ set of common metadata.
 

@@ -7,8 +7,10 @@
   <body class="bg-white">
       {%- include 'nav.html' -%}
       <section class="bg-blue-200 flex">
-        <div class="container font-display">
-          
+        <div class="container font-display pt-4">
+          {%- for item in tt.navigation.styleguideNav.links -%}
+            <a href="{{ item.href }}" class="mr-5 py-2 inline-block text-blue">{{ item.label }}</a>
+          {%- endfor -%}
         </div>
       </section>
       <main style="min-height: calc(100vh - 175px);">
