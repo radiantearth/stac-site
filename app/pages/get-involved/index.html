@@ -16,8 +16,8 @@ name: getInvolved
 {{ hero(
         heading='.hero.heading' | localize,
         body='.hero.body' | localize | markdown | safe,
-        cta_url="https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby", 
-        cta_text="Join Gitter Community",
+        cta_url=".hero.cta_url" | localize, 
+        cta_text=".hero.cta_text" | localize,
         mods=['overlap-2xl']
 ) }}
 
