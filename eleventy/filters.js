@@ -1,12 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const minify = require('html-minifier').minify;
-
 const markdown = require('./markdown.js');
-const Prism = require('prismjs');
-const loadLanguages = require('prismjs/components/');
-
-loadLanguages(['py', 'json']);
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addFilter('markdown', function (value) {
