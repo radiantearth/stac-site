@@ -58,7 +58,8 @@ You'll need to add a few properties in `yml` format to the markdown frontmatter 
 ---
 title: A title for your tutorial, this is used for SEO and in previews throughout the site
 description: A short description of the tutorial. This will be used in the meta description and in tutorial previews throughout the site.
-notebooks: ['name-of-notebook-file-no-extension']
+notebooks:
+    - name-of-notebook-file-no-extension
 ---
 ```
 
