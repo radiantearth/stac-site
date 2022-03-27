@@ -17,6 +17,7 @@ module.exports = function (eleventyConfig) {
 
     // File Structure
     eleventyConfig.addPassthroughCopy('public');
+    eleventyConfig.addPassthroughCopy({ 'assets/images': 'public/images-original' });
     eleventyConfig.addPassthroughCopy('notebooks/src');
     eleventyConfig.addWatchTarget('../public/**/*');
     eleventyConfig.addWatchTarget('../config/**/*');
