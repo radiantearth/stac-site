@@ -8,8 +8,16 @@ const hero = {
     body: {
         en: `Welcome! The STAC community prides itself on being welcoming and collaborative, and we are excited you clicked on this page to learn how you might help!
 
-If you aren't sure where to begin, we encourage you to jump on our Gitter chat and introduce yourself. We can help match with a good project given your skills and time availability.`,
+If you aren't sure where to begin, jump on our [Gitter chat](https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby) and introduce yourself. We can help match with a good project given your skills and time availability.
+
+We also encourage checking out the [stac-spec repo](https://github.com/radiantearth/stac-spec), where a lot of discussion and ideation takes place.`,
     },
+    cta_text: {
+        en: 'Join Gitter Community',
+    },
+    cta_url: {
+        en: 'https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby',
+    }
 };
 
 const howToHelp = {
@@ -74,9 +82,7 @@ const communityCalls = {
         en: `
 ### Community calls and working sessions
 
-We also do video calls where we discuss various issues and move the spec forward. We alternate between hour long calls where we aim to talk through the issues in front of us, and 3 hour long 'working sessions' where people find some dedicated time to work on STAC, with others on the video call at the same time for any questions or collaboration. 
-
-The other main locus of community activity is the [stac-spec repo](/). We also have a [stac-spec Google group](), where there are occasional messages.`,
+We also do video calls where we discuss various issues and move the spec forward. We alternate between hour long calls where we aim to talk through the issues in front of us, and 3 hour long 'working sessions' where people find some dedicated time to work on STAC, with others on the video call at the same time for any questions or collaboration. `,
     },
 };
 

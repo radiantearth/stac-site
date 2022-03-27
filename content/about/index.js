@@ -60,9 +60,9 @@ A range of tools help facilitate the use of the STAC spec – some of the most w
 - [EODAG](https://github.com/CS-SI/eodag) is a CLI tool and a Python framework for searching, aggregating results and downloading EO data through a unified API regardless of the data provider. It can be run as STAC client or STAC API proxy server for non-STAC providers.
 
 [See the full list](${route(
-            'about.toolsResources',
-            'en'
-        )}){.cta .cta--understated}
+    'about.toolsResources',
+    'en'
+)}){.cta .cta--understated}
 `,
     },
 };
@@ -82,7 +82,7 @@ STAC is a standardized way to expose collections of spatial temporal data. If yo
 
 If you are building infrastructure to host, ingest, or manage collections of spatial data or image products, STAC’s core JSON is the bare minimum needed to interact with any geospatial data collection. Additionally, STAC standardizes metadata fields, naming conventions, query language, and catalog structure. It describes individual instances as items containing a link to the physical dataset. The core JSON is fully extensible, allowing developers to add attributes to better capture their use case or dataset. As a developer, there are two options to implement STAC; as a static STAC or the STAC API. A static STAC is incredibly easy to create, and it can easily be ingested by an ecosystem of tools that can generate the STAC API.
 
-[Learn More](${route('getInvolved.dataProviders', 'en')}){.cta-understated}
+[Learn More](${route('getInvolved.developers', 'en')}){.cta-understated}
 
 ### Data Users
 
