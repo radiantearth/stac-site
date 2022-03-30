@@ -83,26 +83,38 @@ const moreAboutStac = {
         en:
 `At its core, the SpatioTemporal Asset Catalog (STAC) specification provides a common structure for describing and cataloging spatiotemporal assets. 
 
-A *spatiotemporal asset* is any file that represents information about the earth captured in a certain space and time.
+A *spatiotemporal asset* is any file that represents information about the earth captured in a certain space and time.`,
+    },
+    stacSpec: {
+        intro: {
+            en:
+`### The STAC Specification
 
-### The STAC Spec
+[The STAC Specification](${route('about.stacSpec', 'en')}) consists of 4 semi-independent specifications. Each can be used alone, but they work best in concert with one another.`,
+        },
+        spec: {
+            en:
+`[STAC Item](https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md) is the core atomic unit, representing a single spatiotemporal asset as a GeoJSON feature plus datetime and links.
 
-[The STAC Specification](${route('about.stacSpec', 'en')}) consists of 4 semi-independent specifications. Each can be used alone, but they work best in concert with one another.
+[STAC Catalog](https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md) is a simple, flexible JSON file of links that provides a structure to organize and browse STAC Items. A series of best practices helps make recommendations for creating real world STAC Catalogs.
 
-- **STAC Item** is the core atomic unit, representing a single spatiotemporal asset as a GeoJSON feature plus datetime and links.
-- **STAC Catalog** is a simple, flexible JSON file of links that provides a structure to organize and browse STAC Items. A series of best practices helps make recommendations for creating real world STAC Catalogs.
-- **STAC Collection** is an extension of the STAC Catalog with additional information such as the extents, license, keywords, providers, etc that describe STAC Items that fall within the Collection.
-- **STAC API** provides a RESTful endpoint that enables search of STAC Items, specified in OpenAPI, following OGC"s WFS 3.
+[STAC Collection](https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md) is an extension of the STAC Catalog with additional information such as the extents, license, keywords, providers, etc that describe STAC Items that fall within the Collection.
 
-### The Vision
+[STAC API](https://github.com/radiantearth/stac-api-spec) provides a RESTful endpoint that enables search of STAC Items, specified in OpenAPI, following OGC"s WFS 3.`
+        },
+        cta_text: {
+            en: 'More About the Specification'
+        },
+        cta_url: route('about.stacSpec'),
+    },
+    vision: {
+        en: 
+`### The Vision
 
 The goal is for all providers of spatiotemporal assets (Imagery, SAR, Point Clouds, Data Cubes, Full Motion Video, etc) to expose their data as SpatioTemporal Asset Catalogs (STAC), so that new code doesn"t need to be written whenever a new data set or API is released.`
-        ,
-        'lo-ip':
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.',
     },
     cta_text: {
-        en: 'Learn More',
+        en: 'More About STAC',
         'lo-ip': 'Lorem Ipsum',
     },
     cta_url: route('about'),
@@ -119,7 +131,7 @@ const tutorials = {
     },
     cta_url: route('tutorials'),
     cta_text: {
-        en: 'Browse Tutorials',
+        en: 'Browse All Tutorials',
         'lo-ip': 'Lorem Ipsum',
     },
 };

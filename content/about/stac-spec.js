@@ -1,4 +1,4 @@
-const { snippet, jsonSnippet } = require('../_util');
+const { snippet, codeSnippet } = require('../_util');
 
 const hero = {
     heading: {
@@ -28,9 +28,7 @@ Fundamental to any STAC, a [STAC Item](https://github.com/radiantearth/stac-spec
 
 A STAC Item can contain additional fields and JSON structures to enable data providers to expose rich metadata and software developers to create intuitive tools.
 
-\`\`\`json
-${jsonSnippet('spec/item-simple.json')}
-\`\`\`
+${codeSnippet('spec/item-simple.json', 'json')}
 
 ## Catalog
 
@@ -41,18 +39,14 @@ The [STAC Catalog](https://github.com/radiantearth/stac-spec/blob/master/catalog
 
 There are no restrictions on the way catalogs are organized. Most implementations use a set of 'sub-catalogs' (a catalog that is linked to from another catalog) to group the items in some sensible way. It can be easily extended, for example to include additional metadata to further describe its holdings, as the STAC Collection does.
 
-\`\`\`json
-${jsonSnippet('spec/catalog-simple.json')}
-\`\`\`
+${codeSnippet('spec/catalog-simple.json', 'json')}
 
 
 ## Collection
 
 A [STAC Collection](https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md) provides additional information about a spatio-temporal collection of data. It extends Catalog directly, layering on additional fields to enable description of things like the spatial and temporal extent of the data, the license, keywords, providers, etc. It in turn can easily be extended for additional collection level metadata. It is used standalone by parts of the STAC community, as a lightweight way to describe data holdings.
 
-\`\`\`json
-${jsonSnippet('spec/collection-simple.json')}
-\`\`\`
+${codeSnippet('spec/collection-simple.json', 'json')}
 
 ## STAC API
 

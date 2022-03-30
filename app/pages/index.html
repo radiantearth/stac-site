@@ -51,9 +51,23 @@ name: 'homepage'
 {%- endcall -%}
 
 {%- call section() -%}
-        <h2>{{ '.moreAboutStac.heading' | localize }}</h2>
-        {{ '.moreAboutStac.body' | localize | markdown | safe }}
-        {{ cta(mods=['secondary'], url='.moreAboutStac.cta_url' | localize) }}
+    <h2>{{ '.moreAboutStac.heading' | localize }}</h2>
+    {{ '.moreAboutStac.body' | localize | markdown | safe }}
+
+    
+    {{ '.moreAboutStac.stacSpec.intro' | localize | markdown | safe }}
+
+    {%- call callout() -%}
+        <div class="text-lg">
+            {{ '.moreAboutStac.stacSpec.spec' | localize | markdown | safe }}
+        </div>
+    {%- endcall -%}
+
+    {{ cta(url='.moreAboutStac.stacSpec.cta_url' | localize, text='.moreAboutStac.stacSpec.cta_text' | localize, mods=['secondary']) }}
+
+    {{ '.moreAboutStac.vision' | localize | markdown | safe }}
+
+    {{ cta(url='.moreAboutStac.cta_url' | localize, text='.moreAboutStac.cta_text' | localize, mods=['secondary']) }}
 {%- endcall -%}
 
 {%- call section(width="full") -%}
@@ -86,7 +100,7 @@ name: 'homepage'
             </div>
     </div>
     <div class="container">
-        {{ cta(mods=['secondary'], url='routes.tutorials.href' | localize, text="Browse All") }}
+        {{ cta(mods=['secondary'], url='.tutorials.cta_url' | localize, text='.tutorials.cta_text' | localize) }}
     </div>
 {%- endcall -%}
 
@@ -103,8 +117,8 @@ name: 'homepage'
                 {% image 'assets/images/company-logos/element84.png', 'element84 logo', '300px' %}
             </div>
         </div>
+
         <div class="flex justify-between items-center md:-mx-3">
-            
             <div class="md:w-48 m-3">
                 {% image 'assets/images/company-logos/sparkgeo.png', 'sparkgeo logo', '300px' %}
             </div>
