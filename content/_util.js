@@ -3,10 +3,15 @@ const fs = require('fs');
 const routes = require('../eleventy/routes');
 const markdown = require('../eleventy/markdown');
 
-function jsonSnippet(filename) {
+function codeSnippet(filename, lang) {
     const filePath = path.join(__dirname, `./_snippets/${filename}`);
-    const jsonObj = require(filePath);
-    return JSON.stringify(jsonObj, null, 4);
+    
+    if (lang && lang === 'json') {
+        const jsonObj = require(filePath);
+        return '```json\n' + JSON.stringify(jsonObj, null, 4) + '\n```';
+    } else {
+        return '```\n' + require(filePath) + '\n```';
+    }
 }
 
 function snippet(filename) {
@@ -21,7 +26,7 @@ function route(name, locale) {
 
 module.exports = {
     md: markdown.render,
-    jsonSnippet,
+    codeSnippet,
     snippet,
     route,
 };

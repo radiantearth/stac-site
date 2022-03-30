@@ -1,4 +1,4 @@
-const { snippet, jsonSnippet, route } = require('../_util');
+const { snippet, codeSnippet, route } = require('../_util');
 
 const hero = {
     preheading: {
@@ -25,7 +25,7 @@ The STAC spec itself provides a lowest common denominator JSON format to wrap ar
         `,
     },
     code: {
-        en: jsonSnippet('spec/item-simple.json'),
+        en: codeSnippet('spec/item-simple.json', 'json'),
     },
     afterCode: {
         en: `The core JSON pages can be transformed into browsable, interactive HTML pages with tools like STAC Browser. When STAC is used in concert with emerging formats like Cloud Optimized GeoTIFF or TileDB arrays the result vastly lowers the barriers for anybody to find and use geospatial assets like satellite imagery`,

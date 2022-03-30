@@ -22,7 +22,7 @@ name: "about"
         <div class="">
             {{ '.hero.beforeCode' | localize | markdown | safe }}
         </div>
-        {{ codeblock(code='.hero.code' | localize, lang="json") }}
+        {{ '.hero.code' | localize | markdown | safe }}
         {{ '.hero.afterCode' | localize | markdown | safe }}
         {{ cta(text="Explore STAC Spec", url='routes.about.stacSpec.href' | localize) }}
     </div>

@@ -55,5 +55,5 @@ code {
 }
 
 pre[class^="language-"] {
-    @apply mt-6 mb-5;
+    @apply mt-6 mb-8;
 }

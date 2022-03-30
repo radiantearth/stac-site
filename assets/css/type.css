@@ -9,7 +9,7 @@ h1, h2, h3, h4 {
 
 h1 { @apply text-4xl sm:text-5xl font-semibold spacing-loose; }
 h2 { @apply text-3xl font-medium mt-7 mb-5; }
-h3 { @apply text-2xl font-medium spacing-normal; }
+h3 { @apply text-2xl font-medium mt-6 mb-4; }
 h4 { @apply text-xl font-medium spacing-normal; }
 
 p, ul, ol {
