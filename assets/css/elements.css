@@ -47,7 +47,7 @@ label {
 .cta-understated { @apply cta text-green border-b-2 border-green mt-0; }
 
 .cta--lg,
-.cta-lg { @apply cta text-xl py-3 px-6 spacing-relaxed; }
+.cta-lg { @apply cta text-lg py-2 px-5; }
 
 
 code {
@@ -56,4 +56,17 @@ code {
 
 pre[class^="language-"] {
     @apply mt-6 mb-8;
+}
+
+table {
+    @apply w-full;
+}
+
+th {
+    @apply py-2 px-4 text-left;
+}
+
+td {
+    @apply py-2 px-4 text-left;
+    border-top: 1px solid theme('colors.gray.light');
 }

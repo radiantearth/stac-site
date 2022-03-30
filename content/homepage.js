@@ -10,7 +10,7 @@ const hero = {
         'lo-ip': 'Ipsum Dolor, Sit Amet',
     },
     body: {
-        en: `The STAC specification is a common language to describe geospatial information, so it can more easily be worked with, indexed, and discovered.`,
+        en: `The STAC specification is a **common language to describe geospatial information**, so it can more easily be worked with, indexed, and discovered.`,
         'lo-ip': 'You should care about STAC because Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, quo. Eos necessitatibus adipisci ad, doloremque.',
     },
     cta_url: route('tutorials'),
@@ -122,16 +122,16 @@ The goal is for all providers of spatiotemporal assets (Imagery, SAR, Point Clou
 
 const tutorials = {
     heading: {
-        en: 'Browse STAC Tutorials',
+        en: 'Browse the STAC Tutorial Library',
         'lo-ip': 'Lorem Ipsum Dolor',
     },
     body: {
         'lo-ip': `Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.`,
-        en: `Browse our library of tutorials and workshops about STAC and its ecosystem.`,
+        en: `Want to learn to interact with STAC data in a project, spin up a STAC API, or make the data you manage more accessible? Browse our library of tutorials and workshops about STAC and its ecosystem.`,
     },
     cta_url: route('tutorials'),
     cta_text: {
-        en: 'Browse All Tutorials',
+        en: 'Browse Tutorials',
         'lo-ip': 'Lorem Ipsum',
     },
 };
