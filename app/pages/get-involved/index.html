@@ -26,19 +26,19 @@ name: getInvolved
         <h2>{{ '.howToHelp.heading' | localize }}</h2>
         {{ '.howToHelp.body' | localize | markdown | safe }}
     </div>
-    {%- call card(mods=['dark']) -%}
+    {%- call callout() -%}
         {{ '.currentNeeds.1.body' | localize | markdown | safe }}
     {%- endcall -%}
-    {%- call card(mods=['dark']) -%}
+    {%- call callout() -%}
         {{ '.currentNeeds.2.body' | localize | markdown | safe }}
     {%- endcall -%}
-    {%- call card(mods=['dark']) -%}
+    {%- call callout() -%}
         {{ '.currentNeeds.3.body' | localize | markdown | safe }}
     {%- endcall -%}
-    {%- call card(mods=['dark']) -%}
+    {%- call callout() -%}
         {{ '.currentNeeds.4.body' | localize | markdown | safe }}
     {%- endcall -%}
-    {%- call card(mods=['dark']) -%}
+    {%- call callout() -%}
         {{ '.currentNeeds.5.body' | localize | markdown | safe }}
     {%- endcall -%}
 {%- endcall -%}

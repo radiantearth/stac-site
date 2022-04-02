@@ -8,7 +8,7 @@
     }
 
     .callout {
-        @apply px-4 sm:px-6 mt-5 mb-4 pt-1 pb-2;
+        @apply px-4 sm:px-6 py-4 my-5;
         border-left-width: 1rem;
     }
 
@@ -56,7 +56,7 @@
 }
 
 .callout--light { @apply border-blue-light; }
-.callout--blue  { @apply border-blue; }
+.callout--blue  { @apply border-blue bg-blue-100; }
 .callout--black { @apply border-black; }
 .callout--dark { @apply border-blue-dark; }
 
