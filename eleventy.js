@@ -37,8 +37,8 @@ module.exports = function (eleventyConfig) {
         dir: {
             input: 'app',
             output: '_site',
-            includes: '_templates',
-            layouts: '_templates/layouts',
+            includes: '_partials',
+            layouts: '_layouts',
         },
         markdownTemplateEngine: 'njk',
         htmlTemplateEngine: 'njk',

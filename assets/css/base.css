@@ -11,4 +11,8 @@
     }
 }
 
+body { 
+    @apply bg-white text-black;
+}
+
 [x-cloak] { display: none !important; }

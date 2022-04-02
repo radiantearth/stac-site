@@ -126,13 +126,25 @@ const tutorials = {
         'lo-ip': 'Lorem Ipsum Dolor',
     },
     body: {
-        'lo-ip': `Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.`,
         en: `Want to learn to interact with STAC data in a project, spin up a STAC API, or make the data you manage more accessible? Browse our library of tutorials and workshops about STAC and its ecosystem.`,
+        'lo-ip': `Lorem ipsum dolor sit amet, consectetur adipisicing elit. A possimus fugiat sed error, eveniet nihil liber.`,
     },
     cta_url: route('tutorials'),
     cta_text: {
         en: 'Browse Tutorials',
         'lo-ip': 'Lorem Ipsum',
+    },
+    feed1: {
+        en:
+`###  Getting Started with STAC
+
+Learn about the specification, the options available for applying STAC in a practical way, and the community and resources to help you along the way.`
+    },
+    feed2: {
+        en: 
+`### Explore STAC Notebooks
+
+Gain a better understanding of STAC by interacting with these hands-on jupyter notebooks.`
     },
 };
 
