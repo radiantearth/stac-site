@@ -18,3 +18,12 @@ body .gist .gist-meta {
     background: #fff;
     @apply text-blue-dark border-0;
 }
+
+.site-footer {
+    @apply pt-3 text-white bg-blue text-left;
+}
+
+.site-footer__additional a {
+    @apply text-blue-100;
+    border-bottom: 2px solid theme('colors.blue.500');
+}
