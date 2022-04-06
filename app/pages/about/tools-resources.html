@@ -11,20 +11,47 @@ name: "about.toolsResources"
 {% from 'sections/hero.html' import hero %}
 {% from 'components/card.html' import card %}
 {% from 'elements/cta.html' import cta %}
+{% from 'components/tools-table.html' import toolsTable %}
+
+{% set toolsCategories = [
+    'Client',
+    'Server',
+    'API',
+    'CLI',
+    'Data Creation',
+    'Data Processing',
+    'Visualization',
+    'Static',
+    'Validation',
+    'Other'
+] %}
 
 {{ hero(
     preheading='.hero.preheading' | localize,
     heading='.hero.heading' | localize,
     body='.hero.body' | localize | markdown | safe,
-    mods=['overlap-lg']
+    mods=['overlap-xl']
 ) }}
 
 <div class="container">
-    {%- for item in ecosystem -%}
-        {%- call card(mods=['dark']) -%}
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.summary }}</p>
-            {{ cta(url=item.url, text="Visit link") }}
-        {%- endcall -%}
+    <div class="px-12 relative bottom-8">
+        <div class="pb-1">
+            <label class="font-bold">Jump to Category</label>
+        </div>
+        {%- for toolsCat in toolsCategories -%}
+            <a href="#{{ toolsCat | replace(' ', '-') }}"  class="py-1 px-2 mr-4 my-2 rounded-lg bg-blue-600 inline-block text-white">{{ toolsCat }}</a>
+        {%- endfor -%}
+    </div>
+    {%- for toolsCat in toolsCategories -%}
+        <div id="{{ toolsCat | replace(' ', '-') }}" class="py-4">
+            <div class="card card--blue p-0 m-0">
+                <div class="card-body">
+                    <h2 class="text-blue-100">
+                        <span class="py-1 px-2 mx-2 rounded-lg bg-blue-dark">{{ toolsCat }}</span> Tools & Resources
+                    </h2>
+                    {{ toolsTable(ecosystem, toolsCat) }}
+                </div>
+            </div>
+        </div>
     {%- endfor -%}
 </div>

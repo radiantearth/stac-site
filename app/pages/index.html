@@ -13,6 +13,7 @@ name: 'homepage'
 {% from 'sections/section.html' import section %}
 {% from 'elements/cta.html' import cta %}
 {% from 'components/callout.html' import callout %}
+{% from 'components/tools-table.html' import toolsTable %}
 
 {{ hero(
     preheading='.hero.preheading' | localize,
@@ -131,51 +132,13 @@ name: 'homepage'
     <div class="container--wide py-5">
         {% call grid(2) %}
             {% call card(mods=['blue']) %}
-                <h3 class="text-blue-100">Client tools & resources</h3>
-                <table class="w-full table-auto">
-                    {%- for item in ecosystem | stacIndexCategory('Client') -%}
-                        {%- if loop.index0 < 7 -%}
-                            <tr>
-                                <td class="p-2 {{ 'border-t' if loop.index0 !== 0 }} border-blue-400">
-                                    <h3 class="text-base mt-0 mb-3">
-                                        <a href="{{ item.url }}">{{ item.title }}</a>
-                                    </h3>
-                                </td>
-                                <td class="p-2 {{ 'border-t' if loop.index0 !== 0 }} border-blue-400 text-right">
-                                    {%- for cat in item.categories -%}
-                                        {% if (loop.index0 < 3 and cat !== 'Client') %}
-                                            <span class="px-3 py-1 rounded-lg inline-block font-bold bg-blue-500 mr-2 my-1">{{ cat }}</span>
-                                        {% endif %}
-                                    {%- endfor -%}
-                                </td>
-                            </tr>
-                        {%- endif -%}
-                    {%- endfor -%}
-                </table>
+                <h3 class="text-blue-100"><span class="py-1 px-2 mx-2 rounded-lg bg-blue-dark">Client</span> Tools & Resources</h3>
+                {{ toolsTable(ecosystem, 'Client', 7, hideLanguage=true) }}
             {% endcall %}
 
             {% call card(mods=['blue']) %}
-                <h3 class="text-blue-100">Server tools & resources</h3>
-                <table class="w-full table-auto">
-                    {%- for item in ecosystem | stacIndexCategory('Server') -%}
-                        {%- if loop.index0 < 7 -%}
-                            <tr>
-                                <td class="p-2 {{ 'border-t' if loop.index0 !== 0 }} border-blue-400">
-                                    <h3 class="text-base mt-0 mb-3">
-                                        <a href="{{ item.url }}">{{ item.title }}</a>
-                                    </h3>
-                                </td>
-                                <td class="p-2 {{ 'border-t' if loop.index0 !== 0 }} border-blue-400 text-right">
-                                    {%- for cat in item.categories -%}
-                                        {% if (loop.index0 < 3 and cat !== 'Client') %}
-                                            <span class="px-3 py-1 rounded-lg inline-block font-bold bg-blue-500 mr-2 my-1">{{ cat }}</span>
-                                        {% endif %}
-                                    {%- endfor -%}
-                                </td>
-                            </tr>
-                        {%- endif -%}
-                    {%- endfor -%}
-                </table>
+                <h3 class="text-blue-100"><span class="py-1 px-2 mx-2 rounded-lg bg-blue-dark">Server</span> Tools & Resources</h3>
+                {{ toolsTable(ecosystem, 'Server', 7, hideLanguage=true) }}
             {% endcall %}
         {% endcall %}
 
