@@ -35,17 +35,17 @@ name: 'homepage'
             {%- call card(mods=['blue-700']) -%}
                 <h3>{{ '.stacIsFor.group1.heading' | localize }}</h3>
                 <p>{{ '.stacIsFor.group1.body' | localize }}</p>
-                {{ cta(url='.stacIsFor.group1.cta_url' | localize) }}
+                {{ cta(url='.stacIsFor.group1.cta_url' | localize, mods=['understated-alt']) }}
             {%- endcall -%}
             {%- call card(mods=['blue-700']) -%}
                 <h3>{{ '.stacIsFor.group2.heading' | localize }}</h3>
                 <p>{{ '.stacIsFor.group2.body' | localize }}</p>
-                {{ cta(url='.stacIsFor.group2.cta_url' | localize) }}
+                {{ cta(url='.stacIsFor.group2.cta_url' | localize, mods=['understated-alt']) }}
             {%- endcall -%}
             {%- call card(mods=['blue-700']) -%}
                 <h3>{{ '.stacIsFor.group3.heading' | localize }}</h3>
                 <p>{{ '.stacIsFor.group3.body' | localize }}</p>
-                {{ cta(url='.stacIsFor.group3.cta_url' | localize) }}
+                {{ cta(url='.stacIsFor.group3.cta_url' | localize, mods=['understated-alt']) }}
             {%- endcall -%}
         {%- endcall -%}
     </div>

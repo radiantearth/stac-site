@@ -25,7 +25,7 @@ const howToHelp = {
         en: 'How to help',
     },
     body: {
-        en: `We list a number of general ideas below We are working on more resources to make it easier to plugin for data or software help – for now saying hi on gitter is a great place to begin.`,
+        en: `We list a number of general ideas below We are working on more resources to make it easier to plugin for data or software help – for now [saying hi on gitter](https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby) is a great place to begin.`,
     },
 };
 
