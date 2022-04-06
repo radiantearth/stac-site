@@ -12,7 +12,7 @@
                     </li>
                     {% for navLink in tt.navigation.footerNav.main.links %}
                         {% set contentId = 'navigation.footerNav.main.links.' + loop.index0  %}
-                        <li class="px-4 mx-4"><a class="cta--understated text-blue-100" href="{{ (contentId + '.href') | localize }}">{{ (contentId + '.label') | localize }}</a></li>
+                        <li class="px-4 mx-4"><a class="cta--understated-alt" href="{{ (contentId + '.href') | localize }}">{{ (contentId + '.label') | localize }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
