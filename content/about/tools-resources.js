@@ -1,6 +1,6 @@
 const hero = {
     preheading: {
-        en: 'STAC',
+        en: 'About STAC',
     },
     heading: {
         en: 'Tools & resources',

@@ -111,6 +111,14 @@ module.exports = function (eleventyConfig) {
         }
     );
 
+    eleventyConfig.addFilter('isApi', function (collection, yesno = true) {
+        return !collection ? [] : collection.filter(item => item.isApi === yesno);
+    });
+
+    eleventyConfig.addFilter('access', function (collection, access = 'public') {
+        return !collection ? [] : collection.filter(item => item.access === access);
+    });
+
     eleventyConfig.addFilter('replace', function (str, fragment, newFragment) {
         return str.replace(fragment, newFragment);
     });

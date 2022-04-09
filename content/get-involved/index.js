@@ -1,9 +1,9 @@
 const hero = {
     preheading: {
-        en: '',
+        en: 'Get Involved',
     },
     heading: {
-        en: 'Get involved with STAC',
+        en: 'How to Help with STAC',
     },
     body: {
         en: `Welcome! The STAC community prides itself on being welcoming and collaborative, and we are excited you clicked on this page to learn how you might help!

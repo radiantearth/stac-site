@@ -10,10 +10,11 @@ name: "about.stacSpec"
 {% from 'sections/section.html' import section %}
 
 {{ hero(
+    preheading='.hero.preheading' | localize,
     heading='.hero.heading' | localize,
     body='.hero.body' | localize | markdown | safe
 ) }}
 
-{%- call section() -%}
+{%- call section(mods=['tall']) -%}
     {{ '.content' | localize | markdown | safe }}
 {%- endcall -%}

@@ -1,6 +1,6 @@
 export const Navbar = () => ({
     active: false,
-    activeSubmenu: null,
+    activeSubmenu: '',
 
     toggle(logtext) {
         this.active = !this.active;
@@ -19,7 +19,7 @@ export const Navbar = () => ({
         event.preventDefault();
 
         if (this.activeSubmenu === submenu) {
-            this.activeSubmenu = null;
+            this.activeSubmenu = '';
         } else {
             this.activeSubmenu = submenu;
         }

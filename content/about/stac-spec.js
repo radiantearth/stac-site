@@ -1,12 +1,15 @@
-const { snippet, codeSnippet } = require('../_util');
+const { codeSnippet } = require('../_util');
 
 const hero = {
+    preheading: {
+        en: 'About STAC',
+    },
     heading: {
         en: 'The STAC Specification',
     },
     body: {
         en: `
-The STAC Specification lives as easily readable markdown pages on github, as the community aspires to keep STAC very approachable. So while this page gives a slightly deeper overview, don't hesitate to dive directly into the spec.
+The STAC Specification lives as easily readable markdown pages on github, as the community aspires to keep STAC very approachable. So while this page gives a slightly deeper overview, don't hesitate to [dive directly into the spec](https://github.com/radiantearth/stac-spec/).
 
 One thing to emphasize is that the specification is designed to be flexible and extensible. So if it seems a bit 'light', that is by design, so that different domains and tools can easily make it their own. The extensions section of the spec, detailed below, is where the community collaborates on more detail about specific data types and new functionality.
 

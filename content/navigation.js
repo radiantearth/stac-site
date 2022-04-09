@@ -34,6 +34,12 @@ module.exports = {
                             en: 'Tools & Resources',
                         },
                     },
+                    {
+                        href: route('about.datasets'),
+                        label: {
+                            en: 'Datasets',
+                        },
+                    },
                 ],
             },
             {
@@ -244,6 +250,14 @@ The STAC ecosystem is driven by open source contributions and community support.
                     label: {
                         en: 'stac-api-spec'
                     },
+                },
+                {
+                    href: {
+                        en: 'https://stac-extensions.github.io/'
+                    },
+                    label: {
+                        en: 'stac-extensions'
+                    }
                 },
                 {
                     href: {

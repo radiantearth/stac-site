@@ -14,6 +14,7 @@ name: getInvolved
 {% from 'elements/cta.html' import cta %}
 
 {{ hero(
+        preheading='.hero.preheading' | localize,
         heading='.hero.heading' | localize,
         body='.hero.body' | localize | markdown | safe,
         cta_url=".hero.cta_url" | localize, 
@@ -25,19 +26,19 @@ name: getInvolved
         <h2>{{ '.howToHelp.heading' | localize }}</h2>
         {{ '.howToHelp.body' | localize | markdown | safe }}
     </div>
-    {%- call callout(icon='satellite-solid') -%}
+    {%- call callout(icon='satellite-solid', icon_size="16") -%}
         {{ '.currentNeeds.1.body' | localize | markdown | safe }}
     {%- endcall -%}
-    {%- call callout(icon='laptop-code-solid') -%}
+    {%- call callout(icon='laptop-code-solid', icon_size="16") -%}
         {{ '.currentNeeds.2.body' | localize | markdown | safe }}
     {%- endcall -%}
-    {%- call callout(icon='object-group-solid') -%}
+    {%- call callout(icon='object-group-solid', icon_size="16") -%}
         {{ '.currentNeeds.3.body' | localize | markdown | safe }}
     {%- endcall -%}
-    {%- call callout(icon='bullhorn-solid') -%}
+    {%- call callout(icon='bullhorn-solid', icon_size="16") -%}
         {{ '.currentNeeds.4.body' | localize | markdown | safe }}
     {%- endcall -%}
-    {%- call callout(icon='code-branch-solid') -%}
+    {%- call callout(icon='code-branch-solid', icon_size="16") -%}
         {{ '.currentNeeds.5.body' | localize | markdown | safe }}
     {%- endcall -%}
 {%- endcall -%}
