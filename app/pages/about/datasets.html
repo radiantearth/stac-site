@@ -1,0 +1,97 @@
+---
+title: Datasets
+route:
+    en: "/en/about/datasets/"
+    lo-ip: "/en/lorbout/datasets/"
+name: "about.datasets"
+---
+
+{% from 'grid.html' import grid %}
+{% from 'sections/section.html' import section %}
+{% from 'sections/hero.html' import hero %}
+{% from 'components/card.html' import card %}
+{% from 'elements/cta.html' import cta %}
+
+{{ hero(
+    preheading='.hero.preheading' | localize,
+    heading='.hero.heading' | localize,
+    body='.hero.body' | localize | markdown | safe,
+    mods=['overlap-xl']
+) }}
+
+{% set feeds = [
+    catalogs | isApi | access,
+    catalogs | isApi(false) | access,
+    catalogs | access("protected"),
+    catalogs | access("private")
+] %}
+
+{% macro datasetTable(feed) %}
+    <table class="w-full table-auto">
+        {%- for item in feed -%}
+                <tr>
+                    <td class="pb-1 {{ 'border-t-0' if loop.index0 === 0 }} border-blue-400">
+                        <a href="{{ item.url }}" class="text-blue-100 border-b-2 border-blue-500">{{ item.title }}</a>
+                    </td>
+                    <td class="pb-1 {{ 'border-t-0' if loop.index0 === 0 }} border-blue-400 text-center">
+                        <span class="px-3 py-1 rounded-lg inline-block font-bold mr-2 my-1">{{ item.access }}</span>
+                    </td>
+                    <td class="pb-1 {{ 'border-t-0' if loop.index0 === 0 }} border-blue-400 text-right">
+                        <span class="text-white px-3 py-1 rounded-lg inline-block font-bold bg-blue-500 mr-2 my-1">{{ "API" if item.isApi else "Catalog" }}</span>
+                    </td>
+                </tr>
+        {%- endfor -%}
+    </table>
+{% endmacro %}
+
+<div class="container pb-10">
+    <div class="px-12 relative bottom-8">
+        <div class="pb-1">
+            <label class="font-bold">Jump to Category</label>
+        </div>
+        <a href="#apis"  class="py-1 px-2 mr-4 my-2 rounded-lg bg-blue-600 inline-block text-white">Public APIs</a>
+        <a href="#catalogs"  class="py-1 px-2 mr-4 my-2 rounded-lg bg-blue-600 inline-block text-white">Public Static Catalogs</a>
+        <a href="#protected"  class="py-1 px-2 mr-4 my-2 rounded-lg bg-blue-600 inline-block text-white">Protected APIs and Catalogs</a>
+        <a href="#private"  class="py-1 px-2 mr-4 my-2 rounded-lg bg-blue-600 inline-block text-white">Private APIs and Catalogs</a>
+    </div>
+    <div id="apis" class="py-4">
+        <div class="card card--blue p-0 m-0">
+            <div class="card-body">
+                <h2 class="text-blue-100">
+                    <span class="py-1 px-2 mx-2 rounded-lg bg-blue-dark">Public</span> APIs
+                </h2>
+                {{ datasetTable(feeds[0]) }}
+            </div>
+        </div>
+    </div>
+    <div id="catalogs" class="py-4">
+        <div class="card card--blue p-0 m-0">
+            <div class="card-body">
+                <h2 class="text-blue-100">
+                    <span class="py-1 px-2 mx-2 rounded-lg bg-blue-dark">Public</span> Catalogs
+                </h2>
+                {{ datasetTable(feeds[1]) }}
+            </div>
+        </div>    
+    </div>
+    <div id="protected" class="py-4">
+        <div class="card card--blue p-0 m-0">
+            <div class="card-body">
+                <h2 class="text-blue-100">
+                    <span class="py-1 px-2 mx-2 rounded-lg bg-blue-dark">Protected</span> APIs & Catalogs
+                </h2>
+                {{ datasetTable(feeds[2]) }}
+            </div>
+        </div>    
+    </div>
+    <div id="private" class="py-4">
+        <div class="card card--blue p-0 m-0">
+            <div class="card-body">
+                <h2 class="text-blue-100">
+                    <span class="py-1 px-2 mx-2 rounded-lg bg-blue-dark">Private</span> APIs & Catalogs
+                </h2>
+                {{ datasetTable(feeds[3]) }}
+            </div>
+        </div>    
+    </div>
+</div>
