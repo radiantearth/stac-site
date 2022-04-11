@@ -106,7 +106,7 @@
 }
 
 .navbar__item {
-    @apply list-none md:inline-block;
+    @apply list-none relative md:inline-block;
 }
 
 .navbar__link {

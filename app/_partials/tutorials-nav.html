@@ -1,38 +1,46 @@
 <aside class="tutorials-sidebar bg-blue" x-data="tutorialsSidebar">
     <nav>
-        <h2 class="mt-0 text-blue-50 text-2xl">{{ 'navigation.tutorialsNav.heading' | localize }}</h2>
-
-        <a 
-            href="{{ 'routes.tutorials.href' | localize }}"
-            class="tutorials-sidebar__tutorial-link pl-3 border-l-2 border-blue-300"
-        >{{ 'navigation.tutorialsNav.homeLabel' | localize }}</a>
+        <div class="-m-5 p-5 mb-5 bg-blue border-b border-blue-500">
+            <h2 class="mt-0 mb-2 text-blue-50 text-xl">{{ 'navigation.tutorialsNav.heading' | localize }}</h2>
+            <div class="pl-3 border-l-2 border-blue-300">
+                <a href="{{ 'routes.tutorials.href' | localize }}"
+                class="tutorials-sidebar__tutorial-link"
+                >{{ 'navigation.tutorialsNav.homeLabel' | localize }}</a>
+            </div>
+        </div>
         
         {% for slug in tt.navigation.tutorialsNav.categories %}
-        {% set navCategorySlug = ('navigation.tutorialsNav.categories.' + loop.index0) | localize %}
-        {% set categoryTutorials = collections.tutorial | fromCategoryTree(navCategorySlug, locale) %}
-        <h3 
-            class="tutorials-sidebar__category-heading" 
-            @click="toggleCategory('{{ navCategorySlug }}')"
-            {% if (navCategorySlug === postCategorySlug) %}x-init="toggleCategory('{{ navCategorySlug }}')"{% endif %}
-        >
-            {{ ('categories.' + navCategorySlug + '.name') | localize }} <span class="ml-3">{{ icon('caret-down-solid', size="3", color='blue-dark') }}</span>
-        </h3>
+            {% set navCategorySlug = ('navigation.tutorialsNav.categories.' + loop.index0) | localize %}
+            {% set categoryTutorials = collections.tutorial | fromCategoryTree(navCategorySlug, locale) %}
+            {% set categoryName = ('categories.' + navCategorySlug + '.name') | localize %}
+            <div>
+                <h3 class="tutorials-sidebar__category-heading" 
+                    @click="toggleCategory('{{ navCategorySlug }}')"
+                    {% if (navCategorySlug === postCategorySlug) %}x-init="toggleCategory('{{ navCategorySlug }}')"{% endif %}
+                    x-cloak
+                >
+                    <span class="tutorials-sidebar__category-heading__text">
+                        {{ categoryName }} 
+                        <span :class="activeCategories.indexOf('{{ navCategorySlug }}') !== -1 ? 'tutorials-nav__category-icon tutorials-nav__category-icon--active' : 'tutorials-nav__category-icon'">
+                            {{ icon('caret-down-solid', size="3", color='blue-100') }}
+                        </span>
+                    </span>
+                </h3>
 
-        <ul 
-            class="pl-3 border-l-2 border-blue-300" 
-            x-show="activeCategories.indexOf('{{ navCategorySlug }}') !== -1" 
-            x-collapse.duration.200ms
-            {% if (navCategorySlug !== postCategorySlug) %}x-cloak{% endif %}
-        >
-            {%- for tutorial in categoryTutorials -%}
-                <li class="tutorials-sidebar__tutorial-item">
-                    <a 
-                    href="{{tutorial.data.page.url}}"
-                    class="tutorials-sidebar__tutorial-link"
-                    >{{ tutorial.data.title }}</a>
-                </li>
-            {%- endfor -%}
-        </ul>
+                <ul class="pl-3 border-l-2 border-blue-300 m-0"
+                    x-show="activeCategories.indexOf('{{ navCategorySlug }}') !== -1" 
+                    x-collapse.duration.200ms
+                    {% if (navCategorySlug !== postCategorySlug) %}x-cloak{% endif %}
+                >
+                    {%- for tutorial in categoryTutorials -%}
+                        <li class="tutorials-sidebar__tutorial-item">
+                            <a href="{{tutorial.data.page.url}}"
+                                class="tutorials-sidebar__tutorial-link"
+                            >{{ tutorial.data.title }}</a>
+                        </li>
+                    {%- endfor -%}
+                </ul>
+            </div>
         {% endfor %}
     </nav>
 </aside>

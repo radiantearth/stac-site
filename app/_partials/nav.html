@@ -17,10 +17,10 @@
                         {% set navContent = 'navigation.headerNav.links.' + loop.index0 %}
                         {% set label = (navContent + '.label') | localize %}
                         {% set href = (navContent + '.href') | localize %}
-                        <li class="navbar__item relative" x-cloak>
+                        <li class="navbar__item" x-cloak>
                             <a class="navbar__link {% if(navLink.children) %}navbar__link--has-children{% endif %}"
                                href="{{ href }}"
-                               @click="e => toggleSubmenu(e, '{{ (navContent + '.label') | localize }}')"
+                               @click="e => toggleSubmenu(e, '{{ label }}')"
                             >
                                 {{ label }}
                                 {% if(navLink.children) %}
