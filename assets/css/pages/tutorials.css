@@ -10,7 +10,16 @@
 }
 
 .tutorials-sidebar__category-heading {
-    @apply text-xl text-blue-50;
+    @apply text-base my-2;
+    cursor: pointer;
+}
+
+.tutorials-sidebar__category-heading__text {
+    @apply text-blue-50 inline-block rounded-lg px-2 py-0 -mx-2;
+}
+
+.tutorials-sidebar__category-heading:hover .tutorials-sidebar__category-heading__text {
+    @apply bg-blue-500;
 }
 
 .tutorials-sidebar__tutorial-item {
@@ -19,4 +28,15 @@
 
 .tutorials-sidebar__tutorial-link {
     @apply font-sans font-light leading-snug text-blue-50;
+    border-bottom: 2px solid theme('colors.blue.500');
+}
+
+.tutorials-nav__category-icon {
+    @apply ml-3 inline-block relative;
+    top: -3px;
+    transition: all 0.3s;
+}
+
+.tutorials-nav__category-icon--active {
+    transform: rotateZ(-180deg) translateY(-6px);
 }
