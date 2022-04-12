@@ -14,10 +14,12 @@
         <a class="text-blue-dark ml-4 font-bold" href="{{ collections.tutorial | getLocalizedTutorial('lo-ip') }}">Lorem</a>
       </div>
     </div>
-    {%- include 'nav.html' -%}
+    <div class="pb-5 bg-blue-100 header-nav-tutorials-container">
+      {%- include 'nav.html' -%}
+    </div>
     <div class="md:flex">
       {%- include 'tutorials-nav.html' -%}
-      <article class="tutorials-article">
+      <article class="tutorials-article bg-white shadow-lg w-full pt-10 pb-12">
         <div class="{% if(container != false) %}container{% endif %}">
           {{ content | safe }}
           {% if (content and notebooks) %}

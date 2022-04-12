@@ -110,5 +110,10 @@
 }
 
 .navbar__link {
-    @apply text-xl text-blue-dark inline-block mt-4 md:mt-11 pt-2 pb-4 px-3 font-bold;
+    @apply text-xl text-blue-dark inline-block mt-4 md:mt-11 rounded-lg pt-1 pb-1 mb-4 mt-2 px-3 mx-1 font-bold;
+    border-bottom: 3px solid transparent;
+}
+
+.navbar__link:hover {
+    @apply bg-blue-200;
 }
