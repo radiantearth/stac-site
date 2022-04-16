@@ -217,6 +217,12 @@ module.exports = {
                         en: 'STAC Index'
                     },
                 },
+                {
+                    href: route('about.faq'),
+                    label: {
+                        en: 'FAQs'
+                    }
+                },
             ]
         },
         column3: {
