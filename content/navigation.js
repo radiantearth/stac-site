@@ -109,7 +109,7 @@ module.exports = {
             en: 'STAC Tutorials'
         },
         homeLabel: {
-            en: 'Introduction'
+            en: 'Getting Started'
         },
         categories: [
             {

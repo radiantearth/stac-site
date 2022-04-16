@@ -26,8 +26,23 @@ export const Navbar = () => ({
     },
 });
 
+// If desktop, showMenu true
+// If mobile && showMenu
+// Or use dynamic class
+
 export const TutorialsSidebar = () => ({
     activeCategories: [],
+    showMenu: window.innerWidth > 768,
+
+    handleResize() {
+        if (window.innerWidth > 768) {
+            this.showMenu = true;
+        }
+    },
+
+    toggleMenu() {
+        this.showMenu = !this.showMenu;
+    },
 
     toggleCategory(category) {
         const categoryIndex = this.activeCategories.indexOf(category);

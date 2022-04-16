@@ -80,7 +80,6 @@
 
 .jupyter-notebook .cell {
     @apply block relative py-4;
-    padding-left: 70px;
     padding-right: 0px;
     overflow: hidden;
 }
@@ -114,5 +113,17 @@
 
 .jupyter-notebook__meta {
     @apply bg-blue-100 px-5 rounded mt-5;
-    margin-left: 70px;
+}
+
+@media(min-width: theme('screens.lg')) {
+    .jupyter-notebook .cell {
+        padding-left: 70px;
+    }
+    .jupyter-notebook__meta {
+        margin-left: 70px;
+    }
+}
+
+.cell .prompt {
+    @apply hidden lg:inline-block;
 }
