@@ -99,4 +99,5 @@ module.exports = {
     stacSpec: require('./stac-spec'),
     toolsResources: require('./tools-resources'),
     datasets: require('./datasets'),
+    faq: require('./faq'),
 };
