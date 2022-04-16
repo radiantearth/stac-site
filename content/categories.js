@@ -1,7 +1,7 @@
 module.exports = {
     'getting-started': {
         name: {
-            en: 'Getting Started',
+            en: 'Intro to STAC',
             'lo-ip': 'Gorem Stipsum',
         },
     },

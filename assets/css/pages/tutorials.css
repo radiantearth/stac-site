@@ -1,9 +1,17 @@
 .tutorials-article {
-    @apply p-5;
+    @apply p-5 bg-white shadow-lg w-full pt-10 pb-12 rounded-l-lg relative;
+}
+
+.tutorials-article::after {
+    @apply absolute w-20 h-20 bg-blue;
+    content: '';
+    bottom: 0;
+    left: 0;
+    z-index: -1;
 }
 
 .tutorials-sidebar {
-    @apply p-5 bg-blue-100;
+    @apply bg-blue-100;
     flex-basis: 300px;
     flex-shrink: 0;
     flex-grow: 0;
