@@ -13,9 +13,24 @@ name: "getInvolved.developers"
 {{ hero(
     heading='.hero.heading' | localize,
     preheading='.hero.preheading' | localize,
-    body='.hero.body' | localize | markdown | safe
+    body='.hero.body' | localize | markdown | safe,
+    mods=['overlap-lg']
 ) }}
 
-{%- call section() -%}
-    
-{%- endcall -%}
+<section class="pt-0">
+    <div class="container">
+        {% for i in tt.getInvolved.developers.bullets %}
+            {% set bullet = '.bullets.' + loop.index0 %}
+            <div class="card card--blue pb-4">
+                <div class="card-body">
+                    <h2>{{ (bullet + '.heading') | localize }}</h2>
+                    {{ (bullet + '.content') | localize | markdown | safe }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% call section(mods=['tall']) %}
+    {{ '.closingContent' | localize | markdown | safe }}
+{% endcall %}
