@@ -13,4 +13,8 @@
 
 <meta property="og:image" content="/public/images-original/STAC-01.png" />
 
+{%- if canonical -%}
+    <link rel="canonical" href="{{ canonical }}" />
+{%- endif -%}
+
 <title>{{ '.meta.title' | localize }}</title>
