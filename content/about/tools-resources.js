@@ -1,3 +1,12 @@
+const meta = {
+    title: {
+        en: 'STAC Tools & Resources',
+    },
+    description: {
+        en: 'Learn about the growing list of tools help facilitate the use of the STAC spec.',
+    },
+}
+
 const hero = {
     preheading: {
         en: 'About STAC',
@@ -11,5 +20,6 @@ const hero = {
 };
 
 module.exports = {
+    meta,
     hero,
 };

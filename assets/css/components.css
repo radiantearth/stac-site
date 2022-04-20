@@ -1,6 +1,6 @@
 @layer components {
     .card {
-        @apply shadow-card rounded-lg mt-5 mb-6;
+        @apply shadow-card rounded-lg mt-5 mb-6 relative;
     }
 
     .card-body {

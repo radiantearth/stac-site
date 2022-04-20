@@ -1,5 +1,14 @@
 const { snippet, codeSnippet, route } = require('../_util');
 
+const meta = {
+    title: {
+        en: `STAC Frequently Asked Questions`
+    },
+    description: {
+        en: `We get a lot of questions about STAC, here we've compiled a list of some of the ones we're asked most often.`
+    },
+}
+
 const hero = {
     preheading: {
         en: 'About STAC',
@@ -40,6 +49,7 @@ We are still figuring out the exact recommendation, but in general STAC is focus
 };
 
 module.exports = {
+    meta,
     hero,
     content,
 };

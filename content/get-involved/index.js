@@ -1,3 +1,12 @@
+const meta = {
+    title: {
+        en: 'How to Help with STAC',
+    },
+    description: {
+        en: 'The STAC community prides itself on being welcoming and collaborative. Learn how about our ongoing needs and how you can contribute!'
+    }
+}
+
 const hero = {
     preheading: {
         en: 'Get Involved',
@@ -87,6 +96,7 @@ We also do video calls where we discuss various issues and move the spec forward
 };
 
 module.exports = {
+    meta,
     hero,
     howToHelp,
     communityCalls,

@@ -1,5 +1,14 @@
 const { route } = require('../_util');
 
+const meta = {
+    title: {
+        en: 'STAC for Developers',
+    },
+    description: {
+        en: 'STAC offers a simple and flexible format for developers to interact with SpatioTemporal data, and a community and ecosystem of open source tools and innovation.'
+    }
+}
+
 const hero = {
     preheading: {
         en: 'STAC',
@@ -50,6 +59,7 @@ If you'd like to get involved with the STAC community, the [How to Help](http://
 }
 
 module.exports = {
+    meta,
     hero,
     bullets,
     closingContent,

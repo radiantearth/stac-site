@@ -5,7 +5,22 @@
 <html lang="{{ locale }}">
   <head>
     {% include 'head.html' %}
-    <title>{{ title }} | STAC</title>
+
+    <!-- Tutorials SEO & Social Metadata -->
+    <meta name="description" content="{{ description }}">
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:url" content="{{ page.url }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@STACspec" />
+
+    {%- if noIndex === true -%}
+        <meta name="robots" content="noindex, nofollow">
+    {%- endif -%}
+
+    <meta property="og:image" content="/public/images-original/STAC-01.png" />
+
+    <title>{{ title }} | STAC Tutorials</title>
   </head>
   <body class="bg-blue-100">
     <div class="topbar">

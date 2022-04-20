@@ -1,5 +1,14 @@
 const { route, md } = require('./_util');
 
+const meta = {
+    title: {
+        en: 'STAC: SpatioTemporal Asset Catalogs',
+    },
+    description: {
+        en: 'The STAC specification is a common language to describe geospatial information, so it can more easily be worked with, indexed, and discovered.'
+    }
+}
+
 const hero = {
     preheading: {
         en: 'STAC',
@@ -37,8 +46,7 @@ const stacIsFor = {
         },
         cta_url: route('getInvolved.dataProviders'),
         cta_text: {
-            en: 'Learn More',
-            'lo-ip': 'Learn More',
+            en: 'STAC for Data Providers',
         },
     },
     group2: {
@@ -52,8 +60,7 @@ const stacIsFor = {
         },
         cta_url: route('getInvolved.developers'),
         cta_text: {
-            en: 'Learn More',
-            'lo-ip': 'Learn More',
+            en: 'STAC for Developers',
         },
     },
     group3: {
@@ -67,8 +74,7 @@ const stacIsFor = {
         },
         cta_url: route('getInvolved.dataUsers'),
         cta_text: {
-            en: 'Learn More',
-            'lo-ip': 'Learn More',
+            en: 'STAC for Data Users',
         },
     },
 };
@@ -158,7 +164,7 @@ const datasets = {
         'lo-ip': 'Lorem Ipsum Dolor',
     },
     cta_text: {
-        en: 'Learn More'
+        en: 'Browse Datasets'
     },
     cta_url: route('about.toolsResources'),
 };
@@ -173,7 +179,7 @@ const tools = {
         'lo-ip': 'Lorem Ipsum Dolor',
     },
     cta_text: {
-        en: 'Learn More'
+        en: 'Browse Tools & Resources'
     },
     cta_url: route('about.toolsResources'),
 };
@@ -193,12 +199,13 @@ const getInvolved = {
         en: `There are a variety of ways to get involved with STAC, from building software, creating new STAC Catalogs, working on the spec, or helping in outreach. We strive to be fully open, collaborative and welcoming community. Learn more on our \"Get Involved\" page.`,
     },
     cta_text: {
-        en: 'Learn More',
+        en: 'Learn How to Help',
     },
     cta_url: route('getInvolved'),
 };
 
 module.exports = {
+    meta,
     hero,
     stacIsFor,
     moreAboutStac,
