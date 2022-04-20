@@ -1,5 +1,14 @@
 const { snippet, codeSnippet, route } = require('../_util');
 
+const meta = {
+    title: {
+        en: `About STAC`
+    },
+    description: {
+        en: `STAC is a standard and a community of collaborators working to enable increased access to information about our planet. The focus of STAC is to make it as easy as possible for data providers to expose their data to the world.`
+    },
+}
+
 const hero = {
     preheading: {
         en: 'STAC',
@@ -93,6 +102,7 @@ Consumers of spatial temporal datasets are often burdened with building unique p
 };
 
 module.exports = {
+    meta,
     hero,
     whyStac,
     whoIsItFor,

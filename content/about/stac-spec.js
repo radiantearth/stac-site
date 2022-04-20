@@ -1,5 +1,14 @@
 const { codeSnippet } = require('../_util');
 
+const meta = {
+    title: {
+        en: `The STAC Specification`
+    },
+    description: {
+        en: `Learn about components that make up the STAC core specification: items, catalogs, and collections, as well as STAC APIs and extensions.`
+    },
+}
+
 const hero = {
     preheading: {
         en: 'About STAC',
@@ -102,6 +111,7 @@ Client libraries like STAC Browser are able to treat dynamic and static catalogs
 };
 
 module.exports = {
+    meta,
     hero,
     content,
 };

@@ -1,4 +1,13 @@
 module.exports = {
+    meta: {
+        title: {
+            en: 'STAC Tutorials',
+        },
+        description: {
+            en: 'Here you can find Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+        }
+    },
+
     body: {
         en: `
 # STAC Tutorials
