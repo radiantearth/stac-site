@@ -4,7 +4,7 @@
     }
 
     .card-body {
-        @apply py-3 px-6;
+        @apply py-3 px-4 sm:px-6;
     }
 
     .callout {
@@ -13,7 +13,7 @@
     }
 
     .icon-callout {
-        @apply flex spacing-normal border-none;
+        @apply flex spacing-normal border-none flex-col md:flex-row;
         align-items: top;
     }
     

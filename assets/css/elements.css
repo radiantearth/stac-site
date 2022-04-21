@@ -63,6 +63,13 @@ pre[class^="language-"] {
 
 table {
     @apply w-full;
+    overflow-x: auto;
+}
+
+@media (max-width: theme('screens.md')) {
+    table {
+        display: block;
+    }
 }
 
 th {
@@ -70,6 +77,11 @@ th {
 }
 
 td {
-    @apply py-2 px-4 text-left;
+    @apply py-2 sm:px-4 text-left;
     border-top: 1px solid theme('colors.gray.light');
+    min-width: 125px;
+}
+
+iframe {
+    max-width: 100%;
 }

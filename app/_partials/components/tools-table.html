@@ -11,7 +11,7 @@
                         <span class="px-3 py-1 rounded-lg inline-block font-bold mr-2 my-1">{{ item.language }}</span>
                     </td>
                 {%- endif -%}
-                <td class="pb-1 {{ 'border-t-0' if loop.index0 === 0 }} border-blue-400 text-right">
+                <td class="pb-1 {{ 'border-t-0' if loop.index0 === 0 }} border-blue-400 text-right hidden sm:table-cell">
                     {%- for cat in item.categories -%}
                         {% if (loop.index0 < 3 and cat !== category) %}
                             <a href="#{{ cat | replace(' ', '-') }}" class="text-white px-3 py-1 rounded-lg inline-block font-bold bg-blue-500 mr-2 my-1">{{ cat }}</a>

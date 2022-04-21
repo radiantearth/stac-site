@@ -102,7 +102,7 @@
     }
 }
 .navbar__items {
-    @apply m-0;
+    @apply m-0 px-5;
 }
 
 .navbar__item {
@@ -110,7 +110,7 @@
 }
 
 .navbar__link {
-    @apply text-xl text-blue-dark inline-block mt-4 md:mt-11 rounded-lg pt-1 pb-1 mb-4 mt-2 px-3 mx-1 font-bold;
+    @apply text-xl text-blue-dark inline-block rounded-lg mt-4 md:mt-11 mb-4 md:mx-1 px-3 pt-1 pb-1 font-bold;
     border-bottom: 3px solid transparent;
 }
 
