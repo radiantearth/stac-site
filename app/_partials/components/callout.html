@@ -3,8 +3,10 @@
 {%- macro callout(mods=['blue'], icon, icon_color="blue", icon_size="20") -%}
 {%- if icon -%}
     <div class="icon-callout {% for mod in mods %} icon-callout--{{mod}} {% endfor %}">
-        <div class="inline-block mr-5 spacing-normal">{{ icon_component(icon, icon_size, icon_color) }}</div>
-        <div class="w-full px-4">
+        <div class="inline-block mr-5 mt-6">
+            {{ icon_component(icon, icon_size, icon_color) }}
+        </div>
+        <div class="w-full sm:px-4">
             {{ caller() }}
         </div>
     </div>

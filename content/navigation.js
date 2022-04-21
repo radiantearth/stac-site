@@ -153,6 +153,12 @@ module.exports = {
             },
             links: [
                 {
+                    href: route('getInvolved'),
+                    label: {
+                        en: 'How to Help'
+                    }
+                },
+                {
                     href: route('getInvolved.dataProviders'),
                     label: {
                         en: 'Data Providers'

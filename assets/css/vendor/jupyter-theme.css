@@ -82,6 +82,7 @@
     @apply block relative py-4;
     padding-right: 0px;
     overflow: hidden;
+    @apply px-5 sm:px-8 md:px-12 lg:ml-5;
 }
 
 .cell .output_text pre {
@@ -124,6 +125,12 @@
     }
 }
 
+@media(max-width: theme('screens.sm')) {
+    .jupyter-notebook table {
+        display: block;
+        overflow-x: auto;
+    }
+}
 .cell .prompt {
     @apply hidden lg:inline-block;
 }

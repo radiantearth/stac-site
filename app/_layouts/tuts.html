@@ -34,9 +34,11 @@
     </div>
     <div class="md:flex">
       {%- include 'tutorials-nav.html' -%}
-      <article class="tutorials-article px-6 md:px-9 xl:px-12">
+      <article class="tutorials-article">
         <div class="md:max-w-md lg:max-w-xl xl:max-w-4xl w-9/10">
-          {{ content | safe }}
+          <div class="px-5 sm:px-8 md:px-12 lg:ml-5">
+            {{ content | safe }}
+          </div>
           {% if (content and notebooks) %}
             <div class="my-8 border-b-2 border-gray-light"></div>
           {% endif %}

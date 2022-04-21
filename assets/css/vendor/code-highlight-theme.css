@@ -195,3 +195,7 @@ pre[class*="language-"] {
 .token.variable {
 	color: #f07178;
 }
+
+pre[class*="language-"], .jupyter-notebook .highlight {
+	@apply -mx-4 sm:mx-0;
+}

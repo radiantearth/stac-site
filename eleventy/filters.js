@@ -75,10 +75,10 @@ module.exports = function (eleventyConfig) {
         let template = `<div class="jupyter-notebook">
             <div class="jupyter-notebook__meta py-4">
                 <span class="my-1 mr-5 font-bold inline-block text-blue-600 py-1">${sanitizedFilename}.ipynb</span>
-                <div class="whitespace-nowrap inline-block">
-                    <span class="mr-3 my-1 inline-block">${downloadLink}</span> |
-                    <span class="mx-3 my-1 inline-block">${colabLink}</span> |
-                    <span class="mx-3 my-1 inline-block">${binderLink}</span>
+                <div class="md:whitespace-nowrap inline-block">
+                    <span class="mr-4 my-1 inline-block">${downloadLink}</span>
+                    <span class="mr-4 my-1 inline-block">${colabLink}</span>
+                    <span class="my-1 inline-block">${binderLink}</span>
                 </div>
             </div>
             ${notebookHtml}

@@ -45,7 +45,7 @@ name: "about.datasets"
 {% endmacro %}
 
 <div class="container pb-10">
-    <div class="px-12 relative bottom-8">
+    <div class="sm:px-5 md:px-12 relative bottom-8">
         <div class="pb-1">
             <label class="font-bold">Jump to Category</label>
         </div>
@@ -58,7 +58,7 @@ name: "about.datasets"
         <div class="card card--blue p-0 m-0">
             <div class="card-body">
                 <h2 class="text-blue-100">
-                    <span class="py-1 px-2 mx-2 rounded-lg bg-blue-dark">Public</span> APIs
+                    <span class="py-1 px-2 mr-2 rounded-lg bg-blue-dark">Public</span> APIs
                 </h2>
                 {{ datasetTable(feeds[0]) }}
             </div>
@@ -68,7 +68,7 @@ name: "about.datasets"
         <div class="card card--blue p-0 m-0">
             <div class="card-body">
                 <h2 class="text-blue-100">
-                    <span class="py-1 px-2 mx-2 rounded-lg bg-blue-dark">Public</span> Catalogs
+                    <span class="py-1 px-2 mr-2 rounded-lg bg-blue-dark">Public</span> Catalogs
                 </h2>
                 {{ datasetTable(feeds[1]) }}
             </div>
@@ -78,7 +78,7 @@ name: "about.datasets"
         <div class="card card--blue p-0 m-0">
             <div class="card-body">
                 <h2 class="text-blue-100">
-                    <span class="py-1 px-2 mx-2 rounded-lg bg-blue-dark">Protected</span> APIs & Catalogs
+                    <span class="py-1 px-2 mr-2 rounded-lg bg-blue-dark">Protected</span> APIs & Catalogs
                 </h2>
                 {{ datasetTable(feeds[2]) }}
             </div>
@@ -88,7 +88,7 @@ name: "about.datasets"
         <div class="card card--blue p-0 m-0">
             <div class="card-body">
                 <h2 class="text-blue-100">
-                    <span class="py-1 px-2 mx-2 rounded-lg bg-blue-dark">Private</span> APIs & Catalogs
+                    <span class="py-1 px-2 mr-2 rounded-lg bg-blue-dark">Private</span> APIs & Catalogs
                 </h2>
                 {{ datasetTable(feeds[3]) }}
             </div>

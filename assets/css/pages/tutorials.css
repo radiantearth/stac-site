@@ -1,5 +1,5 @@
 .tutorials-article {
-    @apply p-5 bg-white shadow-lg w-full pt-10 pb-12 rounded-l-lg relative;
+    @apply pt-10 pb-12 bg-white shadow-lg w-full rounded-l-lg relative;
 }
 
 .tutorials-article::after {
