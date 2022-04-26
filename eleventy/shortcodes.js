@@ -18,7 +18,7 @@ async function generateImage(src, alt, sizes) {
     let imageAttributes = {
         alt,
         sizes,
-        loading: 'lazy',
+        loading: 'eager',
         decoding: 'async',
     };
 
