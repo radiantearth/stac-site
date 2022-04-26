@@ -93,8 +93,6 @@ You'll need to add a few properties in `yml` format to the markdown frontmatter 
 
 ```
 ---
-title: A title for your page, this is used for SEO and in previews throughout the site
-description: A short description of the page. This will be used in the meta description and in tutorial previews throughout the site.
 route:
     en: /en/example-url-for/english-translation
     es: /es/url-ejemplo-para/traduccion-en-espanol
@@ -103,8 +101,6 @@ name: example.correlates.toAContentFile
 ```
 
 The `route` property creates the URL for each translated site.
-
-
 
 ### Page Content
 
@@ -131,7 +127,7 @@ hero: {
 }
 ```
 
-If this all seems complicated, this is why CMS's are a popular option. If in the future this becomes too much to manage in the filesystem, eleventy can generate content from API calls as well. An example of this can be found in [app/_data/catalogs.js](app/_data/catalogs.js)
+If in the future, it becomes too cumbersome to manage content in the filesystem, eleventy can generate content from API calls as well. An example of this can be found in [app/_data/catalogs.js](app/_data/catalogs.js)
 
 ## Deployment & CI (future)
 
