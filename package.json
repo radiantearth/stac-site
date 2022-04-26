@@ -12,6 +12,7 @@
     "notebooks:setup": "(cd ./notebooks && python3 -m venv stac-venv)",
     "notebooks:build": "(cd ./notebooks && source ./stac-venv/bin/activate && pip3 install -r requirements.txt && source build_notebooks)",
     "notebooks": "run-s notebooks:*",
+    "cicd:notebooks-build": "(cd ./notebooks && pip3 install -r requirements.txt && source build_notebooks)",
     "build:css": "postcss --config ./config/postcss.config.js assets/css/app.css -o public/css/style.css",
     "build:eleventy": "ELEVENTY_ENV=production eleventy --config=eleventy.js",
     "build:js": "webpack build --config ./config/webpack.config.js --mode=development",
