@@ -14,7 +14,7 @@
     "notebooks": "run-s notebooks:*",
     "cicd:notebooks-build": "(cd ./notebooks && pip3 install -r requirements.txt && sh ./build_notebooks.sh)",
     "build:css": "postcss --config ./config/postcss.config.js assets/css/app.css -o public/css/style.css",
-    "build:eleventy": "ELEVENTY_ENV=production eleventy --config=eleventy.js/public/images/mkBU7Wlf5k-300.jpeg",
+    "build:eleventy": "ELEVENTY_ENV=production eleventy --config=eleventy.js",
     "build:js": "webpack build --config ./config/webpack.config.js --mode=development",
     "build": "run-s build:*",
     "format": "prettier --write --config ./config/.prettierrc --ignore-path ./config/prettier/.prettierignore '**/*.js'"
