@@ -210,7 +210,7 @@ module.exports = {
                     }
                 },
                 {
-                    href: route('about.toolsResources'),
+                    href: route('about.datasets'),
                     label: {
                         en: 'Datasets'
                     }

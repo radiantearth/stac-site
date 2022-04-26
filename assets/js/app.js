@@ -1,3 +1,6 @@
+import 'core-js/features/dom-collections/for-each';
+import 'core-js/stable/queue-microtask';
+
 import Alpine from 'alpinejs';
 import collapse from '@alpinejs/collapse';
 import { Navbar, TutorialsSidebar } from './components';
