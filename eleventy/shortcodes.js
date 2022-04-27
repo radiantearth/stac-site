@@ -13,6 +13,7 @@ async function generateImage(src, alt, sizes) {
         formats: ['avif', 'png', 'jpeg'],
         outputDir: './public/images/',
         urlPath: '/public/images/',
+        useCache: false,
     };
 
     let imageAttributes = {
