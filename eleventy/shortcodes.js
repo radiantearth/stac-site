@@ -10,7 +10,7 @@ loadLanguages(['py', 'json']);
 async function generateImage(src, alt, sizes) {
     let metadata = await Image(src, {
         widths: [300, 600, 1100, 1600],
-        formats: ['avif', 'png', 'jpeg'],
+        formats: ['jpeg'],
         outputDir: './public/images/',
         urlPath: '/public/images/',
     });
