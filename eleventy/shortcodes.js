@@ -8,12 +8,12 @@ const loadLanguages = require('prismjs/components/');
 loadLanguages(['py', 'json']);
 
 async function generateImage(src, alt, sizes) {
-    let metadata = await Image(src, {
+    let options= {
         widths: [300, 600, 1100, 1600],
-        formats: ['jpeg'],
+        formats: ['avif', 'png', 'jpeg'],
         outputDir: './public/images/',
         urlPath: '/public/images/',
-    });
+    };
 
     let imageAttributes = {
         alt,
@@ -23,6 +23,7 @@ async function generateImage(src, alt, sizes) {
     };
 
     // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
+    let metadata = Image.statsSync(src, options);
     return Image.generateHTML(metadata, imageAttributes);
 }
 
