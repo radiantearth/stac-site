@@ -1,1 +1,1 @@
-module.exports = ['en', 'lo-ip'];
+module.exports = ['en'];
