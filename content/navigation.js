@@ -118,9 +118,6 @@ module.exports = {
             {
                 en: 'notebooks',
             },
-            {
-                en: 'example',
-            },
         ],
     },
 

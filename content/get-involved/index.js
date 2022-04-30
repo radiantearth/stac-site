@@ -102,4 +102,6 @@ module.exports = {
     communityCalls,
     currentNeeds,
     developers: require('./developers'),
+    dataUsers: require('./data-users'),
+    dataProviders: require('./data-providers'),
 };

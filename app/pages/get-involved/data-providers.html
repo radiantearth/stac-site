@@ -1,5 +1,4 @@
 ---
-title: Data Providers
 route:
     en: "/en/get-involved/data-providers/"
     lo-ip: "/lo-ip/loremvolved/data-providers/"
@@ -7,11 +6,30 @@ name: "getInvolved.dataProviders"
 ---
 
 {% from 'sections/section.html' import section %}
+{% from 'sections/hero.html' import hero %}
 {% from 'elements/cta.html' import cta %}
 
-{%- call section() -%}
-    {{ page | log  }}
-    <h1>{{ title }}</h1>
-    <p class="text-xl mt-6 mb-8">STAC is driven by a community of lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, quo. Eos necessitatibus adipisci ad, doloremque.</p>
-    {{ cta(url="https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby", text="Join Gitter Community") }}
-{%- endcall -%}
+{{ hero(
+    heading='.hero.heading' | localize,
+    preheading='.hero.preheading' | localize,
+    body='.hero.body' | localize | markdown | safe,
+    mods=['overlap-lg']
+) }}
+
+<section class="pt-0">
+    <div class="container">
+        {% for i in tt.getInvolved.dataProviders.bullets %}
+            {% set bullet = '.bullets.' + loop.index0 %}
+            <div class="card card--blue pb-4">
+                <div class="card-body">
+                    <h2>{{ (bullet + '.heading') | localize }}</h2>
+                    {{ (bullet + '.content') | localize | markdown | safe }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% call section(mods=['tall']) %}
+    {{ '.closingContent' | localize | markdown | safe }}
+{% endcall %}

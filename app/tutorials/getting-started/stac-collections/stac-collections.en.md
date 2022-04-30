@@ -1,9 +1,6 @@
 ---
 title: STAC Collections
-description: A second example in a module
-author: Stuart Pearman
-tags: ["STAC Spec"]
-courses: ["the-stac-spec"]
+description: The STAC Collection Specification defines a set of common fields to describe a group of Items that share properties and metadata.
 ---
 
 # STAC Collection Specification
