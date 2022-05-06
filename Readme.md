@@ -140,7 +140,7 @@ If in the future, it becomes too cumbersome to manage content in the filesystem,
 
 If you want to translate the site into another language, here are all the steps you'll need to take:
 
-### #1 Translate all content
+### 1. Translate all content
 
 In the content files (everything in the `content` folder), anywhere you see an `en:` means it is the english version. Add your translation with the locale code right next to that, i.e:
 
@@ -153,7 +153,7 @@ hero: {
 }
 ```
 
-### Add translated urls
+### 2. Add translated urls
 
 in each template file (anything in `pages` folder), add your translated route to the `routes` config. I.e:
 
@@ -165,11 +165,11 @@ route:
 ---
 ```
 
-### #2 Translate tutorials
+### 3. Translate tutorials
 
 In the tutorials folder, anything with the extension `en.md` is a tutorial in english. Copy this file in the same folder and add the locale in place of `en`. You can also translate the filename to give the tutorial a translated url for example `hello.en.md` would be copied as `hola.es.md` in the same folder. The url for that would be `stacspec.org/es/tutorials/hola`.
 
-### #3 Activate your translated site
+### 4. Activate your translated site
 
 In the file `app/_data/locales.js`, add your locale to the list. Right now the entire contents of that file are:
 
