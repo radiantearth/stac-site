@@ -83,9 +83,16 @@ pip3 install -r requirements.txt
 sh build_notebooks
 ```
 
-## Pages
+## Creating Pages
 
-Pages are written using the [Nunjucks templating language](https://mozilla.github.io/nunjucks/).
+If you want to create a new page, here are the steps you'll follow
+
+1. Create a `.html` file for your page template in the `app/pages` directory.
+1. Create a content file in the `content` directory, and be sure to require that file in the parent content file (for a new "about" page, include it at the bottom of the content/about/index.js file. For a new base level page, you'd include it in the `content/index.js` file.
+1. Link the template file with the content file by adding a `name` to the template frontmatter (see [Page Frontmatter Requirements](#page-frontmatter-requirements) below)
+1. Add a route to the page for each translation (Also see [Page Frontmatter Requirements](#page-frontmatter-requirements) below)
+1. Now you're ready to create your page, you can use the content you add to the content files with the localize filter, i.e. `{{ .hero.cta_text | localize }}`. Review the [Page Content](#page-content) section below for more detail
+1. Pages are written using the Nunjucks templating language, review the [Nunjucks documentation](https://mozilla.github.io/nunjucks/) to see all the options available to you
 
 ### Page Frontmatter Requirements
 
@@ -128,6 +135,41 @@ hero: {
 ```
 
 If in the future, it becomes too cumbersome to manage content in the filesystem, eleventy can generate content from API calls as well. An example of this can be found in [app/_data/catalogs.js](app/_data/catalogs.js)
+
+## Translations
+
+If you want to translate the site into another language, here are all the steps you'll need to take:
+
+### #1 Translate all content
+
+In the content files (everything in the `content` folder), anywhere you see an `en:` means it is the english version. Add your translation with the locale code right next to that, i.e:
+
+```
+hero: {
+    cta_text: {
+        'en': 'Click',
+        'es': 'Hacer clic'
+    }
+}
+```
+
+### #2 Translate tutorials
+
+In the tutorials folder, anything with the extension `en.md` is a tutorial in english. Copy this file in the same folder and add the locale in place of `en`. You can also translate the filename to give the tutorial a translated url for example `hello.en.md` would be copied as `hola.es.md` in the same folder. The url for that would be `stacspec.org/es/tutorials/hola`.
+
+### #3 Activate your translated site
+
+In the file `app/_data/locales.js`, add your locale to the list. Right now the entire contents of that file are:
+
+```
+module.exports = ['en'];
+```
+
+To add spanish, you would update that to be:
+
+```
+module.exports = ['en', 'es'];
+```
 
 ## Deployment & CI (future)
 
