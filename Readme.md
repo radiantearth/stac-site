@@ -153,6 +153,18 @@ hero: {
 }
 ```
 
+### Add translated urls
+
+in each template file (anything in `pages` folder), add your translated route to the `routes` config. I.e:
+
+```
+---
+route:
+    en: /en/example-url-for/english-translation
+    es: /es/url-ejemplo-para/traduccion-en-espanol
+---
+```
+
 ### #2 Translate tutorials
 
 In the tutorials folder, anything with the extension `en.md` is a tutorial in english. Copy this file in the same folder and add the locale in place of `en`. You can also translate the filename to give the tutorial a translated url for example `hello.en.md` would be copied as `hola.es.md` in the same folder. The url for that would be `stacspec.org/es/tutorials/hola`.
