@@ -166,7 +166,7 @@ const datasets = {
     cta_text: {
         en: 'Browse Datasets'
     },
-    cta_url: route('about.toolsResources'),
+    cta_url: route('about.datasets'),
 };
 
 const tools = {

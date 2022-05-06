@@ -12,6 +12,7 @@ name: 'homepage'
 {% from 'components/card.html' import card %}
 {% from 'sections/section.html' import section %}
 {% from 'elements/cta.html' import cta %}
+{% from 'elements/icon.html' import icon %}
 {% from 'components/callout.html' import callout %}
 {% from 'components/tools-table.html' import toolsTable %}
 
@@ -121,12 +122,16 @@ name: 'homepage'
     <div class="container--wide py-5">
         {%- call grid(3) -%}
             {%- for i in range(0,12) -%}
-                <div class="card card--blue mt-0 mb-5 p-5 flex items-center">
-                    <div>
-                        <h3 class="text-base mt-0"><a href="{{ catalogs[i].url }}" class="text-white border-b-2 border-blue-500">{{ catalogs[i].title }}</a></h3>
-                        <span class="px-3 py-1 rounded-lg font-bold {{ 'border-2 border-blue-500' if catalogs[i].access === 'public' else 'bg-blue-800' }}">{{ 'Public' if catalogs[i].access === 'public' else 'Protected' }}</span>
-                        <span class="px-3 py-1 rounded-lg font-bold bg-blue-800">{{ 'API' if catalogs[i].isApi else 'Catalog' }}</span>
-                    </div>
+                <div class="card card--blue mt-0">
+                    <a href="https://stacindex.org/catalogs/{{ catalogs[i].slug }}" class="block mb-0 p-5">
+                        <div>
+                            <h3 class="text-base mt-0"><span class="text-white border-b-2 border-blue-500">{{ catalogs[i].title }}</span></h3>
+                            <span class="text-white px-3 py-1 rounded-lg font-bold {{ 'border-2 border-blue-500' if catalogs[i].access === 'public' else 'bg-blue-800' }}">{{ 'Public' if catalogs[i].access === 'public' else 'Protected' }}</span>
+                            <span class="text-white px-3 py-1 rounded-lg font-bold bg-blue-800">{{ 'API' if catalogs[i].isApi else 'Catalog' }}</span>
+                        </div>
+                    </a>
+                    <a class="block px-5 my-1 text-white" href="https://stacindex.org/catalogs/{{ catalogs[i].slug }}"><span class="mr-2 text-blue-300 top-1 relative inline-block w-4">{{ icon('laptop-code-solid', size="4") }}</span> Browse on STAC Index</a>
+                    <a class="block px-5 text-white pb-3" href="{{ catalogs[i].url }}"><span class="mr-2 text-blue-300 inline-block w-4">{{ icon('database-solid', size="3") }}</span> View raw JSON</a>
                 </div>
             {%- endfor -%}
         {%- endcall -%}

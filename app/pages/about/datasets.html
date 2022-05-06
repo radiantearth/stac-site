@@ -31,7 +31,7 @@ name: "about.datasets"
         {%- for item in feed -%}
                 <tr>
                     <td class="pb-1 {{ 'border-t-0' if loop.index0 === 0 }} border-blue-400">
-                        <a href="{{ item.url }}" class="text-blue-100 border-b-2 border-blue-500">{{ item.title }}</a>
+                        <a href="https://stacindex.org/catalogs/{{ item.slug }}" class="text-blue-100 border-b-2 border-blue-500">{{ item.title }}</a>
                     </td>
                     <td class="pb-1 {{ 'border-t-0' if loop.index0 === 0 }} border-blue-400 text-center">
                         <span class="px-3 py-1 rounded-lg inline-block font-bold mr-2 my-1">{{ item.access }}</span>
