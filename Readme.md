@@ -171,13 +171,11 @@ To add spanish, you would update that to be:
 module.exports = ['en', 'es'];
 ```
 
-## Deployment & CI (future)
+## Deployment & CI
 
 The site deploys automatically from the master branch using [Netlify](https://www.netlify.com/).
 
 When opening a pull request, Netlify will generate a [preview environment](https://docs.netlify.com/site-deploys/deploy-previews/).
-
-Automated checks run before each deploy using GitHub Actions.
 
 ## Architecture
 
