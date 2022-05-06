@@ -7,7 +7,10 @@
   <body class="bg-white">
       <div class="topbar">
           <div class="container flex justify-end">
-            <a class="text-blue-dark ml-4 font-bold" href="{{ route['en'] }}">English</a>
+            Language
+            {% for loc in locales %}
+              <a class="text-blue-dark ml-4 font-bold" href="{{ route[loc] }}">{{ loc }}</a>
+            {% endfor %}
           </div>
       </div>  
       {% include 'nav.html' %}
