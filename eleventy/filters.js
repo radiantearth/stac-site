@@ -60,7 +60,7 @@ module.exports = function (eleventyConfig) {
             __dirname,
             `../notebooks/build/${sanitizedFilename}.html`
         );
-        const branch = 'redesign-feb22'
+        const branch = 'master';
         const publicPath = `/notebooks/src/${sanitizedFilename}.ipynb`;
         const colabUrl = `https://colab.research.google.com/github/radiantearth/stac-site/blob/${branch}/notebooks/src/${sanitizedFilename}.ipynb`;
         const binderUrl = `https://mybinder.org/v2/gh/radiantearth/stac-site/${branch}?filepath=notebooks/src/${sanitizedFilename}.ipynb`;
