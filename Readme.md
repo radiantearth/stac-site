@@ -1,5 +1,7 @@
 # Stac Website
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7c1e7ebe-762b-4c1b-a43b-f8b7baa10b57/deploy-status)](https://app.netlify.com/sites/tiny-gumption-84c945/deploys)
+
 This is the repo for [stacspec.org](https://stacspec.org).
 
 The website is built using the [Node.js](https://nodejs.org/en/) based [static site generator 11ty](https://www.11ty.dev/).
