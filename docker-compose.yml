@@ -1,0 +1,11 @@
+version: "2.4"
+services:
+  etl:
+    build:
+      context: notebooks
+      dockerfile: Dockerfile
+    ports:
+      - "8889:8889"
+    volumes:
+      - ./notebooks:/opt/src/etl
+    working_dir: /opt/src/etl

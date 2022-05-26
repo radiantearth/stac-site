@@ -1,0 +1,12 @@
+---
+layout: tuts
+route:
+    en: "/en/tutorials/"
+    "lo-ip": "/lo-ip/tutorials/"
+name: 'tutorials'
+eleventyComputed:
+    title: "{{ '.meta.title' | localize }}"
+    description: "{{ '.meta.description' | localize }}"
+---
+
+{{ '.body' | localize | markdown | safe }}

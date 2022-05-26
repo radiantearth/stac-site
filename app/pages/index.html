@@ -1,0 +1,185 @@
+---
+route: 
+    en: '/en/'
+    lo-ip: '/lo-ip/'
+name: 'homepage'
+---
+
+{{ page.data | log }}
+
+{% from 'sections/hero.html' import hero %}
+{% from 'grid.html' import grid %}
+{% from 'components/card.html' import card %}
+{% from 'sections/section.html' import section %}
+{% from 'elements/cta.html' import cta %}
+{% from 'elements/icon.html' import icon %}
+{% from 'components/callout.html' import callout %}
+{% from 'components/tools-table.html' import toolsTable %}
+
+{{ hero(
+    preheading='.hero.preheading' | localize,
+    heading='.hero.heading' | localize,
+    body='.hero.body' | localize | markdown,
+    cta_url='.hero.cta_url' | localize,
+    cta_text='.hero.cta_text' | localize,
+    mods=['overlap-xl']
+) }}
+
+{%- call section(mods=[], width='full') -%}
+    <div class="container">
+        <div class="px-5 md:px-12">
+            <h2>{{ '.stacIsFor.heading' | localize }}</h2>
+        </div>
+    </div>
+    <div class="container--wide text-left">
+        {%- call grid() -%}
+            <div class="card card--blue-700 pb-12">
+                <div class="card-body pb-8">
+                    <h3>{{ '.stacIsFor.group1.heading' | localize }}</h3>
+                    <p>{{ '.stacIsFor.group1.body' | localize }}</p>
+                    <div class="absolute bottom-0 pb-3">
+                        {{ cta(url='.stacIsFor.group1.cta_url' | localize, text='.stacIsFor.group1.cta_text' | localize, mods=['understated-alt']) }}
+                    </div>
+                </div>
+            </div>
+            <div class="card card--blue-700 pb-12">
+                <div class="card-body pb-8">
+                    <h3>{{ '.stacIsFor.group2.heading' | localize }}</h3>
+                    <p>{{ '.stacIsFor.group2.body' | localize }}</p>
+                    <div class="absolute bottom-0 pb-3">
+                        {{ cta(url='.stacIsFor.group2.cta_url' | localize, text='.stacIsFor.group2.cta_text' | localize, mods=['understated-alt']) }}
+                    </div>
+                </div>
+            </div>
+            <div class="card card--blue-700 pb-12">
+                <div class="card-body pb-8">
+                    <h3>{{ '.stacIsFor.group3.heading' | localize }}</h3>
+                    <p>{{ '.stacIsFor.group3.body' | localize }}</p>
+                    <div class="absolute bottom-0 pb-3">
+                        {{ cta(url='.stacIsFor.group3.cta_url' | localize, text='.stacIsFor.group3.cta_text' | localize, mods=['understated-alt']) }}
+                    </div>
+                </div>
+            </div>
+        {%- endcall -%}
+    </div>
+{%- endcall -%}
+
+<section class="pb-12">
+    <div class="container">
+        <h2>{{ '.moreAboutStac.heading' | localize }}</h2>
+        {{ '.moreAboutStac.body' | localize | markdown | safe }}
+
+        {{ '.moreAboutStac.stacSpec.intro' | localize | markdown | safe }}
+        {%- call callout() -%}
+            {{ '.moreAboutStac.stacSpec.spec' | localize | markdown | safe }}
+        {%- endcall -%}
+        {{ cta(url='.moreAboutStac.stacSpec.cta_url' | localize, text='.moreAboutStac.stacSpec.cta_text' | localize, mods=['secondary']) }}
+
+        {{ '.moreAboutStac.vision' | localize | markdown | safe }}
+        {{ cta(url='.moreAboutStac.cta_url' | localize, text='.moreAboutStac.cta_text' | localize, mods=['secondary']) }}
+    </div>
+</section>
+
+<section class="section section--tall bg-blue-100">
+    <div class="container">
+        <h2>{{ '.tutorials.heading' | localize }}</h2>
+        {{ '.tutorials.body' | localize | markdown | safe }}
+        {{ cta(mods=['primary'], url='.tutorials.cta_url' | localize, text='.tutorials.cta_text' | localize) }}
+    </div>
+    <div class="container">
+        {% call callout(icon="graduation-cap-solid", mods=['blue'], icon_size='12') %}
+            {{ '.tutorials.feed1' | localize | markdown | safe }}
+            <table class="w-full">
+                {%- for tutorial in collections.tutorial | fromCategoryTree('getting-started', locale) -%}
+                    <tr>
+                        <td>
+                            <a class="" href="{{ tutorial.data.page.url }}">{{ tutorial.data.title }}</a>
+                        </td>
+                        <!-- <td class="text-right px-5 py-2 border-t border-gray-light"><a href="{{ tutorial.data.page.url }}">Read Tutorial</a></td> -->
+                    </tr>
+                {%- endfor -%}
+            </table>
+        {% endcall %}
+        {% call callout(icon="book-solid", mods=['blue'], icon_size="12") %}
+            {{ '.tutorials.feed2' | localize | markdown | safe }}
+            <table>
+                {%- for tutorial in collections.tutorial | fromCategoryTree('notebooks', locale) -%}
+                    <tr>
+                        <td><a href="{{ tutorial.data.page.url }}">{{ tutorial.data.title }}</a></td>
+                    </tr>
+                {%- endfor -%}
+            </table>
+        {% endcall %}
+    </div>
+    
+</section>
+
+{%- call section(mods=['tall', 'dark'], width="full") -%}
+    <div class="container">
+        <h2>{{ '.datasets.heading' | localize }}</h2>
+        {{ '.datasets.content_after' | localize | markdown | safe }}
+    </div>
+    <div class="container--wide py-5">
+        {%- call grid(3) -%}
+            {%- for i in range(0,12) -%}
+                <div class="card card--blue mt-0">
+                    <a href="https://stacindex.org/catalogs/{{ catalogs[i].slug }}" class="block mb-0 p-5">
+                        <div>
+                            <h3 class="text-base mt-0"><span class="text-white border-b-2 border-blue-500">{{ catalogs[i].title }}</span></h3>
+                            <span class="text-white px-3 py-1 rounded-lg font-bold {{ 'border-2 border-blue-500' if catalogs[i].access === 'public' else 'bg-blue-800' }}">{{ 'Public' if catalogs[i].access === 'public' else 'Protected' }}</span>
+                            <span class="text-white px-3 py-1 rounded-lg font-bold bg-blue-800">{{ 'API' if catalogs[i].isApi else 'Catalog' }}</span>
+                        </div>
+                    </a>
+                    <a class="block px-5 my-1 text-white" href="https://stacindex.org/catalogs/{{ catalogs[i].slug }}"><span class="mr-2 text-blue-300 top-1 relative inline-block w-4">{{ icon('laptop-code-solid', size="4") }}</span> Browse on STAC Index</a>
+                    <a class="block px-5 text-white pb-3" href="{{ catalogs[i].url }}"><span class="mr-2 text-blue-300 inline-block w-4">{{ icon('database-solid', size="3") }}</span> View raw JSON</a>
+                </div>
+            {%- endfor -%}
+        {%- endcall -%}
+    </div>
+    <div class="container">
+        {{ cta(url='.datasets.cta_url' | localize, text='.datasets.cta_text' | localize, mods=['secondary']) }}
+    </div>
+{%- endcall -%}
+
+{%- call section(mods=['tall', 'dark'], width="full") -%}
+    <div class="container">
+        <h2>{{ '.tools.heading' | localize }}</h2>
+        {{ '.tools.content_after' | localize | markdown | safe }}
+    </div>
+    <div class="container--wide py-5">
+        {% call grid(2) %}
+            {% call card(mods=['blue']) %}
+                <h3 class="text-blue-100"><span class="py-1 px-2 mx-2 rounded-lg bg-blue-dark">Client</span> Tools & Resources</h3>
+                {{ toolsTable(ecosystem, 'Client', 7, hideLanguage=true) }}
+            {% endcall %}
+
+            {% call card(mods=['blue']) %}
+                <h3 class="text-blue-100"><span class="py-1 px-2 mx-2 rounded-lg bg-blue-dark">Server</span> Tools & Resources</h3>
+                {{ toolsTable(ecosystem, 'Server', 7, hideLanguage=true) }}
+            {% endcall %}
+        {% endcall %}
+
+    </div>
+    <div class="container">
+        {{ cta(url='.tools.cta_url' | localize, text='.tools.cta_text' | localize, mods=['secondary']) }}
+    </div>
+{%- endcall -%}
+
+<section class="section section--tall">
+    <div class="container pb-3">
+        <h2>{{ '.organizations.heading' | localize }}</h2>
+    </div>
+    <div class="container--wide pb-7">
+        {% include "organizations-list.html" %}
+    </div>
+</section>
+
+{%- call section(mods=['tall']) -%}
+    <h2>{{ '.getInvolved.heading' | localize }}</h2>
+    {{ '.getInvolved.body' | localize | markdown | safe }}
+    {{ cta(
+        url='.getInvolved.cta_url' | localize, 
+        text=".getInvolved.cta_text" | localize,
+        mods=['secondary']
+    ) }}
+{%- endcall -%}

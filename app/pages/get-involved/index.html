@@ -1,0 +1,48 @@
+---
+title: Get Involved
+route:
+    en: "/en/get-involved/"
+    lo-ip: "/lo-ip/lorem-ipvolved/"
+name: getInvolved
+---
+
+{% from 'sections/hero.html' import hero %}
+{% from 'sections/section.html' import section %}
+{% from 'grid.html' import grid %}
+{% from 'components/callout.html' import callout %}
+{% from 'components/card.html' import card %}
+{% from 'elements/cta.html' import cta %}
+
+{{ hero(
+        preheading='.hero.preheading' | localize,
+        heading='.hero.heading' | localize,
+        body='.hero.body' | localize | markdown | safe,
+        cta_url=".hero.cta_url" | localize, 
+        cta_text=".hero.cta_text" | localize
+) }}
+
+{%- call section(mods=["tall"]) -%}
+    <div class="mb-10">
+        <h2>{{ '.howToHelp.heading' | localize }}</h2>
+        {{ '.howToHelp.body' | localize | markdown | safe }}
+    </div>
+    {%- call callout(icon='satellite-solid', icon_size="16") -%}
+        {{ '.currentNeeds.1.body' | localize | markdown | safe }}
+    {%- endcall -%}
+    {%- call callout(icon='laptop-code-solid', icon_size="16") -%}
+        {{ '.currentNeeds.2.body' | localize | markdown | safe }}
+    {%- endcall -%}
+    {%- call callout(icon='object-group-solid', icon_size="16") -%}
+        {{ '.currentNeeds.3.body' | localize | markdown | safe }}
+    {%- endcall -%}
+    {%- call callout(icon='bullhorn-solid', icon_size="16") -%}
+        {{ '.currentNeeds.4.body' | localize | markdown | safe }}
+    {%- endcall -%}
+    {%- call callout(icon='code-branch-solid', icon_size="16") -%}
+        {{ '.currentNeeds.5.body' | localize | markdown | safe }}
+    {%- endcall -%}
+{%- endcall -%}
+
+{%- call section(mods=['tall', 'dark']) -%}
+    {{ '.communityCalls.body' | localize | markdown | safe }}
+{%- endcall -%}

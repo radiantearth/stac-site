@@ -1,0 +1,5 @@
+{% macro icon(icon, size='16', color="", classes=[]) %}
+    <span class="inline-block h-{{ size }} w-{{ size }} text-{{ color }} {% for classname in classes %} {{ classname }} {% endfor %}">
+        {{ icon | svg }}
+    </span>
+{% endmacro %}

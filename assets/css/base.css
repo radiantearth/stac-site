@@ -1,0 +1,18 @@
+@layer base {
+    .spacing-none    { @apply my-0; }
+    .spacing-tight   { @apply mt-3 mb-2; }
+    .spacing-snug    { @apply mt-4 mb-3; }
+    .spacing-normal  { @apply mt-5 mb-4; }
+    .spacing-relaxed { @apply mt-6 mb-5; }
+    .spacing-loose   { @apply mt-7 mb-6; }
+
+    .row {
+        @apply -mx-3 flex;
+    }
+}
+
+body { 
+    @apply bg-white text-black;
+}
+
+[x-cloak] { display: none !important; }

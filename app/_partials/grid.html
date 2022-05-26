@@ -1,0 +1,5 @@
+{%- macro grid(columns=3, breakpoint='md') -%}
+<div class="{{ breakpoint }}:grid {{ breakpoint }}:grid-cols-{{ columns }} {{breakpoint}}:gap-x-5 {{breakpoint}}:gap-y-0">
+    {{ caller() }}
+</div>
+{%- endmacro -%}

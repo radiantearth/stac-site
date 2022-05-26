@@ -1,0 +1,18 @@
+{% macro section(
+    width="content",
+    mods=[]
+) %}
+
+<section class="section {% for mod in mods %} section--{{ mod }} {% endfor %}">
+    <div 
+        class="{%- if width === 'content' -%}
+            container
+        {%- elif width === 'wide' -%}
+            container--wide
+        {%- endif -%}"
+    >
+        {{ caller() }}
+    </div>
+</section>
+
+{% endmacro %}

@@ -1,0 +1,43 @@
+body, html { 
+    font-size: 16px;
+    @apply font-sans;
+}
+
+@media (min-width: theme('screens.sm')) {
+    body, html { font-size: 16.5px; }
+}
+
+@media (min-width: theme('screens.md')) {
+    body, html { font-size: 17.5px; }
+}
+
+h1, h2, h3, h4 {
+    @apply font-display;
+}
+
+h1 { @apply text-4xl sm:text-5xl font-semibold spacing-loose; }
+h2 { @apply text-3xl font-medium mt-7 mb-5; }
+h3 { @apply text-2xl font-medium mt-6 mb-4; }
+h4 { @apply text-xl font-medium spacing-normal; }
+
+p, ul, ol {
+    @apply spacing-normal;
+}
+
+ul {
+    @apply pl-5 list-disc;
+}
+
+li ul {
+    @apply my-0;
+}
+
+ol {
+    @apply pl-5 list-decimal;
+}
+
+
+
+.font-select-button[data-font-active="true"] {
+    @apply bg-blue text-white;
+}

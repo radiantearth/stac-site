@@ -1,0 +1,61 @@
+{% from 'elements/icon.html' import icon %}
+
+<nav class="navbar"
+     x-data="navbar"
+>
+    <div class="container">
+        <div class="navbar__main">
+            <a class="navbar__home" 
+               style="width: 150px;" 
+               href="/{{locale}}/"
+            >
+                <img src="/public/images-original/STAC-01.png" alt="STAC logo" />
+            </a>
+            <div :class="active ? 'navbar__drawer navbar__drawer--active' : 'navbar__drawer'">
+                <ul class="navbar__items">
+                    {%- for navLink in tt.navigation.headerNav.links -%}
+                        {%- set navContent = 'navigation.headerNav.links.' + loop.index0 -%}
+                        {%- set label = (navContent + '.label') | localize -%}
+                        {%- set href = (navContent + '.href') | localize -%}
+                        <li class="navbar__item" x-cloak>
+                            <a class="navbar__link {% if(navLink.children) %}navbar__link--has-children{% endif %}"
+                               href="{{ href }}"
+                               @click="e => toggleSubmenu(e, '{{ label }}')"
+                            >
+                                {{ label }}
+                                {%- if(navLink.children) -%}
+                                    <span :class="activeSubmenu === '{{ label }}' ? 'navbar__dropdown-icon navbar__dropdown-icon--active' : 'navbar__dropdown-icon'">
+                                        {{ icon('caret-down-solid', size="3", color='blue-dark') }}
+                                    </span>
+                                {%- endif -%}
+                            </a>
+                            {%- if(navLink.children) -%}
+                                <ul class="navbar__submenu" 
+                                    x-show="activeSubmenu === '{{ label }}'" 
+                                    x-collapse.duration.150ms
+                                >
+                                    {%- for child in navLink.children -%}
+                                        {% set childContent = navContent + '.children.' + loop.index0 %}
+                                        {% set childLabel = (childContent + '.label') | localize %}
+                                        {% set childHref = (childContent + '.href') | localize %}
+                                        <li class="navbar__submenu__item">
+                                            <a class="navbar__submenu__link" href="{{ childHref }}">
+                                                <span>{{ childLabel }}</span>
+                                            </a>
+                                        </li>
+                                    {%- endfor -%}
+                                </ul>
+                            {%- endif -%}
+                        </li>
+                    {%- endfor -%}
+                </ul>
+            </div>
+            <div class="navbar__actions">
+                <button class="navbar__toggle-button md:hidden" 
+                        @click="toggle()" 
+                        class="border-0 py-1 px-3"
+                >{{ icon('bars-solid', size="5") }}<span class="sr-only">Toggle Navigation</span></span></button>
+            </div>
+        </div>
+    </div>
+</nav>

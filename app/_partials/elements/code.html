@@ -1,0 +1,7 @@
+{%- macro code(lang='', code='') -%}
+<code class="language-{{ lang }}">{{ code }}</code>
+{%- endmacro -%}
+
+{%- macro codeblock(lang='', code='') -%}
+{% highlight lang %}{{ code | safe }}{% endhighlight %}
+{%- endmacro -%}

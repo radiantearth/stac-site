@@ -1,0 +1,35 @@
+---
+route:
+    en: "/en/get-involved/data-users/"
+    lo-ip: "/lo-ip/lorem-ipvolved/lora-usems/"
+name: "getInvolved.dataUsers"
+---
+
+{% from 'sections/section.html' import section %}
+{% from 'sections/hero.html' import hero %}
+{% from 'elements/cta.html' import cta %}
+
+{{ hero(
+    heading='.hero.heading' | localize,
+    preheading='.hero.preheading' | localize,
+    body='.hero.body' | localize | markdown | safe,
+    mods=['overlap-lg']
+) }}
+
+<section class="pt-0">
+    <div class="container">
+        {% for i in tt.getInvolved.dataUsers.bullets %}
+            {% set bullet = '.bullets.' + loop.index0 %}
+            <div class="card card--blue pb-4">
+                <div class="card-body">
+                    <h2>{{ (bullet + '.heading') | localize }}</h2>
+                    {{ (bullet + '.content') | localize | markdown | safe }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% call section(mods=['tall']) %}
+    {{ '.closingContent' | localize | markdown | safe }}
+{% endcall %}

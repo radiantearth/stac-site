@@ -1,0 +1,9 @@
+.styleguide-color {
+    @apply h-16 w-full my-3 mr-4 p-4 flex items-center font-bold;
+}
+
+.styleguide-nav-link { @apply text-blue inline-block pb-1 pt-4 px-2 mr-2 font-medium border-transparent; 
+    border-bottom-width: 3px;
+}
+
+.styleguide-nav-link--active { @apply border-blue-400; }

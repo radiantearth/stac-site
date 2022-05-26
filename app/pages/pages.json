@@ -1,0 +1,13 @@
+{
+    "tags": [
+        "translateablePage"
+    ],
+    "pagination": {
+        "data": "locales",
+        "size": 1,
+        "alias": "locale"
+    },
+    "eleventyComputed": {
+        "permalink": "{{ route[locale] }}index.html"
+    }
+}
