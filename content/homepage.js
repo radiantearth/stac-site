@@ -106,7 +106,7 @@ A *spatiotemporal asset* is any file that represents information about the earth
 
 [STAC Collection](https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md) is an extension of the STAC Catalog with additional information such as the extents, license, keywords, providers, etc that describe STAC Items that fall within the Collection.
 
-[STAC API](https://github.com/radiantearth/stac-api-spec) provides a RESTful endpoint that enables search of STAC Items, specified in OpenAPI, following OGC"s WFS 3.`
+[STAC API](https://github.com/radiantearth/stac-api-spec) provides a RESTful endpoint that enables search of STAC Items, specified in OpenAPI, following OGC's WFS 3.`
         },
         cta_text: {
             en: 'More About the Specification'
@@ -117,7 +117,7 @@ A *spatiotemporal asset* is any file that represents information about the earth
         en: 
 `### The Vision
 
-The goal is for all providers of spatiotemporal assets (Imagery, SAR, Point Clouds, Data Cubes, Full Motion Video, etc) to expose their data as SpatioTemporal Asset Catalogs (STAC), so that new code doesn"t need to be written whenever a new data set or API is released.`
+The goal is for all providers of spatiotemporal assets (Imagery, SAR, Point Clouds, Data Cubes, Full Motion Video, etc) to expose their data as SpatioTemporal Asset Catalogs (STAC), so that new code doesn't need to be written whenever a new data set or API is released.`
     },
     cta_text: {
         en: 'More About STAC',
