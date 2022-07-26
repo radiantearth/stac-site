@@ -1,4 +1,0 @@
-# Notebook ETL
-ipython==7.31.*
-nbconvert==6.4.*
-packaging

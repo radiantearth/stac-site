@@ -1,5 +1,0 @@
-{% macro container(mods=[]) %}
-    <div class="container {% for mod in mods %} container--{{ mod }} {% endfor %}">
-        {{ caller() }}
-    </div>
-{% endmacro %}

@@ -1,7 +1,0 @@
-{% macro cta(url=null, text="Learn More", mods=['understated']) %}
-    {%- if url -%}
-        <a href="{{ url }}" class="cta {% for mod in mods %} cta--{{mod}} {% endfor %}">{{text}}</a>
-    {%- else -%}
-        <button type="button" class="cta {% for mod in mods %} cta--{{mod}} {% endfor %}">{{text}}</button>
-    {%- endif -%}
-{% endmacro %}
