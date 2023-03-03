@@ -119,6 +119,9 @@ module.exports = {
                 en: 'python',
             },
             {
+                en: 'qgis',
+            },
+            {
                 en: 'how-to-guides',
             },
         ],

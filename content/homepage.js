@@ -154,6 +154,12 @@ Learn the basics of using PySTAC to read, write, and manipulate STAC through the
     },
     feed3: {
         en: 
+`### STAC & QGIS
+
+Learn the basics of using the STAC API Browser QGIS Plugin.`
+    },
+    feed4: {
+        en: 
 `### STAC How-to Guides
 
 Answer specific STAC questions using these STAC How-to Guide Jupyter Notebooks.`
