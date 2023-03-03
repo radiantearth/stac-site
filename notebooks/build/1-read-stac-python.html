@@ -40,7 +40,7 @@
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="STAC-Catalogs">STAC Catalogs<a class="anchor-link" href="#STAC-Catalogs">&#182;</a></h2><p><a href="https://github.com/radiantearth/stac-spec/tree/master/catalog-spec">A STAC Catalog</a> is used to group other STAC objects like items, collections, and/or even other catalogs.</p>
-<p>We will be using a small example catalog adapted from the <a href="https://github.com/geotrellis/geotrellis-server/tree/977bad7a64c409341479c281c8c72222008861fd/stac-example/catalog/landsat-stac-collection">example Landsat Collection</a> in the <a href="https://geotrellis.io">GeoTrellis</a> repository. All STAC Items and Collections can be found in the <a href="https://github.com/stac-utils/pystac/tree/main/docs/example-catalog">docs/example-catalog</a> directory of this repository; all assets are hosted in the Landsat S3 bucket.</p>
+<p>We will be using a small example catalog adapted from the <a href="https://github.com/geotrellis/geotrellis-server/tree/977bad7a64c409341479c281c8c72222008861fd/stac-example/catalog/landsat-stac-collection">example Landsat Collection</a> in the <a href="https://geotrellis.io">GeoTrellis</a> repository. All STAC Items and Collections can be found in the <a href="https://github.com/stac-utils/pystac/tree/main/docs/example-catalog">docs/example-catalog</a> directory of the PySTAC documentation repository; all assets are hosted in the Landsat S3 bucket.</p>
 
 </div>
 </div>
@@ -76,7 +76,7 @@
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read the example catalog</span>
-<span class="n">root_catalog</span> <span class="o">=</span> <span class="n">Catalog</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;./example-catalog/catalog.json&#39;</span><span class="p">)</span>
+<span class="n">root_catalog</span> <span class="o">=</span> <span class="n">Catalog</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;/public/example-catalog/catalog.json&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -102,7 +102,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div style="background-color:rgba(181, 216, 229, 0.8); text-align:left; vertical-align: top; padding:10px 0;">
+<div style="background-color:rgba(181, 216, 229, 0.8); text-align:center; vertical-align: top; padding:10px; ml:5px; 0;">
 NOTE: Be careful using the `describe` method on large catalogs, as it will walk and print the entire tree of the STAC.
 </div>
 </div>
@@ -149,7 +149,7 @@ NOTE: Be careful using the `describe` method on large catalogs, as it will walk 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div style="background-color:rgba(181, 216, 229, 0.8); text-align:left; vertical-align: top; padding:10px; ml:5px; 0;">
+<div style="background-color:rgba(181, 216, 229, 0.8); text-align:center; vertical-align: top; padding:10px; ml:5px; 0;">
 Note: we do not print the "stac_version" here. PySTAC automatically updates any catalogs to the most recent supported STAC version and will automatically write this to the JSON object during serialization.
 </div><p>Let's confirm the latest STAC Specification version supported by PySTAC.</p>
 
@@ -181,7 +181,7 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Crawl-STAC-Child-Catalogs-and/or-Collections">Crawl STAC Child Catalogs and/or Collections<a class="anchor-link" href="#Crawl-STAC-Child-Catalogs-and/or-Collections">&#182;</a></h2><p><a href="https://github.com/radiantearth/stac-spec/tree/master/collection-spec">STAC Collections</a> are used to group related items and provide aggregate or summary metadata for those items.</p>
-<p>STAC Catalogs may have many nested layers of catalogs or collections within the top-level collection. Our example catalog only has one collection within the main catalog at <a href="./example-catalog/landsat-8-l1/collection.json">landsat-8-l1/collection.json</a>. We can list the collections in a given catalog using the <code>Catalog.get_collections</code> method. This method returns an iterable of PySTAC <a href="https://pystac.readthedocs.io/en/latest/api.html#collection">Collection</a> instances, which we will turn into a <code>list</code>.</p>
+<p>STAC Catalogs may have many nested layers of catalogs or collections within the top-level collection. Our example catalog only has one collection within the main catalog at <a href="/public/example-catalog/landsat-8-l1/collection.json">landsat-8-l1/collection.json</a>. We can list the collections in a given catalog using the <code>Catalog.get_collections</code> method. This method returns an iterable of PySTAC <a href="https://pystac.readthedocs.io/en/latest/api.html#collection">Collection</a> instances, which we will turn into a <code>list</code>.</p>
 
 </div>
 </div>
@@ -616,7 +616,7 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You have now successfully explored the common components of an existing STAC Catalog. To learn how to write your own STAC Catalog, see the <a href="./2-create-stac-catalog-python.ipynb">following tutorial</a>.</p>
+<p>You have now successfully explored the common components of an existing STAC Catalog. To learn how to write your own STAC Catalog, see the <a href="/en/tutorials/2-create-stac-catalog-python/index.html">following tutorial</a>.</p>
 
 </div>
 </div>

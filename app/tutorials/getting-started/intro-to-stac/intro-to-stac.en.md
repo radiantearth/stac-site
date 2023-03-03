@@ -125,7 +125,7 @@ To learn more about STAC Collection specifications: https://github.com/radiantea
 
 ### Next Steps
 
-In the following documentation section, you will find tutorials that will teach you how to work with STAC.
+In the following sections, you will find tutorials that will teach you how to work with STAC using Python and QGIS.
 
 #### Join the conversation
 
