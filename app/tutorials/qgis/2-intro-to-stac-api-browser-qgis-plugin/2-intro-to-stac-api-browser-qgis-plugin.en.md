@@ -2,7 +2,7 @@
 title: Introduction to Using the QGIS STAC API Browser Plugin
 description: How to Use the QGIS STAC API Browser Plugin
 ---
-In the [previous tutorial](1-install-stac-api-browser-qgis-plugin.md), you learned how to install the QGIS STAC API Browser plugin. Now, let's learn how to use it.
+In the [previous tutorial](../qgis/1-install-stac-api-browser-qgis-plugin/1-install-stac-api-browser-qgis-plugin.md), you learned how to install the QGIS STAC API Browser plugin. Now, let's learn how to use it.
 
 # Introduction to Using the QGIS STAC API Browser Plugin
 
