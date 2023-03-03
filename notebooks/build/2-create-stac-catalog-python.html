@@ -1,0 +1,1463 @@
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Create-a-Basic-STAC-Catalog-Using-PySTAC">Create a Basic STAC Catalog Using PySTAC<a class="anchor-link" href="#Create-a-Basic-STAC-Catalog-Using-PySTAC">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the <a href="./1-read-stac-python.ipynb">previous tutorial</a>, you learned how to use <a href="https://pystac.readthedocs.io/en/stable/index.html#">PySTAC</a> to read an existing STAC Catalog. In this tutorial, you will learn how to create your own STAC Catalog (also using PySTAC). By the end, you will have a basic STAC Catalog created.</p>
+<p>In the following tutorials, you will learn to add additional STAC components and functionality onto the basic STAC Catalog you create here. The experience you gain from this tutorial along with the extensive <a href="https://pystac.readthedocs.io/en/latest/api.html">PySTAC documentation</a> will allow you to create your own STAC Catalog on a different dataset.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dependencies">Dependencies<a class="anchor-link" href="#Dependencies">&#182;</a></h2><p>If you need to install pystac, rasterio, or pystac, uncomment the lines below and run the cell.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import pystac</span>
+<span class="c1"># import rasterio</span>
+<span class="c1"># import shapely</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Import-Packages-and-Store-Data">Import Packages and Store Data<a class="anchor-link" href="#Import-Packages-and-Store-Data">&#182;</a></h2><p>To begin, import the packags and classes that you need to access data and work with STAC Catalogs in Python.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="kn">import</span> <span class="nn">pystac</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Polygon</span><span class="p">,</span> <span class="n">mapping</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">TemporaryDirectory</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To give us some material to work with, let's download a single image from the <a href="https://spacenet.ai/sn5-challenge/">SpaceNet 5 Challenge</a>. We will use a temporary directory to save off our single-Item STAC.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set temporary directory to store source data</span>
+<span class="n">tmp_dir</span> <span class="o">=</span> <span class="n">TemporaryDirectory</span><span class="p">()</span>
+<span class="n">img_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;image.tif&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fetch and store data</span>
+<span class="n">url</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;https://spacenet-dataset.s3.amazonaws.com/&#39;</span>
+       <span class="s1">&#39;spacenet/SN5_roads/train/AOI_7_Moscow/MS/&#39;</span>
+       <span class="s1">&#39;SN5_roads_train_AOI_7_Moscow_MS_chip996.tif&#39;</span><span class="p">)</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">img_path</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(&#39;/var/folders/73/z5lbqv_s6l7fcfx464_pn8p80000gn/T/tmpt0rc5aux/image.tif&#39;,
+ &lt;http.client.HTTPMessage at 0x11bf56650&gt;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We want to create a STAC Catalog. Take a look at the <a href="https://pystac.readthedocs.io/en/stable/api/catalog.html">Catalog documention</a> to see what information you need to create our PySTAC <code>Catalog</code> instance.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Create-the-STAC-Catalog">Create the STAC Catalog<a class="anchor-link" href="#Create-the-STAC-Catalog">&#182;</a></h2><p>Start by first creating catalog and only populating the required arguments: the ID and description. The remaining arugments will be added to the catalog further along in the tutorial.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog</span> <span class="o">=</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Catalog</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;tutorial-catalog&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;This catalog is a basic demonstration catalog utilizing a scene from SpaceNet 5.&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The catalog now exists. Take a look inside.</p>
+<p>In the Introduction to STAC lesson on this site, you learned about the three main components of the STAC Specification and the possible relations between them all. Based on what you learned and what we have done so far, do you think your catalog has any children or items? Let's take a look:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">catalog</span><span class="o">.</span><span class="n">get_children</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">catalog</span><span class="o">.</span><span class="n">get_items</span><span class="p">()))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[]
+[]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since we have not added them, there are no children or items in the catalog yet. We need to add these components.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="JSON-Progress-Check">JSON Progress Check<a class="anchor-link" href="#JSON-Progress-Check">&#182;</a></h3><p>Throughout this tutorial, we will be checking in on the STAC components we are creating using <code>to_dict()</code> to see how the STAC JSON is shaping up. Let's take a look at the catalog we just created.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">catalog</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+    &#34;type&#34;: &#34;Catalog&#34;,
+    &#34;id&#34;: &#34;tutorial-catalog&#34;,
+    &#34;stac_version&#34;: &#34;1.0.0&#34;,
+    &#34;description&#34;: &#34;This catalog is a basic demonstration catalog utilizing a scene from SpaceNet 5.&#34;,
+    &#34;links&#34;: [
+        {
+            &#34;rel&#34;: &#34;root&#34;,
+            &#34;href&#34;: null,
+            &#34;type&#34;: &#34;application/json&#34;
+        }
+    ],
+    &#34;stac_extensions&#34;: []
+}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Create-a-STAC-Item">Create a STAC Item<a class="anchor-link" href="#Create-a-STAC-Item">&#182;</a></h2><p>Now that the catalog exists, we can populate it. Let's create a STAC Item to represent the image we saved in the temporary directory. Again, take a look at the <a href="https://pystac.readthedocs.io/en/stable/api/item.html#pystac-item">PySTAC Documentation for an Item</a> to see what you need to supply.</p>
+<p>For creating this item, you will populate all the attributes at once.</p>
+<p>Let's collect the information we need for each attribute.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Collect-the-Item's-geometry-and-bbox">Collect the Item's <code>geometry</code> and <code>bbox</code><a class="anchor-link" href="#Collect-the-Item's-geometry-and-bbox">&#182;</a></h3><p>Using <a href="https://rasterio.readthedocs.io/en/stable/">rasterio</a>, we can extract the image's bounding box and geometry metadata.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_bbox_and_footprint</span><span class="p">(</span><span class="n">raster</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">bounds</span>
+        <span class="n">bbox</span> <span class="o">=</span> <span class="p">[</span><span class="n">bounds</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">bounds</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span> <span class="n">bounds</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">bounds</span><span class="o">.</span><span class="n">top</span><span class="p">]</span>
+        <span class="n">footprint</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([</span>
+            <span class="p">[</span><span class="n">bounds</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">bounds</span><span class="o">.</span><span class="n">bottom</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">bounds</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">bounds</span><span class="o">.</span><span class="n">top</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">bounds</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">bounds</span><span class="o">.</span><span class="n">top</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">bounds</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">bounds</span><span class="o">.</span><span class="n">bottom</span><span class="p">]</span>
+        <span class="p">])</span>
+        
+        <span class="k">return</span> <span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">mapping</span><span class="p">(</span><span class="n">footprint</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Run the function and print out the results</span>
+<span class="n">bbox</span><span class="p">,</span> <span class="n">footprint</span> <span class="o">=</span> <span class="n">get_bbox_and_footprint</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bbox: &quot;</span><span class="p">,</span> <span class="n">bbox</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;footprint: &quot;</span><span class="p">,</span> <span class="n">footprint</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>bbox:  [37.6616853489879, 55.73478197572927, 37.66573047610874, 55.73882710285011] 
+
+footprint:  {&#39;type&#39;: &#39;Polygon&#39;, &#39;coordinates&#39;: (((37.6616853489879, 55.73478197572927), (37.6616853489879, 55.73882710285011), (37.66573047610874, 55.73882710285011), (37.66573047610874, 55.73478197572927), (37.6616853489879, 55.73478197572927)),)}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Collect-the-Item-datetime">Collect the Item <code>datetime</code><a class="anchor-link" href="#Collect-the-Item-datetime">&#182;</a></h3><p>To obtain the datetime property for our Item from the image, we will use <a href="https://docs.python.org/3/library/datetime.html#datetime.datetime.now">datetime.now()</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">datetime_utc</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Populate-pystac.Item">Populate <code>pystac.Item</code><a class="anchor-link" href="#Populate-pystac.Item">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span> <span class="o">=</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;local-image&#39;</span><span class="p">,</span>
+                 <span class="n">geometry</span><span class="o">=</span><span class="n">footprint</span><span class="p">,</span>
+                 <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span>
+                 <span class="n">datetime</span><span class="o">=</span><span class="n">datetime_utc</span><span class="p">,</span>
+                 <span class="n">properties</span><span class="o">=</span><span class="p">{})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we have our first Item.</p>
+<p>However, the item has not been added to our catalog yet. Therefore, when you run the following cell, you can see that the Item does not have a parent yet:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get_parent</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>True
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Add-the-Item-to-the-Catalog">Add the Item to the Catalog<a class="anchor-link" href="#Add-the-Item-to-the-Catalog">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Visualize-the-Catalog-Relationship">Visualize the Catalog Relationship<a class="anchor-link" href="#Visualize-the-Catalog-Relationship">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we have added the item to the catalog, we can see it link to it’s parent (which is the catalog).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">get_parent</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[12]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
+    <div style="
+        width: 24px;
+        height: 24px;
+        background-color: #E1E1E1;
+        border: 3px solid #9D9D9D;
+        border-radius: 5px;
+        position: absolute;">
+    </div>
+    <div>
+        <details style="margin-left: 48px;">
+            <summary style="margin-bottom: 20px;">
+                <h3 style="margin-bottom: 0px; display: inline;">
+                    Catalog: tutorial-catalog
+                </h3>
+            </summary>
+            <table style="width: 100%; text-align: left;">
+                <tr><td style="text-align: left;">ID: tutorial-catalog </td></tr>
+                
+                
+                    <tr><td style="text-align: left;"><strong>Description:</strong> This catalog is a basic demonstration catalog utilizing a scene from SpaceNet 5. </td></tr>
+                
+                 
+                
+            </table>
+            
+            
+            
+        <details>
+            <summary style="margin-bottom: 10px; margin-top: 10px">
+                <h4 style="margin-bottom: 0px; display: inline;">Items</h4>
+            </summary>
+            <i> Only the first item shown </i>
+            
+                
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
+    <div style="
+        width: 24px;
+        height: 24px;
+        background-color: #DBF5FF;
+        border: 3px solid #4CC9FF;
+        border-radius: 5px;
+        position: absolute;">
+    </div>
+    <div>
+        <details style="margin-left: 48px;">
+            <summary style="margin-bottom: 20px;">
+                <h3 style="margin-bottom: 0px; display: inline;">Item: local-image</h3>
+            </summary>
+            <table style="width: 100%; text-align: left;">
+                <tr><td style="text-align: left;"><strong>ID</strong>: local-image </td></tr>
+                
+                
+                    <tr><td style="text-align: left;"><strong>Bounding Box:</strong> [37.6616853489879, 55.73478197572927, 37.66573047610874, 55.73882710285011] </td></tr>
+                
+                
+                    <tr><td style="text-align: left;"><strong>Datetime:</strong> 2023-02-07 03:58:20.201542+00:00 </td></tr>
+                
+                
+                
+            </table>
+            
+            
+            
+        <details>
+            <summary style="margin-bottom: 10px; margin-top: 10px">
+                <h4 style="margin-bottom: 0px; display: inline;">Links</h4>
+            </summary>
+            
+                
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
+    <div style="
+        width: 24px;
+        height: 24px;
+        background-color: #FFF7E5;
+        border: 3px solid #FF6132;
+        border-radius: 5px;
+        position: absolute;">
+    </div>
+    <div style="margin-left: 48px;">
+        <h4 style="margin-bottom: 0px;">Link: </h4>
+        
+        <table style="width: 100%; text-align: left;">
+            <tr><td style="text-align: left;"><strong>Rel:</strong> root </td></tr>
+            <tr><td style="text-align: left;"><strong>Target:</strong> <Catalog id=tutorial-catalog> </td></tr>
+            
+                <tr><td style="text-align: left;"><strong>Media Type:</strong> application/json </td></tr>
+            
+            
+        </table>
+        
+    </div>
+</div>
+            
+                
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
+    <div style="
+        width: 24px;
+        height: 24px;
+        background-color: #FFF7E5;
+        border: 3px solid #FF6132;
+        border-radius: 5px;
+        position: absolute;">
+    </div>
+    <div style="margin-left: 48px;">
+        <h4 style="margin-bottom: 0px;">Link: </h4>
+        
+        <table style="width: 100%; text-align: left;">
+            <tr><td style="text-align: left;"><strong>Rel:</strong> parent </td></tr>
+            <tr><td style="text-align: left;"><strong>Target:</strong> <Catalog id=tutorial-catalog> </td></tr>
+            
+                <tr><td style="text-align: left;"><strong>Media Type:</strong> application/json </td></tr>
+            
+            
+        </table>
+        
+    </div>
+</div>
+            
+        </details>
+    
+        </details>
+    </div>
+</div>
+            
+        </details>
+    
+            
+        <details>
+            <summary style="margin-bottom: 10px; margin-top: 10px">
+                <h4 style="margin-bottom: 0px; display: inline;">Links</h4>
+            </summary>
+            
+                
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
+    <div style="
+        width: 24px;
+        height: 24px;
+        background-color: #FFF7E5;
+        border: 3px solid #FF6132;
+        border-radius: 5px;
+        position: absolute;">
+    </div>
+    <div style="margin-left: 48px;">
+        <h4 style="margin-bottom: 0px;">Link: </h4>
+        
+        <table style="width: 100%; text-align: left;">
+            <tr><td style="text-align: left;"><strong>Rel:</strong> root </td></tr>
+            <tr><td style="text-align: left;"><strong>Target:</strong> <Catalog id=tutorial-catalog> </td></tr>
+            
+                <tr><td style="text-align: left;"><strong>Media Type:</strong> application/json </td></tr>
+            
+            
+        </table>
+        
+    </div>
+</div>
+            
+                
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
+    <div style="
+        width: 24px;
+        height: 24px;
+        background-color: #FFF7E5;
+        border: 3px solid #FF6132;
+        border-radius: 5px;
+        position: absolute;">
+    </div>
+    <div style="margin-left: 48px;">
+        <h4 style="margin-bottom: 0px;">Link: </h4>
+        
+        <table style="width: 100%; text-align: left;">
+            <tr><td style="text-align: left;"><strong>Rel:</strong> item </td></tr>
+            <tr><td style="text-align: left;"><strong>Target:</strong> <Item id=local-image> </td></tr>
+            
+                <tr><td style="text-align: left;"><strong>Media Type:</strong> application/json </td></tr>
+            
+            
+        </table>
+        
+    </div>
+</div>
+            
+        </details>
+    
+             
+        </details>
+    </div>
+</div></div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can also visualize the archatecture of the STAC Catalog by using the <code>describe()</code> method. As a reminder, <strong>be careful</strong> when using it on large catalogs, as it will walk the entire tree of the STAC.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>* &lt;Catalog id=tutorial-catalog&gt;
+  * &lt;Item id=local-image&gt;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Add-STAC-Assets">Add STAC Assets<a class="anchor-link" href="#Add-STAC-Assets">&#182;</a></h2><p>We’ve created an item, but there aren’t any assets associated with it. Let’s create one. As always, take a look at the <a href="https://pystac.readthedocs.io/en/stable/api/asset.html#pystac-asset">PySTAC API Documentation</a> to see what components are needed to create an Asset.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add Asset and all its information to Item </span>
+<span class="n">item</span><span class="o">.</span><span class="n">add_asset</span><span class="p">(</span>
+    <span class="n">key</span><span class="o">=</span><span class="s1">&#39;image&#39;</span><span class="p">,</span>
+    <span class="n">asset</span><span class="o">=</span><span class="n">pystac</span><span class="o">.</span><span class="n">Asset</span><span class="p">(</span>
+        <span class="n">href</span><span class="o">=</span><span class="n">img_path</span><span class="p">,</span>
+        <span class="n">media_type</span><span class="o">=</span><span class="n">pystac</span><span class="o">.</span><span class="n">MediaType</span><span class="o">.</span><span class="n">GEOTIFF</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="JSON-Progress-Check">JSON Progress Check<a class="anchor-link" href="#JSON-Progress-Check">&#182;</a></h4><p>Run <code>to_dict()</code> on the STAC Item we created. Notice the asset is now set:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+    &#34;type&#34;: &#34;Feature&#34;,
+    &#34;stac_version&#34;: &#34;1.0.0&#34;,
+    &#34;id&#34;: &#34;local-image&#34;,
+    &#34;properties&#34;: {
+        &#34;datetime&#34;: &#34;2023-02-07T03:58:20.201542Z&#34;
+    },
+    &#34;geometry&#34;: {
+        &#34;type&#34;: &#34;Polygon&#34;,
+        &#34;coordinates&#34;: [
+            [
+                [
+                    37.6616853489879,
+                    55.73478197572927
+                ],
+                [
+                    37.6616853489879,
+                    55.73882710285011
+                ],
+                [
+                    37.66573047610874,
+                    55.73882710285011
+                ],
+                [
+                    37.66573047610874,
+                    55.73478197572927
+                ],
+                [
+                    37.6616853489879,
+                    55.73478197572927
+                ]
+            ]
+        ]
+    },
+    &#34;links&#34;: [
+        {
+            &#34;rel&#34;: &#34;root&#34;,
+            &#34;href&#34;: null,
+            &#34;type&#34;: &#34;application/json&#34;
+        },
+        {
+            &#34;rel&#34;: &#34;parent&#34;,
+            &#34;href&#34;: null,
+            &#34;type&#34;: &#34;application/json&#34;
+        }
+    ],
+    &#34;assets&#34;: {
+        &#34;image&#34;: {
+            &#34;href&#34;: &#34;/var/folders/73/z5lbqv_s6l7fcfx464_pn8p80000gn/T/tmpt0rc5aux/image.tif&#34;,
+            &#34;type&#34;: &#34;image/tiff; application=geotiff&#34;
+        }
+    },
+    &#34;bbox&#34;: [
+        37.6616853489879,
+        55.73478197572927,
+        37.66573047610874,
+        55.73882710285011
+    ],
+    &#34;stac_extensions&#34;: []
+}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that the link href properties are null. The empty href links are OK for now, as we’re working with the STAC in memory. Next, we will write the Catalog out and set those HREFs.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Save-the-Catalog">Save the Catalog<a class="anchor-link" href="#Save-the-Catalog">&#182;</a></h2><p>As the JSON above indicates, there’s no HREFs set on these in-memory items. PySTAC uses the <code>self</code> link on STAC objects to track where the file lives. Because we haven’t set them, they evaluate to <code>None</code>:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">catalog</span><span class="o">.</span><span class="n">get_self_href</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get_self_href</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>True
+True
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Set-the-Catalog's-HREFs">Set the Catalog's HREFs<a class="anchor-link" href="#Set-the-Catalog's-HREFs">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In order to set the HREFs, we can use <code>normalize_hrefs</code>. <a href="https://pystac.readthedocs.io/en/stable/api/pystac.html?highlight=normalize_hrefs#pystac.Catalog.normalize_hrefs">This method</a> will create a normalized set of HREFs for each STAC object in the catalog, according to the recommendations from the <a href="https://github.com/radiantearth/stac-spec/blob/v0.8.1/best-practices.md#catalog-layout">best practices document</a> on how to lay out a catalog.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="o">.</span><span class="n">normalize_hrefs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;stac&quot;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we’ve normalized to a root directory (the temporary directory), we see that the <code>self</code> links are set:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Catalog HREF: &quot;</span><span class="p">,</span> <span class="n">catalog</span><span class="o">.</span><span class="n">get_self_href</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Item HREF: &quot;</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">get_self_href</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Catalog HREF:  /var/folders/73/z5lbqv_s6l7fcfx464_pn8p80000gn/T/tmpt0rc5aux/stac/catalog.json
+Item HREF:  /var/folders/73/z5lbqv_s6l7fcfx464_pn8p80000gn/T/tmpt0rc5aux/stac/local-image/local-image.json
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can now call <a href="https://pystac.readthedocs.io/en/stable/api/pystac.html?highlight=normalize_hrefs#pystac.Catalog.save"><code>save</code></a> on the catalog, which will recursively save all the STAC objects to their respective self HREFs.</p>
+<p>Save requires a <code>CatalogType</code> to be set. You can review the <a href="https://pystac.readthedocs.io/en/stable/api/pystac.html?highlight=CatalogType#catalogtype">PySTAC API Documentation</a> to learn about each <code>CatalogType</code>.</p>
+<p>Here, we will be creating a ‘self-contained catalog.' This type is one that is designed for portability. Users may want to download an online catalog from and be able to use it on their local computer, so all links need to be relative.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Save-the-Catalog:-Self-Contained">Save the Catalog: Self Contained<a class="anchor-link" href="#Save-the-Catalog:-Self-Contained">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">catalog_type</span><span class="o">=</span><span class="n">pystac</span><span class="o">.</span><span class="n">CatalogType</span><span class="o">.</span><span class="n">SELF_CONTAINED</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Take a look at the temporary directory to see the catalog and item.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls<span class="w"> </span><span class="o">{</span>tmp_dir.name<span class="o">}</span>/stac/*
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>/var/folders/73/z5lbqv_s6l7fcfx464_pn8p80000gn/T/tmpt0rc5aux/stac/catalog.json
+
+/var/folders/73/z5lbqv_s6l7fcfx464_pn8p80000gn/T/tmpt0rc5aux/stac/local-image:
+local-image.json
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that our Catalog has been written out to file, we can open it up and read it directly. We should see the previously null hrefs populated with paths to the respective STAC component.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">catalog</span><span class="o">.</span><span class="n">self_href</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+  &#34;type&#34;: &#34;Catalog&#34;,
+  &#34;id&#34;: &#34;tutorial-catalog&#34;,
+  &#34;stac_version&#34;: &#34;1.0.0&#34;,
+  &#34;description&#34;: &#34;This catalog is a basic demonstration catalog utilizing a scene from SpaceNet 5.&#34;,
+  &#34;links&#34;: [
+    {
+      &#34;rel&#34;: &#34;root&#34;,
+      &#34;href&#34;: &#34;./catalog.json&#34;,
+      &#34;type&#34;: &#34;application/json&#34;
+    },
+    {
+      &#34;rel&#34;: &#34;item&#34;,
+      &#34;href&#34;: &#34;./local-image/local-image.json&#34;,
+      &#34;type&#34;: &#34;application/json&#34;
+    }
+  ],
+  &#34;stac_extensions&#34;: []
+}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">self_href</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+  &#34;type&#34;: &#34;Feature&#34;,
+  &#34;stac_version&#34;: &#34;1.0.0&#34;,
+  &#34;id&#34;: &#34;local-image&#34;,
+  &#34;properties&#34;: {
+    &#34;datetime&#34;: &#34;2023-02-07T03:58:20.201542Z&#34;
+  },
+  &#34;geometry&#34;: {
+    &#34;type&#34;: &#34;Polygon&#34;,
+    &#34;coordinates&#34;: [
+      [
+        [
+          37.6616853489879,
+          55.73478197572927
+        ],
+        [
+          37.6616853489879,
+          55.73882710285011
+        ],
+        [
+          37.66573047610874,
+          55.73882710285011
+        ],
+        [
+          37.66573047610874,
+          55.73478197572927
+        ],
+        [
+          37.6616853489879,
+          55.73478197572927
+        ]
+      ]
+    ]
+  },
+  &#34;links&#34;: [
+    {
+      &#34;rel&#34;: &#34;root&#34;,
+      &#34;href&#34;: &#34;../catalog.json&#34;,
+      &#34;type&#34;: &#34;application/json&#34;
+    },
+    {
+      &#34;rel&#34;: &#34;parent&#34;,
+      &#34;href&#34;: &#34;../catalog.json&#34;,
+      &#34;type&#34;: &#34;application/json&#34;
+    }
+  ],
+  &#34;assets&#34;: {
+    &#34;image&#34;: {
+      &#34;href&#34;: &#34;/var/folders/73/z5lbqv_s6l7fcfx464_pn8p80000gn/T/tmpt0rc5aux/image.tif&#34;,
+      &#34;type&#34;: &#34;image/tiff; application=geotiff&#34;
+    }
+  },
+  &#34;bbox&#34;: [
+    37.6616853489879,
+    55.73478197572927,
+    37.66573047610874,
+    55.73882710285011
+  ],
+  &#34;stac_extensions&#34;: []
+}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Save-the-Catalog:-Absolute-Published">Save the Catalog: Absolute Published<a class="anchor-link" href="#Save-the-Catalog:-Absolute-Published">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As you can see, all links are saved with relative paths. That’s because we used <code>catalog_type=CatalogType.SELF_CONTAINED</code>. If we save an <em>Absolute Published Catalog</em>, we’ll see absolute paths.</p>
+<p>An <em>Absolute Published Catalog</em> is a catalog that uses absolute links for everything, both in the links objects and in the asset hrefs.</p>
+<p>Let's try saving the same catalog with the <code>CatalogType</code> as <code>ABSOLUTE_PUBLISHED</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">catalog_type</span><span class="o">=</span><span class="n">pystac</span><span class="o">.</span><span class="n">CatalogType</span><span class="o">.</span><span class="n">ABSOLUTE_PUBLISHED</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now the links included in the STAC Item are all absolute:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get_self_href</span><span class="p">())</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+  &#34;type&#34;: &#34;Feature&#34;,
+  &#34;stac_version&#34;: &#34;1.0.0&#34;,
+  &#34;id&#34;: &#34;local-image&#34;,
+  &#34;properties&#34;: {
+    &#34;datetime&#34;: &#34;2023-02-07T03:58:20.201542Z&#34;
+  },
+  &#34;geometry&#34;: {
+    &#34;type&#34;: &#34;Polygon&#34;,
+    &#34;coordinates&#34;: [
+      [
+        [
+          37.6616853489879,
+          55.73478197572927
+        ],
+        [
+          37.6616853489879,
+          55.73882710285011
+        ],
+        [
+          37.66573047610874,
+          55.73882710285011
+        ],
+        [
+          37.66573047610874,
+          55.73478197572927
+        ],
+        [
+          37.6616853489879,
+          55.73478197572927
+        ]
+      ]
+    ]
+  },
+  &#34;links&#34;: [
+    {
+      &#34;rel&#34;: &#34;root&#34;,
+      &#34;href&#34;: &#34;/var/folders/73/z5lbqv_s6l7fcfx464_pn8p80000gn/T/tmpt0rc5aux/stac/catalog.json&#34;,
+      &#34;type&#34;: &#34;application/json&#34;
+    },
+    {
+      &#34;rel&#34;: &#34;parent&#34;,
+      &#34;href&#34;: &#34;/var/folders/73/z5lbqv_s6l7fcfx464_pn8p80000gn/T/tmpt0rc5aux/stac/catalog.json&#34;,
+      &#34;type&#34;: &#34;application/json&#34;
+    },
+    {
+      &#34;rel&#34;: &#34;self&#34;,
+      &#34;href&#34;: &#34;/var/folders/73/z5lbqv_s6l7fcfx464_pn8p80000gn/T/tmpt0rc5aux/stac/local-image/local-image.json&#34;,
+      &#34;type&#34;: &#34;application/json&#34;
+    }
+  ],
+  &#34;assets&#34;: {
+    &#34;image&#34;: {
+      &#34;href&#34;: &#34;/var/folders/73/z5lbqv_s6l7fcfx464_pn8p80000gn/T/tmpt0rc5aux/image.tif&#34;,
+      &#34;type&#34;: &#34;image/tiff; application=geotiff&#34;
+    }
+  },
+  &#34;bbox&#34;: [
+    37.6616853489879,
+    55.73478197572927,
+    37.66573047610874,
+    55.73882710285011
+  ],
+  &#34;stac_extensions&#34;: []
+}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice that the asset <code>href</code> is absolute in both cases. We can make the asset <code>href</code> relative to the STAC Item by using <code>.make_all_asset_hrefs_relative()</code>:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="o">.</span><span class="n">make_all_asset_hrefs_relative</span><span class="p">()</span>
+<span class="n">catalog</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">catalog_type</span><span class="o">=</span><span class="n">pystac</span><span class="o">.</span><span class="n">CatalogType</span><span class="o">.</span><span class="n">SELF_CONTAINED</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get_self_href</span><span class="p">())</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+  &#34;type&#34;: &#34;Feature&#34;,
+  &#34;stac_version&#34;: &#34;1.0.0&#34;,
+  &#34;id&#34;: &#34;local-image&#34;,
+  &#34;properties&#34;: {
+    &#34;datetime&#34;: &#34;2023-02-07T03:58:20.201542Z&#34;
+  },
+  &#34;geometry&#34;: {
+    &#34;type&#34;: &#34;Polygon&#34;,
+    &#34;coordinates&#34;: [
+      [
+        [
+          37.6616853489879,
+          55.73478197572927
+        ],
+        [
+          37.6616853489879,
+          55.73882710285011
+        ],
+        [
+          37.66573047610874,
+          55.73882710285011
+        ],
+        [
+          37.66573047610874,
+          55.73478197572927
+        ],
+        [
+          37.6616853489879,
+          55.73478197572927
+        ]
+      ]
+    ]
+  },
+  &#34;links&#34;: [
+    {
+      &#34;rel&#34;: &#34;root&#34;,
+      &#34;href&#34;: &#34;../catalog.json&#34;,
+      &#34;type&#34;: &#34;application/json&#34;
+    },
+    {
+      &#34;rel&#34;: &#34;parent&#34;,
+      &#34;href&#34;: &#34;../catalog.json&#34;,
+      &#34;type&#34;: &#34;application/json&#34;
+    }
+  ],
+  &#34;assets&#34;: {
+    &#34;image&#34;: {
+      &#34;href&#34;: &#34;../../image.tif&#34;,
+      &#34;type&#34;: &#34;image/tiff; application=geotiff&#34;
+    }
+  },
+  &#34;bbox&#34;: [
+    37.6616853489879,
+    55.73478197572927,
+    37.66573047610874,
+    55.73882710285011
+  ],
+  &#34;stac_extensions&#34;: []
+}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There you have it: your very first STAC Catalog. In the <a href="./3-create-stac-item-with-extension.ipynb">following tutorial</a>, you will learn how to add an Item with EO Extensions and a STAC Collection to this STAC Catalog.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Cleanup">Cleanup<a class="anchor-link" href="#Cleanup">&#182;</a></h2><p>Don't forget to clean up the temporary directory.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Join-the-conversation">Join the conversation<a class="anchor-link" href="#Join-the-conversation">&#182;</a></h4><p>If you have any questions, you’re welcome to ask our community on <a href="https://app.gitter.im/#/room/#SpatioTemporal-Asset-Catalog_Lobby">Gitter</a>.</p>
+
+</div>
+</div>
+</div>
+ 
+

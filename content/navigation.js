@@ -116,7 +116,10 @@ module.exports = {
                 en: 'getting-started',
             },
             {
-                en: 'notebooks',
+                en: 'python',
+            },
+            {
+                en: 'how-to-guides',
             },
         ],
     },

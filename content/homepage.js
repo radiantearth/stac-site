@@ -147,10 +147,16 @@ const tutorials = {
 Learn about the specification, the options available for applying STAC in a practical way, and the community and resources to help you along the way.`
     },
     feed2: {
-        en: 
-`### Explore STAC Notebooks
+        en:
+`###  STAC & Python
 
-Gain a better understanding of STAC by interacting with these hands-on jupyter notebooks.`
+Learn the basics of using PySTAC to read, write, and manipulate STAC through these hands-on Jupyter Notebooks.`
+    },
+    feed3: {
+        en: 
+`### STAC How-to Guides
+
+Answer specific STAC questions using these STAC How-to Guide Jupyter Notebooks.`
     },
 };
 

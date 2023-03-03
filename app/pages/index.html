@@ -100,10 +100,22 @@ name: 'homepage'
                 {%- endfor -%}
             </table>
         {% endcall %}
-        {% call callout(icon="book-solid", mods=['blue'], icon_size="12") %}
+        {% call callout(icon="book-solid", mods=['blue'], icon_size='12') %}
             {{ '.tutorials.feed2' | localize | markdown | safe }}
+            <table class="w-full">
+                {%- for tutorial in collections.tutorial | fromCategoryTree('python', locale) -%}
+                    <tr>
+                        <td>
+                            <a class="" href="{{ tutorial.data.page.url }}">{{ tutorial.data.title }}</a>
+                        </td>
+                    </tr>
+                {%- endfor -%}
+            </table>
+        {% endcall %}
+        {% call callout(icon="book-solid", mods=['blue'], icon_size="12") %}
+            {{ '.tutorials.feed3' | localize | markdown | safe }}
             <table>
-                {%- for tutorial in collections.tutorial | fromCategoryTree('notebooks', locale) -%}
+                {%- for tutorial in collections.tutorial | fromCategoryTree('how-to-guides', locale) -%}
                     <tr>
                         <td><a href="{{ tutorial.data.page.url }}">{{ tutorial.data.title }}</a></td>
                     </tr>
