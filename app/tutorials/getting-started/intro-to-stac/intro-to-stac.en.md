@@ -30,7 +30,7 @@ There are three component specifications that together make up the core SpatioTe
 
 Each component can be used alone, but they work best in concert with one another.
 
-An `Item` represents a single spatiotemporal asset as GeoJSON so it can be searched. The `Catalog` specification provides structural elements, to group Items and Collections. `Collections` are catalogs, that add more required metadata and describe a group of related Items. Now, let's dive into each one of these components a bit more in depth.
+An `Item` represents spatiotemporal asset(s) as GeoJSON, so it can be easily searched. The `Catalog` specification provides structural elements to group Items and Collections. `Collections` are catalogs that add more required metadata and describe a group of related Items. Now, let's dive into each one of these components a bit more in depth.
 
 The STAC API specification builds on top of that core, but is out of scope for this overview. To Learn more about the STAC API, visit the Intro to STAC API section of the documentation.
 
