@@ -96,25 +96,6 @@ For our example, you can zoom into Seattle on your map, or enter the following c
 
 `N 47.9613, S 47.5469, W -122.2751, E -121.9613.`
 
-### Advanced filter
-
-You can utilize any of the STAC API filters for advanced queries explained on the [stac-api-spec](https://github.com/radiantearth/stac-api-spec/tree/master/fragments/filter).
-
-Using the **Advanced filter**, you can query data based on metadata of the assets such as the percentage cloud cover. STAC query tool defines the standards for performing this filtering. For instance, to get tiles whose cloud cover is less than ten percent using the [STAC Query format](https://github.com/radiantearth/stac-api-spec/tree/master/fragments/query), we would use the query below:
-
-```python
-{
- "query": {
-   "eo:cloud_cover": {
-     "gte": 0,
-     "lte": 10
-   }
- }
-}
-```
-
-When using the **Advanced filter**, the available filter languages are based on the supported STAC API filter languages. When *STAC_QUERY* is selected, then the filter input will be treated as a [STAC Query](https://github.com/radiantearth/stac-api-spec/tree/master/fragments/query). If *CQL JSON* or *CQL2 JSON* is selected, then the filter will be treated as a [CQL FILTER](https://github.com/radiantearth/stac-api-spec/tree/master/fragments/filter).
-
 ### Search Box
 
 Here is what your search box should look like to achieve the same results as this tutorial:
