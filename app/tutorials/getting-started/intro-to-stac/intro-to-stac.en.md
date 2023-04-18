@@ -102,9 +102,9 @@ To see the full documentation of the STAC Catalog specification: [https://github
 A STAC Collection builds upon the STAC Catalog specification to include additional metadata about a set of items that exist as part of the collection. It extends the parent catalog by adding additional fields to enable the description of information like the spatial and temporal extent of the data, the license, keywords, providers, etc. Therefore, it can easily be extended for additional collection-level metadata.
 
 <div align="center">
-<img src= "/public/intro-images/STAC-Collection.jpeg" alt= "STAC Collection" width=100% height=100% title="STAC Collection">
+<img src= "/public/intro-images/STAC-Collection.png" alt= "STAC Collection" width=100% height=100% title="STAC Collection">
 
-_STAC Collection Specification. In addition to the optional fields from the STAC Catalog, the fields in white text ('providers', 'keywords', 'assets', and 'summary') represent optional fields. Note that the 'summaries' field is strongly recommended._
+_STAC Collection Specification. In addition to the optional fields from the STAC Catalog, the fields in white text ('providers', 'keywords', 'assets', and 'summaries') represent optional fields. Note that the 'summaries' field is strongly recommended._
 </div>
     
 ```json
