@@ -41,7 +41,7 @@ a `SAS Token` to [authorize requests to Azure Blob Storage](https://planetarycom
 
 The image below shows the how to connect to the [Planetary Computer STAC API](https://planetarycomputer.microsoft.com/api/stac/v1).
 
-![Screenshot of the connection dialog box with a Microsoft Planetary Computer STAC API details](/public/qgis-images/add_stac_api_connection.png)
+![Screenshot of the connection dialog box with a Microsoft Planetary Computer STAC API details](/public/images-original/qgis-images/add_stac_api_connection.png)
 _Connection dialog box with a Microsoft Planetary Computer STAC API details._
 
 Once all the details have been filled in, click **OK** to save the connection.
@@ -51,12 +51,12 @@ Once all the details have been filled in, click **OK** to save the connection.
 From installing the plugin in the [previous tutorial](/en/tutorials/1-install-stac-api-browser-qgis-plugin/index.html), there will be a plugin entry with the STAC APIs Browser icon in the QGIS toolbar. 
 Click on the icon to open the plugin window.
 
-![Screenshot of the QGIS Toolbar Version 3.26](/public/qgis-images/toolbar2.png)
+![Screenshot of the QGIS Toolbar Version 3.26](/public/images-original/qgis-images/toolbar2.png)
 _QGIS Toolbar (Version 3.26)_
 
 When you click on this icon, this window will pop up:
 
-![Screenshot of the STAC API Browser window](/public/qgis-images/plugin_initial.png)
+![Screenshot of the STAC API Browser window](/public/images-original/qgis-images/plugin_initial.png)
 _STAC API Browser Window_
 
 You can also launch the plugin via the QGIS Plugins Menu as well as the QGIS Web Menu:
@@ -100,7 +100,7 @@ For our example, you can zoom into Seattle on your map, or enter the following c
 
 Here is what your search box should look like to achieve the same results as this tutorial:
 
-![Screenshot of QGIS STAC API Browser plugin search box with available filters selected](/public/qgis-images/available_filters_planetary.png) 
+![Screenshot of QGIS STAC API Browser plugin search box with available filters selected](/public/images-original/qgis-images/available_filters_planetary.png) 
 _Search box with available filters selected._
 
 **NOTE**: the box must be checked by a given filter for it to be used in the search.
@@ -109,7 +109,7 @@ _Search box with available filters selected._
 
 Once you have specified all the filters that you want to use to query the data, click on the **Results** tab to see a list of all the items that fit your search criteria. From here, you can select your desired item to explore. The thumbnail and the **Date acquired** provided in the preview box can help you decide your selection.
 
-![Screenshot of QGIS STAC API Browser plugin example search result items](/public/qgis-images/search_results_planetary.png)
+![Screenshot of QGIS STAC API Browser plugin example search result items](/public/images-original/qgis-images/search_results_planetary.png)
 _Example of items in search results._
 
 ## View the Footprints and Assets
@@ -124,14 +124,14 @@ This tool is particularly useful if you plan to download the dataset instead of 
 
 Click the **Select Footprint** button to add the footprint of the first three items to the QGIS canvas. The footprint map layer (simply an outline of the data’s extent) will be loaded into QGIS. Now, you can better see the spatial extent of this data.
 
-![Screenshot of QGIS STAC API Browser plugin button used for adding the STAC item footprint](/public/qgis-images/add_footprint_planetary.png)
+![Screenshot of QGIS STAC API Browser plugin button used for adding the STAC item footprint](/public/images-original/qgis-images/add_footprint_planetary.png)
 _Image showing the button used for adding the STAC item footprint._
 
 ### View the Footprints
 
 Once you hit the **Add the selected footprint(s) (3)** button, you will see a box or outline of the image footprints appear on the QGIS map.
 
-![Map view of the 3 image footprints on the QGIS map](/public/qgis-images/view_footprints.png)
+![Map view of the 3 image footprints on the QGIS map](/public/images-original/qgis-images/view_footprints.png)
 _Image showing the 3 image footprints on the QGIS map._
 
 Based on looking at these footprints, it appears`LC09_L2SP_047026_20220625_02_T1`does not cover the area of Seattle we are targeting. Between the two that do cover Seattle, let's select the Landsat 9 image (the blue footprint:`LC09_L2SP_047027_20220625_02_T1`) over the Landsat 8 image  (the red footprint:`LC08_L2SP_046027_20220626_02_T1`). 
@@ -142,19 +142,19 @@ The plugin currently supports loading assets as [Cloud-Optimized GeoTIFFs (COGs)
 
 To add the assets to the QGIS canvas, click the **View assets** button from the required result item. This button will display a list of the available bands of the dataset.
 
-![Screenshot of QGIS STAC API Browser plugin button used for viewing the STAC item assets](/public/qgis-images/view_assets.png)
+![Screenshot of QGIS STAC API Browser plugin button used for viewing the STAC item assets](/public/images-original/qgis-images/view_assets.png)
 _Image showing the button used for viewing the STAC item assets._
 
 After clicking the **View Assets** button, the assets dialog box will open. From the asset list, check the **Select to add as a layer** box to add the item into the QGIS as a COG layer. To download the asset, check the **Select to download** box.
 
 For this tutorial, we will be adding the Red, Green, Blue, and IR bands as COG layers directly to the map. See the figure below.
 
-![Screenshot of QGIS STAC API Browser plugin assets dialog box](/public/qgis-images/assets_dialog.png)
+![Screenshot of QGIS STAC API Browser plugin assets dialog box](/public/images-original/qgis-images/assets_dialog.png)
 _Assets dialog box_
 
 Below is the result of clicking **Add selected assets as layers**, which added the four selected assets to the QGIS map canvas. On the left of this image, we can see the four layers we added the map in the Layers legend. On the right of the image, we see the Near Infrared band image on top. Now, you can use QGIS to analyze this data.
 
-![Screenshot of STAC Asset added to the QGIS map layer](/public/qgis-images/added_asset.png)
+![Screenshot of STAC Asset added to the QGIS map layer](/public/images-original/qgis-images/added_asset.png)
 _Asset added as a QGIS map layer._
 
  You are now able to utilize the STAC API Browser plugin to add any datasets available through the STAC API Browser to your QGIS projects.

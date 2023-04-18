@@ -43,7 +43,7 @@ A STAC Item is the foundational building block of STAC. It is a GeoJSON feature 
 The STAC Item JSON specification uses standard GeoJSON fields as well as a few additional informational fields to describe the asset(s) more thoroughly. The figure below lists the fields of the STAC Item JSON. The in-depth descriptions of these fields can be found in [this table](https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md#item-fields).
 
 <div align="center">
-<img src= "/public/intro-images/STAC-Item.jpeg" alt= "STAC Item Specification" width=100% height=100% title="STAC Item Specification">
+<img src= "/public/images-original/intro-images/STAC-Item.jpeg" alt= "STAC Item Specification" width=100% height=100% title="STAC Item Specification">
 
  _STAC Item Specification. The fields in the gray text ('stac_extention' and 'collection') represent optional fields._
 </div>
@@ -51,7 +51,7 @@ The STAC Item JSON specification uses standard GeoJSON fields as well as a few a
 Below is an example of an image footprint and its associated GeoJSON file. If this example was to be transformed into STAC, the imagery's bands would become the STAC Assets and the GeoJSON contents would be combined with additional fields to describe the associated spatiotemporal assets and become the STAC Item.
 
 <div align="center">
-<img src= "/public/intro-images/geojson-example.png" alt= "Example GeoJSON" width=100% height=100% title="Example GeoJSON">
+<img src= "/public/images-original/intro-images/geojson-example.png" alt= "Example GeoJSON" width=100% height=100% title="Example GeoJSON">
     
 _Example of an image footprint (left) and its associated GeoJSON file (right)._
 </div>
@@ -67,7 +67,7 @@ A Catalog is usually the starting point for navigating a STAC. A `catalog.json` 
 We can think of it like a directory tree on a computer.
 
 <div align="center">
-<img src= "/public/intro-images/Catalog-layout.jpeg" alt= "STAC Catalog Layout" width=100% height=100% title="STAC Catalog Layout">
+<img src= "/public/images-original/intro-images/Catalog-layout.jpeg" alt= "STAC Catalog Layout" width=100% height=100% title="STAC Catalog Layout">
 
 _STAC Catalog Layout_
 </div>
@@ -77,7 +77,7 @@ There are no restrictions on the way STAC Catalogs are organized. Therefore, the
  The figure below lists the fields of the STAC Catalog JSON. The in-depth descriptions of these fields can be found in [this table](https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md#catalog-fields).
 
 <div align="center">
-<img src= "/public/intro-images/STAC-Catalog.jpeg" alt= "STAC Catalog Specification" width=100% height=100% title="STAC Catalog Specification">
+<img src= "/public/images-original/intro-images/STAC-Catalog.jpeg" alt= "STAC Catalog Specification" width=100% height=100% title="STAC Catalog Specification">
 
 _STAC Catalog Specification. The fields in white text ('title' and 'stac_extentions') represent optional fields._
 </div>
@@ -102,7 +102,7 @@ To see the full documentation of the STAC Catalog specification: [https://github
 A STAC Collection builds upon the STAC Catalog specification to include additional metadata about a set of items that exist as part of the collection. It extends the parent catalog by adding additional fields to enable the description of information like the spatial and temporal extent of the data, the license, keywords, providers, etc. Therefore, it can easily be extended for additional collection-level metadata.
 
 <div align="center">
-<img src= "/public/intro-images/STAC-Collection.png" alt= "STAC Collection" width=100% height=100% title="STAC Collection">
+<img src= "/public/images-original/intro-images/STAC-Collection.png" alt= "STAC Collection" width=100% height=100% title="STAC Collection">
 
 _STAC Collection Specification. In addition to the optional fields from the STAC Catalog, the fields in white text ('providers', 'keywords', 'assets', and 'summaries') represent optional fields. Note that the 'summaries' field is strongly recommended._
 </div>

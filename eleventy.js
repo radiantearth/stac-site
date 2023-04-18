@@ -19,6 +19,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy('public');
     eleventyConfig.addPassthroughCopy({ 'assets/favicon': '/' });
     eleventyConfig.addPassthroughCopy({ 'assets/images': 'public/images-original' });
+    eleventyConfig.addPassthroughCopy({ 'assets/example-catalog': 'public/example-catalog' });
     eleventyConfig.addPassthroughCopy('notebooks/src');
     eleventyConfig.addWatchTarget('../public/**/*');
     eleventyConfig.addWatchTarget('../config/**/*');

@@ -8,7 +8,7 @@ In this introduction tutorial, you will learn how to install the STAC plugin int
 
 To install the plugin, you will launch the QGIS application and open the Plugin Manager. You can access the Plugin Manager by nagivating from the QGIS Toolbar > **Plugins** tab > **Manage and Install Plugins**.
 
-![Screenshot of accessing the Plugin Manager from Navigation Bar](/public/qgis-images/qgis-plugin-manager.png)
+![Screenshot of accessing the Plugin Manager from Navigation Bar](/public/images-original/qgis-images/qgis-plugin-manager.png)
 _QGIS Plugin Manager from Navigation Bar._
 
 ## Primary Download Method: QGIS Plugin Repository
@@ -19,7 +19,7 @@ The plugin is available in the QGIS Official Plugin Repository.
 2. Click on the **STAC API Browser** result. A description page of the plugin will then show up.
 3. Click the **Install Plugin** button at the bottom of the dialog box to install the plugin.
 
-![Screenshot of the Plugin Manager search result of the QGIS STAC API Browser plugin](/public/qgis-images/install-from-repository.png)
+![Screenshot of the Plugin Manager search result of the QGIS STAC API Browser plugin](/public/images-original/qgis-images/install-from-repository.png)
 _Plugin Manager search result of the QGIS STAC API Browser Plugin._
 <br/><br/>
 
@@ -45,7 +45,7 @@ It is important to note that _QGIS does not recommend installing deprecated plug
 
 4. Click the **Install Plugin** button.
 
-![Screenshot of the installation of the STAC plugin from a ZIP file](/public/qgis-images/install-from-zip.png)
+![Screenshot of the installation of the STAC plugin from a ZIP file](/public/images-original/qgis-images/install-from-zip.png)
 _Installing plugin from a ZIP file._
 
 ### Install from the Creation of a Custom Plugin Repository
@@ -63,7 +63,7 @@ The **STAC API Browser** plugin is also available through a custom plugin reposi
 
 5. In the URL section, use [https://stac-utils.github.io/qgis-stac-plugin/repository/plugins.xml](https://stac-utils.github.io/qgis-stac-plugin/repository/plugins.xml) to create a new plugin repository.
 
-![Screnshot of how to add a custom QGIS plugin repository](/public/qgis-images/add-repository.png)
+![Screnshot of how to add a custom QGIS plugin repository](/public/images-original/qgis-images/add-repository.png)
 _Adding a custom QGIS plugin repository._
 
 6. Click **OK** to add the custom plugin repository.
