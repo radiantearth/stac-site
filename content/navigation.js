@@ -116,7 +116,13 @@ module.exports = {
                 en: 'getting-started',
             },
             {
-                en: 'notebooks',
+                en: 'python',
+            },
+            {
+                en: 'qgis',
+            },
+            {
+                en: 'how-to-guides',
             },
         ],
     },

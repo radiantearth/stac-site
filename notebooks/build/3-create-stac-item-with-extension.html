@@ -1,0 +1,453 @@
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Create-a-STAC-Item-that-Implements-the-EO-Extension-Using-PySTAC">Create a STAC Item that Implements the EO Extension Using PySTAC<a class="anchor-link" href="#Create-a-STAC-Item-that-Implements-the-EO-Extension-Using-PySTAC">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the <a href="/en/tutorials/2-create-stac-catalog-python/index.html">previous tutorial</a>, you created a STAC Item and added it to a STAC Catalog. The item you created only implemented the core STAC Item specification. With <a href="https://github.com/radiantearth/stac-spec/tree/v0.9.0/extensions">extensions</a>, we can record more information and add additional functionality to the item.</p>
+<p>This tutorial builds off of the knowledge from the previous tutorial. Let's create an item that utilizes a common STAC Extension: the <a href="https://github.com/radiantearth/stac-spec/tree/v0.8.1/extensions/eo">Electro-Optical (EO) Extension</a>.</p>
+<p>We will continue to use the data from the previous tutorial and will add the item we create into the STAC Catalog you just created.</p>
+<p>Given that we know the tiff image we are working with is a <a href="https://worldview3.digitalglobe.com/">WorldView-3</a> image that has earth observation data, we can enable the <a href="https://github.com/radiantearth/stac-spec/tree/v0.8.1/extensions/eo">EO Extension</a> to add band information.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dependencies">Dependencies<a class="anchor-link" href="#Dependencies">&#182;</a></h2><p>If you need to install pystac, rasterio, or pystac, uncomment the lines below and run the cell.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ! pip install pystac</span>
+<span class="c1"># ! pip install asterio</span>
+<span class="c1"># ! pip install shapely</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Import-Packages-and-Store-Data">Import Packages and Store Data<a class="anchor-link" href="#Import-Packages-and-Store-Data">&#182;</a></h2><p>To begin, import the packages and classes that you need to access data and work with STAC Items in Python.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="kn">import</span> <span class="nn">pystac</span>
+
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Polygon</span><span class="p">,</span> <span class="n">mapping</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="kn">from</span> <span class="nn">pystac.extensions.eo</span> <span class="kn">import</span> <span class="n">Band</span><span class="p">,</span> <span class="n">EOExtension</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">TemporaryDirectory</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Just like in the previous tutorial, we will set up a temporary directory and store the same image in it.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set the temporary directory to store source data</span>
+<span class="n">tmp_dir</span> <span class="o">=</span> <span class="n">TemporaryDirectory</span><span class="p">()</span>
+<span class="n">img_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;image.tif&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fetch and store data</span>
+<span class="n">url</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;https://spacenet-dataset.s3.amazonaws.com/&#39;</span>
+       <span class="s1">&#39;spacenet/SN5_roads/train/AOI_7_Moscow/MS/&#39;</span>
+       <span class="s1">&#39;SN5_roads_train_AOI_7_Moscow_MS_chip996.tif&#39;</span><span class="p">)</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">img_path</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Define-the-Bands-of-WorldView-3">Define the Bands of WorldView-3<a class="anchor-link" href="#Define-the-Bands-of-WorldView-3">&#182;</a></h2><p>To add the EO information to an item we'll need to specify some more data. First, let's define the bands of WorldView-3. We have collected this band information from the <a href="https://www.spaceimagingme.com/downloads/sensors/datasheets/DG_WorldView3_DS_2014.pdf">WorldView-3 Data Sheet</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">wv3_bands</span> <span class="o">=</span> <span class="p">[</span><span class="n">Band</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Coastal&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Coastal: 400 - 450 nm&#39;</span><span class="p">,</span> <span class="n">common_name</span><span class="o">=</span><span class="s1">&#39;coastal&#39;</span><span class="p">),</span>
+             <span class="n">Band</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Blue&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Blue: 450 - 510 nm&#39;</span><span class="p">,</span> <span class="n">common_name</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">),</span>
+             <span class="n">Band</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Green&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Green: 510 - 580 nm&#39;</span><span class="p">,</span> <span class="n">common_name</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">),</span>
+             <span class="n">Band</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Yellow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Yellow: 585 - 625 nm&#39;</span><span class="p">,</span> <span class="n">common_name</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">),</span>
+             <span class="n">Band</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Red&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Red: 630 - 690 nm&#39;</span><span class="p">,</span> <span class="n">common_name</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">),</span>
+             <span class="n">Band</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Red Edge&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Red Edge: 705 - 745 nm&#39;</span><span class="p">,</span> <span class="n">common_name</span><span class="o">=</span><span class="s1">&#39;rededge&#39;</span><span class="p">),</span>
+             <span class="n">Band</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Near-IR1&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Near-IR1: 770 - 895 nm&#39;</span><span class="p">,</span> <span class="n">common_name</span><span class="o">=</span><span class="s1">&#39;nir08&#39;</span><span class="p">),</span>
+             <span class="n">Band</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Near-IR2&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Near-IR2: 860 - 1040 nm&#39;</span><span class="p">,</span> <span class="n">common_name</span><span class="o">=</span><span class="s1">&#39;nir09&#39;</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice that we used the <code>.create</code> method to create new band information.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Collect-the-Item's-geometry-and-bbox">Collect the Item's <code>geometry</code> and <code>bbox</code><a class="anchor-link" href="#Collect-the-Item's-geometry-and-bbox">&#182;</a></h2><p>To get the bounding box and footprint of the image, we will utilize the <code>get_bbox_and_footprint</code> function we first used in the <a href="/en/tutorials/2-create-stac-catalog-python/index.html">Create a STAC Catalog Tutorial</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_bbox_and_footprint</span><span class="p">(</span><span class="n">raster</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">bounds</span>
+        <span class="n">bbox</span> <span class="o">=</span> <span class="p">[</span><span class="n">bounds</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">bounds</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span> <span class="n">bounds</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">bounds</span><span class="o">.</span><span class="n">top</span><span class="p">]</span>
+        <span class="n">footprint</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([</span>
+            <span class="p">[</span><span class="n">bounds</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">bounds</span><span class="o">.</span><span class="n">bottom</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">bounds</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">bounds</span><span class="o">.</span><span class="n">top</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">bounds</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">bounds</span><span class="o">.</span><span class="n">top</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">bounds</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">bounds</span><span class="o">.</span><span class="n">bottom</span><span class="p">]</span>
+        <span class="p">])</span>
+        
+        <span class="k">return</span> <span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">mapping</span><span class="p">(</span><span class="n">footprint</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bbox</span><span class="p">,</span> <span class="n">footprint</span> <span class="o">=</span> <span class="n">get_bbox_and_footprint</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can now create an item, enable the EO Extension, add the band information and add it to our catalog:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">eo_item</span> <span class="o">=</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;local-image-eo&#39;</span><span class="p">,</span>
+                      <span class="n">geometry</span><span class="o">=</span><span class="n">footprint</span><span class="p">,</span>
+                      <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span>
+                      <span class="n">datetime</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">(),</span>
+                      <span class="n">properties</span><span class="o">=</span><span class="p">{})</span>
+<span class="n">eo</span> <span class="o">=</span> <span class="n">EOExtension</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="n">eo_item</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">eo</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">bands</span><span class="o">=</span><span class="n">wv3_bands</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are also <a href="https://github.com/radiantearth/stac-spec/blob/v0.9.0/item-spec/common-metadata.md">common metadata</a> fields that we can use to capture additional information about the WorldView-3 imagery:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">eo_item</span><span class="o">.</span><span class="n">common_metadata</span><span class="o">.</span><span class="n">platform</span> <span class="o">=</span> <span class="s2">&quot;Maxar&quot;</span>
+<span class="n">eo_item</span><span class="o">.</span><span class="n">common_metadata</span><span class="o">.</span><span class="n">instruments</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;WorldView3&quot;</span><span class="p">]</span>
+<span class="n">eo_item</span><span class="o">.</span><span class="n">common_metadata</span><span class="o">.</span><span class="n">gsd</span> <span class="o">=</span> <span class="mf">0.3</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">eo_item</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can use the EO Extension to add bands to the assets we add to the item:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">asset</span> <span class="o">=</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Asset</span><span class="p">(</span><span class="n">href</span><span class="o">=</span><span class="n">img_path</span><span class="p">,</span> 
+                     <span class="n">media_type</span><span class="o">=</span><span class="n">pystac</span><span class="o">.</span><span class="n">MediaType</span><span class="o">.</span><span class="n">GEOTIFF</span><span class="p">)</span>
+<span class="n">eo_item</span><span class="o">.</span><span class="n">add_asset</span><span class="p">(</span><span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="n">asset</span><span class="p">)</span>
+<span class="n">eo_on_asset</span> <span class="o">=</span> <span class="n">EOExtension</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="n">eo_item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">])</span>
+<span class="n">eo_on_asset</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">wv3_bands</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we look at the asset's JSON representation, we can see the appropriate band indexes are set:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">asset</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's create a catalog, add the item that uses the EO Extension, and save to a new STAC.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog</span> <span class="o">=</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Catalog</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;tutorial-catalog&#39;</span><span class="p">,</span> 
+                         <span class="n">description</span><span class="o">=</span><span class="s1">&#39;This Catalog is a basic demonstration Catalog to teach the use of the eo extension.&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">eo_item</span><span class="p">)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">catalog</span><span class="o">.</span><span class="n">get_items</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="o">.</span><span class="n">normalize_and_save</span><span class="p">(</span><span class="n">root_href</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;stac-eo&#39;</span><span class="p">),</span> 
+                           <span class="n">catalog_type</span><span class="o">=</span><span class="n">pystac</span><span class="o">.</span><span class="n">CatalogType</span><span class="o">.</span><span class="n">SELF_CONTAINED</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, if we read the catalog from the filesystem, PySTAC recognizes that the item implements eo and to use its functionality, e.g. getting the bands off the asset:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog2</span> <span class="o">=</span> <span class="n">pystac</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;stac-eo&#39;</span><span class="p">,</span> <span class="s1">&#39;catalog.json&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">catalog2</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Catalog</span><span class="p">)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">catalog2</span><span class="o">.</span><span class="n">get_items</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Item</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">catalog2</span><span class="o">.</span><span class="n">get_all_items</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">EOExtension</span><span class="o">.</span><span class="n">has_extension</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">eo_on_asset</span> <span class="o">=</span> <span class="n">EOExtension</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eo_on_asset</span><span class="o">.</span><span class="n">bands</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Cleanup">Cleanup<a class="anchor-link" href="#Cleanup">&#182;</a></h2><p>Don't forget to clean up the temporary directory.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now you have created an Item with a STAC Extension. In the <a href="/en/tutorials/4-create-stac-collection/index.html">following tutorial</a>, you will learn how to add a Collection to this STAC Catalog.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Join-the-conversation">Join the conversation<a class="anchor-link" href="#Join-the-conversation">&#182;</a></h4><p>If you have any questions, you’re welcome to ask our community on <a href="https://app.gitter.im/#/room/#SpatioTemporal-Asset-Catalog_Lobby">Gitter</a>.</p>
+
+</div>
+</div>
+</div>
+ 
+

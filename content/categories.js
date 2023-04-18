@@ -1,12 +1,22 @@
 module.exports = {
     'getting-started': {
         name: {
-            en: 'Intro to STAC',
+            en: 'Introduction to STAC',
         },
     },
-    notebooks: {
+    'python': {
         name: {
-            en: 'Notebooks',
+            en: 'Python Tutorials',
+        },
+    },
+    'qgis': {
+        name: {
+            en: 'QGIS Tutorials',
+        },
+    },    
+    'how-to-guides': {
+        name: {
+            en: 'How-to Guides',
         },
     },
 };

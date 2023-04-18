@@ -1,0 +1,633 @@
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Read-a-STAC-Catalog-Using-PySTAC">Read a STAC Catalog Using PySTAC<a class="anchor-link" href="#Read-a-STAC-Catalog-Using-PySTAC">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this tutorial, you will gain an understanding of how to explore a STAC Catalog using <a href="https://pystac.readthedocs.io/en/stable/index.html">PySTAC</a>. You will be able to use these skills to explore any of the <a href="https://stacindex.org/catalogs">many existing STAC Catalogs</a>.</p>
+<p>This tutorial as well as the following 3 tutorials were adapted from the <a href="https://pystac.readthedocs.io/en/stable/index.html">PySTAC site tutorials</a>.</p>
+<p>Throughout this tutorial, a variety of PySTAC classes, methods, and instances are used to read the STAC Catalog. We encourage you to look at the <a href="https://pystac.readthedocs.io/en/latest/api.html">PySTAC API Reference</a> while going through this tutorial.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dependencies">Dependencies<a class="anchor-link" href="#Dependencies">&#182;</a></h2><p>If you need to install pystac, uncomment the line below and run this cell.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ! pip install pystac</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="STAC-Catalogs">STAC Catalogs<a class="anchor-link" href="#STAC-Catalogs">&#182;</a></h2><p><a href="https://github.com/radiantearth/stac-spec/tree/master/catalog-spec">A STAC Catalog</a> is used to group other STAC objects like items, collections, and/or even other catalogs.</p>
+<p>We will be using a small example catalog adapted from the <a href="https://github.com/geotrellis/geotrellis-server/tree/977bad7a64c409341479c281c8c72222008861fd/stac-example/catalog/landsat-stac-collection">example Landsat Collection</a> in the <a href="https://geotrellis.io">GeoTrellis</a> repository. All STAC Items and Collections can be found in the <a href="https://github.com/stac-utils/pystac/tree/main/docs/example-catalog">docs/example-catalog</a> directory of the PySTAC documentation repository; all assets are hosted in the Landsat S3 bucket.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Import-Packages-and-Store-Data">Import Packages and Store Data<a class="anchor-link" href="#Import-Packages-and-Store-Data">&#182;</a></h4><p>To begin, import the packages and PySTAC classes that you need to access data and work with STAC Catalogs in Python.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">from</span> <span class="nn">pystac</span> <span class="kn">import</span> <span class="n">Catalog</span><span class="p">,</span> <span class="n">get_stac_version</span>
+<span class="kn">from</span> <span class="nn">pystac.extensions.eo</span> <span class="kn">import</span> <span class="n">EOExtension</span>
+<span class="kn">from</span> <span class="nn">pystac.extensions.label</span> <span class="kn">import</span> <span class="n">LabelExtension</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read the example catalog</span>
+<span class="n">root_catalog</span> <span class="o">=</span> <span class="n">Catalog</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;/public/example-catalog/catalog.json&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Explore-the-High-Level-Catalog-Information">Explore the High-Level Catalog Information<a class="anchor-link" href="#Explore-the-High-Level-Catalog-Information">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To give us an idea of how the catalog we are working with is organized, let's take a look at all elements of the STAC using the <code>describe</code> method.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div style="background-color:rgba(181, 216, 229, 0.8); text-align:center; vertical-align: top; padding:10px; ml:5px; 0;">
+NOTE: Be careful using the `describe` method on large catalogs, as it will walk and print the entire tree of the STAC.
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">root_catalog</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From this output, we can see that the catalog has 1 collection and that this collection has 4 items.</p>
+<p>Now, let's look at the root catalog more in depth.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print some basic metadata from the Catalog</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ID: </span><span class="si">{</span><span class="n">root_catalog</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Title: </span><span class="si">{</span><span class="n">root_catalog</span><span class="o">.</span><span class="n">title</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">&#39;N/A&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Description: </span><span class="si">{</span><span class="n">root_catalog</span><span class="o">.</span><span class="n">description</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">&#39;N/A&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div style="background-color:rgba(181, 216, 229, 0.8); text-align:center; vertical-align: top; padding:10px; ml:5px; 0;">
+Note: we do not print the "stac_version" here. PySTAC automatically updates any catalogs to the most recent supported STAC version and will automatically write this to the JSON object during serialization.
+</div><p>Let's confirm the latest STAC Specification version supported by PySTAC.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">get_stac_version</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With this information, we have an understanding of the layout and general information about the STAC Catalog at hand. Now, let's dive deeper into this catalog.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Crawl-STAC-Child-Catalogs-and/or-Collections">Crawl STAC Child Catalogs and/or Collections<a class="anchor-link" href="#Crawl-STAC-Child-Catalogs-and/or-Collections">&#182;</a></h2><p><a href="https://github.com/radiantearth/stac-spec/tree/master/collection-spec">STAC Collections</a> are used to group related items and provide aggregate or summary metadata for those items.</p>
+<p>STAC Catalogs may have many nested layers of catalogs or collections within the top-level collection. Our example catalog only has one collection within the main catalog at <a href="/public/example-catalog/landsat-8-l1/collection.json">landsat-8-l1/collection.json</a>. We can list the collections in a given catalog using the <code>Catalog.get_collections</code> method. This method returns an iterable of PySTAC <a href="https://pystac.readthedocs.io/en/latest/api.html#collection">Collection</a> instances, which we will turn into a <code>list</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">collections</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">root_catalog</span><span class="o">.</span><span class="n">get_collections</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of collections: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">collections</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Collections IDs:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">collection</span> <span class="ow">in</span> <span class="n">collections</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">collection</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's grab that collection as a PySTAC <a href="https://pystac.readthedocs.io/en/latest/api/collection.html#pystac-collection">Collection</a> instance using the <code>Catalog.get_child</code> method so we can look at it in more detail. This method gets a child catalog or collection by ID, so we'll use the collection ID that we printed above. Since this method returns <code>None</code> if no child exists with the given ID, let's check to make sure we actually got the <code>Collection</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">collection</span> <span class="o">=</span> <span class="n">root_catalog</span><span class="o">.</span><span class="n">get_child</span><span class="p">(</span><span class="s2">&quot;landsat-8-l1&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">collection</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Collection is Empty. Check your downloads and try agian.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Collection has a root child. You may proceed to the following steps.&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Crawl-the-STAC-Items">Crawl the STAC Items<a class="anchor-link" href="#Crawl-the-STAC-Items">&#182;</a></h2><p><a href="https://github.com/radiantearth/stac-spec/tree/master/item-spec">STAC Items</a> are the fundamental building blocks of a STAC Catalog. Each Item represents a single spatiotemporal resource (e.g. a satellite scene).</p>
+<p>Both catalogs and collections may have items associated with them. Let's crawl our catalog, starting at the root, to see what Items we have. The <code>Catalog.get_all_items</code> method provides a convenient way of recursively listing all Items associated with a catalog and all of its sub-catalogs.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">root_catalog</span><span class="o">.</span><span class="n">get_all_items</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of items: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These IDs are not very descriptive; in the next section, we will see how we can access the rich metadata associated with each item.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Explore-STAC-Item-Metadata">Explore STAC Item Metadata<a class="anchor-link" href="#Explore-STAC-Item-Metadata">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Item-Metadata">Item Metadata<a class="anchor-link" href="#Item-Metadata">&#182;</a></h3><p>Items can have <em>a lot</em> of metadata. This can be a bit overwhelming at first, but let's break the metadata fields down into a few categories:</p>
+<ol>
+<li>Core Item Metadata</li>
+<li>Common Metadata</li>
+<li>STAC Extensions</li>
+</ol>
+<p>We will walk through each of these metadata categories in the following sections.</p>
+<p>First, let's grab one of the Items using the <code>Catalog.get_item</code> method. We will use <code>recursive=True</code> to recursively crawl all child catalogs and/or collections to find the item.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span> <span class="o">=</span> <span class="n">root_catalog</span><span class="o">.</span><span class="n">get_item</span><span class="p">(</span><span class="s2">&quot;LC80140332018166LGN00&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="1.-Core-Item-Metadata">1. Core Item Metadata<a class="anchor-link" href="#1.-Core-Item-Metadata">&#182;</a></h4><p>The core item metadata fields include spatiotemporal information and the ID of the collection to which the item belongs. These fields are all at the top level of the item JSON and we can access them through attributes on the <a href="https://pystac.readthedocs.io/en/latest/api/collection.html#pystac-collection">PySTAC Item</a> instance.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">geometry</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">bbox</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">datetime</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">collection_id</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can also access the same information as the cell above by running the <code>Item.get_collection</code> method.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">get_collection</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="2.-Common-Metadata">2. Common Metadata<a class="anchor-link" href="#2.-Common-Metadata">&#182;</a></h4><p>Certain fields that are commonly used in Items, but may also be found in other objects (e.g. Assets) are defined in the <a href="https://github.com/radiantearth/stac-spec/blob/v1.0.0/item-spec/common-metadata.md">Common Metadata</a> section of the spec. These include licensing and instrument information, descriptions of datetime ranges, and some other common fields. These properties can be found as attributes of the <code>Item.common_metadata</code> property, which is an instance of the <code>CommonMetadata</code> class.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">common_metadata</span><span class="o">.</span><span class="n">instruments</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">common_metadata</span><span class="o">.</span><span class="n">platform</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">common_metadata</span><span class="o">.</span><span class="n">gsd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.-STAC-Extensions">3. STAC Extensions<a class="anchor-link" href="#3.-STAC-Extensions">&#182;</a></h4><p><a href="https://github.com/radiantearth/stac-spec/tree/master/extensions">STAC Extensions</a> are a mechanism for providing additional metadata not covered by the core STAC Spec. We can see which STAC Extensions are implemented by this particular Item by examining the list of extension URIs in the <code>stac_extensions</code> field.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">stac_extensions</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This Item implements the <a href="https://github.com/stac-extensions/eo">Electro-Optical</a>, <a href="https://github.com/stac-extensions/view">View Geometry</a>, and <a href="https://github.com/stac-extensions/projection">Projection</a> Extensions.</p>
+<p>We can also check if a specific extension is implemented using the <code>has_extension</code> method for that extension class.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">EOExtension</span><span class="o">.</span><span class="n">has_extension</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">LabelExtension</span><span class="o">.</span><span class="n">has_extension</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can access fields associated with the extension as attributes on the extension instance. For instance, the <a href="https://github.com/stac-extensions/eo#item-properties-or-asset-fields">"eo:cloud_cover" field</a> defined in the Electro-Optical Extension can be accessed using the <a href="https://pystac.readthedocs.io/en/latest/api.html#pystac.extensions.eo.EOExtension.cloud_cover">EOExtension.cloud_cover</a> attribute.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">eo_item_ext</span> <span class="o">=</span> <span class="n">EOExtension</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="n">eo_item_ext</span><span class="o">.</span><span class="n">cloud_cover</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can also access the cloud cover field directly in the Item properties.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s1">&#39;eo:cloud_cover&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Access-STAC-Item's-Assets">Access STAC Item's Assets<a class="anchor-link" href="#Access-STAC-Item's-Assets">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To access the item's assets, we can use the <code>assets</code> attribute, which is a dictionary:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">asset_key</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">:</span>
+    <span class="n">asset</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="n">asset_key</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1"> (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">asset_key</span><span class="p">,</span> <span class="n">asset</span><span class="o">.</span><span class="n">href</span><span class="p">,</span> <span class="n">asset</span><span class="o">.</span><span class="n">media_type</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can use the <code>to_dict()</code> method to convert an asset, or any PySTAC object, into a dictionary:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">asset</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s1">&#39;B3&#39;</span><span class="p">]</span>
+<span class="n">asset</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here, we use the <code>eo Extension</code> to get the band information for the asset:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">eo_asset_ext</span> <span class="o">=</span> <span class="n">EOExtension</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="n">asset</span><span class="p">)</span>
+<span class="n">bands</span> <span class="o">=</span> <span class="n">eo_asset_ext</span><span class="o">.</span><span class="n">bands</span>
+<span class="n">bands</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You have now successfully explored the common components of an existing STAC Catalog. To learn how to write your own STAC Catalog, see the <a href="/en/tutorials/2-create-stac-catalog-python/index.html">following tutorial</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Join-the-conversation">Join the conversation<a class="anchor-link" href="#Join-the-conversation">&#182;</a></h4><p>If you have any questions, you’re welcome to ask our community on <a href="https://app.gitter.im/#/room/#SpatioTemporal-Asset-Catalog_Lobby">Gitter</a>.</p>
+
+</div>
+</div>
+</div>
+ 
+
