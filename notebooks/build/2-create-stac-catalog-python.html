@@ -9,7 +9,7 @@
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In the <a href="/en/tutorials/1-read-stac-python/index.html">previous tutorial</a>, you learned how to use <a href="https://pystac.readthedocs.io/en/stable/index.html#">PySTAC</a> to read an existing STAC Catalog. In this tutorial, you will learn how to create your own STAC Catalog (also using PySTAC). By the end, you will have a basic STAC Catalog created.</p>
-<p>In the following tutorials, you will learn to add additional STAC components and functionality onto the basic STAC Catalog you create here. The experience you gain from this tutorial along with the extensive <a href="https://pystac.readthedocs.io/en/latest/api.html">PySTAC documentation</a> will allow you to create your own STAC Catalog on a different dataset.</p>
+<p>In the following tutorials, you will learn to add additional STAC components and functionality to the basic STAC Catalog you create here. The experience you gain from this tutorial along with the extensive <a href="https://pystac.readthedocs.io/en/latest/api.html">PySTAC documentation</a> will allow you to create your own STAC Catalog on a different dataset.</p>
 
 </div>
 </div>
@@ -40,7 +40,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Import-Packages-and-Store-Data">Import Packages and Store Data<a class="anchor-link" href="#Import-Packages-and-Store-Data">&#182;</a></h2><p>To begin, import the packags and classes that you need to access data and work with STAC Catalogs in Python.</p>
+<h2 id="Import-Packages-and-Store-Data">Import Packages and Store Data<a class="anchor-link" href="#Import-Packages-and-Store-Data">&#182;</a></h2><p>To begin, import the packages and classes that you need to access data and work with STAC Catalogs in Python.</p>
 
 </div>
 </div>
@@ -69,7 +69,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To give us some material to work with, let's download a single image from the <a href="https://spacenet.ai/sn5-challenge/">SpaceNet 5 Challenge</a>. We will use a temporary directory to save off our single-Item STAC.</p>
+<p>To give us some material to work with, let's download a single image from the <a href="https://spacenet.ai/sn5-challenge/">SpaceNet 5 Challenge</a>. We will use a temporary directory to save our single-Item STAC.</p>
 
 </div>
 </div>
@@ -119,7 +119,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We want to create a STAC Catalog. Take a look at the <a href="https://pystac.readthedocs.io/en/stable/api/catalog.html">Catalog documention</a> to see what information you need to create our PySTAC <code>Catalog</code> instance.</p>
+<p>We want to create a STAC Catalog. Take a look at the <a href="https://pystac.readthedocs.io/en/stable/api/catalog.html">Catalog documentation</a> to see what information you need to create our PySTAC <code>Catalog</code> instance.</p>
 
 </div>
 </div>
@@ -127,7 +127,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Create-the-STAC-Catalog">Create the STAC Catalog<a class="anchor-link" href="#Create-the-STAC-Catalog">&#182;</a></h2><p>Start by first creating catalog and only populating the required arguments: the ID and description. The remaining arugments will be added to the catalog further along in the tutorial.</p>
+<h2 id="Create-the-STAC-Catalog">Create the STAC Catalog<a class="anchor-link" href="#Create-the-STAC-Catalog">&#182;</a></h2><p>Start by first creating the catalog and only populating the required arguments: the ID and description. The remaining arguments will be added to the catalog further along in the tutorial.</p>
 
 </div>
 </div>
@@ -673,7 +673,7 @@ footprint:  {&#39;type&#39;: &#39;Polygon&#39;, &#39;coordinates&#39;: (((37.661
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You can also visualize the archatecture of the STAC Catalog by using the <code>describe()</code> method. As a reminder, <strong>be careful</strong> when using it on large catalogs, as it will walk the entire tree of the STAC.</p>
+<p>You can also visualize the architecture of the STAC Catalog by using the <code>describe()</code> method. As a reminder, <strong>be careful</strong> when using it on large catalogs, as it will walk the entire tree of the STAC.</p>
 
 </div>
 </div>
@@ -847,7 +847,7 @@ footprint:  {&#39;type&#39;: &#39;Polygon&#39;, &#39;coordinates&#39;: (((37.661
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Save-the-Catalog">Save the Catalog<a class="anchor-link" href="#Save-the-Catalog">&#182;</a></h2><p>As the JSON above indicates, there’s no HREFs set on these in-memory items. PySTAC uses the <code>self</code> link on STAC objects to track where the file lives. Because we haven’t set them, they evaluate to <code>None</code>:</p>
+<h2 id="Save-the-Catalog">Save the Catalog<a class="anchor-link" href="#Save-the-Catalog">&#182;</a></h2><p>As the JSON above indicates, there are no HREFs set on these in-memory items. PySTAC uses the <code>self</code> link on STAC objects to track where the file lives. Because we haven’t set them, they evaluate to <code>None</code>:</p>
 
 </div>
 </div>

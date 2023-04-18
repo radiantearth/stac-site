@@ -42,7 +42,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Import-Packages-and-Store-Data">Import Packages and Store Data<a class="anchor-link" href="#Import-Packages-and-Store-Data">&#182;</a></h2><p>To begin, import the packags and classes that you need to access data and work with STAC Items in Python.</p>
+<h2 id="Import-Packages-and-Store-Data">Import Packages and Store Data<a class="anchor-link" href="#Import-Packages-and-Store-Data">&#182;</a></h2><p>To begin, import the packages and classes that you need to access data and work with STAC Items in Python.</p>
 
 </div>
 </div>
@@ -81,7 +81,7 @@
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set temporary directory to store source data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set the temporary directory to store source data</span>
 <span class="n">tmp_dir</span> <span class="o">=</span> <span class="n">TemporaryDirectory</span><span class="p">()</span>
 <span class="n">img_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;image.tif&#39;</span><span class="p">)</span>
 
@@ -100,7 +100,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Define-the-Bands-of-WorldView-3">Define the Bands of WorldView-3<a class="anchor-link" href="#Define-the-Bands-of-WorldView-3">&#182;</a></h2><p>To add the EO information to an item we'll need to specify some more data. First, let's define the bands of WorldView-3. We have collected this band infromation from the <a href="https://www.spaceimagingme.com/downloads/sensors/datasheets/DG_WorldView3_DS_2014.pdf">WorldView-3 Data Sheet</a>.</p>
+<h2 id="Define-the-Bands-of-WorldView-3">Define the Bands of WorldView-3<a class="anchor-link" href="#Define-the-Bands-of-WorldView-3">&#182;</a></h2><p>To add the EO information to an item we'll need to specify some more data. First, let's define the bands of WorldView-3. We have collected this band information from the <a href="https://www.spaceimagingme.com/downloads/sensors/datasheets/DG_WorldView3_DS_2014.pdf">WorldView-3 Data Sheet</a>.</p>
 
 </div>
 </div>
@@ -128,7 +128,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Notice that we used the <code>.create</code> method create new band information.</p>
+<p>Notice that we used the <code>.create</code> method to create new band information.</p>
 
 </div>
 </div>
@@ -136,7 +136,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Collect-the-Item's-geometry-and-bbox">Collect the Item's <code>geometry</code> and <code>bbox</code><a class="anchor-link" href="#Collect-the-Item's-geometry-and-bbox">&#182;</a></h2><p>To get the the bounding box and footprint of the image, we will utilize the <code>get_bbox_and_footprint</code> function we first used in the <a href="/en/tutorials/2-create-stac-catalog-python/index.html">Create a STAC Catalog Tutorial</a>.</p>
+<h2 id="Collect-the-Item's-geometry-and-bbox">Collect the Item's <code>geometry</code> and <code>bbox</code><a class="anchor-link" href="#Collect-the-Item's-geometry-and-bbox">&#182;</a></h2><p>To get the bounding box and footprint of the image, we will utilize the <code>get_bbox_and_footprint</code> function we first used in the <a href="/en/tutorials/2-create-stac-catalog-python/index.html">Create a STAC Catalog Tutorial</a>.</p>
 
 </div>
 </div>
@@ -340,7 +340,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, if we read the catalog from the filesystem, PySTAC recognizes that the item implements eo and so use it's functionality, e.g. getting the bands off the asset:</p>
+<p>Now, if we read the catalog from the filesystem, PySTAC recognizes that the item implements eo and to use its functionality, e.g. getting the bands off the asset:</p>
 
 </div>
 </div>
