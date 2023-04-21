@@ -4,7 +4,7 @@ module.exports = {
             en: 'STAC Tutorials',
         },
         description: {
-            en: 'Here you can find Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+            en: 'Here you can find our library of tutorials for learning all about STAC.'
         }
     },
 
