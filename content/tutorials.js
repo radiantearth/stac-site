@@ -21,7 +21,7 @@ can direct you to a relevant blog post or resource available online.
 
 We are committed to regularly expanding our tutorial collection to provide you with fresh perspectives and practical insights 
 into leveraging STAC in real-world scenarios. We welcome contributions from users like you, so if you have an idea for a tutorial, 
-don't hesitate to submit a pull request to the [stac-site repository](https://github.com/radiantearth/stac-site) repository.
+don't hesitate to submit a pull request to the [stac-site repository](https://github.com/radiantearth/stac-site).
 
 `
     }
