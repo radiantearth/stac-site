@@ -196,12 +196,184 @@ const tools = {
     cta_url: route('about.toolsResources'),
 };
 
-const organizations = {
-    heading: {
-        en: 'STAC is supported by these incredible organizations',
-        'lo-ip': 'Lorem Ipsum Dolor',
-    },
-};
+const organizations = (function () {
+    const w64 = "md:w-64 m-3";
+    const w48 = "md:w-48 m-3";
+    const w32 = "md:w-32 m-3";
+
+    return {
+        heading: {
+            en: 'STAC is supported by these incredible organizations',
+            'lo-ip': 'Lorem Ipsum Dolor',
+        },
+        content: [ // list of rows
+            [ // list of columns
+                {
+                    "class": w64,
+                    "site": "https://www.planet.com/",
+                    "image": "planet.png",
+                    "alt": "Planet logo",
+                },
+                {
+                    "class": w64,
+                    "site": "https://www.radiant.earth/",
+                    "image": "radiant-earth.png",
+                    "alt": "radiant earth logo",
+                },
+                {
+                    "class": w64,
+                    "site": "https://www.microsoft.com/",
+                    "image": "microsoft.png",
+                    "alt": "Microsoft logo",
+                },
+                {
+                    "class": w48,
+                    "site": "https://www.element84.com/",
+                    "image": "element84.png",
+                    "alt": "element84 logo",
+                },
+            ],
+
+            [
+                {
+                    "class": w48,
+                    "site": "https://sparkgeo.com/",
+                    "image": "sparkgeo.png",
+                    "alt": "sparkgeo logo",
+                },
+                {
+                    "class": w48,
+                    "site": "https://www.maxar.com/",
+                    "image": "maxar-technologies.png",
+                    "alt": "maxar technologies logo",
+                },
+                {
+                    "class": w48,
+                    "site": "https://arturo.ai/",
+                    "image": "arturo.jpeg",
+                    "alt": "Arturo logo",
+                },
+                {
+                    "class": w48,
+                    "site": "https://www.usgs.gov/",
+                    "image": "usgs.png",
+                    "alt": "usgs logo",
+                },
+                {
+                    "class": w48,
+                    "site": "https://www.cosmiqworks.org/",
+                    "image": "cosmiqworks.png",
+                    "alt": "cosmiqworks logo",
+                },
+            ],
+
+            [
+                {
+                    "class": "md:w-32 m-3 p-2 md:p-4",
+                    "site": "https://aws.amazon.com/",
+                    "image": "aws.png",
+                    "alt": "aws logo",
+                },
+                {
+                    "class": w32,
+                    "site": "https://www.digitalearthafrica.org/",
+                    "image": "digital-earth-africa.png",
+                    "alt": "digital earth africa logo",
+                },
+                {
+                    "class": w32,
+                    "site": "https://www.worldbank.org/",
+                    "image": "world-bank-group.png",
+                    "alt": "world bank group logo",
+                },
+                {
+                    "class": w32,
+                    "site": "https://www.azavea.com/",
+                    "image": "azavea.png",
+                    "alt": "azavea logo",
+                },
+                {
+                    "class": w32,
+                    "site": "https://www.nasa.gov/",
+                    "image": "nasa.png",
+                    "alt": "NASA logo",
+                },
+            ],
+
+            [
+                {
+                    "class": w32,
+                    "site": "https://umbra.space/",
+                    "image": "umbra.png",
+                    "alt": "Umbra logo",
+                },
+                {
+                    "class": w32,
+                    "site": "https://openeo.org/",
+                    "image": "open-eo.png",
+                    "alt": "Open EO logo",
+                },
+                {
+                    "class": w32,
+                    "site": "", // what is this company? could find their site
+                    "image": "pixel8.svg",
+                    "alt": "Pixel 8 logo",
+                },
+                {
+                    "class": w32,
+                    "site": "https://en.wikipedia.org/wiki/China%E2%80%93Brazil_Earth_Resources_Satellite_program", // didn't find a better site
+                    "image": "cbers.jpeg",
+                    "alt": "CBERS: China Brazil Earth Research Satellite logo",
+                },
+                {
+                    "class": w32,
+                    "site": "https://astraea.earth/",
+                    "image": "astraea.webp",
+                    "alt": "Astraea logo",
+                },
+            ],
+
+            [
+                {
+                    "class": w32,
+                    "site": "https://nearspacelabs.com/",
+                    "image": "near-space-lab.png",
+                    "alt": "Near Space Labs logo",
+                },
+                {
+                    "class": w32,
+                    "site": "https://climate.com/",
+                    "image": "the-climate-corporation.svg",
+                    "alt": "The Climate Corporation logo",
+                },
+                {
+                    "class": w32,
+                    "site": "https://www.linkedin.com/company/vulcantech-gmbh/",
+                    "image": "vulcan-technology.png",
+                    "alt": "Vulcan Technology logo",
+                },
+                {
+                    "class": w32,
+                    "site": "https://www.l3harris.com/",
+                    "image": "l3-harris.svg",
+                    "alt": "L3 Harris logo",
+                },
+                {
+                    "class": w32,
+                    "site": "https://earthengine.google.com/",
+                    "image": "google-earth-engine.png",
+                    "alt": "Google Earth Engine",
+                },
+                {
+                    "class": w32,
+                    "site": "https://up42.com",
+                    "image": "up42.png",
+                    "alt": "UP42",
+                },
+            ],
+        ],
+    }
+})();
 
 const getInvolved = {
     heading: {
