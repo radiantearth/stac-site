@@ -24,6 +24,11 @@ name: 'homepage'
     cta_text='.hero.cta_text' | localize,
     mods=['overlap-xl']
 ) }}
+<section class="pb-12">
+    <div class="container">
+        {% include "announcement.html" %}
+    </div>
+</section>
 
 {%- call section(mods=[], width='full') -%}
     <div class="container">
