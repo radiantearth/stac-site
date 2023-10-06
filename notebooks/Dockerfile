@@ -11,4 +11,4 @@ RUN pip install --default-timeout=100 -r /tmp/requirements.txt
 
 WORKDIR /opt/src/etl
 
-ENTRYPOINT ["bash" ,"./build_notebooks"]
+ENTRYPOINT ["bash" ,"./build_notebooks.sh"]
