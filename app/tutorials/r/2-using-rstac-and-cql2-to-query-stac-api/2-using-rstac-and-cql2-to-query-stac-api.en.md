@@ -7,7 +7,7 @@ description: How to download data using R
 
 This tutorial builds upon the [Download data from a STAC API using R,
 rstac, and GDAL](/en/tutorials/1-download-data-using-r/index.html)
-/Users/michelleroby/radiant-earth/stac-site/_site/en/tutorials/1-download-data-using-r/index.html tutorial, developing more
+tutorial, developing more
 complicated STAC queries using rstac to find, download, and process
 Landsat data using STAC metadata. That tutorial walks through building
 queries with rstac, using typical R functions to compose queries and
