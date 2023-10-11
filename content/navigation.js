@@ -122,6 +122,12 @@ module.exports = {
                 en: 'qgis',
             },
             {
+                en: 'r',
+            },
+            {
+                en: 'cli',
+            },
+            {
                 en: 'how-to-guides',
             },
         ],
