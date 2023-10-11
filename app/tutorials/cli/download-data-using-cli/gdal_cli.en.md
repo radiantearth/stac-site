@@ -57,7 +57,7 @@ QUERY_URL="https://planetarycomputer.microsoft.com/api/stac/v1/search"
 echo $QUERY_URL
 ```
 
-```
+```text
 https://planetarycomputer.microsoft.com/api/stac/v1/search
 ```
 Another long chunk of the URL in our one-liner is made up by query
