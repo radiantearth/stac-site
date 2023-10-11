@@ -160,6 +160,18 @@ Learn the basics of using the STAC API Browser QGIS Plugin.`
     },
     feed4: {
         en: 
+`### STAC & R
+
+Learn the basics of downloading STAC data in R through these lessons.`
+    },
+    feed5: {
+        en: 
+`### STAC & CLI
+
+Learn the basics of downloading STAC data via the CLI.`
+    },
+    feed6: {
+        en: 
 `### STAC How-to Guides
 
 Answer specific STAC questions using these STAC How-to Guide Jupyter Notebooks.`

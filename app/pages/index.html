@@ -24,11 +24,6 @@ name: 'homepage'
     cta_text='.hero.cta_text' | localize,
     mods=['overlap-xl']
 ) }}
-<section class="pb-12">
-    <div class="container">
-        {% include "announcement.html" %}
-    </div>
-</section>
 
 {%- call section(mods=[], width='full') -%}
     <div class="container">
@@ -83,6 +78,9 @@ name: 'homepage'
         {{ '.moreAboutStac.vision' | localize | markdown | safe }}
         {{ cta(url='.moreAboutStac.cta_url' | localize, text='.moreAboutStac.cta_text' | localize, mods=['secondary']) }}
     </div>
+
+
+
 </section>
 
 <section class="section section--tall bg-blue-100">
@@ -130,13 +128,33 @@ name: 'homepage'
         {% call callout(icon="book-solid", mods=['blue'], icon_size="12") %}
             {{ '.tutorials.feed4' | localize | markdown | safe }}
             <table>
-                {%- for tutorial in collections.tutorial | fromCategoryTree('how-to-guides', locale) -%}
+                {%- for tutorial in collections.tutorial | fromCategoryTree('r', locale) -%}
                     <tr>
                         <td><a href="{{ tutorial.data.page.url }}">{{ tutorial.data.title }}</a></td>
                     </tr>
                 {%- endfor -%}
             </table>
         {% endcall %}
+        {% call callout(icon="book-solid", mods=['blue'], icon_size="12") %}
+        {{ '.tutorials.feed5' | localize | markdown | safe }}
+        <table>
+            {%- for tutorial in collections.tutorial | fromCategoryTree('cli', locale) -%}
+                <tr>
+                    <td><a href="{{ tutorial.data.page.url }}">{{ tutorial.data.title }}</a></td>
+                </tr>
+            {%- endfor -%}
+        </table>
+        {% endcall %}
+        {% call callout(icon="book-solid", mods=['blue'], icon_size="12") %}
+        {{ '.tutorials.feed6' | localize | markdown | safe }}
+        <table>
+            {%- for tutorial in collections.tutorial | fromCategoryTree('how-to-guides', locale) -%}
+                <tr>
+                    <td><a href="{{ tutorial.data.page.url }}">{{ tutorial.data.title }}</a></td>
+                </tr>
+            {%- endfor -%}
+        </table>
+    {% endcall %}
     </div>
     
 </section>

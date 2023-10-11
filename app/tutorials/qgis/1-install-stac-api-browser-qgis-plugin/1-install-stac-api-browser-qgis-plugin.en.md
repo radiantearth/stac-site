@@ -2,6 +2,7 @@
 title: Install the QGIS STAC API Browser Plugin
 description: How to Install the QGIS STAC API Browser Plugin
 ---
+
 # Install the QGIS STAC API Browser Plugin
 
 In this introduction tutorial, you will learn how to install the STAC plugin into [QGIS](https://qgis.org/en/site/). This and the following tutorial are adapted from the [QGIS STAC API Browser site](https://stac-utils.github.io/qgis-stac-plugin/).
