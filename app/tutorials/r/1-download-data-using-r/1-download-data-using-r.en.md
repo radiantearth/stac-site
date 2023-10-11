@@ -227,7 +227,7 @@ sf::st_geometry(ashe) |> plot()
 ```
 
 <img
-src="rstac.markdown_strict_files/figure-markdown_strict/unnamed-chunk-10-1.png"
+src="/public/images-original/r-images/unnamed-chunk-10-1.png"
 id="fig-539a35d47e664c97a50115a146a7f1bd-1" />
 
 To filter our query down to just tiles intersecting this region, we’ll
@@ -350,7 +350,7 @@ terra::plot(output_file)
 ```
 
 <img
-src="rstac.markdown_strict_files/figure-markdown_strict/unnamed-chunk-15-1.png"
+src="/public/images-original/r-images/unnamed-chunk-15-1.png"
 id="fig-539a35d47e664c97a50115a146a7f1bd-2" />
 
 The `assets_download()` function is an easy and straightforward way to
@@ -375,7 +375,7 @@ ashe |>
 ```
 
 <img
-src="rstac.markdown_strict_files/figure-markdown_strict/unnamed-chunk-16-1.png"
+src="/public/images-original/r-images/unnamed-chunk-16-1.png"
 id="fig-539a35d47e664c97a50115a146a7f1bd-3" />
 
 An alternative approach for downloading raster assets is to use [GDAL’s
@@ -475,7 +475,7 @@ ashe |>
 ```
 
 <img
-src="rstac.markdown_strict_files/figure-markdown_strict/unnamed-chunk-21-1.png"
+src="/public/images-original/r-images/unnamed-chunk-21-1.png"
 id="fig-539a35d47e664c97a50115a146a7f1bd-4" />
 
 At this point, we’ve walked through how to use rstac to query a STAC
@@ -531,7 +531,7 @@ ashe |>
 ```
 
 <img
-src="rstac.markdown_strict_files/figure-markdown_strict/unnamed-chunk-22-1.png"
+src="/public/images-original/r-images/unnamed-chunk-22-1.png"
 id="fig-539a35d47e664c97a50115a146a7f1bd-5" />
 
 What if we wanted to download more than one raster asset? We could
@@ -566,7 +566,7 @@ list.files(
 ```
 
 <img
-src="rstac.markdown_strict_files/figure-markdown_strict/unnamed-chunk-24-1.png"
+src="/public/images-original/r-images/unnamed-chunk-24-1.png"
 id="fig-539a35d47e664c97a50115a146a7f1bd-6" />
 
 If we wanted to download multiple assets using sf and GDAL, we’d need to
@@ -596,7 +596,7 @@ vapply(
 ```
 
 <img
-src="rstac.markdown_strict_files/figure-markdown_strict/unnamed-chunk-25-1.png"
+src="/public/images-original/r-images/unnamed-chunk-25-1.png"
 id="fig-539a35d47e664c97a50115a146a7f1bd-7" />
 
 What if we wanted to download the same asset from more than one item?
@@ -692,7 +692,7 @@ nc |>
 ```
 
 <img
-src="rstac.markdown_strict_files/figure-markdown_strict/unnamed-chunk-28-1.png"
+src="/public/images-original/r-images/unnamed-chunk-28-1.png"
 id="fig-539a35d47e664c97a50115a146a7f1bd-8" />
 
 Note that we’ve lost our color palette due to `mosaic()`, but this is
@@ -722,7 +722,7 @@ nc |>
 ```
 
 <img
-src="rstac.markdown_strict_files/figure-markdown_strict/unnamed-chunk-29-1.png"
+src="/public/images-original/r-images/unnamed-chunk-29-1.png"
 id="fig-539a35d47e664c97a50115a146a7f1bd-9" />
 
 Note that gdalwarp does not interpolate between overlapping pixels, and
