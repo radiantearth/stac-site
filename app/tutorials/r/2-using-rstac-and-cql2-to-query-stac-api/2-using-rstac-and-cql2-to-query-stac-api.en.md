@@ -1,5 +1,5 @@
 ---
-title: Download data from a STAC API using R, rstac, and GDAL
+title: Using rstac and CQL2 to query STAC APIs
 description: How to download data using R
 ---
 

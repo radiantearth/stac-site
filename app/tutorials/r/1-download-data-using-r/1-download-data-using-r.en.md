@@ -1,5 +1,5 @@
 ---
-title: Download data using R
+title: Download data from a STAC API using R, rstac, and GDAL
 description: How to download data using R
 ---
 
