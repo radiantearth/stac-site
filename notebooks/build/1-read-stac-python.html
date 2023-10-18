@@ -25,7 +25,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ! pip install pystac</span>
@@ -55,7 +55,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
@@ -72,11 +72,11 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read the example catalog</span>
-<span class="n">root_catalog</span> <span class="o">=</span> <span class="n">Catalog</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;/public/example-catalog/catalog.json&#39;</span><span class="p">)</span>
+<span class="n">root_catalog</span> <span class="o">=</span> <span class="n">Catalog</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;public/example-catalog/catalog.json&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -110,13 +110,36 @@ NOTE: Be careful using the `describe` method on large catalogs, as it will walk 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">root_catalog</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>* &lt;Catalog id=landsat-stac-collection-catalog&gt;
+    * &lt;Collection id=landsat-8-l1&gt;
+      * &lt;Item id=LC80140332018166LGN00&gt;
+      * &lt;Item id=LC80150322018141LGN00&gt;
+      * &lt;Item id=LC80150332018189LGN00&gt;
+      * &lt;Item id=LC80300332018166LGN00&gt;
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -132,7 +155,7 @@ NOTE: Be careful using the `describe` method on large catalogs, as it will walk 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print some basic metadata from the Catalog</span>
@@ -142,6 +165,26 @@ NOTE: Be careful using the `describe` method on large catalogs, as it will walk 
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ID: landsat-stac-collection-catalog
+Title: STAC for Landsat data
+Description: STAC for Landsat data
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -158,13 +201,31 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">get_stac_version</span><span class="p">())</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1.0.0
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -188,7 +249,7 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">collections</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">root_catalog</span><span class="o">.</span><span class="n">get_collections</span><span class="p">())</span>
@@ -203,6 +264,26 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Number of collections: 1
+Collections IDs:
+- landsat-8-l1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -214,7 +295,7 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">collection</span> <span class="o">=</span> <span class="n">root_catalog</span><span class="o">.</span><span class="n">get_child</span><span class="p">(</span><span class="s2">&quot;landsat-8-l1&quot;</span><span class="p">)</span>
@@ -225,6 +306,24 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collection has a root child. You may proceed to the following steps.
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -240,7 +339,7 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">root_catalog</span><span class="o">.</span><span class="n">get_all_items</span><span class="p">())</span>
@@ -251,6 +350,28 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Number of items: 4
+- LC80140332018166LGN00
+- LC80150322018141LGN00
+- LC80150332018189LGN00
+- LC80300332018166LGN00
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -287,7 +408,7 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span> <span class="o">=</span> <span class="n">root_catalog</span><span class="o">.</span><span class="n">get_item</span><span class="p">(</span><span class="s2">&quot;LC80140332018166LGN00&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -308,7 +429,7 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">geometry</span>
@@ -318,10 +439,35 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[11]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;type&#39;: &#39;Polygon&#39;,
+ &#39;coordinates&#39;: [[[-76.12180471942207, 39.95810181489563],
+   [-73.94910518227414, 39.55117185146004],
+   [-74.49564725552679, 37.826064511480496],
+   [-76.66550404911956, 38.240699151776084],
+   [-76.12180471942207, 39.95810181489563]]]}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">bbox</span>
@@ -331,10 +477,30 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[-76.66703, 37.82561, -73.94861, 39.95958]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">datetime</span>
@@ -344,16 +510,56 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[13]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>datetime.datetime(2018, 6, 15, 15, 39, 9, tzinfo=tzutc())</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">collection_id</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;landsat-8-l1&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -368,13 +574,1357 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">get_collection</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[15]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<style>
+.pystac-summary {
+    cursor: pointer;
+    display:list-item;
+}
+.pystac-key {
+    color: rgb(0, 128, 0);
+    font-weight: 700;
+}
+.pystac-key-value {
+    display: inline-block;
+    margin: 0px 0.5em 0px 0px;
+}
+</style>
+<div class="jp-RenderedJSON jp-mod-trusted jp-OutputArea-output">
+    <div class="container" style="line-height: normal;">
+        <ul style="padding: 0px; margin: 0px; list-style: none; display: block;">
+            
+                
+                    
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">type</span>
+            <span style="color: rgb(186, 33, 33);">"Collection"</span>
+        </li>
+    
+                
+            
+                
+                    
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">id</span>
+            <span style="color: rgb(186, 33, 33);">"landsat-8-l1"</span>
+        </li>
+    
+                
+            
+                
+                    
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">stac_version</span>
+            <span style="color: rgb(186, 33, 33);">"1.0.0"</span>
+        </li>
+    
+                
+            
+                
+                    
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">description</span>
+            <span style="color: rgb(186, 33, 33);">"Landsat 8 imagery radiometrically calibrated and orthorectified using ground points and Digital Elevation Model (DEM) data to correct relief displacement."</span>
+        </li>
+    
+                
+            
+                
+                    <li><details>
+        <summary class="pystac-summary">
+            <span class="pystac-key">links</span>
+            <span style="padding-left: 0.5em; color: rgb(64, 128, 128); font-style: italic;">[] 7 items</span>
+        </summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">0</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">rel</span>
+            <span style="color: rgb(186, 33, 33);">"root"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">href</span>
+            <span style="color: rgb(186, 33, 33);">"/Users/michelleroby/radiant-earth/stac-site/notebooks/src/public/example-catalog/catalog.json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">type</span>
+            <span style="color: rgb(186, 33, 33);">"application/json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">title</span>
+            <span style="color: rgb(186, 33, 33);">"STAC for Landsat data"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">1</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">rel</span>
+            <span style="color: rgb(186, 33, 33);">"item"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">href</span>
+            <span style="color: rgb(186, 33, 33);">"/Users/michelleroby/radiant-earth/stac-site/notebooks/src/public/example-catalog/landsat-8-l1/2018-06/LC80140332018166LGN00.json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">2</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">rel</span>
+            <span style="color: rgb(186, 33, 33);">"item"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">href</span>
+            <span style="color: rgb(186, 33, 33);">"/Users/michelleroby/radiant-earth/stac-site/notebooks/src/public/example-catalog/landsat-8-l1/2018-05/LC80150322018141LGN00.json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">3</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">rel</span>
+            <span style="color: rgb(186, 33, 33);">"item"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">href</span>
+            <span style="color: rgb(186, 33, 33);">"/Users/michelleroby/radiant-earth/stac-site/notebooks/src/public/example-catalog/landsat-8-l1/2018-07/LC80150332018189LGN00.json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">4</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">rel</span>
+            <span style="color: rgb(186, 33, 33);">"item"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">href</span>
+            <span style="color: rgb(186, 33, 33);">"/Users/michelleroby/radiant-earth/stac-site/notebooks/src/public/example-catalog/landsat-8-l1/2018-06/LC80300332018166LGN00.json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">5</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">rel</span>
+            <span style="color: rgb(186, 33, 33);">"self"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">href</span>
+            <span style="color: rgb(186, 33, 33);">"/Users/michelleroby/radiant-earth/stac-site/notebooks/src/public/example-catalog/landsat-8-l1/collection.json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">type</span>
+            <span style="color: rgb(186, 33, 33);">"application/json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">6</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">rel</span>
+            <span style="color: rgb(186, 33, 33);">"parent"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">href</span>
+            <span style="color: rgb(186, 33, 33);">"/Users/michelleroby/radiant-earth/stac-site/notebooks/src/public/example-catalog/catalog.json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">type</span>
+            <span style="color: rgb(186, 33, 33);">"application/json"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">title</span>
+            <span style="color: rgb(186, 33, 33);">"STAC for Landsat data"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+                
+            
+                
+                    <li><details>
+        <summary class="pystac-summary">
+            <span class="pystac-key">stac_extensions</span>
+            <span style="padding-left: 0.5em; color: rgb(64, 128, 128); font-style: italic;">[] 1 items</span>
+        </summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">0</span>
+            <span style="color: rgb(186, 33, 33);">"https://example.com/stac/landsat-extension/1.0/schema.json"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+                
+            
+                
+                    
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">properties</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">collection</span>
+            <span style="color: rgb(186, 33, 33);">"landsat-8-l1"</span>
+        </li>
+    
+            
+        
+            
+                <li><details>
+        <summary class="pystac-summary">
+            <span class="pystac-key">instruments</span>
+            <span style="padding-left: 0.5em; color: rgb(64, 128, 128); font-style: italic;">[] 1 items</span>
+        </summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">0</span>
+            <span style="color: rgb(186, 33, 33);">"OLI_TIRS"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">view:sun_azimuth</span>
+            <span style="color: rgb(186, 33, 33);">149.01607154</span>
+        </li>
+    
+            
+        
+            
+                <li><details>
+        <summary class="pystac-summary">
+            <span class="pystac-key">eo:bands</span>
+            <span style="padding-left: 0.5em; color: rgb(64, 128, 128); font-style: italic;">[] 11 items</span>
+        </summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">0</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">name</span>
+            <span style="color: rgb(186, 33, 33);">"B1"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">full_width_half_max</span>
+            <span style="color: rgb(186, 33, 33);">0.02</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">center_wavelength</span>
+            <span style="color: rgb(186, 33, 33);">0.44</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">common_name</span>
+            <span style="color: rgb(186, 33, 33);">"coastal"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">1</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">name</span>
+            <span style="color: rgb(186, 33, 33);">"B2"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">full_width_half_max</span>
+            <span style="color: rgb(186, 33, 33);">0.06</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">center_wavelength</span>
+            <span style="color: rgb(186, 33, 33);">0.48</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">common_name</span>
+            <span style="color: rgb(186, 33, 33);">"blue"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">2</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">name</span>
+            <span style="color: rgb(186, 33, 33);">"B3"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">full_width_half_max</span>
+            <span style="color: rgb(186, 33, 33);">0.06</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">center_wavelength</span>
+            <span style="color: rgb(186, 33, 33);">0.56</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">common_name</span>
+            <span style="color: rgb(186, 33, 33);">"green"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">3</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">name</span>
+            <span style="color: rgb(186, 33, 33);">"B4"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">full_width_half_max</span>
+            <span style="color: rgb(186, 33, 33);">0.04</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">center_wavelength</span>
+            <span style="color: rgb(186, 33, 33);">0.65</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">common_name</span>
+            <span style="color: rgb(186, 33, 33);">"red"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">4</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">name</span>
+            <span style="color: rgb(186, 33, 33);">"B5"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">full_width_half_max</span>
+            <span style="color: rgb(186, 33, 33);">0.03</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">center_wavelength</span>
+            <span style="color: rgb(186, 33, 33);">0.86</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">common_name</span>
+            <span style="color: rgb(186, 33, 33);">"nir"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">5</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">name</span>
+            <span style="color: rgb(186, 33, 33);">"B6"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">full_width_half_max</span>
+            <span style="color: rgb(186, 33, 33);">0.08</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">center_wavelength</span>
+            <span style="color: rgb(186, 33, 33);">1.6</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">common_name</span>
+            <span style="color: rgb(186, 33, 33);">"swir16"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">6</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">name</span>
+            <span style="color: rgb(186, 33, 33);">"B7"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">full_width_half_max</span>
+            <span style="color: rgb(186, 33, 33);">0.22</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">center_wavelength</span>
+            <span style="color: rgb(186, 33, 33);">2.2</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">common_name</span>
+            <span style="color: rgb(186, 33, 33);">"swir22"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">7</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">name</span>
+            <span style="color: rgb(186, 33, 33);">"B8"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">full_width_half_max</span>
+            <span style="color: rgb(186, 33, 33);">0.18</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">center_wavelength</span>
+            <span style="color: rgb(186, 33, 33);">0.59</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">common_name</span>
+            <span style="color: rgb(186, 33, 33);">"pan"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">8</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">name</span>
+            <span style="color: rgb(186, 33, 33);">"B9"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">full_width_half_max</span>
+            <span style="color: rgb(186, 33, 33);">0.02</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">center_wavelength</span>
+            <span style="color: rgb(186, 33, 33);">1.37</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">common_name</span>
+            <span style="color: rgb(186, 33, 33);">"cirrus"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">9</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">name</span>
+            <span style="color: rgb(186, 33, 33);">"B10"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">full_width_half_max</span>
+            <span style="color: rgb(186, 33, 33);">0.8</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">center_wavelength</span>
+            <span style="color: rgb(186, 33, 33);">10.9</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">common_name</span>
+            <span style="color: rgb(186, 33, 33);">"lwir11"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">10</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">name</span>
+            <span style="color: rgb(186, 33, 33);">"B11"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">full_width_half_max</span>
+            <span style="color: rgb(186, 33, 33);">1</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">center_wavelength</span>
+            <span style="color: rgb(186, 33, 33);">12</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">common_name</span>
+            <span style="color: rgb(186, 33, 33);">"lwir2"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">view:off_nadir</span>
+            <span style="color: rgb(186, 33, 33);">0</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">view:azimuth</span>
+            <span style="color: rgb(186, 33, 33);">0</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">platform</span>
+            <span style="color: rgb(186, 33, 33);">"landsat-8"</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">gsd</span>
+            <span style="color: rgb(186, 33, 33);">15</span>
+        </li>
+    
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">view:sun_elevation</span>
+            <span style="color: rgb(186, 33, 33);">59.214247</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+                
+            
+                
+                    
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">title</span>
+            <span style="color: rgb(186, 33, 33);">"Landsat 8 L1"</span>
+        </li>
+    
+                
+            
+                
+                    
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">extent</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">spatial</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                <li><details>
+        <summary class="pystac-summary">
+            <span class="pystac-key">bbox</span>
+            <span style="padding-left: 0.5em; color: rgb(64, 128, 128); font-style: italic;">[] 1 items</span>
+        </summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                <li><details>
+        <summary class="pystac-summary">
+            <span class="pystac-key">0</span>
+            <span style="padding-left: 0.5em; color: rgb(64, 128, 128); font-style: italic;">[] 4 items</span>
+        </summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">0</span>
+            <span style="color: rgb(186, 33, 33);">-180.0</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">1</span>
+            <span style="color: rgb(186, 33, 33);">-90.0</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">2</span>
+            <span style="color: rgb(186, 33, 33);">180.0</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">3</span>
+            <span style="color: rgb(186, 33, 33);">90.0</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">temporal</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                <li><details>
+        <summary class="pystac-summary">
+            <span class="pystac-key">interval</span>
+            <span style="padding-left: 0.5em; color: rgb(64, 128, 128); font-style: italic;">[] 1 items</span>
+        </summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                <li><details>
+        <summary class="pystac-summary">
+            <span class="pystac-key">0</span>
+            <span style="padding-left: 0.5em; color: rgb(64, 128, 128); font-style: italic;">[] 2 items</span>
+        </summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">0</span>
+            <span style="color: rgb(186, 33, 33);">"2018-05-21T15:44:59Z"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">1</span>
+            <span style="color: rgb(186, 33, 33);">"2018-07-08T15:45:34Z"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+                
+            
+                
+                    
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">license</span>
+            <span style="color: rgb(186, 33, 33);">"proprietary"</span>
+        </li>
+    
+                
+            
+                
+                    <li><details>
+        <summary class="pystac-summary">
+            <span class="pystac-key">keywords</span>
+            <span style="padding-left: 0.5em; color: rgb(64, 128, 128); font-style: italic;">[] 3 items</span>
+        </summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">0</span>
+            <span style="color: rgb(186, 33, 33);">"landsat"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">1</span>
+            <span style="color: rgb(186, 33, 33);">"earth observation"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">2</span>
+            <span style="color: rgb(186, 33, 33);">"usgs"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+                
+            
+                
+                    <li><details>
+        <summary class="pystac-summary">
+            <span class="pystac-key">providers</span>
+            <span style="padding-left: 0.5em; color: rgb(64, 128, 128); font-style: italic;">[] 1 items</span>
+        </summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li><details>
+            <summary class="pystac-summary"><span class="pystac-key">0</span></summary>
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">name</span>
+            <span style="color: rgb(186, 33, 33);">"Development Seed"</span>
+        </li>
+    
+            
+        
+            
+                <li><details>
+        <summary class="pystac-summary">
+            <span class="pystac-key">roles</span>
+            <span style="padding-left: 0.5em; color: rgb(64, 128, 128); font-style: italic;">[] 1 items</span>
+        </summary>
+        
+            <ul style="margin: 0px; padding: 0px 0px 0px 1.75em; list-style: none; display: block;">
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">0</span>
+            <span style="color: rgb(186, 33, 33);">"processor"</span>
+        </li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+            
+        
+            
+                
+        <li style="overflow-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em;">
+            <span class="pystac-key pystac-key-value">url</span>
+            <span style="color: rgb(186, 33, 33);">"https://github.com/sat-utils/sat-api"</span>
+        </li>
+    
+            
+        
+    </ul>
+        </details></li>
+    
+            
+        
+    </ul>
+        
+    </details></li>
+                
+            
+        </ul>
+    </div>
+</div></div>
+
+</div>
+
 </div>
 </div>
 
@@ -389,7 +1939,7 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">common_metadata</span><span class="o">.</span><span class="n">instruments</span>
@@ -399,10 +1949,30 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[16]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;OLI_TIRS&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">common_metadata</span><span class="o">.</span><span class="n">platform</span>
@@ -412,16 +1982,56 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[17]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;landsat-8&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">common_metadata</span><span class="o">.</span><span class="n">gsd</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[18]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>30</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -436,13 +2046,35 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">stac_extensions</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[19]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;https://stac-extensions.github.io/eo/v1.1.0/schema.json&#39;,
+ &#39;https://stac-extensions.github.io/view/v1.0.0/schema.json&#39;,
+ &#39;https://stac-extensions.github.io/projection/v1.1.0/schema.json&#39;]</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -458,7 +2090,7 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">EOExtension</span><span class="o">.</span><span class="n">has_extension</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
@@ -468,16 +2100,56 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[20]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">LabelExtension</span><span class="o">.</span><span class="n">has_extension</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[21]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -492,7 +2164,7 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">eo_item_ext</span> <span class="o">=</span> <span class="n">EOExtension</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
@@ -500,6 +2172,26 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[22]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>22</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -514,13 +2206,33 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s1">&#39;eo:cloud_cover&#39;</span><span class="p">]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[23]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>22</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -542,7 +2254,7 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">asset_key</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">:</span>
@@ -551,6 +2263,39 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>index: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/index.html (text/html)
+thumbnail: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_thumb_large.jpg (image/jpeg)
+B1: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_B1.TIF (image/tiff)
+B2: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_B2.TIF (image/tiff)
+B3: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_B3.TIF (image/tiff)
+B4: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_B4.TIF (image/tiff)
+B5: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_B5.TIF (image/tiff)
+B6: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_B6.TIF (image/tiff)
+B7: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_B7.TIF (image/tiff)
+B8: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_B8.TIF (image/tiff)
+B9: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_B9.TIF (image/tiff)
+B10: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_B10.TIF (image/tiff)
+B11: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_B11.TIF (image/tiff)
+ANG: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_ANG.txt (text/plain)
+MTL: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_MTL.txt (text/plain)
+BQA: https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_BQA.TIF (image/tiff)
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -565,7 +2310,7 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">asset</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s1">&#39;B3&#39;</span><span class="p">]</span>
@@ -573,6 +2318,33 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[25]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;href&#39;: &#39;https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/014/033/LC08_L1TP_014033_20180615_20180703_01_T1/LC08_L1TP_014033_20180615_20180703_01_T1_B3.TIF&#39;,
+ &#39;type&#39;: &#39;image/tiff&#39;,
+ &#39;title&#39;: &#39;Band 3 (green)&#39;,
+ &#39;eo:bands&#39;: [{&#39;name&#39;: &#39;B3&#39;,
+   &#39;full_width_half_max&#39;: 0.06,
+   &#39;center_wavelength&#39;: 0.56,
+   &#39;common_name&#39;: &#39;green&#39;}],
+ &#39;roles&#39;: []}</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -587,7 +2359,7 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">eo_asset_ext</span> <span class="o">=</span> <span class="n">EOExtension</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="n">asset</span><span class="p">)</span>
@@ -599,16 +2371,59 @@ Note: we do not print the "stac_version" here. PySTAC automatically updates any 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[26]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;Band name=B3&gt;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">bands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[27]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;name&#39;: &#39;B3&#39;,
+ &#39;full_width_half_max&#39;: 0.06,
+ &#39;center_wavelength&#39;: 0.56,
+ &#39;common_name&#39;: &#39;green&#39;}</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
