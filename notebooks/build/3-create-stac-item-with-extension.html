@@ -26,7 +26,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ! pip install pystac</span>
@@ -49,7 +49,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -78,7 +78,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set the temporary directory to store source data</span>
@@ -96,6 +96,27 @@
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(&#39;/var/folders/73/z5lbqv_s6l7fcfx464_pn8p80000gn/T/tmpoxerm5i9/image.tif&#39;,
+ &lt;http.client.HTTPMessage at 0x12757a740&gt;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -107,7 +128,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">wv3_bands</span> <span class="o">=</span> <span class="p">[</span><span class="n">Band</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Coastal&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Coastal: 400 - 450 nm&#39;</span><span class="p">,</span> <span class="n">common_name</span><span class="o">=</span><span class="s1">&#39;coastal&#39;</span><span class="p">),</span>
@@ -143,7 +164,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_bbox_and_footprint</span><span class="p">(</span><span class="n">raster</span><span class="p">):</span>
@@ -167,7 +188,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">bbox</span><span class="p">,</span> <span class="n">footprint</span> <span class="o">=</span> <span class="n">get_bbox_and_footprint</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
@@ -188,7 +209,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">eo_item</span> <span class="o">=</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;local-image-eo&#39;</span><span class="p">,</span>
@@ -215,7 +236,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">eo_item</span><span class="o">.</span><span class="n">common_metadata</span><span class="o">.</span><span class="n">platform</span> <span class="o">=</span> <span class="s2">&quot;Maxar&quot;</span>
@@ -230,13 +251,31 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">eo_item</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;Item id=local-image-eo&gt;
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -251,7 +290,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">asset</span> <span class="o">=</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Asset</span><span class="p">(</span><span class="n">href</span><span class="o">=</span><span class="n">img_path</span><span class="p">,</span> 
@@ -276,13 +315,54 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">asset</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[11]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;href&#39;: &#39;/var/folders/73/z5lbqv_s6l7fcfx464_pn8p80000gn/T/tmpoxerm5i9/image.tif&#39;,
+ &#39;type&#39;: &lt;MediaType.GEOTIFF: &#39;image/tiff; application=geotiff&#39;&gt;,
+ &#39;eo:bands&#39;: [{&#39;name&#39;: &#39;Coastal&#39;,
+   &#39;common_name&#39;: &#39;coastal&#39;,
+   &#39;description&#39;: &#39;Coastal: 400 - 450 nm&#39;},
+  {&#39;name&#39;: &#39;Blue&#39;, &#39;common_name&#39;: &#39;blue&#39;, &#39;description&#39;: &#39;Blue: 450 - 510 nm&#39;},
+  {&#39;name&#39;: &#39;Green&#39;,
+   &#39;common_name&#39;: &#39;green&#39;,
+   &#39;description&#39;: &#39;Green: 510 - 580 nm&#39;},
+  {&#39;name&#39;: &#39;Yellow&#39;,
+   &#39;common_name&#39;: &#39;yellow&#39;,
+   &#39;description&#39;: &#39;Yellow: 585 - 625 nm&#39;},
+  {&#39;name&#39;: &#39;Red&#39;, &#39;common_name&#39;: &#39;red&#39;, &#39;description&#39;: &#39;Red: 630 - 690 nm&#39;},
+  {&#39;name&#39;: &#39;Red Edge&#39;,
+   &#39;common_name&#39;: &#39;rededge&#39;,
+   &#39;description&#39;: &#39;Red Edge: 705 - 745 nm&#39;},
+  {&#39;name&#39;: &#39;Near-IR1&#39;,
+   &#39;common_name&#39;: &#39;nir08&#39;,
+   &#39;description&#39;: &#39;Near-IR1: 770 - 895 nm&#39;},
+  {&#39;name&#39;: &#39;Near-IR2&#39;,
+   &#39;common_name&#39;: &#39;nir09&#39;,
+   &#39;description&#39;: &#39;Near-IR2: 860 - 1040 nm&#39;}]}</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -297,7 +377,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog</span> <span class="o">=</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Catalog</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;tutorial-catalog&#39;</span><span class="p">,</span> 
@@ -311,7 +391,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">eo_item</span><span class="p">)</span>
@@ -322,10 +402,30 @@
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[13]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;Item id=local-image-eo&gt;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog</span><span class="o">.</span><span class="n">normalize_and_save</span><span class="p">(</span><span class="n">root_href</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;stac-eo&#39;</span><span class="p">),</span> 
@@ -347,7 +447,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog2</span> <span class="o">=</span> <span class="n">pystac</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;stac-eo&#39;</span><span class="p">,</span> <span class="s1">&#39;catalog.json&#39;</span><span class="p">))</span>
@@ -360,7 +460,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">catalog2</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Catalog</span><span class="p">)</span>
@@ -371,10 +471,30 @@
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[16]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;Item id=local-image-eo&gt;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">item</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Item</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">catalog2</span><span class="o">.</span><span class="n">get_all_items</span><span class="p">())</span>
@@ -387,7 +507,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">EOExtension</span><span class="o">.</span><span class="n">has_extension</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
@@ -400,7 +520,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">eo_on_asset</span> <span class="o">=</span> <span class="n">EOExtension</span><span class="o">.</span><span class="n">ext</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">])</span>
@@ -408,6 +528,24 @@
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&lt;Band name=Coastal&gt;, &lt;Band name=Blue&gt;, &lt;Band name=Green&gt;, &lt;Band name=Yellow&gt;, &lt;Band name=Red&gt;, &lt;Band name=Red Edge&gt;, &lt;Band name=Near-IR1&gt;, &lt;Band name=Near-IR2&gt;]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -422,7 +560,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
