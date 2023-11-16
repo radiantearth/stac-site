@@ -220,7 +220,7 @@ const getInvolved = {
         en: 'Get Involved',
     },
     body: {
-        en: `There are a variety of ways to get involved with STAC, from building software, creating new STAC Catalogs, working on the spec, or helping in outreach. We strive to be fully open, collaborative and welcoming community. Learn more on our \"Get Involved\" page.`,
+        en: `The best jumping off point to get involved with the STAC Community is joining the STAC Community Google Group at [groups.google.com/g/stac-community](https://groups.google.com/g/stac-community). Upon signup, you will receive invitations to the biweekly STAC Community meetup (every other Monday at 11 am EST.  [Use this time zone converter if needed](https://www.timeanddate.com/worldclock/converter.html?iso=20231121T160000&p1=224&p2=75&p3=64&p4=263&p5=168). <br><br> There are a variety of specific ways to get involved with STAC, from building software, creating new STAC Catalogs, working on the spec, or helping in outreach. We strive to be fully open, collaborative and welcoming community. Learn more on our \"Get Involved\" page.`,
     },
     cta_text: {
         en: 'Learn How to Help',
