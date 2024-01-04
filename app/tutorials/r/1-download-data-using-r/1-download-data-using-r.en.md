@@ -173,22 +173,22 @@ Monitoring, Assessment, and Projection
 collection, which provides (among other things) annual land cover
 classifications for the continental United States. We can query what
 items are available for this collection using the `rstac::stac_search()`
-function. We’ll limit our search to 2021 using the `datetime` argument,
-and only search within the LCMAP collection by using the collection’s ID
-of `usgs-lcmap-conus-v13`:
+function. We'll limit our search to 2021 using the `datetime` argument, 
+ask for up to 999 items (the most Planetary Computer will return in a 
+single request) using the `limit` argument, and only search within the 
+LCMAP collection by using the collection’s ID of `usgs-lcmap-conus-v13`:
 
-``` r
+```r
 rstac::stac_search(
   q = stac_source,
   collections = "usgs-lcmap-conus-v13",
-  datetime = "2021-01-01/2021-12-31"
-) |> 
-  rstac::get_request()
+  datetime = "2021-01-01/2021-12-31",
+  limit = 999
+)
 ```
-
 ``` text
 ###STACItemCollection
-- features (250 item(s)):
+- features (422 item(s)):
   - LCMAP_CU_032003_2021_V13_CCDC
   - LCMAP_CU_031006_2021_V13_CCDC
   - LCMAP_CU_031004_2021_V13_CCDC
@@ -199,14 +199,14 @@ rstac::stac_search(
   - LCMAP_CU_030005_2021_V13_CCDC
   - LCMAP_CU_030004_2021_V13_CCDC
   - LCMAP_CU_030003_2021_V13_CCDC
-  - ... with 240 more feature(s).
+  - ... with 412 more feature(s).
 - assets: 
 browse, dates, lcachg, lcachg_metadata, lcpconf, lcpconf_metadata, lcpri, lcpri_metadata, lcsconf, lcsconf_metadata, lcsec, lcsec_metadata, rendered_preview, sclast, sclast_metadata, scmag, scmag_metadata, scmqa, scmqa_metadata, scstab, scstab_metadata, sctime, sctime_metadata, tilejson
 - item's fields: 
 assets, bbox, collection, geometry, id, links, properties, stac_extensions, stac_version, type
 ```
 
-We can see that there are 250 items inside this catalog for 2021.
+We can see that there are 422 items inside this catalog for 2021.
 Collectively, these items contain all LCMAP data for the continental
 United States for 2021, with each item containing a number of assets
 covering a relatively small chunk of the nation. These assets are
