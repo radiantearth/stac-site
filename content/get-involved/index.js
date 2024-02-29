@@ -17,8 +17,8 @@ const hero = {
     body: {
         en: `Welcome! The STAC community prides itself on being welcoming and collaborative, and we are excited you clicked on this page to learn how you might help!
 
-If you aren't sure where to begin, join the STAC Community Google Group at [groups.google.com/g/stac-community](https://groups.google.com/g/stac-community). 
-Upon signup, you will receive invitations to the biweekly STAC Community meetup (every other Monday at 11 am EST).  [Use this time zone converter if needed](https://www.timeanddate.com/worldclock/converter.html?iso=20231121T160000&p1=224&p2=75&p3=64&p4=263&p5=168). 
+If you aren't sure where to begin, join the STAC Community Google Group at [groups.google.com/g/stac-community](https://groups.google.com/a/cloudnativegeo.org/g/stac-community).
+Upon signup, you will receive invitations to the biweekly STAC Community meetup (every other Monday at 11 am EST).  [Use this time zone converter if needed](https://www.timeanddate.com/worldclock/converter.html?iso=20231121T160000&p1=224&p2=75&p3=64&p4=263&p5=168).
 
 We also encourage you to jump on our [Gitter chat](https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby) and introduce yourself. We can help match with a good project given your skills and time availability.
 

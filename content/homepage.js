@@ -87,7 +87,7 @@ const moreAboutStac = {
     },
     body: {
         en:
-`At its core, the SpatioTemporal Asset Catalog (STAC) specification provides a common structure for describing and cataloging spatiotemporal assets. 
+`At its core, the SpatioTemporal Asset Catalog (STAC) specification provides a common structure for describing and cataloging spatiotemporal assets.
 
 A *spatiotemporal asset* is any file that represents information about the earth captured in a certain space and time.`,
     },
@@ -114,7 +114,7 @@ A *spatiotemporal asset* is any file that represents information about the earth
         cta_url: route('about.stacSpec'),
     },
     vision: {
-        en: 
+        en:
 `### The Vision
 
 The goal is for all providers of spatiotemporal assets (Imagery, SAR, Point Clouds, Data Cubes, Full Motion Video, etc) to expose their data as SpatioTemporal Asset Catalogs (STAC), so that new code doesn't need to be written whenever a new data set or API is released.`
@@ -153,25 +153,25 @@ Learn about the specification, the options available for applying STAC in a prac
 Learn the basics of using PySTAC to read, write, and manipulate STAC through these hands-on Jupyter Notebooks.`
     },
     feed3: {
-        en: 
+        en:
 `### STAC & QGIS
 
 Learn the basics of using the STAC API Browser QGIS Plugin.`
     },
     feed4: {
-        en: 
+        en:
 `### STAC & R
 
 Learn the basics of downloading STAC data in R through these lessons.`
     },
     feed5: {
-        en: 
+        en:
 `### STAC & CLI
 
 Learn the basics of downloading STAC data via the CLI.`
     },
     feed6: {
-        en: 
+        en:
 `### STAC How-to Guides
 
 Answer specific STAC questions using these STAC How-to Guide Jupyter Notebooks.`
@@ -220,7 +220,7 @@ const getInvolved = {
         en: 'Get Involved',
     },
     body: {
-        en: `The best jumping off point to get involved with the STAC Community is joining the STAC Community Google Group at [groups.google.com/g/stac-community](https://groups.google.com/g/stac-community). Upon signup, you will receive invitations to the biweekly STAC Community meetup (every other Monday at 11 am EST).  [Use this time zone converter if needed](https://www.timeanddate.com/worldclock/converter.html?iso=20231121T160000&p1=224&p2=75&p3=64&p4=263&p5=168). <br><br> There are a variety of specific ways to get involved with STAC, from building software, creating new STAC Catalogs, working on the spec, or helping in outreach. We strive to be fully open, collaborative and welcoming community. Learn more on our \"Get Involved\" page.`,
+        en: `The best jumping off point to get involved with the STAC Community is joining the STAC Community Google Group at [groups.google.com/g/stac-community](https://groups.google.com/a/cloudnativegeo.org/g/stac-community). Upon signup, you will receive invitations to the biweekly STAC Community meetup (every other Monday at 11 am EST).  [Use this time zone converter if needed](https://www.timeanddate.com/worldclock/converter.html?iso=20231121T160000&p1=224&p2=75&p3=64&p4=263&p5=168). <br><br> There are a variety of specific ways to get involved with STAC, from building software, creating new STAC Catalogs, working on the spec, or helping in outreach. We strive to be fully open, collaborative and welcoming community. Learn more on our \"Get Involved\" page.`,
     },
     cta_text: {
         en: 'Learn How to Help',
