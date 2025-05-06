@@ -130,4 +130,4 @@ In the following sections, you will find tutorials that will teach you how to wo
 
 #### Join the conversation
 
-If you have any questions, you’re welcome to ask our community on [Gitter](https://app.gitter.im/#/room/#SpatioTemporal-Asset-Catalog_Lobby).
+If you have any questions, you’re welcome to ask our community on [CNG Discourse](https://cng.discourse.group/c/stac/15).

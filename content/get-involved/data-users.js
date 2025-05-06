@@ -37,7 +37,7 @@ const closingContent = {
     en: 
 `## STAC Community
     
-If you'd like to get involved with the STAC community, the [How to Help](https://stacspec.org/en/get-involved/) page is a good place to learn about our active needs. If you're not sure where to begin, say hi in the [STAC Gitter chat](https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby), and you'll likely find someone who will be more than happy to point you in the right direction.`
+If you'd like to get involved with the STAC community, the [How to Help](https://stacspec.org/en/get-involved/) page is a good place to learn about our active needs and community meetings.`
 }
 
 module.exports = {

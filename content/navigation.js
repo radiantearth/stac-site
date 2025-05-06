@@ -206,10 +206,10 @@ module.exports = {
                 },
                 {
                     href: {
-                        en: 'https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby'
+                        en: 'https://cng.discourse.group/c/stac/15'
                     },
                     label: {
-                        en: 'Gitter Community'
+                        en: 'Discourse'
                     }
                 },
                 {
@@ -245,7 +245,7 @@ module.exports = {
                 en: 
 `### STAC Community
 
-The STAC ecosystem is driven by open source contributions and community support. If you would like to help STAC grow and evolve, start by [joining our Gitter community](https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby). We also accept pull requests on our many open source projects.`
+The STAC ecosystem is driven by open source contributions and community support. If you would like to help STAC grow and evolve, start by joining us on the [CNG Discourse](https://cng.discourse.group/c/stac/15). We also accept pull requests on our many open source projects.`
             },
             links: [
                 {
