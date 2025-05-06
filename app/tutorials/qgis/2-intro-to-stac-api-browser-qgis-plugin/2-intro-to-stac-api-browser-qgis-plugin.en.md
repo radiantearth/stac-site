@@ -161,4 +161,4 @@ _Asset added as a QGIS map layer._
 
 #### Join the conversation
 
-If you have any questions or run into any issues, you’re welcome to reach out to our community on [Gitter](https://app.gitter.im/#/room/#SpatioTemporal-Asset-Catalog_Lobby).
+If you have any questions or run into any issues, you’re welcome to reach out to our community on [CNG Discourse](https://cng.discourse.group/c/stac/15).

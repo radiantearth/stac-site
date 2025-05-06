@@ -16,7 +16,7 @@ Welcome to our library of tutorials for learning all about STAC. In addition to 
 extensive list of tutorials sourced from various corners of the web on the [STAC index](https://stacindex.org/learn).
 
 If you're eager to delve deeper into a specific topic, we encourage you to join our 
-[Gitter Chat](https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby) community. Chances are, one of our knowledgeable community members 
+biweekly community calls (get an invite by joining the [STAC Community Google Group](https://groups.google.com/a/cloudnativegeo.org/g/stac-community)). Chances are, one of our knowledgeable community members 
 can direct you to a relevant blog post or resource available online.
 
 We are committed to regularly expanding our tutorial collection to provide you with fresh perspectives and practical insights 

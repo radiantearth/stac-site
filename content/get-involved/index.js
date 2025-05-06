@@ -17,26 +17,18 @@ const hero = {
     body: {
         en: `Welcome! The STAC community prides itself on being welcoming and collaborative, and we are excited you clicked on this page to learn how you might help!
 
-If you aren't sure where to begin, join the STAC Community Google Group at [groups.google.com/g/stac-community](https://groups.google.com/a/cloudnativegeo.org/g/stac-community).
+If you aren't sure where to begin, join the [STAC Community Google Group](https://groups.google.com/a/cloudnativegeo.org/g/stac-community).
 Upon signup, you will receive invitations to the biweekly STAC Community meetup (every other Monday at 11 am EST).  [Use this time zone converter if needed](https://www.timeanddate.com/worldclock/converter.html?iso=20231121T160000&p1=224&p2=75&p3=64&p4=263&p5=168).
 
-We also encourage you to jump on our [Gitter chat](https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby) and introduce yourself. We can help match with a good project given your skills and time availability.
-
 Looking for online discussions and activity around STAC? Check out the [stac-spec repo](https://github.com/radiantearth/stac-spec), [stac-api-spec repo](https://github.com/radiantearth/stac-api-spec), and the [stac-utils repo](https://github.com/stac-utils) to see
-discussions and updates to STAC and its ecosystem.`,
+discussions and updates to STAC and its ecosystem. We are also have a [STAC category in the CNG Discourse](https://cng.discourse.group/c/stac)`,
     },
     cta_text: {
         en: 'Join STAC Google Group',
     },
     cta_url: {
-        en: 'https://groups.google.com/g/stac-community',
-    }
-    // cta_text: {
-    //     en: 'Join Gitter Community',
-    // },
-    // cta_url: {
-    //     en: 'https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby',
-    // }
+        en: 'https://groups.google.com/a/cloudnativegeo.org/g/stac-community',
+    },
 };
 
 const howToHelp = {
@@ -44,7 +36,7 @@ const howToHelp = {
         en: 'How to help',
     },
     body: {
-        en: `We list a number of general ideas below We are working on more resources to make it easier to plugin for data or software help – for now [saying hi on gitter](https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby) is a great place to begin.`,
+        en: `Coming to the STAC Community meeting (join the [STAC Community Google Group](https://groups.google.com/a/cloudnativegeo.org/g/stac-community) for invite) is a great place to begin.`,
     },
 };
 
@@ -75,7 +67,7 @@ While there are already a handful of STAC implementations, our goal is to have t
             en: `
 ### Help with Web Design
 
-There copious opportunities for web designers, as we have none in our community as of yet. Even if you are just starting out with web design, we welcome your contribution and can give you meaningful projects. There is helping with this website, but also cool projects customizing different STAC HTML implementations in STAC Browser, so they don't all look the same. Creativity is welcome!`,
+There are copious opportunities for web designers, as we have none in our community as of yet. Even if you are just starting out with web design, we welcome your contribution and can give you meaningful projects. There is helping with this website, but also cool projects customizing different STAC HTML implementations in STAC Browser, so they don't all look the same. Creativity is welcome!`,
         },
     },
     4: {
@@ -99,9 +91,9 @@ The biggest way to help with the specification is to create compliant catalogs o
 const communityCalls = {
     body: {
         en: `
-### Community calls and working sessions
+### Community meetings
 
-We also do video calls where we discuss various issues and move the spec forward. We alternate between hour long calls where we aim to talk through the issues in front of us, and 3 hour long 'working sessions' where people find some dedicated time to work on STAC, with others on the video call at the same time for any questions or collaboration. `,
+We also do video calls where we discuss various issues and move the spec forward. The meeting is an hour long and informal. It is a space to discuss ongoing work, ask questions about implementations, and plan future work and sprints. We try to make sure there is always a member of the STAC PSC at these meetings.`,
     },
 };
 

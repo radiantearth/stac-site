@@ -73,4 +73,4 @@ Now that you have installed the STAC API Browser plugin, check out the [next tut
 
 #### Join the conversation
 
-If you have any questions or run into any issues, you’re welcome to reach out to our community on [Gitter](https://app.gitter.im/#/room/#SpatioTemporal-Asset-Catalog_Lobby).
+If you have any questions or run into any issues, you’re welcome to reach out to our community on [CNG Discourse](https://cng.discourse.group/c/stac/15).
