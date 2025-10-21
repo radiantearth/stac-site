@@ -5,6 +5,8 @@ const { EleventyRenderPlugin } = require('@11ty/eleventy');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const eleventyEvents = require('./eleventy/events');
 
+const sitemap = require("@quasibit/eleventy-plugin-sitemap");
+
 module.exports = function (eleventyConfig) {
     eleventyEvents.init(eleventyConfig);
 
@@ -33,6 +35,11 @@ module.exports = function (eleventyConfig) {
     // Plugins
     eleventyConfig.addPlugin(syntaxHighlight, {});
     eleventyConfig.addPlugin(EleventyRenderPlugin);
+    eleventyConfig.addPlugin(sitemap, {
+        sitemap: {
+            hostname: "https://stacspec.org",
+        },
+    });
 
     // Options
     return {
