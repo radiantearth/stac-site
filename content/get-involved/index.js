@@ -22,7 +22,7 @@ We also invite you to join the [CNG Slack](https://join.slack.com/t/cloudnativeg
 Lastly, for bigger discussions and more in-depth technical conversations, we have a [discussion forum on GitHub](https://github.com/radiantearth/stac-spec/discussions). There are also the the [stac-spec](https://github.com/radiantearth/stac-spec), [stac-api-spec](https://github.com/radiantearth/stac-api-spec), and the [stac-utils](https://github.com/stac-utils) GitHub repositories where you can write issues, feature requests, propose changes, or contribute to the specification and tools.`
     },
     cta_text: {
-        en: 'Join STAC Google Group',
+        en: 'Join the STAC Google Group',
     },
     cta_url: {
         en: 'https://groups.google.com/a/cloudnativegeo.org/g/stac-community',
@@ -38,8 +38,8 @@ We also do video calls where we discuss various issues and move the spec forward
 
 We currently host two weetings at different times to accommodate different time zones:
 
-- Every other Monday at 11 am EST ([Use this time zone converter if needed](https://www.timeanddate.com/worldclock/converter.html?iso=20251117T160000&p1=224&p2=179&p3=136&p4=37&p5=107&p6=176&p7=33&p8=248&p9=240))
-- Every first Friday of a month at 13:30 AEST ([Use this time zone converter if needed](https://www.timeanddate.com/worldclock/converter.html?iso=20251205T023000&p1=176&p2=33&p3=248&p4=240&p5=224&p6=179&p7=136&p8=37&p9=107))
+- Every other Monday at 11 am EST ([time zone converter](https://www.timeanddate.com/worldclock/converter.html?iso=20251117T160000&p1=224&p2=179&p3=136&p4=37&p5=107&p6=176&p7=33&p8=248&p9=240))
+- Every first Friday of a month at 13:30 AEST ([time zone converter](https://www.timeanddate.com/worldclock/converter.html?iso=20251205T023000&p1=176&p2=33&p3=248&p4=240&p5=224&p6=179&p7=136&p8=37&p9=107))
 
 Join the [STAC Community Google Group](https://groups.google.com/a/cloudnativegeo.org/g/stac-community) to get your invite.
 `
@@ -49,7 +49,7 @@ Join the [STAC Community Google Group](https://groups.google.com/a/cloudnativege
 const howToHelp = {
     heading: {
         en: 'How to help with STAC',
-    },
+    }
 };
 
 const currentNeeds = {
