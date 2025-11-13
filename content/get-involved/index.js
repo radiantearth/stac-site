@@ -8,36 +8,48 @@ const meta = {
 }
 
 const hero = {
-    preheading: {
-        en: 'Get Involved',
-    },
     heading: {
-        en: 'How to Help with STAC',
+        en: 'Get Involved',
     },
     body: {
         en: `Welcome! The STAC community prides itself on being welcoming and collaborative, and we are excited you clicked on this page to learn how you might help!
 
 If you aren't sure where to begin, join the [STAC Community Google Group](https://groups.google.com/a/cloudnativegeo.org/g/stac-community).
-Upon signup, you will receive invitations to the biweekly STAC Community meetup (every other Monday at 11 am EST).  [Use this time zone converter if needed](https://www.timeanddate.com/worldclock/converter.html?iso=20231121T160000&p1=224&p2=75&p3=64&p4=263&p5=168).
+This will get you invites to the community meetings (see below).
 
-Looking for online discussions and activity around STAC? Check out the [stac-spec repo](https://github.com/radiantearth/stac-spec), [stac-api-spec repo](https://github.com/radiantearth/stac-api-spec), and the [stac-utils repo](https://github.com/stac-utils) to see
-discussions and updates to STAC and its ecosystem. We are also have a [STAC category in the CNG Discourse](https://cng.discourse.group/c/stac)`,
+We also invite you to join the [CNG Slack](https://join.slack.com/t/cloudnativegeo/shared_invite/zt-2i37pc3nm-9bXiRHYrI6fH5qFh2VaLFA), there's a #stac channel where you can ask questions and get help from the community.
+
+Lastly, for bigger discussions and more in-depth technical conversations, we have a [discussion forum on GitHub](https://github.com/radiantearth/stac-spec/discussions). To report issues, request features, propose changes, or contribute to the specification and tools feel encouraged to directly head to the [stac-spec](https://github.com/radiantearth/stac-spec), [stac-api-spec](https://github.com/radiantearth/stac-api-spec), and the [stac-utils](https://github.com/stac-utils) GitHub repositories.`
     },
     cta_text: {
-        en: 'Join STAC Google Group',
+        en: 'Join the STAC Google Group',
     },
     cta_url: {
         en: 'https://groups.google.com/a/cloudnativegeo.org/g/stac-community',
     },
 };
 
+const communityCalls = {
+    body: {
+        en: `
+### Community meetings
+
+We also do video calls where we discuss various issues and move the spec forward. The meeting is an hour long and informal. It is a space to discuss ongoing work, ask questions about implementations, and plan future work and sprints. We try to make sure there is always a member of the STAC PSC at these meetings.
+
+We currently host two weetings at different times to accommodate different time zones:
+
+- Every other Monday at 11 am EST ([time zone converter](https://www.timeanddate.com/worldclock/converter.html?iso=20251117T160000&p1=224&p2=179&p3=136&p4=37&p5=107&p6=176&p7=33&p8=248&p9=240))
+- Every first Friday of a month at 13:30 AEST ([time zone converter](https://www.timeanddate.com/worldclock/converter.html?iso=20251205T023000&p1=176&p2=33&p3=248&p4=240&p5=224&p6=179&p7=136&p8=37&p9=107))
+
+Join the [STAC Community Google Group](https://groups.google.com/a/cloudnativegeo.org/g/stac-community) to get your invite.
+`
+    },
+};
+
 const howToHelp = {
     heading: {
-        en: 'How to help',
-    },
-    body: {
-        en: `Coming to the STAC Community meeting (join the [STAC Community Google Group](https://groups.google.com/a/cloudnativegeo.org/g/stac-community) for invite) is a great place to begin.`,
-    },
+        en: 'How to help with STAC',
+    }
 };
 
 const currentNeeds = {
@@ -88,20 +100,11 @@ The biggest way to help with the specification is to create compliant catalogs o
     },
 };
 
-const communityCalls = {
-    body: {
-        en: `
-### Community meetings
-
-We also do video calls where we discuss various issues and move the spec forward. The meeting is an hour long and informal. It is a space to discuss ongoing work, ask questions about implementations, and plan future work and sprints. We try to make sure there is always a member of the STAC PSC at these meetings.`,
-    },
-};
-
 module.exports = {
     meta,
     hero,
-    howToHelp,
     communityCalls,
+    howToHelp,
     currentNeeds,
     developers: require('./developers'),
     dataUsers: require('./data-users'),
