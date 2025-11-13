@@ -19,7 +19,7 @@ This will get you invites to the community meetings (see below).
 
 We also invite you to join the [CNG Slack](https://join.slack.com/t/cloudnativegeo/shared_invite/zt-2i37pc3nm-9bXiRHYrI6fH5qFh2VaLFA), there's a #stac channel where you can ask questions and get help from the community.
 
-Lastly, for bigger discussions and more in-depth technical conversations, we have a [discussion forum on GitHub](https://github.com/radiantearth/stac-spec/discussions). There are also the the [stac-spec](https://github.com/radiantearth/stac-spec), [stac-api-spec](https://github.com/radiantearth/stac-api-spec), and the [stac-utils](https://github.com/stac-utils) GitHub repositories where you can write issues, feature requests, propose changes, or contribute to the specification and tools.`
+Lastly, for bigger discussions and more in-depth technical conversations, we have a [discussion forum on GitHub](https://github.com/radiantearth/stac-spec/discussions). To report issues, request features, propose changes, or contribute to the specification and tools feel encouraged to directly head to the [stac-spec](https://github.com/radiantearth/stac-spec), [stac-api-spec](https://github.com/radiantearth/stac-api-spec), and the [stac-utils](https://github.com/stac-utils) GitHub repositories.`
     },
     cta_text: {
         en: 'Join the STAC Google Group',
