@@ -50,7 +50,6 @@
   },
   "dependencies": {
     "@alpinejs/collapse": "^3.9.0",
-    "@quasibit/eleventy-plugin-sitemap": "^2.2.0",
     "alpinejs": "^3.9.0"
   },
   "browserslist": "> 0.25%, not dead"
