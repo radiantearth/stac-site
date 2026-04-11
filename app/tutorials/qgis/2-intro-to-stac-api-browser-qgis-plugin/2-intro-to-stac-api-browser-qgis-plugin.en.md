@@ -161,4 +161,4 @@ _Asset added as a QGIS map layer._
 
 #### Join the conversation
 
-If you have any questions or run into any issues, you’re welcome to reach out to our community on the [Get Involved](https://stacspec.org/en/get-involved/) page.
+If you have any questions or run into any issues, you’re welcome to [get involved](https://stacspec.org/en/get-involved/).
