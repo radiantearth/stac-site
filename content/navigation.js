@@ -205,14 +205,6 @@ module.exports = {
                     },
                 },
                 {
-                    href: {
-                        en: 'https://cng.discourse.group/c/stac/15'
-                    },
-                    label: {
-                        en: 'Discourse'
-                    }
-                },
-                {
                     href: route('about.toolsResources'),
                     label: {
                         en: 'Tools & Resources'
@@ -245,7 +237,7 @@ module.exports = {
                 en: 
 `### STAC Community
 
-The STAC ecosystem is driven by open source contributions and community support. If you would like to help STAC grow and evolve, start by joining us on the [CNG Discourse](https://cng.discourse.group/c/stac/15). We also accept pull requests on our many open source projects.`
+The STAC ecosystem is driven by open source contributions and community support. If you would like to help STAC grow and evolve, start by visiting our [Get Involved](https://stacspec.org/en/get-involved/) page. We also accept pull requests on our many open source projects.`
             },
             links: [
                 {
